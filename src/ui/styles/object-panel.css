@@ -1,0 +1,26 @@
+.hud-panel {
+  width: min(310px, calc(100vw - 36px));
+  padding: 16px 18px !important;
+  border: 1px solid rgba(164, 121, 56, 0.76) !important;
+  background: rgba(14, 16, 15, 0.95) !important;
+  box-shadow: var(--hud-panel-shadow) !important;
+  clip-path: var(--hud-cut) !important;
+}
+
+.hud-panel h2 {
+  margin: 0 0 4px !important;
+  color: #d7cbb6 !important;
+  text-shadow: none !important;
+  font: 700 23px 'Rajdhani', sans-serif !important;
+  letter-spacing: 1.3px !important;
+}
+
+.hud-panel p { margin-bottom: 12px !important; color: #817a6d !important; font: 10px 'Share Tech Mono', monospace !important; }
+.hud-panel .btn-primary {
+  padding: 7px 10px !important;
+  border: 1px solid #9f7434 !important;
+  border-radius: 0 !important;
+  background: #1c1a15 !important;
+  color: #d5b474 !important;
+  font: 700 11px 'Rajdhani', sans-serif !important;
+}

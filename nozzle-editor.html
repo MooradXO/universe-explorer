@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universe Nozzle Editor</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #02040a;
+        color: #dff8ff;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      #app {
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .panel {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        width: 370px;
+        max-height: calc(100vh - 32px);
+        overflow: auto;
+        box-sizing: border-box;
+        padding: 14px;
+        background: rgba(3, 10, 22, 0.9);
+        border: 1px solid rgba(80, 220, 255, 0.45);
+        box-shadow: 0 0 28px rgba(0, 180, 255, 0.18);
+        backdrop-filter: blur(10px);
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: 16px;
+        letter-spacing: 1.5px;
+        color: #64dfff;
+      }
+
+      .row,
+      .button-row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .row label {
+        width: 40px;
+        color: #8ac9da;
+        font-size: 12px;
+      }
+
+      input {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 8px 9px;
+        background: rgba(0, 15, 30, 0.9);
+        border: 1px solid rgba(100, 210, 255, 0.35);
+        color: #eaffff;
+        font: inherit;
+      }
+
+      button {
+        padding: 8px 10px;
+        background: rgba(0, 35, 60, 0.92);
+        border: 1px solid rgba(100, 220, 255, 0.55);
+        color: #9fefff;
+        cursor: pointer;
+        font-weight: 650;
+      }
+
+      button:hover,
+      button.active {
+        color: #fff;
+        border-color: #45ffda;
+        box-shadow: 0 0 12px rgba(69, 255, 218, 0.25);
+      }
+
+      .points {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        margin: 10px 0;
+      }
+
+      textarea {
+        width: 100%;
+        height: 180px;
+        resize: vertical;
+        box-sizing: border-box;
+        padding: 10px;
+        background: rgba(0, 8, 16, 0.92);
+        border: 1px solid rgba(100, 210, 255, 0.35);
+        color: #dff8ff;
+        font: 12px/1.35 Consolas, monospace;
+      }
+
+      .hint {
+        margin-top: 8px;
+        color: rgba(210, 245, 255, 0.68);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <aside class="panel">
+      <h1>NOZZLE EDITOR</h1>
+      <div class="button-row">
+        <button id="view-rear" type="button">Rear</button>
+        <button id="view-top" type="button">Top</button>
+        <button id="view-side" type="button">Side</button>
+        <button id="reset" type="button">Reset</button>
+      </div>
+      <div id="points" class="points"></div>
+      <div class="row"><label for="x">X</label><input id="x" type="number" step="0.5" /></div>
+      <div class="row"><label for="y">Y</label><input id="y" type="number" step="0.5" /></div>
+      <div class="row"><label for="z">Z</label><input id="z" type="number" step="0.5" /></div>
+      <div class="row"><label for="size">Size</label><input id="size" type="number" min="0.2" max="3" step="0.05" /></div>
+      <div class="button-row">
+        <button id="copy" type="button">Copy JSON</button>
+      </div>
+      <textarea id="json" spellcheck="false"></textarea>
+      <div class="hint">
+        Drag the selected point with the 3D gizmo. Use orbit mouse controls for camera.
+        Send me the copied JSON when the flames sit exactly inside the nozzle holes.
+      </div>
+    </aside>
+    <script type="module" src="/src/tools/nozzleEditor.ts"></script>
+  </body>
+</html>

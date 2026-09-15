@@ -1,0 +1,31 @@
+#ui-layer {
+  --hud-ink: #080a09;
+  --hud-metal: rgba(18, 19, 17, 0.94);
+  --hud-metal-soft: rgba(31, 30, 25, 0.88);
+  --hud-brass: #a77a37;
+  --hud-brass-hot: #d79b3e;
+  --hud-paper: #d7cfbd;
+  --hud-muted: #817b6d;
+  --hud-green: #69b991;
+  --hud-blue: #4ca7bb;
+  --hud-red: #d34b3d;
+  --hud-amber: #d79635;
+  --hud-panel-shadow: 0 10px 24px rgba(0, 0, 0, 0.62), inset 0 0 24px rgba(0, 0, 0, 0.62);
+  --hud-cut: polygon(8px 0, calc(100% - 7px) 0, 100% 7px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 7px 100%, 0 calc(100% - 7px), 0 8px);
+}
+
+.hud-metal-panel {
+  border: 1px solid rgba(167, 122, 55, 0.72);
+  background:
+    repeating-linear-gradient(102deg, rgba(255, 255, 255, 0.018) 0 18px, transparent 18px 36px),
+    linear-gradient(145deg, rgba(255, 184, 66, 0.06), transparent 38%),
+    var(--hud-metal);
+  box-shadow: var(--hud-panel-shadow);
+  clip-path: var(--hud-cut);
+}
+
+#ui-layer button:focus-visible,
+#ui-layer [role="button"]:focus-visible {
+  outline: 2px solid var(--hud-brass-hot);
+  outline-offset: 2px;
+}

@@ -1,0 +1,203 @@
+.top-command-bar {
+  position: fixed;
+  top: 7px;
+  left: 50%;
+  z-index: 1000;
+  display: flex;
+  align-items: stretch;
+  padding: 5px 10px 7px;
+  transform: translateX(-50%);
+  pointer-events: auto;
+  clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 10px, calc(100% - 10px) 100%, 10px 100%, 0 10px);
+}
+
+.top-command-bar::before {
+  content: '';
+  position: absolute;
+  right: 22px;
+  bottom: 2px;
+  left: 22px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, #aa722d 0 17px, transparent 17px 25px);
+  opacity: 0.65;
+}
+
+.command-button {
+  position: relative;
+  display: flex;
+  min-width: 94px;
+  height: 37px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 11px;
+  border: 0;
+  border-right: 1px solid rgba(151, 115, 61, 0.4);
+  border-left: 1px solid rgba(0, 0, 0, 0.72);
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 44%),
+    rgba(25, 25, 22, 0.84);
+  color: #c8c0af;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-shadow: 0 1px 0 #000;
+  cursor: pointer;
+  transition: color 140ms ease, background 140ms ease;
+}
+
+.command-button__copy {
+  display: grid;
+  align-content: center;
+  gap: 1px;
+  text-align: left;
+  line-height: 1;
+}
+
+.command-button__copy small {
+  color: #817258;
+  font: 6px 'Share Tech Mono', monospace;
+  letter-spacing: 1.1px;
+}
+
+.command-button__copy b {
+  font: 700 11px 'Rajdhani', sans-serif;
+  letter-spacing: 1px;
+}
+
+.command-button:first-child { border-left: 0; }
+.command-button:last-child { border-right: 0; }
+
+.command-button svg {
+  width: 15px;
+  height: 15px;
+  color: #877557;
+}
+
+.command-button i {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #b57429;
+  box-shadow: 0 0 5px #b57429;
+}
+
+.command-button:hover {
+  background: linear-gradient(180deg, rgba(215, 155, 62, 0.12), transparent), rgba(32, 29, 23, 0.92);
+  color: #f0dfbc;
+}
+
+.command-button:hover svg { color: var(--hud-brass-hot); }
+
+.command-drawer {
+  position: fixed;
+  top: 59px;
+  z-index: 1002;
+  display: none;
+  width: 326px;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding: 10px;
+  color: var(--hud-paper);
+  pointer-events: auto;
+}
+
+.command-drawer--system { left: calc(50% - 276px); }
+.command-drawer--bounties { left: calc(50% - 152px); }
+
+.command-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 7px 8px;
+  border-bottom: 1px solid rgba(167, 122, 55, 0.42);
+  color: #d7c7a6;
+  font: 700 13px 'Rajdhani', sans-serif;
+  letter-spacing: 1.2px;
+}
+
+.command-drawer__header small {
+  color: #857a65;
+  font: 8px 'Share Tech Mono', monospace;
+}
+
+.command-system-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding-top: 8px;
+}
+
+.command-system-action {
+  min-height: 50px;
+  padding: 7px 8px;
+  border: 1px solid rgba(132, 105, 64, 0.58);
+  border-radius: 0;
+  background: rgba(6, 8, 7, 0.72);
+  color: #cfc5b1;
+  text-align: left;
+  cursor: pointer;
+}
+
+.command-system-action strong,
+.command-system-action small { display: block; }
+.command-system-action strong { font: 700 11px 'Rajdhani', sans-serif; letter-spacing: 0.8px; }
+.command-system-action small { margin-top: 2px; color: #797466; font: 8px 'Share Tech Mono', monospace; }
+.command-system-action:hover { border-color: var(--hud-brass-hot); color: #f3dfb5; }
+
+.command-manual {
+  display: none;
+  gap: 5px;
+  margin-top: 7px;
+  padding: 8px;
+  border: 1px solid rgba(131, 108, 72, 0.38);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.command-manual div { display: flex; justify-content: space-between; gap: 14px; }
+.command-manual b { color: var(--hud-amber); font: 8px 'Share Tech Mono', monospace; }
+.command-manual span { color: #aaa18f; font: 8px 'Share Tech Mono', monospace; text-align: right; }
+
+.command-leaderboard { display: grid; gap: 2px; padding-top: 7px; }
+.command-leaderboard__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 8px;
+  border-bottom: 1px solid rgba(142, 111, 61, 0.25);
+  color: #aaa291;
+  font: 10px 'Share Tech Mono', monospace;
+}
+.command-leaderboard__row strong { color: var(--hud-amber); font-weight: 400; }
+.command-leaderboard__row--rank-1 span { color: #e0bb69; }
+.command-leaderboard__row--rank-2 span { color: #c4c0b6; }
+.command-leaderboard__row--rank-3 span { color: #b98055; }
+
+@media (max-width: 1024px), (max-height: 500px) {
+  .top-command-bar {
+    top: 5px;
+    left: 126px;
+    max-width: none;
+    padding: 0 4px;
+    transform: none;
+  }
+
+  .command-button {
+    min-width: 58px;
+    height: 34px;
+    gap: 4px;
+    padding: 0 7px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+
+  .command-button svg { display: none; }
+  .command-button i { top: 4px; right: 4px; width: 3px; height: 3px; }
+  .command-drawer { top: 45px; width: 290px; }
+  .command-drawer--system,
+  .command-drawer--bounties { left: 50%; transform: translateX(-50%); }
+}

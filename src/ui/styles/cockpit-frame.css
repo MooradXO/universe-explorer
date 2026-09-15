@@ -1,0 +1,105 @@
+.cockpit-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 72;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cockpit-frame__side {
+  position: absolute;
+  top: 214px;
+  bottom: 42px;
+  width: 15px;
+  border: 1px solid rgba(148, 110, 56, 0.58);
+  background:
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0 18px, transparent 18px 34px),
+    linear-gradient(90deg, #090a09, #2a2922 44%, #0b0c0b);
+  box-shadow: inset 0 0 10px #000;
+}
+
+.cockpit-frame__side--left {
+  left: 0;
+  clip-path: polygon(0 0, 100% 9px, 100% 100%, 0 100%);
+}
+
+.cockpit-frame__side--right {
+  right: 0;
+  clip-path: polygon(0 9px, 100% 0, 100% 100%, 0 100%);
+}
+
+.cockpit-frame__side i {
+  position: absolute;
+  left: 5px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #75562b;
+  box-shadow: 0 0 5px rgba(215, 145, 48, 0.58);
+}
+
+.cockpit-frame__side i:nth-child(1) { top: 20%; }
+.cockpit-frame__side i:nth-child(2) { top: 50%; }
+.cockpit-frame__side i:nth-child(3) { top: 80%; }
+
+.cockpit-frame__sill {
+  position: absolute;
+  bottom: 0;
+  width: 37vw;
+  height: 43px;
+  border-top: 1px solid rgba(167, 122, 55, 0.72);
+  background:
+    repeating-linear-gradient(105deg, rgba(255, 255, 255, 0.018) 0 22px, transparent 22px 44px),
+    linear-gradient(180deg, rgba(43, 40, 31, 0.96), rgba(8, 9, 8, 0.99));
+  box-shadow: inset 0 6px 18px rgba(0, 0, 0, 0.68);
+}
+
+.cockpit-frame__sill--left {
+  left: 0;
+  clip-path: polygon(0 0, calc(100% - 66px) 0, 100% 100%, 0 100%);
+}
+
+.cockpit-frame__sill--right {
+  right: 0;
+  clip-path: polygon(66px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.cockpit-frame__sill span {
+  position: absolute;
+  top: 9px;
+  width: 42%;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, #a7712d 0 13px, #2a241a 13px 19px);
+  opacity: 0.62;
+}
+
+.cockpit-frame__sill--left span { left: 22px; }
+.cockpit-frame__sill--right span { right: 22px; }
+
+.cockpit-frame__keel {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 168px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border: 1px solid rgba(142, 106, 54, 0.55);
+  border-bottom: 0;
+  background: #10110f;
+  clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 100%, 0 100%);
+  transform: translateX(-50%);
+}
+
+.cockpit-frame__keel i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #b77d2f;
+}
+
+@media (max-width: 1024px), (max-height: 500px) {
+  .cockpit-frame { display: none; }
+}

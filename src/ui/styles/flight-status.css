@@ -1,0 +1,260 @@
+.flight-status {
+  --hud-metal: rgba(15, 18, 18, 0.9);
+  --hud-edge: rgba(179, 135, 63, 0.72);
+  position: absolute;
+  top: 242px;
+  bottom: auto;
+  left: 22px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 210px;
+  box-sizing: border-box;
+  padding: 10px 10px 12px;
+  border: 1px solid rgba(179, 135, 63, 0.72);
+  background:
+    linear-gradient(135deg, rgba(255, 184, 72, 0.065), transparent 40%),
+    rgba(13, 16, 15, 0.93);
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.76), 0 0 0 1px rgba(0, 0, 0, 0.72);
+  clip-path: polygon(0 9px, 8px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+  color: #d4c7a9;
+  font-family: "Share Tech Mono", monospace;
+  pointer-events: none;
+}
+
+.flight-status::before {
+  content: 'FLIGHT CORE / FC-07';
+  width: 100%;
+  padding: 0 2px 7px;
+  border-bottom: 1px solid rgba(167, 122, 55, 0.36);
+  color: #8f7f61;
+  font-size: 7px;
+  letter-spacing: 1.25px;
+}
+
+.flight-status__primary,
+.flight-status__systems {
+  box-sizing: border-box;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  clip-path: none;
+}
+
+.flight-status__primary {
+  width: 188px;
+  padding: 0 2px 10px;
+  border-bottom: 1px solid rgba(167, 122, 55, 0.3);
+}
+
+.flight-status__bar + .flight-status__bar {
+  margin-top: 7px;
+}
+
+.flight-status__bar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+  color: #c8b58c;
+  font-family: "Orbitron", sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.flight-status__bar-value {
+  color: var(--status-color);
+  text-shadow: 0 0 6px color-mix(in srgb, var(--status-color) 55%, transparent);
+}
+
+.flight-status__bar-track {
+  height: 7px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--status-color) 60%, transparent);
+  background: rgba(0, 0, 0, 0.72);
+  transform: skewX(-15deg);
+}
+
+.flight-status__bar-fill {
+  width: 100%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 8px, rgba(0, 0, 0, 0.34) 8px 10px),
+    var(--status-color);
+  box-shadow: 0 0 10px var(--status-color);
+  transition: width 100ms linear, background-color 160ms ease;
+}
+
+.flight-status__bar--hull { --status-color: #e64b35; }
+.flight-status__bar--shield { --status-color: #43b7c2; }
+.flight-status__bar--boost { --status-color: #db9e3b; }
+
+.flight-status__bar.is-critical {
+  --status-color: #ff382f;
+  animation: flight-critical-pulse 850ms ease-in-out infinite alternate;
+}
+
+.flight-status__systems {
+  width: 188px;
+  padding: 1px 2px 0;
+}
+
+.flight-status__systems-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 7px;
+  color: #c9b583;
+  font-family: "Orbitron", sans-serif;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.flight-status__systems-mark {
+  width: 7px;
+  height: 7px;
+  border: 1px solid #c69342;
+  transform: rotate(45deg);
+}
+
+.flight-status__system {
+  --system-color: #d59a3b;
+  display: grid;
+  grid-template-columns: 31px 1fr 35px;
+  align-items: center;
+  gap: 5px;
+  min-height: 17px;
+}
+
+.flight-status__system--weapon { --system-color: #c95543; }
+.flight-status__system--generator { --system-color: #59a9a7; }
+
+.flight-status__system-label,
+.flight-status__system-value {
+  color: var(--system-color);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.flight-status__system-value {
+  text-align: right;
+}
+
+.flight-status__system-track {
+  height: 3px;
+  overflow: hidden;
+  background: #050606;
+  border: 1px solid color-mix(in srgb, var(--system-color) 44%, transparent);
+}
+
+.flight-status__system-fill {
+  width: 100%;
+  height: 100%;
+  background: var(--system-color);
+  transition: width 150ms ease-out;
+}
+
+.flight-status__system.is-critical { --system-color: #ff382f; }
+
+.flight-kill-feed {
+  position: absolute;
+  top: 132px;
+  right: 20px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+
+.flight-kill-feed__item {
+  padding: 6px 12px 6px 14px;
+  border-right: 2px solid #a66d2c;
+  background: linear-gradient(90deg, rgba(8, 10, 10, 0.42), rgba(18, 17, 14, 0.88));
+  color: #d3c7ab;
+  font: 11px "Share Tech Mono", monospace;
+  letter-spacing: 0.4px;
+  animation: flight-feed-enter 240ms ease-out;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.flight-kill-feed__killer { color: #7fc8b1; }
+.flight-kill-feed__divider { margin: 0 7px; color: #d79b3b; font-weight: 900; }
+.flight-kill-feed__killed { color: #e36d53; }
+
+.flight-kill-feed__item--leaving {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+#hud-fps-counter.flight-fps {
+  position: absolute !important;
+  top: 20px !important;
+  right: 24px !important;
+  bottom: auto !important;
+  left: auto !important;
+  z-index: 90;
+  display: flex !important;
+  align-items: center;
+  gap: 4px;
+  color: #8fa889;
+  font: 10px "Share Tech Mono", monospace;
+  text-shadow: none;
+}
+
+.flight-fps svg {
+  width: 11px;
+  height: 11px;
+}
+
+@keyframes flight-feed-enter {
+  from { opacity: 0; transform: translateX(20px); }
+}
+
+@keyframes flight-critical-pulse {
+  to { filter: brightness(1.45); }
+}
+
+@media (max-width: 1024px), (max-height: 500px) {
+  body.is-mobile .flight-status {
+    top: 128px !important;
+    right: auto;
+    bottom: auto !important;
+    left: 8px !important;
+    gap: 5px !important;
+    transform: none !important;
+    scale: 0.68 !important;
+    transform-origin: top left !important;
+    flex-direction: column !important;
+    width: 176px;
+    padding: 8px;
+  }
+
+  body.is-mobile .flight-status::before { display: none; }
+
+  body.is-mobile .flight-status__primary,
+  body.is-mobile .flight-status__systems { width: 160px; }
+
+  body.is-mobile #hud-fps-counter.flight-fps {
+    display: none !important;
+  }
+
+  body.is-mobile .flight-kill-feed {
+    top: 116px;
+    right: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flight-status__bar.is-critical,
+  .flight-kill-feed__item {
+    animation: none;
+  }
+}

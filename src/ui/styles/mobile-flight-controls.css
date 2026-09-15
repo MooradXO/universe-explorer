@@ -1,0 +1,207 @@
+.mobile-flight-controls {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  pointer-events: none;
+}
+
+.mobile-look-zone {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  bottom: 0;
+  width: 62%;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.mobile-joystick {
+  position: absolute;
+  bottom: 13px;
+  left: 20px;
+  z-index: 2;
+  width: 116px;
+  height: 116px;
+  border: 2px solid rgba(139, 119, 82, 0.88);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(72, 68, 56, 0.34), rgba(10, 11, 10, 0.88));
+  box-shadow: inset 0 0 22px #000, 0 0 0 5px rgba(31, 30, 26, 0.9), 0 0 0 6px rgba(131, 104, 63, 0.62);
+  color: #9c9078;
+  font: 10px 'Share Tech Mono', monospace;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.mobile-joystick__knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 58px;
+  height: 58px;
+  border: 1px solid #75674f;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #4a4941, #171816 68%);
+  box-shadow: 0 4px 8px #000, inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.mobile-joystick > span { position: absolute; opacity: 0.72; }
+.mobile-joystick__north { top: 5px; left: 50%; transform: translateX(-50%); }
+.mobile-joystick__east { top: 50%; right: 5px; transform: translateY(-50%); }
+.mobile-joystick__south { bottom: 5px; left: 50%; transform: translateX(-50%); }
+.mobile-joystick__west { top: 50%; left: 5px; transform: translateY(-50%); }
+
+.mobile-weapon-rail {
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: repeat(3, 70px) 50px;
+  gap: 3px;
+  padding: 5px 7px 7px;
+  border: 1px solid rgba(151, 114, 61, 0.66);
+  background:
+    linear-gradient(180deg, rgba(255, 185, 71, 0.06), transparent 46%),
+    rgba(13, 15, 14, 0.94);
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.74);
+  clip-path: polygon(9px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 9px);
+  pointer-events: auto;
+}
+
+.mobile-weapon-rail::after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  bottom: 2px;
+  left: 10px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, #9c6a2d 0 15px, transparent 15px 21px);
+  opacity: 0.58;
+}
+
+.mobile-weapon,
+.mobile-color-button {
+  height: 42px;
+  border: 1px solid rgba(119, 105, 78, 0.6);
+  border-radius: 0;
+  background: linear-gradient(160deg, rgba(69, 61, 45, 0.24), rgba(6, 8, 7, 0.9));
+  color: #aaa18e;
+  font-family: 'Rajdhani', sans-serif;
+  touch-action: none;
+}
+
+.mobile-weapon {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 6px);
+}
+
+.mobile-weapon kbd {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  color: #927f5d;
+  font: 7px 'Share Tech Mono', monospace;
+}
+
+.mobile-weapon span { font-size: 9px; font-weight: 700; letter-spacing: 0.4px; }
+.mobile-weapon.is-selected { border-color: #6db393; color: #d9d2c1; background: linear-gradient(160deg, rgba(72, 139, 108, 0.28), rgba(6, 8, 7, 0.94)); box-shadow: inset 0 -3px 0 #5d9e82; }
+.mobile-weapon--shotgun.is-selected { border-color: #c89c48; box-shadow: inset 0 -3px 0 #c89c48; }
+.mobile-weapon--missile.is-selected { border-color: #bd6337; box-shadow: inset 0 -3px 0 #bd6337; }
+
+.mobile-color-button {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 3px;
+  font-size: 8px;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 6px);
+}
+.mobile-color-button i { width: 21px; height: 7px; background: #d74638; box-shadow: 0 0 5px #d74638; }
+.mobile-color-button[data-color='blue'] i { background: #3e9fc1; box-shadow: 0 0 5px #3e9fc1; }
+
+.mobile-action-cluster {
+  position: absolute;
+  right: 12px;
+  bottom: 11px;
+  z-index: 4;
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  pointer-events: auto;
+}
+
+.mobile-action {
+  --mobile-action-color: #a68b5d;
+  display: flex;
+  width: 44px;
+  height: 44px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border: 2px solid color-mix(in srgb, var(--mobile-action-color) 72%, #2b2923);
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--mobile-action-color) 12%, #151612), #090a09 72%);
+  color: #bdb4a2;
+  box-shadow: inset 0 0 0 3px #171813, 0 2px 7px #000;
+  font: 700 8px 'Rajdhani', sans-serif;
+  touch-action: none;
+}
+
+.mobile-action svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.mobile-action--large { width: 68px; height: 68px; font-size: 11px; }
+.mobile-action--large svg { width: 25px; height: 25px; }
+.mobile-action--fire { --mobile-action-color: #c74338; color: #ef6a5c; }
+.mobile-action--boost { --mobile-action-color: #c58a2f; color: #e5a83e; }
+.mobile-action--voice.is-active { --mobile-action-color: #579a79; color: #79c39d; }
+.mobile-action.is-pressed { filter: brightness(1.4); transform: translateY(1px); }
+
+.mobile-portrait-blocker {
+  position: fixed;
+  inset: 0;
+  z-index: 1000000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  box-sizing: border-box;
+  background: radial-gradient(circle, #181813, #040504 72%);
+}
+
+.mobile-portrait-panel {
+  display: flex;
+  width: min(310px, 92vw);
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 30px 22px;
+  color: #c8beaa;
+  text-align: center;
+}
+
+.mobile-portrait-panel__eyebrow { color: #9a855f; font: 9px 'Share Tech Mono', monospace; letter-spacing: 1.5px; }
+.mobile-portrait-panel__phone { width: 58px; height: 58px; fill: none; stroke: #b28a49; stroke-width: 1.5; }
+.mobile-portrait-panel strong { color: #d9a441; font: 700 24px 'Rajdhani', sans-serif; letter-spacing: 2px; }
+.mobile-portrait-panel span { color: #847e72; font: 11px 'Share Tech Mono', monospace; line-height: 1.5; }
+
+@media (max-width: 720px) and (orientation: landscape) {
+  .mobile-weapon-rail { grid-template-columns: repeat(3, 58px) 42px; }
+  .mobile-weapon { height: 36px; }
+  .mobile-action-cluster { gap: 4px; }
+  .mobile-action { width: 38px; height: 38px; }
+  .mobile-action--large { width: 57px; height: 57px; }
+}

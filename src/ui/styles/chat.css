@@ -1,0 +1,58 @@
+.chat-icon-btn {
+  display: none !important;
+}
+
+.chat-container {
+  bottom: 118px !important;
+  left: 236px !important;
+  width: 340px !important;
+  height: 238px !important;
+  padding: 10px !important;
+  border: 1px solid rgba(157, 119, 61, 0.76) !important;
+  background:
+    repeating-linear-gradient(102deg, rgba(255, 255, 255, 0.016) 0 18px, transparent 18px 36px),
+    rgba(15, 17, 16, 0.95) !important;
+  box-shadow: var(--hud-panel-shadow) !important;
+  clip-path: var(--hud-cut) !important;
+}
+
+.chat-container::before {
+  content: 'COMMS / LOCAL CHANNEL';
+  display: block;
+  padding: 3px 4px 8px;
+  border-bottom: 1px solid rgba(157, 119, 61, 0.36);
+  color: #a68d61;
+  font: 9px 'Share Tech Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.chat-container > div {
+  padding: 7px 4px !important;
+  color: #b7ae9c !important;
+  font: 11px 'Share Tech Mono', monospace !important;
+}
+
+.chat-message { display: flex; gap: 6px; }
+.chat-message strong { color: #69b991; font-weight: 400; }
+.chat-message span { color: #c9c0ae; }
+
+.chat-container input {
+  width: calc(100% - 18px) !important;
+  margin-top: 6px !important;
+  padding: 8px !important;
+  border: 1px solid rgba(154, 119, 62, 0.48) !important;
+  background: rgba(0, 0, 0, 0.64) !important;
+  color: #d4c5aa !important;
+  font: 11px 'Share Tech Mono', monospace !important;
+}
+
+@media (max-width: 1024px), (max-height: 500px) {
+  body.is-mobile .chat-container {
+    top: 48px !important;
+    right: 9px !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 270px !important;
+    height: 184px !important;
+  }
+}

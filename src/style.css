@@ -1,0 +1,1104 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap');
+
+:root {
+  font-family: 'Share Tech Mono', monospace;
+  color-scheme: dark;
+  background-color: #020000;
+  color: #ffcccc;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0; z-index: 1;
+}
+
+#ui-layer {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* ── HUD Panel (object info) ── */
+.hud-panel {
+  pointer-events: auto;
+  position: absolute;
+  top: 50%; left: 8%;
+  transform: translateY(-50%);
+  background: rgba(10, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  border-top: 2px solid #ff3333;
+  border-bottom: 2px solid #ff3333;
+  border-left: 1px solid rgba(255, 50, 50, 0.3);
+  border-right: 1px solid rgba(255, 50, 50, 0.3);
+  padding: 30px 40px;
+  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.15), inset 0 0 20px rgba(200, 0, 0, 0.05);
+  max-width: 350px;
+}
+.hud-panel.active {
+  opacity: 1;
+  visibility: visible;
+}
+.hud-panel h2 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0 0 8px 0;
+  color: #ff5555;
+  text-shadow: 0 0 10px rgba(255, 50, 50, 0.5);
+}
+.hud-panel p {
+  margin: 0 0 20px 0;
+  color: #ffaaaa;
+  font-size: 0.95rem;
+}
+
+.atmosphere-prompt {
+  position: fixed;
+  left: 50%;
+  bottom: 112px;
+  transform: translateX(-50%) translateY(12px);
+  min-width: 260px;
+  max-width: min(420px, calc(100vw - 32px));
+  padding: 14px 18px 16px;
+  background: rgba(0, 16, 22, 0.84);
+  border-top: 2px solid #00ffcc;
+  border-bottom: 2px solid #00ffcc;
+  border-left: 1px solid rgba(0, 255, 204, 0.36);
+  border-right: 1px solid rgba(0, 255, 204, 0.36);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  box-shadow: 0 0 28px rgba(0, 255, 204, 0.16), inset 0 0 16px rgba(0, 255, 204, 0.08);
+  pointer-events: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  z-index: 2000;
+  text-align: center;
+}
+
+.atmosphere-prompt.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.atmosphere-prompt-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: #7fffe4;
+  letter-spacing: 0;
+  margin-bottom: 4px;
+}
+
+.atmosphere-prompt-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.atmosphere-prompt-button,
+.atmosphere-status-button {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: #00100d;
+  background: #00ffcc;
+  border: 0;
+  padding: 8px 14px;
+  cursor: pointer;
+  letter-spacing: 0;
+  box-shadow: 0 0 16px rgba(0, 255, 204, 0.35);
+}
+
+.atmosphere-prompt-button:hover,
+.atmosphere-status-button:hover {
+  background: #99fff0;
+}
+
+.atmosphere-loading {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 4, 10, 0.78);
+  color: #d9fff8;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 9500;
+}
+
+.atmosphere-loading.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.atmosphere-status {
+  position: fixed;
+  left: 20px;
+  top: 94px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  background: rgba(0, 15, 22, 0.74);
+  border-left: 2px solid #00ffcc;
+  color: #d9fff8;
+  pointer-events: auto;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1800;
+}
+
+.atmosphere-status.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.atmosphere-status-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+/* ── Top Menu Container ── */
+.top-menu-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-end;
+  z-index: 99999 !important;
+  pointer-events: auto;
+}
+
+.menu-item-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.btn-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-end;
+  position: relative;
+}
+
+#auth-panel-wrapper {
+  position: absolute !important;
+  top: 0 !important;
+  right: calc(100% + 15px) !important;
+  z-index: 100001 !important;
+  margin-top: 0 !important;
+}
+
+/* ── Controls Hint ── */
+.controls-hint {
+  pointer-events: auto;
+  position: absolute !important;
+  top: 0 !important;
+  right: calc(100% + 15px) !important;
+  left: auto !important;
+  background: rgba(5, 10, 20, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 0px;
+  border: 1px solid #00ccff;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  color: #00ccff;
+  line-height: 1.8;
+  z-index: 100002 !important;
+  width: 280px;
+  box-shadow: 0 0 25px rgba(0, 204, 255, 0.25);
+  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+  text-shadow: 0 0 3px rgba(0, 204, 255, 0.3);
+  margin-top: 0 !important;
+}
+
+/* ── Buttons (Star Wars Battlefront Style) ── */
+button.bf-btn,
+button.btn-primary {
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+  background: rgba(4, 12, 24, 0.8) !important;
+  color: #00ccff !important;
+  border: 1.5px solid rgba(0, 204, 255, 0.6) !important;
+  border-left: 4px solid #00ccff !important;
+  padding: 11px 24px;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 0 12px rgba(0, 204, 255, 0.25), inset 0 0 8px rgba(0, 204, 255, 0.1);
+  text-shadow: 0 0 6px rgba(0, 204, 255, 0.8);
+  border-radius: 0 !important;
+  pointer-events: auto;
+}
+button.bf-btn.active,
+button.btn-primary.active {
+  background: rgba(0, 204, 255, 0.25) !important;
+  color: #fff !important;
+  border-color: #00ffcc !important;
+  border-left-color: #00ffcc !important;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.6), inset 0 0 12px rgba(0, 255, 204, 0.2) !important;
+  text-shadow: 0 0 10px #00ffcc;
+}
+button.bf-btn.hidden,
+button.btn-primary.hidden {
+  display: none;
+}
+button.bf-btn:hover,
+button.btn-primary:hover {
+  background: rgba(0, 204, 255, 0.2) !important;
+  box-shadow: 0 0 22px rgba(0, 204, 255, 0.65), inset 0 0 12px rgba(0, 204, 255, 0.3) !important;
+  border-color: #00ffcc !important;
+  border-left-color: #00ffcc !important;
+  color: #fff !important;
+  text-shadow: 0 0 10px #fff;
+  transform: translateY(-1px);
+}
+button.bf-btn:active,
+button.btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* ── Specific Battlefront UI Buttons ── */
+.bf-btn {
+  /* Inherits from button, defined here for classes just in case */
+}
+
+#btn-system {
+  /* Positioned inside flex container */
+}
+
+#btn-top5 {
+  border-color: rgba(255, 170, 0, 0.6) !important;
+  border-left-color: #ffaa00 !important;
+  color: #ffaa00 !important;
+  box-shadow: 0 0 12px rgba(255, 170, 0, 0.25), inset 0 0 8px rgba(255, 170, 0, 0.1) !important;
+  text-shadow: 0 0 6px rgba(255, 170, 0, 0.8) !important;
+}
+#btn-top5:hover {
+  background: rgba(255, 170, 0, 0.2) !important;
+  box-shadow: 0 0 22px rgba(255, 170, 0, 0.65), inset 0 0 12px rgba(255, 170, 0, 0.3) !important;
+  border-color: #ffd700 !important;
+  border-left-color: #ffd700 !important;
+}
+
+#btn-base {
+  border-color: rgba(255, 51, 51, 0.6) !important;
+  border-left-color: #ff3333 !important;
+  color: #ff3333 !important;
+  box-shadow: 0 0 12px rgba(255, 51, 51, 0.25), inset 0 0 8px rgba(255, 51, 51, 0.1) !important;
+  text-shadow: 0 0 6px rgba(255, 51, 51, 0.8) !important;
+}
+#btn-base:hover {
+  background: rgba(255, 51, 51, 0.2) !important;
+  box-shadow: 0 0 22px rgba(255, 51, 51, 0.65), inset 0 0 12px rgba(255, 51, 51, 0.3) !important;
+  border-color: #ff5555 !important;
+  border-left-color: #ff5555 !important;
+}
+
+#btn-toggle-auth {
+  border-color: #00ff88 !important;
+  border-left-color: #00ff88 !important;
+  color: #00ff88 !important;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.2) !important;
+  text-shadow: 0 0 5px #00ff88 !important;
+}
+#btn-toggle-auth:hover {
+  background: rgba(0, 255, 136, 0.15) !important;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5) !important;
+  border-color: #33ff99 !important;
+}
+
+@media (max-width: 800px) {
+  .top-menu-container {
+    top: 10px;
+    right: 10px;
+    gap: 8px;
+  }
+  button {
+    padding: 6px 14px !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 1px !important;
+  }
+  .controls-hint {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translate(-50%, -50%) !important;
+    width: 280px;
+    margin: 0 !important;
+    box-shadow: 0 0 30px rgba(0, 204, 255, 0.5);
+  }
+}
+
+
+/* ── Auth UI ── */
+#auth-ui {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  z-index: 99999 !important;
+  pointer-events: auto;
+  order: 1 !important;
+}
+
+.lb-wrapper {
+  order: 2 !important;
+}
+
+.settings-wrapper {
+  order: 3 !important;
+}
+
+.auth-panel {
+  margin: 0;
+}
+
+.auth-panel.logged-out {
+  text-align: center;
+}
+
+.login-prompt {
+  background: rgba(10, 0, 0, 0.9);
+  backdrop-filter: blur(16px);
+  border-top: 2px solid #ff3333;
+  border-bottom: 2px solid #ff3333;
+  padding: 24px 32px;
+  clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.2);
+}
+
+.login-title {
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ff4444;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+}
+
+.login-subtitle {
+  font-size: 0.85rem;
+  color: rgba(255, 150, 150, 0.5);
+  margin-bottom: 16px;
+}
+
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #24292e 0%, #1a1e22 100%);
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.github-btn:hover {
+  background: linear-gradient(135deg, #2d333b 0%, #22272e 100%);
+  box-shadow: 0 0 20px rgba(255,255,255,0.1), 0 4px 15px rgba(0,0,0,0.3);
+  transform: scale(1.05);
+}
+
+.auth-panel.logged-in {
+  background: rgba(10, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  border-top: 2px solid #ff3333;
+  border-bottom: 2px solid #ff3333;
+  padding: 10px;
+  min-width: 170px;
+  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 50, 50, 0.6);
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.2);
+}
+
+.user-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ff5555;
+  letter-spacing: 0.5px;
+}
+
+.user-github {
+  font-size: 0.65rem;
+  color: rgba(255, 150, 150, 0.45);
+}
+
+.ship-stats {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+}
+
+.stat-icon {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  filter: sepia(1) hue-rotate(-50deg) saturate(3);
+}
+
+.stat-val {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffcccc;
+}
+
+.stat-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.65rem;
+  color: #ff5555;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 1000px), (max-height: 500px) {
+  .auth-panel { margin: 0.5rem; }
+  .login-prompt { padding: 12px 16px; }
+  .login-title { font-size: 0.8rem; }
+  .login-subtitle { font-size: 0.6rem; margin-bottom: 8px; }
+  .github-btn { padding: 8px 12px; font-size: 0.75rem; }
+  .github-btn svg { width: 16px; height: 16px; }
+  .auth-panel.logged-in { padding: 10px; min-width: 180px; }
+  .user-card { margin-bottom: 10px; gap: 8px;}
+  .avatar { width: 32px; height: 32px; }
+  .user-name { font-size: 0.75rem; }
+  .ship-stats { gap: 10px; margin-bottom: 8px;}
+  .stat-val { font-size: 0.75rem; }
+  .stat-label { font-size: 0.5rem; }
+}
+
+.ship-size-bar {
+  margin-bottom: 14px;
+}
+
+.ship-size-label {
+  font-size: 0.75rem;
+  color: #ff5555;
+  margin-bottom: 4px;
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 1px;
+}
+
+.ship-size-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 0, 0, 0.15);
+  border-radius: 0px;
+  overflow: hidden;
+}
+
+.ship-size-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff1111, #ffaa00);
+  border-radius: 0px;
+  box-shadow: 0 0 8px rgba(255, 100, 0, 0.6);
+  transition: width 0.5s ease;
+}
+
+.logout-btn {
+  width: 100%;
+  background: rgba(255, 50, 50, 0.15) !important;
+  border-color: rgba(255, 80, 80, 0.3) !important;
+  color: rgba(255, 120, 120, 0.7) !important;
+  padding: 8px;
+  font-size: 0.75rem;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 50, 50, 0.3) !important;
+  color: #ff8888 !important;
+}
+
+@media (max-width: 1000px), (max-height: 500px) {
+  .controls-hint {
+    left: 20px;
+    top: 70px;
+    font-size: 11px;
+    padding: 10px;
+  }
+}
+
+/* ── Premium Sci-Fi Crosshair ── */
+#hud-crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 999;
+}
+
+#hud-crosshair .dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: #00ccff;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: 0 0 8px #00ccff, 0 0 15px #00ccff;
+}
+
+#hud-crosshair .bracket {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: #00ccff;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 3px rgba(0, 204, 255, 0.6));
+  transition: transform 0.2s ease;
+}
+
+#hud-crosshair .bracket.top-left {
+  top: 0; left: 0;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+
+#hud-crosshair .bracket.top-right {
+  top: 0; right: 0;
+  border-top: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+#hud-crosshair .bracket.bottom-left {
+  bottom: 0; left: 0;
+  border-bottom: 1.5px solid;
+  border-left: 1.5px solid;
+}
+
+#hud-crosshair .bracket.bottom-right {
+  bottom: 0; right: 0;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+#hud-crosshair .ring {
+  position: absolute;
+  top: 4px; left: 4px;
+  width: 34px;
+  height: 34px;
+  border: 1px dashed rgba(0, 204, 255, 0.25);
+  border-radius: 50%;
+  animation: spin-crosshair 25s linear infinite;
+}
+
+#hud-crosshair .tick {
+  position: absolute;
+  background: #00ccff;
+  opacity: 0.6;
+  box-shadow: 0 0 4px #00ccff;
+}
+
+#hud-crosshair .tick.left {
+  width: 4px; height: 1px;
+  top: 50%; left: -6px;
+  transform: translateY(-50%);
+}
+
+#hud-crosshair .tick.right {
+  width: 4px; height: 1px;
+  top: 50%; right: -6px;
+  transform: translateY(-50%);
+}
+
+#hud-crosshair .tick.top {
+  width: 1px; height: 4px;
+  left: 50%; top: -6px;
+  transform: translateX(-50%);
+}
+
+#hud-crosshair .tick.bottom {
+  width: 1px; height: 4px;
+  left: 50%; bottom: -6px;
+  transform: translateX(-50%);
+}
+
+@keyframes spin-crosshair {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── Controls Hint Active Style ── */
+.controls-hint.active {
+  display: block !important;
+}
+
+/* ── Hangar Panel styles ── */
+.hangar-panel {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background: rgba(4, 12, 24, 0.95) !important;
+  border: 2px solid #00ffcc !important;
+  border-top: 5px solid #00ffcc !important;
+  border-bottom: 5px solid #00ffcc !important;
+  box-shadow: 0 0 35px rgba(0, 255, 204, 0.35), inset 0 0 20px rgba(0, 255, 204, 0.05) !important;
+  clip-path: polygon(25px 0, 100% 0, 100% calc(100% - 25px), calc(100% - 25px) 100%, 0 100%, 0 25px);
+  padding: 35px !important;
+  width: 480px;
+  max-width: 90%;
+  z-index: 100000 !important;
+  display: none;
+  flex-direction: column;
+  font-family: 'Share Tech Mono', monospace;
+  pointer-events: auto !important;
+  backdrop-filter: blur(15px);
+  color: #ffcccc;
+}
+
+.hangar-header {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #00ffcc;
+  text-shadow: 0 0 12px #00ffcc;
+  text-align: center;
+  margin: 0 0 15px 0;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.hangar-bounty {
+  font-size: 18px;
+  color: #ffd700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+  padding-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.hangar-section-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #00ccff;
+  letter-spacing: 2px;
+  margin: 10px 0 12px 0;
+  text-transform: uppercase;
+  text-shadow: 0 0 6px rgba(0, 204, 255, 0.6);
+  border-left: 3px solid #00ccff;
+  padding-left: 8px;
+}
+
+.hangar-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.hangar-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 20, 40, 0.4);
+  padding: 10px 15px;
+  border: 1px solid rgba(0, 255, 204, 0.15);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.hangar-item-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hangar-item-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.hangar-item-desc {
+  font-size: 11px;
+  color: #88aacc;
+  margin-top: 2px;
+}
+
+.hangar-btn-action {
+  font-size: 11px !important;
+  padding: 6px 14px !important;
+  border-color: rgba(0, 255, 204, 0.5) !important;
+  border-left-color: #00ffcc !important;
+  color: #00ffcc !important;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.2) !important;
+  text-shadow: 0 0 4px #00ffcc !important;
+}
+
+.hangar-btn-action:hover {
+  background: rgba(0, 255, 204, 0.15) !important;
+  box-shadow: 0 0 18px rgba(0, 255, 204, 0.5) !important;
+  color: #fff !important;
+}
+
+.hangar-btn-action.disabled {
+  opacity: 0.4 !important;
+  pointer-events: none !important;
+  border-color: rgba(128, 128, 128, 0.3) !important;
+  border-left-color: #888 !important;
+  color: #888 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+#btn-hangar {
+  border-color: rgba(0, 255, 204, 0.6) !important;
+  border-left-color: #00ffcc !important;
+  color: #00ffcc !important;
+  box-shadow: 0 0 12px rgba(0, 255, 204, 0.25), inset 0 0 8px rgba(0, 255, 204, 0.1) !important;
+  text-shadow: 0 0 6px rgba(0, 255, 204, 0.8) !important;
+}
+
+#btn-hangar:hover {
+  background: rgba(0, 255, 204, 0.2) !important;
+  box-shadow: 0 0 22px rgba(0, 255, 204, 0.65), inset 0 0 12px rgba(0, 255, 204, 0.3) !important;
+  border-color: #00ffcc !important;
+  border-left-color: #00ffcc !important;
+  color: #fff !important;
+  text-shadow: 0 0 10px #fff;
+}
+
+/* ── Mobile Touch Overrides (body.is-mobile) ── */
+body.is-mobile .top-menu-container {
+  position: fixed !important;
+  top: 10px !important;
+  right: 10px !important;
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+
+body.is-mobile .btn-column {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+
+body.is-mobile button.bf-btn {
+  width: 38px !important;
+  height: 38px !important;
+  padding: 0 !important;
+  font-size: 0 !important; /* Hide potential text fallbacks */
+  letter-spacing: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px) !important;
+  border-radius: 0 !important;
+}
+
+body.is-mobile button.bf-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+  margin: 0 !important;
+}
+
+body.is-mobile .auth-panel { 
+  margin: 0.5rem !important; 
+}
+
+body.is-mobile .login-prompt { 
+  padding: 12px 16px !important; 
+}
+
+body.is-mobile .login-title { 
+  font-size: 0.8rem !important; 
+}
+
+body.is-mobile .login-subtitle { 
+  font-size: 0.6rem !important; 
+  margin-bottom: 8px !important; 
+}
+
+body.is-mobile .github-btn { 
+  padding: 8px 12px !important; 
+  font-size: 0.75rem !important; 
+}
+
+body.is-mobile .github-btn svg { 
+  width: 16px !important; 
+  height: 16px !important; 
+}
+
+body.is-mobile .auth-panel.logged-in { 
+  padding: 10px !important; 
+  min-width: 180px !important; 
+}
+
+body.is-mobile .user-card { 
+  margin-bottom: 10px !important; 
+  gap: 8px !important;
+}
+
+body.is-mobile .avatar { 
+  width: 32px !important; 
+  height: 32px !important; 
+}
+
+body.is-mobile .user-name { 
+  font-size: 0.75rem !important; 
+}
+
+body.is-mobile .ship-stats { 
+  gap: 10px !important; 
+  margin-bottom: 8px !important;
+}
+
+body.is-mobile .stat-val { 
+  font-size: 0.75rem !important; 
+}
+
+body.is-mobile .stat-label { 
+  font-size: 0.5rem !important; 
+}
+
+body.is-mobile .controls-hint {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translate(-50%, -50%) !important;
+  width: 290px !important;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  box-shadow: 0 0 30px rgba(0, 204, 255, 0.5) !important;
+  font-size: 11px !important;
+  padding: 12px 16px !important;
+}
+
+/* Beautiful custom neon scrollbar for flight manual */
+.controls-hint::-webkit-scrollbar {
+  width: 4px !important;
+}
+.controls-hint::-webkit-scrollbar-track {
+  background: rgba(0, 10, 30, 0.3) !important;
+}
+.controls-hint::-webkit-scrollbar-thumb {
+  background: #00ccff !important;
+  border-radius: 2px !important;
+  box-shadow: 0 0 4px #00ccff !important;
+}
+
+/* ── Premium Square Tiles for Top Menu on PC ── */
+.top-menu-container .bf-btn {
+  width: 42px !important;
+  height: 42px !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ── HUD FPS Counter positioning & clean minimalist look ── */
+#hud-fps-counter {
+  position: absolute !important;
+  top: 230px !important;
+  left: 20px !important;
+  z-index: 90;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 11px;
+  font-weight: bold;
+  color: #00ff88;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+  backdrop-filter: none !important;
+  padding: 0 !important;
+  text-shadow: 0 0 5px currentColor;
+}
+
+body.is-mobile #hud-fps-counter {
+  top: 120px !important;
+  left: 20px !important;
+}
+
+/* ── Rotating device animation for portrait warning blocker ── */
+@keyframes rotate-phone {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
+/* ── PC Combat Action Panel Buttons Overrides & Badges ── */
+.pc-combat-panel button {
+  position: relative !important;
+  width: 42px !important;
+  height: 42px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: var(--btn-bg, rgba(10, 20, 30, 0.85)) !important;
+  border: 1px solid var(--btn-color, #00ccff) !important;
+  border-left: 1px solid var(--btn-color, #00ccff) !important;
+  color: var(--btn-color, #00ccff) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  border-radius: 0 !important;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px) !important;
+  box-shadow: var(--btn-shadow, 0 0 10px rgba(0, 204, 255, 0.4)) !important;
+  text-shadow: 0 0 5px var(--btn-color, #00ccff) !important;
+  backdrop-filter: blur(4px) !important;
+  transition: all 0.2s ease !important;
+  transform: none !important;
+}
+
+/* Hover effect on combat panel buttons */
+.pc-combat-panel button:hover {
+  background: var(--btn-bg, rgba(0, 204, 255, 0.15)) !important;
+  border-color: var(--btn-color, #00ffcc) !important;
+  border-left-color: var(--btn-color, #00ffcc) !important;
+  color: var(--btn-color, #fff) !important;
+}
+
+/* Ensure SVG icons are always visible with custom colors inside combat buttons */
+.pc-combat-panel button svg {
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  stroke: var(--btn-color, #00ccff) !important;
+  transition: stroke 0.2s ease !important;
+  pointer-events: none !important;
+}
+
+/* Attack / Shoot button is slightly larger and has different cuts */
+.pc-combat-panel button:last-child {
+  width: 52px !important;
+  height: 52px !important;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px) !important;
+}
+
+/* Ensure larger SVG icon in the last child */
+.pc-combat-panel button:last-child svg {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+/* Premium Sci-Fi Hotkey Badges */
+.pc-combat-panel button .key-badge {
+  position: absolute !important;
+  top: 2px !important;
+  left: 4px !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-size: 8px !important;
+  font-weight: 800 !important;
+  color: var(--btn-color, #00ccff) !important;
+  text-shadow: 0 0 3px var(--btn-color, #00ccff) !important;
+  opacity: 0.8 !important;
+  pointer-events: none !important;
+  letter-spacing: 0.5px !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  transition: color 0.2s ease, text-shadow 0.2s ease !important;
+  z-index: 10 !important;
+}
+
+/* ── Proximity Voice Active Pulse Animation ── */
+@keyframes voicePulse {
+  0% { box-shadow: 0 0 10px rgba(51,255,102,0.5) !important; }
+  50% { box-shadow: 0 0 20px rgba(51,255,102,0.9) !important; }
+  100% { box-shadow: 0 0 10px rgba(51,255,102,0.5) !important; }
+}
+.voice-active {
+  animation: voicePulse 1.5s infinite ease-in-out !important;
+}

@@ -1,0 +1,294 @@
+.combat-dock {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 100;
+  display: block;
+  width: 548px;
+  height: 166px;
+  color: #cbbd9c;
+  font-family: "Share Tech Mono", monospace;
+  pointer-events: none;
+}
+
+.combat-dock button {
+  box-sizing: border-box;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: auto;
+}
+
+.combat-dock__weapons,
+.combat-dock__actions {
+  border: 1px solid rgba(177, 132, 62, 0.76);
+  background:
+    linear-gradient(155deg, rgba(204, 139, 39, 0.07), transparent 38%),
+    rgba(13, 15, 15, 0.91);
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.76), 0 0 0 1px rgba(0, 0, 0, 0.72);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%, 0 14px);
+}
+
+.combat-dock__weapons {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 1fr 108px;
+  gap: 7px 9px;
+  width: 548px;
+  padding: 8px 9px 9px;
+}
+
+.combat-dock__heading {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3px 5px;
+  color: #c6b184;
+  font-family: "Orbitron", sans-serif;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.combat-dock__heading small {
+  color: #d6a34d;
+  font: 7px "Share Tech Mono", monospace;
+  letter-spacing: 1px;
+}
+
+.combat-dock__heading small::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #d87d32;
+  box-shadow: 0 0 6px #d87d32;
+}
+
+.combat-dock__weapon-slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column: 1;
+  gap: 6px;
+}
+
+.combat-dock__weapon {
+  --weapon-color: #b5533c;
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  grid-template-rows: 25px 17px;
+  height: 58px;
+  padding: 7px 7px;
+  overflow: hidden;
+  border: 1px solid rgba(130, 113, 83, 0.56);
+  border-radius: 0;
+  background: linear-gradient(150deg, rgba(70, 65, 50, 0.22), rgba(7, 9, 9, 0.76));
+  color: #8f897b;
+  text-align: left;
+  transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 8px);
+}
+
+.combat-dock__weapon::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  bottom: 3px;
+  width: 14px;
+  height: 2px;
+  background: #4f4a40;
+}
+
+.combat-dock__weapon--shotgun { --weapon-color: #d2a13e; }
+.combat-dock__weapon--missile { --weapon-color: #c87531; }
+
+.combat-dock__weapon:hover,
+.combat-dock__weapon.is-selected {
+  border-color: color-mix(in srgb, var(--weapon-color) 88%, #ddd1b4);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--weapon-color) 18%, transparent), rgba(8, 9, 9, 0.88));
+  color: #e5d7b9;
+}
+
+.combat-dock__weapon.is-selected {
+  box-shadow: inset 3px 0 0 var(--weapon-color), inset 0 0 12px rgba(0, 0, 0, 0.56);
+}
+
+.combat-dock__weapon.is-selected::after {
+  background: var(--weapon-color);
+  box-shadow: 0 0 6px var(--weapon-color);
+}
+
+.combat-dock__key {
+  grid-row: 1 / 3;
+  align-self: center;
+  color: var(--weapon-color);
+  font-family: "Orbitron", sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.combat-dock__weapon-code {
+  color: #ded2b6;
+  font-family: "Orbitron", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.combat-dock__weapon-name {
+  color: #777266;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.combat-dock__color-strip {
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-items: stretch;
+  gap: 5px;
+  margin-top: 0;
+  padding: 0 0 0 8px;
+  border-top: 0;
+  border-left: 1px solid rgba(169, 126, 59, 0.3);
+  color: #867e6b;
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+
+.combat-dock__color {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  gap: 2px 7px;
+  padding: 5px 6px;
+  border: 1px solid rgba(132, 114, 80, 0.48);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.35);
+  color: #c7bda8;
+  font-size: 8px;
+}
+
+.combat-dock__color:hover { border-color: #b98a42; }
+
+.combat-dock__swatch {
+  grid-row: 1 / 3;
+  width: 18px;
+  height: 28px;
+  background: currentColor;
+  box-shadow: 0 0 7px currentColor;
+}
+
+.combat-dock__swatch--red { color: #df4634; }
+.combat-dock__swatch--blue { color: #39a9bc; }
+
+.combat-dock kbd {
+  min-width: 18px;
+  padding: 1px 3px;
+  border: 1px solid rgba(183, 145, 82, 0.54);
+  background: rgba(68, 51, 28, 0.43);
+  color: #dfb566;
+  font: 7px "Share Tech Mono", monospace;
+  text-align: center;
+}
+
+.combat-dock__actions {
+  position: absolute;
+  right: 8px;
+  bottom: 92px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+  width: 414px;
+  padding: 6px;
+}
+
+.combat-dock__action {
+  --action-color: #9b7845;
+  display: grid;
+  grid-template-columns: 17px 1fr;
+  min-width: 0;
+  height: 43px;
+  align-items: center;
+  justify-content: start;
+  gap: 5px;
+  padding: 4px 5px;
+  border: 1px solid rgba(134, 112, 75, 0.38);
+  border-radius: 0;
+  background: linear-gradient(160deg, rgba(77, 62, 39, 0.26), rgba(7, 9, 9, 0.82));
+  color: #aea58f;
+  transition: border-color 140ms ease, transform 100ms ease, background 140ms ease;
+}
+
+.combat-dock__action:hover,
+.combat-dock__action.is-pressed,
+.combat-dock__action.is-active {
+  border-color: var(--action-color);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--action-color) 20%, transparent), rgba(7, 9, 9, 0.9));
+  color: #eadbb9;
+}
+
+.combat-dock__action:active,
+.combat-dock__action.is-pressed { transform: translateY(1px); }
+
+.combat-dock__action--roll { --action-color: #c79a46; }
+.combat-dock__action--boost { --action-color: #d5732f; }
+.combat-dock__action--fire { --action-color: #cf4736; }
+.combat-dock__action--voice { --action-color: #4fa589; }
+
+.combat-dock__action-icon {
+  position: relative;
+  width: 16px;
+  height: 11px;
+  border: 1px solid var(--action-color);
+  clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
+}
+
+.combat-dock__action--roll .combat-dock__action-icon { border-radius: 50%; clip-path: none; }
+.combat-dock__action--boost .combat-dock__action-icon { transform: rotate(45deg); width: 10px; height: 10px; }
+.combat-dock__action--fire .combat-dock__action-icon { border-radius: 50%; clip-path: none; box-shadow: inset 0 0 0 3px #0c0d0c; }
+.combat-dock__action--voice .combat-dock__action-icon { width: 8px; border-radius: 5px; clip-path: none; }
+
+.combat-dock__action-copy {
+  display: grid;
+  align-items: center;
+  gap: 2px;
+}
+
+.combat-dock__action-copy strong {
+  color: inherit;
+  font-family: "Orbitron", sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.5px;
+}
+
+.combat-dock__action-copy kbd {
+  justify-self: start;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #766d5d;
+}
+
+.combat-dock__action.is-active .combat-dock__action-icon {
+  background: #4fa589;
+  box-shadow: 0 0 7px #4fa589;
+}
+
+@media (max-width: 1220px) {
+  .combat-dock { transform: scale(0.82); transform-origin: bottom right; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .combat-dock button { transition: none; }
+}
