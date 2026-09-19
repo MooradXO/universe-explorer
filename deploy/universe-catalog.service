@@ -1,0 +1,32 @@
+[Unit]
+Description=Universe Explorer catalogue API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=universe-explorer
+Group=universe-explorer
+WorkingDirectory=/var/www/universe-explorer/current/server
+ExecStart=/opt/universe-explorer/runtime/node-v24.19.0-linux-x64/bin/node --use-system-ca --max-old-space-size=256 scripts/server/catalog-server.mjs
+Environment=NODE_ENV=production
+Environment=UNIVERSE_CATALOG_DIR=/var/lib/universe-explorer/map-v1
+Environment=UNIVERSE_CACHE_DIR=/var/lib/universe-explorer/online-cache
+Environment=UNIVERSE_CATALOG_PORT=4312
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=15
+MemoryMax=512M
+CPUQuota=50%
+Nice=10
+LimitNOFILE=512
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/universe-explorer/online-cache
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

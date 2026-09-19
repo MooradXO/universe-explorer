@@ -6,6 +6,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { createServer } from 'node:http';
 import { buildStarTiles } from '../../scripts/catalog/star-tiles.mjs';
 import { openMapCatalog, createMapMiddleware } from '../../scripts/catalog/map-server.mjs';
+import { createCatalogServer } from '../../scripts/server/catalog-server.mjs';
 import { decodeStarTile, type StarTileNode } from '../../src/catalog/StarMapData';
 import { selectStarTiles, StarTileCache } from '../../src/catalog/StarMapLod';
 
@@ -98,4 +99,16 @@ it('search keeps long Gaia IDs and ambiguous components, exposes missing distanc
     expect((await fetch(`${base}/__catalog/manifest`, { method: 'POST' })).status).toBe(405);
     expect((await fetch(`${base}/__catalog/search.sqlite`)).status).toBe(404);
   } finally { await new Promise<void>(done => server.close(() => done())); service.close(); }
+  const production = createCatalogServer({ catalogDirectory: location, cacheDirectory: join(directory, 'production-cache') });
+  await new Promise<void>(done => production.listen(0, '127.0.0.1', done));
+  const upstream = `http://127.0.0.1:${(production.address() as { port: number }).port}`;
+  try {
+    expect(await (await fetch(`${upstream}/healthz`)).json()).toEqual({ service: 'universe-catalog', ready: true });
+    expect((await (await fetch(`${upstream}/__catalog/search?q=Sol`)).json())[0].title).toBe('Sol');
+    expect((await fetch(`${upstream}/__catalog/search.sqlite`)).status).toBe(404);
+    expect((await fetch(`${upstream}/.env`)).status).toBe(404);
+    expect((await fetch(`${upstream}/__catalog/manifest`, { method: 'POST' })).status).toBe(405);
+    expect((await fetch(`${upstream}/__catalog/manifest`, { headers: { Origin: 'https://foreign.test' } })).status).toBe(403);
+  } finally { await new Promise<void>(done => production.close(() => done())); }
+  expect(() => createCatalogServer({ catalogDirectory: join(directory, 'missing'), cacheDirectory: directory })).toThrow();
 });

@@ -5,6 +5,7 @@ node_modules/
 dist/
 /*-verify-dist/
 /.git-publication-build/
+/.server-deploy-build/
 
 # IDE
 .vscode/
