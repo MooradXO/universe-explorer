@@ -2,6 +2,8 @@
 
 Игра: `https://universe.projectai.biz/`. Развёртывание затрагивает только её virtual host и отдельную службу каталога.
 
+Обновление 19.09.2026 установлено и проверено в HIGH/LOW: [отчёт и ограничения](phases_archive/server-deploy-2026-09-19/README.md). Прежний Supabase endpoint сейчас недоступен через DNS; восстановление multiplayer — отдельная задача.
+
 ## Состав
 
 - `/var/www/universe-explorer/releases/<release>/public/` — Vite build.

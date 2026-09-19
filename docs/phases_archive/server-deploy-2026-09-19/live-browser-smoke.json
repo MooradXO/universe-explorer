@@ -1,0 +1,74 @@
+[
+  {
+    "mode": "HIGH",
+    "entry": "main-D-sBjSMf.js",
+    "menu": true,
+    "flight": true,
+    "manualAndHangar": true,
+    "map": true,
+    "warpAndReturn": true,
+    "errors": [],
+    "badResponses": [],
+    "constellations": [],
+    "multiplayerSubscribed": false,
+    "sockets": [
+      {
+        "host": "qshnsuupoxchzfzrccpv.supabase.co",
+        "errors": 1,
+        "frames": 0
+      },
+      {
+        "host": "qshnsuupoxchzfzrccpv.supabase.co",
+        "errors": 1,
+        "frames": 0
+      },
+      {
+        "host": "qshnsuupoxchzfzrccpv.supabase.co",
+        "errors": 1,
+        "frames": 0
+      },
+      {
+        "host": "qshnsuupoxchzfzrccpv.supabase.co",
+        "errors": 1,
+        "frames": 0
+      }
+    ],
+    "pass": true
+  },
+  {
+    "mode": "LOW",
+    "entry": "main-D-sBjSMf.js",
+    "menu": true,
+    "flight": true,
+    "manualAndHangar": true,
+    "map": true,
+    "warpAndReturn": true,
+    "errors": [],
+    "badResponses": [],
+    "constellations": [],
+    "multiplayerSubscribed": false,
+    "sockets": [
+      {
+        "host": "qshnsuupoxchzfzrccpv.supabase.co",
+        "errors": 1,
+        "frames": 0
+      },
+      {
+        "host": "qshnsuupoxchzfzrccpv.supabase.co",
+        "errors": 1,
+        "frames": 0
+      },
+      {
+        "host": "qshnsuupoxchzfzrccpv.supabase.co",
+        "errors": 1,
+        "frames": 0
+      },
+      {
+        "host": "qshnsuupoxchzfzrccpv.supabase.co",
+        "errors": 1,
+        "frames": 0
+      }
+    ],
+    "pass": true
+  }
+]
