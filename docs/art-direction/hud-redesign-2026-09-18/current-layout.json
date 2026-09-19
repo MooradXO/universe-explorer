@@ -1,0 +1,116 @@
+{
+  "layout": [
+    {
+      "name": "SYS 01SYSTEM",
+      "display": "flex",
+      "bounds": {
+        "x": 676.109375,
+        "y": 13,
+        "width": 94,
+        "height": 37,
+        "top": 13,
+        "right": 770.109375,
+        "bottom": 50,
+        "left": 676.109375
+      }
+    },
+    {
+      "name": "WNT 02BOUNTIES",
+      "display": "flex",
+      "bounds": {
+        "x": 770.109375,
+        "y": 13,
+        "width": 97.78125,
+        "height": 37,
+        "top": 13,
+        "right": 867.890625,
+        "bottom": 50,
+        "left": 770.109375
+      }
+    },
+    {
+      "name": "RTB 03WARP",
+      "display": "flex",
+      "bounds": {
+        "x": 867.890625,
+        "y": 13,
+        "width": 94,
+        "height": 37,
+        "top": 13,
+        "right": 961.890625,
+        "bottom": 50,
+        "left": 867.890625
+      }
+    },
+    {
+      "name": "BAY 04HANGAR",
+      "display": "block",
+      "bounds": {
+        "x": 961.890625,
+        "y": 13,
+        "width": 94,
+        "height": 37,
+        "top": 13,
+        "right": 1055.890625,
+        "bottom": 50,
+        "left": 961.890625
+      }
+    },
+    {
+      "name": "COM 05COMMS",
+      "display": "flex",
+      "bounds": {
+        "x": 1055.890625,
+        "y": 13,
+        "width": 94,
+        "height": 37,
+        "top": 13,
+        "right": 1149.890625,
+        "bottom": 50,
+        "left": 1055.890625
+      }
+    },
+    {
+      "name": "MAP 06КАРТА",
+      "display": "flex",
+      "bounds": {
+        "x": 1149.890625,
+        "y": 13,
+        "width": 94,
+        "height": 37,
+        "top": 13,
+        "right": 1243.890625,
+        "bottom": 50,
+        "left": 1149.890625
+      }
+    }
+  ],
+  "manual": {
+    "display": "grid",
+    "bounds": {
+      "x": 372,
+      "y": 60,
+      "width": 298,
+      "height": 69,
+      "top": 60,
+      "right": 670,
+      "bottom": 129,
+      "left": 372
+    },
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "parent": {
+      "x": 684,
+      "y": 59,
+      "width": 326,
+      "height": 110,
+      "top": 59,
+      "right": 1010,
+      "bottom": 169,
+      "left": 684
+    }
+  },
+  "hangarVisible": true
+}

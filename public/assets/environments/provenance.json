@@ -1,0 +1,120 @@
+[
+  {
+    "name": "earth",
+    "source": "source\\2k_earth_daymap.jpg",
+    "url": "https://www.solarsystemscope.com/textures/download/2k_earth_daymap.jpg",
+    "creator": "Solar System Scope",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Resized and encoded as WebP; color map used in cinematic lighting.",
+    "sha256": "767ee1dc6eb3802699bfccf6f264880f8acd0b80de3191cd24984fe279b07b7c"
+  },
+  {
+    "name": "mercury",
+    "source": "source\\2k_mercury.jpg",
+    "url": "https://www.solarsystemscope.com/textures/download/2k_mercury.jpg",
+    "creator": "Solar System Scope",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Resized and encoded as WebP; color map used in cinematic lighting.",
+    "sha256": "5a5c80607f643496bac9a631e71957def35ed788895f18b678ac849c2b38e48a"
+  },
+  {
+    "name": "venus",
+    "source": "source\\2k_venus_atmosphere.jpg",
+    "url": "https://www.solarsystemscope.com/textures/download/2k_venus_atmosphere.jpg",
+    "creator": "Solar System Scope",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Resized and encoded as WebP; color map used in cinematic lighting.",
+    "sha256": "225012ad4911730605c4e189ca2a3bf674fce50cc48aab4102b936b47d6991ac"
+  },
+  {
+    "name": "mars",
+    "source": "source\\2k_mars.jpg",
+    "url": "https://www.solarsystemscope.com/textures/download/2k_mars.jpg",
+    "creator": "Solar System Scope",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Resized and encoded as WebP; color map used in cinematic lighting.",
+    "sha256": "2d187f3e77a98eaa8cea5f4cc722f633c122ef170b9e94ace6b5fb6cbc3f8e01"
+  },
+  {
+    "name": "jupiter",
+    "source": "source\\2k_jupiter.jpg",
+    "url": "https://www.solarsystemscope.com/textures/download/2k_jupiter.jpg",
+    "creator": "Solar System Scope",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Resized and encoded as WebP; color map used in cinematic lighting.",
+    "sha256": "b0f04d005350252636b0e3396fc592548cbd9e9126b269d32d5c6abd4b0e4f2b"
+  },
+  {
+    "name": "saturn",
+    "source": "source\\2k_saturn.jpg",
+    "url": "https://www.solarsystemscope.com/textures/download/2k_saturn.jpg",
+    "creator": "Solar System Scope",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Resized and encoded as WebP; color map used in cinematic lighting.",
+    "sha256": "54a900ca9bf7ab62e70f862852759abdf342e6d6436a95a2fe9ebdb6bcd3bbac"
+  },
+  {
+    "name": "uranus",
+    "source": "source\\2k_uranus.jpg",
+    "url": "https://www.solarsystemscope.com/textures/download/2k_uranus.jpg",
+    "creator": "Solar System Scope",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Resized and encoded as WebP; color map used in cinematic lighting.",
+    "sha256": "d15239d46f82d3ea13d2b260b5b29b2a382f42f2916dae0694d0387b1204a09d"
+  },
+  {
+    "name": "neptune",
+    "source": "source\\2k_neptune.jpg",
+    "url": "https://www.solarsystemscope.com/textures/download/2k_neptune.jpg",
+    "creator": "Solar System Scope",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Resized and encoded as WebP; color map used in cinematic lighting.",
+    "sha256": "cb42ea82709741d28b0af44d8b283cbc6dbd0c521a7f0e1e1e010ade00977df6"
+  },
+  {
+    "name": "moon",
+    "source": "source\\2k_moon.jpg",
+    "url": "https://www.solarsystemscope.com/textures/download/2k_moon.jpg",
+    "creator": "Solar System Scope",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Resized and encoded as WebP; color map used in cinematic lighting.",
+    "sha256": "2764ba6535ea0481a062846ee033cc7a909dae05b31a8fd13f3e98f3a7fd92bd"
+  },
+  {
+    "name": "regolith",
+    "source": "generated/regolith.png",
+    "creator": "OpenAI image generation for Universe Explorer",
+    "changes": "Technical resize and WebP encoding; originals retained. Procedural triplanar sampling.",
+    "sha256": "865b767bb17e7489ca5aea507ab9b0148526581cac547de95a5dc213bfdea493"
+  },
+  {
+    "name": "ice",
+    "source": "generated/ice.png",
+    "creator": "OpenAI image generation for Universe Explorer",
+    "changes": "Technical resize and WebP encoding; originals retained. Procedural triplanar sampling.",
+    "sha256": "e74c1183999b1c4d66cbbd7a67ebdbc26197a1a6cebb182d1f348226eaa89a96"
+  },
+  {
+    "name": "mineral",
+    "source": "generated/mineral.png",
+    "creator": "OpenAI image generation for Universe Explorer",
+    "changes": "Technical resize and WebP encoding; originals retained. Procedural triplanar sampling.",
+    "sha256": "9c2d192b4880bae942e4e3a9a99e86951b0f5b991f1fe6255179b5beeb082da7"
+  },
+  {
+    "name": "clouds",
+    "source": "generated/clouds.png",
+    "creator": "OpenAI image generation for Universe Explorer",
+    "changes": "Technical resize and WebP encoding; originals retained. Procedural triplanar sampling.",
+    "sha256": "b4d04c0a95a23e08ef38aba8edd83c94eecb177a8d7e61e8916f0393bc3ea47d"
+  }
+]

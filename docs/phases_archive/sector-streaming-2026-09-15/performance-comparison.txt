@@ -1,0 +1,21 @@
+┌─────────┬────────────────────────────────┬───────────────┬────────┬────────┐
+│ (index) │ scene                          │ metric        │ before │ after  │
+├─────────┼────────────────────────────────┼───────────────┼────────┼────────┤
+│ 0       │ 'desktop-high-near-base'       │ 'fps'         │ 200    │ 200.01 │
+│ 1       │ 'desktop-high-near-base'       │ 'frameTimeMs' │ 5      │ 5      │
+│ 2       │ 'desktop-high-near-base'       │ 'calls'       │ 140    │ 104    │
+│ 3       │ 'desktop-high-near-base'       │ 'triangles'   │ 114848 │ 61848  │
+│ 4       │ 'desktop-high-planet-showcase' │ 'fps'         │ 200    │ 200    │
+│ 5       │ 'desktop-high-planet-showcase' │ 'frameTimeMs' │ 5      │ 5      │
+│ 6       │ 'desktop-high-planet-showcase' │ 'calls'       │ 150.88 │ 121.13 │
+│ 7       │ 'desktop-high-planet-showcase' │ 'triangles'   │ 82795  │ 36053  │
+│ 8       │ 'mobile-low-near-base'         │ 'fps'         │ 199.98 │ 199.99 │
+│ 9       │ 'mobile-low-near-base'         │ 'frameTimeMs' │ 5      │ 5      │
+│ 10      │ 'mobile-low-near-base'         │ 'calls'       │ 97     │ 85     │
+│ 11      │ 'mobile-low-near-base'         │ 'triangles'   │ 87264  │ 58416  │
+│ 12      │ 'mobile-low-planet-showcase'   │ 'fps'         │ 200    │ 200    │
+│ 13      │ 'mobile-low-planet-showcase'   │ 'frameTimeMs' │ 5      │ 5      │
+│ 14      │ 'mobile-low-planet-showcase'   │ 'calls'       │ 89     │ 77     │
+│ 15      │ 'mobile-low-planet-showcase'   │ 'triangles'   │ 42495  │ 14655  │
+└─────────┴────────────────────────────────┴───────────────┴────────┴────────┘
+Same-machine relative performance budget (5% tolerance): PASS

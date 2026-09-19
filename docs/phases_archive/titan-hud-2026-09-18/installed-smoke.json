@@ -1,0 +1,14 @@
+[
+  {
+    "mode": "HIGH / desktop",
+    "entry": "main-ChoRyZbd.js",
+    "errors": [],
+    "pass": true
+  },
+  {
+    "mode": "LOW / touch",
+    "entry": "main-ChoRyZbd.js",
+    "errors": [],
+    "pass": true
+  }
+]

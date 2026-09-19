@@ -208,20 +208,20 @@ export class BlackHole {
       vertexShader: `
         varying vec3 vNormal;
         varying vec3 vViewPosition;
-        varying vec3 vWorldPosition;
+        varying vec3 vLocalPosition;
         
         void main() {
           vNormal = normalize(normalMatrix * normal);
           vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
           vViewPosition = -mvPosition.xyz;
-          vWorldPosition = (modelMatrix * vec4(position, 1.0)).xyz;
+          vLocalPosition = position;
           gl_Position = projectionMatrix * mvPosition;
         }
       `,
       fragmentShader: `
         varying vec3 vNormal;
         varying vec3 vViewPosition;
-        varying vec3 vWorldPosition;
+        varying vec3 vLocalPosition;
         
         uniform float time;
         uniform vec3 cameraPos;
@@ -241,7 +241,7 @@ export class BlackHole {
           vec3 neonCyan = vec3(0.0, 0.8, 1.0);
           
           // Dynamic heat shimmer noise
-          float shimmer = sin(time * 3.0 + vWorldPosition.x * 0.01) * cos(time * 2.0 + vWorldPosition.y * 0.01) * 0.1;
+          float shimmer = sin(time * 3.0 + vLocalPosition.x * 0.01) * cos(time * 2.0 + vLocalPosition.y * 0.01) * 0.1;
           
           // Radial distance from core
           float distRatio = fresnel + shimmer;

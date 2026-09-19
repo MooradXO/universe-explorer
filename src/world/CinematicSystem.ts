@@ -129,6 +129,7 @@ export class CinematicSystem {
   }
 
   public cleanup() {
+    gsap.killTweensOf(this.engine.camera.position);
     if (this.demoBaseShip) {
       this.engine.scene.remove(this.demoBaseShip);
       this.demoBaseShip.traverse((child: any) => {

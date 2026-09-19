@@ -1,0 +1,41 @@
+{
+  "legacyRelativeBudget": "PASS (5%)",
+  "limitations": [
+    "New addresses are saved locally, not in Supabase cloud",
+    "Solar positions are a J2000 approximation; all surfaces are illustrative",
+    "Other systems currently contain explicitly gameplay planets",
+    "Full artistic overhaul and new Gaia/SIMBAD/NED 3D layers remain future work"
+  ],
+  "preview": "http://127.0.0.1:3001/",
+  "build": "PASS",
+  "finalRouteRepeat": {
+    "passed": 2,
+    "failed": 0
+  },
+  "browserSuite": {
+    "passed": 22,
+    "failed": 0
+  },
+  "resourceRepeat": {
+    "high": {
+      "cycles": 3,
+      "geometries": 29,
+      "textures": 14
+    },
+    "low": {
+      "cycles": 3,
+      "geometries": 23,
+      "textures": 13
+    }
+  },
+  "unitTests": {
+    "passed": 53,
+    "files": 12
+  },
+  "mobileLayout": {
+    "panelBottom": 300,
+    "fireTop": 311,
+    "pass": true
+  },
+  "date": "2026-09-15"
+}

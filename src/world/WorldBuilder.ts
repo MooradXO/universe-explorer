@@ -11,10 +11,17 @@ import { MultiplayerManager } from '../network/MultiplayerManager';
 import { ISSSatellite } from './ISSSatellite';
 import { VoyagerProbe } from './VoyagerProbe';
 import { CinematicSystem } from './CinematicSystem';
-import { PlanetBuilder, SpacePlanet } from './PlanetBuilder';
+import { SpaceWorld } from './space/SpaceWorld';
+import { StellarTravel } from './systems/StellarTravel';
+import { SOLAR_SYSTEM, systemArrival, type SystemDescriptor } from './systems/SystemDescriptor';
+import type { MapObject } from '../catalog/StarMapData';
+import { shiftSceneOrigin } from './space/shiftSceneOrigin';
+import { worldPosition, type WorldPosition } from './space/WorldPosition';
+import { createPlanetCatalog } from './celestial/PlanetCatalog';
+import { SpaceSmokeTour } from '../debug/SpaceSmokeTour';
 import { CombatSystem } from './CombatSystem';
-import { CosmosGenerator } from './CosmosGenerator';
 import { EffectsManager } from './EffectsManager';
+import { ApprovedFlightFX } from './visuals/ApprovedFlightFX';
 import { BlackHole } from './BlackHole';
 import { CockpitHUD } from './CockpitHUD';
 import { BotAI } from './BotAI';
@@ -22,7 +29,7 @@ import { Settings } from '../core/Settings';
 import type { VoiceChatManager } from '../network/VoiceChatManager';
 import { loadModelClone } from './ModelLoader';
 import { ShipEngineVFX } from './ShipEngineVFX';
-import { AtmosphereMode } from '../planet/AtmosphereMode';
+import { getSpaceSmokeState, SPACE_SMOKE_BASE } from '../debug/SpaceSmokeState';
 import {
   BASE_STATION_VISUAL,
   BOT_BOMBER_VISUAL,
@@ -31,7 +38,7 @@ import {
   ShipVisualConfig
 } from './ShipVisualConfig';
 
-// World size — Minecraft-map scale
+// Legacy landmarks occupy the home sector; procedural space has no finite cube.
 const WORLD_SIZE = 50000;
 
 export class WorldBuilder {
@@ -47,15 +54,19 @@ export class WorldBuilder {
   private starGlow: THREE.Texture;
   private elapsed = 0;
   
-  private planetBuilder!: PlanetBuilder;
+  private space!: SpaceWorld;
+  private travel: StellarTravel | null = null;
+  private stellarLight: THREE.DirectionalLight | null = null;
+  private stellarAmbient=new THREE.AmbientLight(0x556677,4.0);
+  private coreLandmarks = new THREE.Group();
+  private readonly smokeTour = new SpaceSmokeTour();
+  private originShifted = false;
   private combatSystem!: CombatSystem;
-  private cosmos!: CosmosGenerator;
   private effects!: EffectsManager;
+  private flightFX: ApprovedFlightFX | null = null;
   private blackHole!: BlackHole;
   private cockpitHUD!: CockpitHUD;
   private botAI!: BotAI;
-  private atmosphereMode!: AtmosphereMode;
-  private nearestAtmospherePlanet: SpacePlanet | null = null;
   public voiceChat: VoiceChatManager | null = null;
   private voiceChatLoadVersion = 0;
   
@@ -96,32 +107,24 @@ export class WorldBuilder {
   private isPrimaryFireHeld = false;
   private hudUpdateAccumulator = 0;
   private spatialUpdateAccumulator = 0;
+  private readonly smokeState = getSpaceSmokeState(window.location.search);
 
   constructor(engine: Engine, ui: UIManager) {
     this.engine = engine;
     this.ui = ui;
     this.raycaster.params.Points!.threshold = 20;
 
-    this.engine.scene.add(new THREE.AmbientLight(0x556677, 4.0));
+    this.engine.scene.add(this.stellarAmbient);
     const dirLight = new THREE.DirectionalLight(0xffffff, 3.0);
     dirLight.position.set(1, 1, 1).normalize();
+    this.stellarLight = dirLight;
     this.engine.scene.add(dirLight);
     
     this.starGlow = this.makeCleanGlow();
 
-    // 1. Cosmos Generation (Stars, Constellations, Nebulae, Asteroids, etc.)
-    this.cosmos = new CosmosGenerator(
-      this.engine,
-      this.starGlow,
-      this.starMeshes,
-      WORLD_SIZE
-    );
-    this.cosmos.generateAll();
-
     // 2. Planets & Combat systems
-    this.planetBuilder = new PlanetBuilder(this.engine, this.starGlow);
-    this.planetBuilder.buildPlanetsWithSatellites(this.starMeshes, WORLD_SIZE);
-    this.atmosphereMode = new AtmosphereMode(this.engine, this.ui);
+    this.space = new SpaceWorld(this.engine, this.starMeshes);
+    this.multiplayer.setCoordinateFrame(this.space.origin);
     
     this.combatSystem = new CombatSystem(
       this.engine,
@@ -134,7 +137,7 @@ export class WorldBuilder {
 
     // 3. Volumetric Particle Effects (Space dust, Thruster trails)
     this.effects = new EffectsManager(this.engine, this.makeBgDot());
-    this.effects.init(this.combatSystem.laserColor);
+    this.effects.init();
 
     // NASA ISS
     this.iss = new ISSSatellite(this.engine.scene, 2500);
@@ -147,6 +150,9 @@ export class WorldBuilder {
     // Gargantua Black Hole Singularity at (0, 0, 0)
     this.blackHole = new BlackHole(this.engine);
     this.starMeshes.push(this.blackHole.eventHorizon);
+    this.coreLandmarks.name = "home-landmarks";
+    this.coreLandmarks.add(this.iss.mesh, this.voyager.mesh, this.blackHole.group);
+    this.engine.scene.add(this.coreLandmarks);
 
     this.setupInteractionEvents();
     this.setupGameplayEvents();
@@ -156,14 +162,16 @@ export class WorldBuilder {
 
     this.cockpitHUD = new CockpitHUD(this.engine.camera, this.engine.shipController);
     this.botAI = new BotAI(this.engine.scene, this.multiplayer, this.combatSystem);
+    this.engine.shipController.onRespawn = () => {
+      if (this.travel) { this.travel.returnToBase(true); return; }
+      if (this.userShipGroup) this.relocateShip(this.space.origin.toWorld(this.userShipGroup.position.toArray() as [number, number, number]));
+    };
 
-    if (import.meta.env.DEV) {
-      this.installPlanetSmokeHooks();
-    }
   }
 
   private setupInteractionEvents() {
     window.addEventListener('mousedown', (e) => {
+      if (this.engine.shipController.inputBlocked) { this.isClick = false; return; }
       const target = e.target as HTMLElement;
       if (target.closest('.hud-panel') || target.closest('#auth-ui') || target.closest('#settings-menu') || target.closest('button') || target.closest('input')) {
          this.isClick = false;
@@ -183,6 +191,7 @@ export class WorldBuilder {
     });
 
     window.addEventListener('mouseup', (e) => { 
+      if (this.engine.shipController.inputBlocked) { this.isClick = false; return; }
       const target = e.target as HTMLElement;
       if (target.closest('.hud-panel') || target.closest('#auth-ui') || target.closest('#settings-menu') || target.closest('button') || target.closest('input')) return;
       if (this.isClick) this.onClick(); 
@@ -190,6 +199,8 @@ export class WorldBuilder {
   }
 
   private firePrimaryWeapon() {
+    this.travel?.stopCruise('Обычный полёт.');
+    if (this.engine.shipController.inputBlocked) return;
     this.combatSystem.shootLaser(
       this.userShipGroup,
       this.authManager?.profile?.id,
@@ -198,24 +209,8 @@ export class WorldBuilder {
   }
 
   private setupGameplayEvents() {
-    window.addEventListener('ReturnToOrbit', () => {
-      if (this.atmosphereMode.isActive) {
-        this.atmosphereMode.exit();
-        return;
-      }
-      this.ui.hideHUD();
-    });
-
-    window.addEventListener('EnterAtmosphereRequested', () => {
-      this.enterNearestAtmosphere();
-    });
-
-    window.addEventListener('keydown', (event) => {
-      if (this.engine.shipController.isTyping) return;
-      this.soundManager.startAmbient();
-      if ((event as KeyboardEvent).code === 'KeyF') {
-        this.enterNearestAtmosphere();
-      }
+    window.addEventListener('keydown', () => {
+      if (!this.engine.shipController.isTyping) this.soundManager.startAmbient();
     });
 
     window.addEventListener('ChatFocus', () => {
@@ -237,6 +232,7 @@ export class WorldBuilder {
     });
 
     window.addEventListener('PrimaryFireStart', () => {
+      if (this.engine.shipController.inputBlocked) return;
       this.isPrimaryFireHeld = true;
       this.firePrimaryWeapon();
     });
@@ -251,17 +247,17 @@ export class WorldBuilder {
 
     window.addEventListener('SpawnBots', () => {
       if (this.userShipGroup) {
-        this.botAI.spawnBots(100);
+        this.botAI.spawnBots(100, this.userShipGroup.position);
         this.ui.addKillFeed("System", "Spawned 100 Fighters!!");
       }
     });
 
     window.addEventListener('ReturnToBase', () => {
+      if (this.travel) { this.travel.returnToBase(); return; }
       if (this.userShipGroup && this.authManager?.profile?.id) {
         const basePos = this.getBasePosition(this.authManager.profile.id);
         const spawnPos = basePos.clone().add(new THREE.Vector3(0, 100, 300));
-        this.userShipGroup.position.copy(spawnPos);
-        this.engine.shipController.velocity.set(0,0,0);
+        this.relocateShip(this.space.origin.toWorld(spawnPos.toArray() as [number, number, number]));
         this.ui.showHUD("Orbiting Base", "Safe Zone");
         setTimeout(() => this.ui.hideHUD(), 3000);
       }
@@ -288,10 +284,17 @@ export class WorldBuilder {
 
   // Generate a deterministic fixed coordinate for a player's base based on their UUID
   private getBasePosition(id: string): THREE.Vector3 {
+    if (this.smokeState && id.startsWith('guest_')) return new THREE.Vector3(...this.space.origin.fromAbsolute(SPACE_SMOKE_BASE));
     let hash = 0;
     for (let i = 0; i < id.length; i++) hash = Math.imul(31, hash) + id.charCodeAt(i) | 0;
     const rnd = () => ((hash = Math.imul(741103597, hash)) >>> 0) / 4294967296;
-    return new THREE.Vector3((rnd() - 0.5) * 20000, (rnd() - 0.5) * 4000, (rnd() - 0.5) * 20000);
+    if (!this.smokeState) {
+      const base = systemArrival(SOLAR_SYSTEM);
+      // Keep personal stations distinct; guest saves use the stable shared guest location.
+      const offset = id.startsWith('guest_') ? [0, 0, 0] : [(rnd() - 0.5) * 16000, (rnd() - 0.5) * 2000, (rnd() - 0.5) * 2000];
+      return new THREE.Vector3(...this.space.origin.fromAbsolute([base[0] + offset[0], base[1] + offset[1], base[2] + offset[2]]));
+    }
+    return new THREE.Vector3(...this.space.origin.fromAbsolute([(rnd() - 0.5) * 20000, (rnd() - 0.5) * 4000, (rnd() - 0.5) * 20000]));
   }
 
   private makeCleanGlow(): THREE.Texture {
@@ -353,7 +356,6 @@ export class WorldBuilder {
   }
 
   private onClick() {
-    if (this.atmosphereMode.isActive) return;
     if (this.hoveredObject) {
       const obj = this.hoveredObject;
       if (!this.userShipGroup) return;
@@ -369,11 +371,6 @@ export class WorldBuilder {
         return; // Too far away, ignore click!
       }
 
-      if (obj.userData.isMerchant) {
-         this.ui.marketUI.show();
-         return;
-      }
-      
       if (!obj.userData.visited && obj.userData.isStar) { 
         obj.userData.visited = true; 
       }
@@ -386,6 +383,22 @@ export class WorldBuilder {
 
   public update(dt: number) {
     this.elapsed += dt;
+    this.travel?.update(dt);
+    if (this.userShipGroup) {
+      if (this.smokeState === 'sector-tour' && this.authManager?.profile?.id.startsWith('guest_')) {
+        this.smokeTour.update(dt, (position) => this.relocateShip(position));
+      }
+      const delta = this.space.origin.recenter(this.userShipGroup.position.toArray() as [number, number, number]);
+      if (delta) this.applyOriginShift(new THREE.Vector3(...delta));
+    }
+    const focus = this.userShipGroup?.position ?? this.engine.camera.position;
+    this.space.update(dt, this.elapsed, focus, this.originShifted);
+    if (this.travel && this.stellarLight) {
+      const absolute = this.space.origin.toAbsolute(focus.toArray());
+      this.stellarLight.position.set(-absolute[0], -absolute[1], -absolute[2]).normalize();
+    }
+    this.coreLandmarks.visible = !this.travel && focus.distanceToSquared(this.coreLandmarks.position) < 100_000 ** 2;
+    this.originShifted = false;
     this.hudUpdateAccumulator += dt;
     this.spatialUpdateAccumulator += dt;
 
@@ -396,13 +409,7 @@ export class WorldBuilder {
     const spatialDelta = this.spatialUpdateAccumulator;
     if (shouldUpdateSpatial) this.spatialUpdateAccumulator = 0;
 
-    if (this.atmosphereMode.isActive) {
-      this.updateAtmosphereFrame(dt, shouldRefreshHud, shouldUpdateSpatial, spatialDelta);
-      return;
-    }
-
     // Cosmos and Cinematic updates
-    this.cosmos.update(dt, this.elapsed);
     this.cinematicSystem.update(dt, this.elapsed);
 
     if (this.engine.shipController && this.userShipGroup) {
@@ -414,14 +421,7 @@ export class WorldBuilder {
           if (this.authManager && this.authManager.profile) {
             const fixedBasePos = this.getBasePosition(this.authManager.profile.id);
             const dist = this.userShipGroup.position.distanceTo(fixedBasePos);
-            if (dist < 1500) {
-              this.ui.hangarBtn.style.display = 'block';
-            } else {
-              this.ui.hangarBtn.style.display = 'none';
-              if (this.ui.hangarPanel.style.display === 'flex') {
-                this.ui.toggleHangar();
-              }
-            }
+            this.ui.setHangarAvailable(dist < 1500 && (!this.travel || this.travel.atHome));
           }
 
           this.ui.updateBoost(this.engine.shipController.currentBoost, this.engine.shipController.maxBoost);
@@ -441,12 +441,14 @@ export class WorldBuilder {
         const shipVelocity = this.engine.shipController.velocity;
         this.effects.update(
           dt,
-          this.userShipGroup.position,
           shipVelocity,
           isBoosting,
           this.combatSystem.laserColor,
           PLAYER_SHIP_VISUAL.engineColor
         );
+        this.effects.motion.update(dt, this.userShipGroup.position, this.isWarping, this.engine.renderer.domElement.height);
+        this.flightFX?.update(dt, this.engine.camera, this.userShipGroup.position, this.userShipGroup.quaternion,
+          this.isWarping, this.space.systemScene?.anomalyPosition ?? null, this.space.systemScene?.environmentZone ?? null);
 
         this.effects.handleEngineParticles(
           this.elapsed,
@@ -484,9 +486,9 @@ export class WorldBuilder {
       }
     }
 
-    if (shouldUpdateSpatial && this.iss) this.iss.update(this.engine.camera.position);
-    if (this.voyager) this.voyager.update(dt, this.engine.camera.position);
-    if (this.blackHole) this.blackHole.update(this.elapsed, dt, this.engine.camera.position);
+    if (shouldUpdateSpatial && this.coreLandmarks.visible && this.iss) this.iss.update(this.engine.camera.position);
+    if (this.coreLandmarks.visible && this.voyager) this.voyager.update(dt, this.engine.camera.position);
+    if (this.coreLandmarks.visible && this.blackHole) this.blackHole.update(this.elapsed, dt, this.engine.camera.position);
 
     // Throttle leaderboard updates to 1Hz
     if (Math.floor(this.elapsed) > Math.floor(this.elapsed - dt)) {
@@ -496,17 +498,15 @@ export class WorldBuilder {
     if (shouldUpdateSpatial) {
       // LOD, orbital motion and bot decisions do not need a 60 Hz tick.
       this.updateLOD();
-      const drawDistSq = this.multiplayer.drawDistance * this.multiplayer.drawDistance;
-      this.planetBuilder.update(this.elapsed, this.userShipGroup, drawDistSq);
-      this.botAI.update(spatialDelta, this.userShipGroup, this.starMeshes);
+      this.botAI.update(spatialDelta, this.userShipGroup, this.activeColliders());
     }
 
     // Update Combat System
     this.combatSystem.update(
       dt,
       this.authManager?.profile?.id,
-      this.starMeshes,
-      this.planetBuilder.orbitObjects,
+      this.activeColliders(),
+      this.space.planets.orbitObjects,
       this.userShipGroup
     );
 
@@ -514,7 +514,7 @@ export class WorldBuilder {
     if (shouldUpdateSpatial && this.userShipGroup) {
       for (const b of this.baseLabels) {
         const dist = this.userShipGroup.position.distanceTo(b.group.position);
-        if (dist > 4000) {
+        if (dist > 4000 || (this.travel && !this.travel.atHome)) {
           b.dom.style.display = 'none';
           b.dom.style.opacity = '0';
         } else {
@@ -529,157 +529,17 @@ export class WorldBuilder {
       if (this.cockpitHUD.group.visible !== isFirstPerson) {
         this.cockpitHUD.setVisible(isFirstPerson);
       }
-      const activeNebula = this.cosmos.getNebulaAtPosition(this.userShipGroup.position);
-      if (shouldUpdateSpatial) this.cockpitHUD.update(spatialDelta, activeNebula !== null);
+      if (shouldUpdateSpatial) this.cockpitHUD.update(spatialDelta, false);
     } else {
       if (this.cockpitHUD.group.visible) {
         this.cockpitHUD.setVisible(false);
       }
     }
 
-    if (shouldRefreshHud) this.updateAtmosphereApproach();
-
     // Raycasting Throttled
     this.handleRaycasting();
   }
 
-  private updateAtmosphereFrame(
-    dt: number,
-    shouldRefreshHud: boolean,
-    shouldUpdateSpatial: boolean,
-    spatialDelta: number,
-  ) {
-    if (!this.userShipGroup) return;
-
-    if (shouldRefreshHud) {
-      const subs = this.engine.shipController.subsystems || { engines: 100, weapons: 100, shieldGenerator: 100 };
-      this.ui.updateSubsystems(subs.engines, subs.weapons, subs.shieldGenerator);
-      this.ui.updateBoost(this.engine.shipController.currentBoost, this.engine.shipController.maxBoost);
-      this.ui.updateHP(this.engine.shipController.currentHP, this.engine.shipController.maxHP);
-      this.ui.updateShield(this.engine.shipController.currentShield, this.engine.shipController.maxShield);
-    }
-
-    const speed = this.engine.shipController.velocity.length();
-    this.userEngineVFX?.update(
-      dt,
-      this.elapsed,
-      speed,
-      this.engine.shipController.isBoosting,
-      PLAYER_SHIP_VISUAL.engineColor
-    );
-
-    this.atmosphereMode.update(dt);
-    this.ui.hideAtmospherePrompt();
-
-    if (this.engine.shipController.viewMode === 'first') {
-      if (!this.cockpitHUD.group.visible) this.cockpitHUD.setVisible(true);
-      if (shouldUpdateSpatial) this.cockpitHUD.update(spatialDelta, false);
-    } else if (this.cockpitHUD.group.visible) {
-      this.cockpitHUD.setVisible(false);
-    }
-  }
-
-  private updateAtmosphereApproach() {
-    if (!this.userShipGroup) {
-      this.nearestAtmospherePlanet = null;
-      this.ui.hideAtmospherePrompt();
-      return;
-    }
-
-    let nearest: SpacePlanet | null = null;
-    let nearestDist = Number.POSITIVE_INFINITY;
-    for (const planet of this.planetBuilder.spacePlanets) {
-      const dist = this.userShipGroup.position.distanceTo(planet.position);
-      const enterDist = planet.radius + 3000;
-      if (dist < enterDist && dist < nearestDist) {
-        nearest = planet;
-        nearestDist = dist;
-      }
-    }
-
-    this.nearestAtmospherePlanet = nearest;
-    if (nearest) {
-      this.ui.showAtmospherePrompt(nearest.name, '[F] ENTER ATMOSPHERE');
-    } else {
-      this.ui.hideAtmospherePrompt();
-    }
-  }
-
-  private enterNearestAtmosphere() {
-    if (!this.userShipGroup || this.atmosphereMode.isActive || !this.nearestAtmospherePlanet) return;
-
-    this.ui.hideAtmospherePrompt();
-    this.atmosphereMode.enter(
-      this.nearestAtmospherePlanet.manifest,
-      this.userShipGroup,
-      {
-        position: this.userShipGroup.position.clone(),
-        quaternion: this.userShipGroup.quaternion.clone(),
-      }
-    );
-  }
-
-  private installPlanetSmokeHooks() {
-    (window as unknown as {
-      __universePlanetSmoke?: {
-        enterFirstAtmosphere: () => boolean;
-        enterAtmosphereAt: (index: number) => boolean;
-        dropToSurface: () => boolean;
-        exitAtmosphere: () => boolean;
-        getState: () => { active: boolean; activeScene: string; css2dVisible: boolean; nearest: string | null; planetCount: number; level: ReturnType<AtmosphereMode['getLevelDebugSummary']> };
-        getManifestSummary: () => {
-          worldSeed: number;
-          planets: { planetId: string; name: string; biome: string; archetype: string; landform: string; vegetationShape: string; propSets: string[]; landmarkSets: string[]; seed: number }[];
-        };
-      };
-    }).__universePlanetSmoke = {
-      enterFirstAtmosphere: () => {
-        return (window as any).__universePlanetSmoke.enterAtmosphereAt(0);
-      },
-      enterAtmosphereAt: (index: number) => {
-        if (!this.userShipGroup || this.atmosphereMode.isActive) return false;
-        const planet = this.planetBuilder.spacePlanets[index];
-        if (!planet) return false;
-        this.userShipGroup.position.copy(planet.position).add(new THREE.Vector3(0, 0, planet.radius + 1800));
-        this.userShipGroup.quaternion.identity();
-        this.engine.shipController.velocity.set(0, 0, 0);
-        this.nearestAtmospherePlanet = planet;
-        this.enterNearestAtmosphere();
-        return this.atmosphereMode.isActive;
-      },
-      dropToSurface: () => {
-        if (!this.userShipGroup || !this.atmosphereMode.isActive) return false;
-        this.userShipGroup.position.y -= 3000;
-        return true;
-      },
-      exitAtmosphere: () => {
-        if (this.atmosphereMode.isActive) this.atmosphereMode.exit();
-        return !this.atmosphereMode.isActive;
-      },
-      getState: () => ({
-        active: this.atmosphereMode.isActive,
-        activeScene: this.engine.activeScene.name || 'Scene',
-        css2dVisible: this.engine.css2dRenderer.domElement.style.display !== 'none',
-        nearest: this.nearestAtmospherePlanet?.name || null,
-        planetCount: this.planetBuilder.spacePlanets.length,
-        level: this.atmosphereMode.getLevelDebugSummary(),
-      }),
-      getManifestSummary: () => ({
-        worldSeed: this.planetBuilder.worldSeed,
-        planets: this.planetBuilder.spacePlanets.slice(0, 12).map((planet) => ({
-          planetId: planet.planetId,
-          name: planet.name,
-          biome: planet.manifest.biome,
-          archetype: planet.manifest.levelDesign.archetype,
-          landform: planet.manifest.terrainProfile.landform,
-          vegetationShape: planet.manifest.assetProfile.vegetationShape,
-          propSets: planet.manifest.levelDesign.propSets.map((set) => set.id),
-          landmarkSets: planet.manifest.levelDesign.landmarkSets.map((set) => set.id),
-          seed: planet.manifest.seed,
-        })),
-      }),
-    };
-  }
 
   private updateLOD() {
     if (!this.lod0Mesh || !this.lod1Mesh) return;
@@ -688,16 +548,8 @@ export class WorldBuilder {
       this.projScreenMatrix.multiplyMatrices(this.engine.camera.projectionMatrix, this.engine.camera.matrixWorldInverse)
     );
 
-    let isJamming = false;
-    let nebulaColorHex: string | null = null;
-    if (this.userShipGroup) {
-      const activeNebula = this.cosmos.getNebulaAtPosition(this.userShipGroup.position);
-      if (activeNebula) {
-        isJamming = true;
-        nebulaColorHex = '#' + activeNebula.color.getHexString();
-      }
-    }
-    this.ui.updateNebulaEffect(nebulaColorHex);
+    const isJamming = false;
+    this.ui.updateNebulaEffect(null);
 
     let playerCount0 = 0;
     let botInterceptorCount0 = 0;
@@ -791,23 +643,24 @@ export class WorldBuilder {
     if (now - this.lastRaycastTime > 100) {
       this.lastRaycastTime = now;
       this.raycaster.setFromCamera(this.mouse, this.engine.camera);
-      const hits = this.raycaster.intersectObjects(this.starMeshes, false);
+      if (this.hoveredObject && !this.starMeshes.includes(this.hoveredObject as THREE.Mesh)) this.hoveredObject = null;
+      const hits = this.raycaster.intersectObjects(this.activeColliders(), false);
 
       if (hits.length > 0) {
         const hit = hits[0].object;
         
         if (!hit.userData.isBaseShip) {
           if (this.hoveredObject !== hit) {
-            if (this.hoveredObject && !this.hoveredObject.userData.isBaseShip) {
+            if (this.hoveredObject && !this.hoveredObject.userData.isBaseShip && !this.hoveredObject.userData.isPlanet && !this.hoveredObject.userData.isFixedScale) {
               gsap.to(this.hoveredObject.scale, { x: 1, y: 1, z: 1, duration: 0.15 });
             }
             this.hoveredObject = hit;
-            gsap.to(hit.scale, { x: 1.3, y: 1.3, z: 1.3, duration: 0.15 });
+            if (!hit.userData.isPlanet && !hit.userData.isFixedScale) gsap.to(hit.scale, { x: 1.3, y: 1.3, z: 1.3, duration: 0.15 });
             document.body.style.cursor = 'pointer';
           }
         }
       } else {
-        if (this.hoveredObject && !this.hoveredObject.userData.isBaseShip) {
+        if (this.hoveredObject && !this.hoveredObject.userData.isBaseShip && !this.hoveredObject.userData.isPlanet && !this.hoveredObject.userData.isFixedScale) {
           gsap.to(this.hoveredObject.scale, { x: 1, y: 1, z: 1, duration: 0.15 });
           this.hoveredObject = null;
           document.body.style.cursor = 'default';
@@ -834,7 +687,8 @@ export class WorldBuilder {
       const dir = new THREE.Vector3(data.dirx, data.diry, data.dirz).normalize();
       const startPos = new THREE.Vector3();
       const p = this.multiplayer.players.get(data.id);
-      if (p) startPos.copy(p.position);
+      if (!p) return;
+      startPos.copy(p.position);
       
       const laserColor = data.color || 'red';
       const weaponType = data.weaponType || 'laser';
@@ -1017,8 +871,8 @@ export class WorldBuilder {
     this.engine.shipController.setSpawn(spawnPos, baseHP);
     this.ui.setShipController(this.engine.shipController);
 
-    if (p.position_x !== 0 || p.position_y !== 0 || p.position_z !== 0) {
-      group.position.set(p.position_x, p.position_y, p.position_z);
+    if (this.smokeState && (p.position_x !== 0 || p.position_y !== 0 || p.position_z !== 0)) {
+      group.position.set(...this.space.origin.fromAbsolute([p.position_x, p.position_y, p.position_z]));
     } else {
       group.position.copy(spawnPos);
     }
@@ -1026,7 +880,156 @@ export class WorldBuilder {
     this.userShipGroup = group;
     this.engine.scene.add(group);
     this.engine.shipController.setShip(group);
+    if (!this.smokeState) {
+      this.flightFX?.dispose(); this.flightFX = new ApprovedFlightFX(this.engine.scene, Settings.graphicsMode === 'LOW');
+      this.travel = new StellarTravel(this.engine, {
+        position: () => this.space.origin.toWorld(group.position.toArray()),
+        move: delta => { group.position.add(new THREE.Vector3(...delta)); this.engine.camera.position.add(new THREE.Vector3(...delta)); },
+        enter: (system, position) => this.enterSystem(system, position),
+        base: () => this.space.origin.toAbsolute(this.getBasePosition(auth.profile!.id).toArray()), rotation: () => group.quaternion.toArray(),
+        skyUnavailable: () => this.space.systemScene?.sky.status === 'unavailable',
+        localObstacles: () => this.space.systemScene?.openSpace.obstacles??[],
+        scan: () => this.flightFX?.scan(group.position),
+        restoreRotation: rotation => { group.quaternion.fromArray(rotation); this.engine.shipController.resetTransitMotion(); },
+        face: position => {
+          const direction = new THREE.Vector3(...this.space.origin.fromAbsolute(position)).sub(group.position);
+          if (direction.lengthSq() < 1) return;
+          group.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, -1), direction.normalize());
+          this.engine.shipController.resetTransitMotion();
+          this.engine.camera.position.copy(group.position).add(new THREE.Vector3(0, 125, 360).applyQuaternion(group.quaternion));
+        },
+        combatNearby: () => [...this.multiplayer.players.values()].some(player => player.id.startsWith('bot_') && player.position.distanceToSquared(group.position) < 6000 ** 2) ||
+          this.combatSystem.lasers.some(laser => laser.mesh.position.distanceToSquared(group.position) < 3000 ** 2),
+      }, auth.profile.id);
+      this.travel.start();
+    }
+    if (this.smokeState && auth.profile.id.startsWith('guest_')) {
+      const planet = createPlanetCatalog(WORLD_SIZE)[0];
+      const position = this.smokeState === 'planet-showcase'
+        ? worldPosition(undefined, [planet.position[0], planet.position[1], planet.position[2] + planet.radius + 1600])
+        : this.smokeState === 'sector-boundary'
+          ? worldPosition(undefined, [0, 0, -24950])
+          : worldPosition(undefined, [0, 100, 9800]);
+      group.quaternion.identity();
+      this.engine.shipController.setShip(group);
+      this.relocateShip(position);
+    } else {
+      this.engine.camera.position.copy(group.position).add(new THREE.Vector3(0, 125, 360));
+    }
     this.loadVoiceChat();
+  }
+
+  public getDebugState() {
+    let remote = 0;
+    let bots = 0;
+    for (const id of this.multiplayer.players.keys()) {
+      if (id.startsWith('bot_')) bots += 1;
+      else remote += 1;
+    }
+    const matrix = new THREE.Matrix4().multiplyMatrices(this.engine.camera.projectionMatrix, this.engine.camera.matrixWorldInverse);
+    const frustum = new THREE.Frustum().setFromProjectionMatrix(matrix);
+    const visibleFullPlanets = this.space.systemScene?.visiblePlanetCount(frustum) ?? this.space.planets.spacePlanets.filter((planet) => planet.mesh.visible && frustum.intersectsObject(planet.mesh)).length;
+    return {
+      scene: this.smokeState ?? 'free-flight',
+      worldSeed: this.space.planets.worldSeed,
+      space: this.space.snapshot(),
+      travel: this.travel?.snapshot() ?? null,
+      flightDust: this.effects.motion.snapshot(),
+      flightFX: this.flightFX?.snapshot() ?? null,
+      tour: this.smokeState === "sector-tour" ? this.smokeTour.snapshot() : null,
+      projectiles: this.combatSystem.lasers.length,
+      planetCount: this.space.descriptors().length,
+      visibleFullPlanets,
+      visiblePlanets: visibleFullPlanets + this.space.navigation.visiblePlanetCount(frustum, this.space.planets.activeIds),
+      players: { local: this.userShipGroup ? 1 : 0, remote, bots },
+      ship: this.userShipGroup ? {
+        position: this.userShipGroup.position.toArray(),
+        worldPosition: this.space.origin.toWorld(this.userShipGroup.position.toArray() as [number, number, number]),
+        cameraOffset: this.engine.camera.position.clone().sub(this.userShipGroup.position).toArray(),
+        speed: this.engine.shipController.velocity.length(),
+        viewMode: this.engine.shipController.viewMode,
+        hp: this.engine.shipController.currentHP,
+      } : null,
+    };
+  }
+
+  public getPlanetDebugDescriptors() {
+    return this.space.descriptors().map((planet) => ({
+      id: planet.planetId, name: planet.name, radius: planet.radius,
+      position: [...planet.position], seed: planet.seed, biome: planet.biome,
+      visual: { ...planet.visual },
+    }));
+  }
+
+  public getPlayerAbsolutePosition(): [number, number, number] | null {
+    // Legacy cloud XYZ cannot represent a catalogue system; keep its data untouched.
+    if (this.travel) { this.travel.save(); return null; }
+    return this.userShipGroup ? [...this.space.origin.toAbsolute(this.userShipGroup.position.toArray() as [number, number, number])] : null;
+  }
+
+  public get currentSystemId() { return this.travel?.system.anchor.catalogId ?? null; }
+  public get isWarping() { return this.travel?.warping ?? false; }
+  public warpTo(object: MapObject) { return this.travel?.warp(object) ?? false; }
+
+  private activeColliders() {
+    return this.starMeshes.filter(mesh => {
+      if (mesh.userData.collisionEnabled === false) return false;
+      let parent: THREE.Object3D | null = mesh;
+      while (parent) { if (!parent.visible) return false; parent = parent.parent; }
+      return true;
+    });
+  }
+
+  private enterSystem(system: SystemDescriptor, position: WorldPosition) {
+    this.flightFX?.clear();
+    this.stellarAmbient.color.setHex(0x91abc3);this.stellarAmbient.intensity=.55;
+    if(this.stellarLight){this.stellarLight.color.setHex(system.starColor).lerp(new THREE.Color(0xffffff),.75);this.stellarLight.intensity=2.8;}
+    this.space.setSystem(system);
+    this.coreLandmarks.visible = false;
+    this.combatSystem.clearProjectiles(); this.isPrimaryFireHeld = false;
+    this.botAI.spawnBots(0, new THREE.Vector3());
+    this.multiplayer.setSystemId(system.anchor.catalogId);
+    this.hoveredObject = null;
+    this.engine.shipController.resetTransitMotion();
+    this.relocateShip(position);
+    if (this.baseShipGroup) {
+      this.baseShipGroup.visible = system.anchor.catalogId === SOLAR_SYSTEM.anchor.catalogId;
+      this.baseShipGroup.position.copy(this.getBasePosition(this.authManager.profile.id));
+    }
+    this.space.systemScene?.update(0, this.elapsed, this.space.origin, this.userShipGroup!.position);
+    this.engine.scene.updateMatrixWorld(true);
+    this.updateLOD();
+  }
+
+  private relocateShip(position: WorldPosition) {
+    if (!this.userShipGroup) return;
+    const delta = this.space.origin.moveTo(position);
+    this.applyOriginShift(new THREE.Vector3(...delta));
+    this.userShipGroup.position.set(0, 0, 0);
+    this.effects.motion.reset(this.userShipGroup.position);
+    this.engine.shipController.velocity.set(0, 0, 0);
+    const offset = new THREE.Vector3(0, 125, 360).applyQuaternion(this.userShipGroup.quaternion);
+    this.engine.camera.position.copy(offset);
+    this.engine.camera.updateMatrixWorld(true);
+  }
+
+  private applyOriginShift(delta: THREE.Vector3) {
+    shiftSceneOrigin(this.engine.scene, this.engine.camera, delta, [
+      this.space.background.group, this.space.navigation.group,
+      this.space.systemScene?.group ?? null,
+      this.effects.motion.group, this.effects.ionTrailPoints,
+      this.flightFX?.group ?? null,
+      this.lod0Mesh, this.lod1Mesh, this.botInterceptorMesh, this.botBomberMesh,
+    ]);
+    this.engine.shipController.shiftOrigin(delta);
+    this.effects.shiftOrigin(delta);
+    this.flightFX?.shiftOrigin(delta);
+    this.combatSystem.shiftOrigin(delta);
+    this.multiplayer.shiftOrigin(delta);
+    this.botAI.shiftOrigin(delta);
+    this.hudUpdateAccumulator = 0.1;
+    this.spatialUpdateAccumulator = 1 / 30;
+    this.originShifted = true;
   }
 
   private loadVoiceChat() {
@@ -1093,10 +1096,11 @@ export class WorldBuilder {
   }
 
   public removeUserShip() {
+    this.travel?.dispose(); this.travel = null;
+    this.flightFX?.dispose(); this.flightFX = null;
+    this.engine.shipController.clearShip();
+    this.isPrimaryFireHeld = false;
     this.voiceChatLoadVersion += 1;
-    if (this.atmosphereMode.isActive) {
-      this.atmosphereMode.exit();
-    }
     if (this.voiceChat) {
       this.voiceChat.destroy();
       this.voiceChat = null;

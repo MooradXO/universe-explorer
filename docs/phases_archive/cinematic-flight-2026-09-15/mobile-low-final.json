@@ -1,0 +1,1719 @@
+{
+  "issues": [],
+  "home": {
+    "timestampMs": 2311.300000011921,
+    "fps": 92.30433120293289,
+    "frameTimeMs": 10.833727810686156,
+    "p95FrameTimeMs": 6.4000000059604645,
+    "sampleFrames": 169,
+    "graphicsMode": "LOW",
+    "starMap": {
+      "open": false
+    },
+    "flightInputBlocked": false,
+    "renderer": {
+      "calls": 55,
+      "triangles": 57224,
+      "points": 12747,
+      "lines": 420,
+      "geometries": 32,
+      "textures": 13,
+      "programs": 30,
+      "pixelRatio": 0.75,
+      "width": 633,
+      "height": 292
+    },
+    "memory": {
+      "jsHeapUsedBytes": 18522023,
+      "jsHeapAllocatedBytes": 37533759,
+      "gpuBytes": null
+    },
+    "world": {
+      "scene": "free-flight",
+      "worldSeed": "universe-explorer:world:v1",
+      "space": {
+        "origin": {
+          "origin": {
+            "sector": [
+              -53,
+              115,
+              -265
+            ],
+            "offset": [
+              -444.16153112147003,
+              5659.9284833977,
+              -17135.42143371515
+            ]
+          },
+          "shifts": 1
+        },
+        "system": {
+          "id": "athyg:4.0:1",
+          "title": "Sol",
+          "spectrum": "G2 V",
+          "starRadiusIsIllustrative": false,
+          "fullPlanets": 1,
+          "sky": {
+            "status": "ready",
+            "points": 6671,
+            "bytes": 139540,
+            "observerCatalogId": "athyg:4.0:1",
+            "localParallax": "system-anchor",
+            "unitsPerParsec": 3085677581491.367
+          },
+          "visualStyle": "cinematic",
+          "decorativeBackground": true,
+          "backdrop": {
+            "shape": 1,
+            "warm": "#ad6256",
+            "cool": "#31768c",
+            "density": 0.48,
+            "scale": 5,
+            "drift": 0
+          },
+          "debris": {
+            "body": "sol/earth/zone-0",
+            "origin": "procedural-gameplay",
+            "instances": 27,
+            "layout": 44,
+            "objects": 4,
+            "structure": 5,
+            "phenomenon": {
+              "recipe": 14,
+              "name": "Радиоэхо · бегущая волна",
+              "particles": 120
+            }
+          },
+          "zones": [
+            {
+              "body": "sol/earth/zone-0",
+              "origin": "procedural-gameplay",
+              "instances": 27,
+              "layout": 44,
+              "objects": 4,
+              "structure": 5,
+              "phenomenon": {
+                "recipe": 14,
+                "name": "Радиоэхо · бегущая волна",
+                "particles": 120
+              }
+            }
+          ],
+          "bodies": [
+            {
+              "id": "sol/mercury",
+              "name": "Меркурий",
+              "origin": "catalogue",
+              "position": [
+                -1946098.0613990638,
+                -2999311.2215723116,
+                5992859.070291958
+              ],
+              "radius": 243.94,
+              "semiMajorAu": 0.38709927,
+              "environment": {
+                "version": 1,
+                "seed": 2448980535,
+                "signature": "0.7.rock-0-coated.11.10.16.2448980535",
+                "surface": 0,
+                "variant": 7,
+                "material": 1,
+                "colors": [
+                  "#474248",
+                  "#877e77",
+                  "#c0ac92",
+                  "#a09fa1"
+                ],
+                "geography": 2.148166925527621,
+                "warp": 0.12,
+                "clouds": null,
+                "atmosphere": null,
+                "aurora": null,
+                "ring": null,
+                "objects": 11,
+                "layout": 10,
+                "structure": null,
+                "phenomenon": 16,
+                "moonStyle": 13,
+                "moonOrbit": 7,
+                "moonCount": 0,
+                "zones": 3,
+                "backdrop": {
+                  "shape": 5,
+                  "warm": "#7a8696",
+                  "cool": "#bba095",
+                  "density": 0.42389793109148743,
+                  "scale": 3.3783513629343362,
+                  "drift": 0.004427066551521421
+                },
+                "approachDirections": [
+                  [
+                    -0.814046231641,
+                    0.311532674045,
+                    -0.49017968721
+                  ],
+                  [
+                    -0.03326378237,
+                    0.413461689583,
+                    -0.909913705815
+                  ],
+                  [
+                    0.961608439442,
+                    0.103414650161,
+                    -0.254194058401
+                  ],
+                  [
+                    0.772594731939,
+                    0.239335250221,
+                    -0.588061236762
+                  ],
+                  [
+                    0.682940960905,
+                    0.257270968584,
+                    -0.683668993477
+                  ],
+                  [
+                    0.73841901018,
+                    -0.278129028899,
+                    0.614313933334
+                  ],
+                  [
+                    0.567877713881,
+                    -0.322727144475,
+                    0.757206769843
+                  ]
+                ]
+              },
+              "satellites": []
+            },
+            {
+              "id": "sol/venus",
+              "name": "Венера",
+              "origin": "catalogue",
+              "position": [
+                -10745859.729243945,
+                368327.09771475766,
+                692979.9573463777
+              ],
+              "radius": 605.1800000000001,
+              "semiMajorAu": 0.72333566,
+              "environment": {
+                "version": 1,
+                "seed": 561891495,
+                "signature": "56.1.gas-8-coated.15.30.26.561891495",
+                "surface": 56,
+                "variant": 1,
+                "material": 113,
+                "colors": [
+                  "#393a55",
+                  "#827194",
+                  "#d7cbb2",
+                  "#5697ac"
+                ],
+                "geography": 2.0060977694392204,
+                "warp": 0.5800000000000001,
+                "clouds": null,
+                "atmosphere": 8,
+                "aurora": null,
+                "ring": null,
+                "objects": 15,
+                "layout": 30,
+                "structure": 8,
+                "phenomenon": 26,
+                "moonStyle": 7,
+                "moonOrbit": 6,
+                "moonCount": 0,
+                "zones": 6,
+                "backdrop": {
+                  "shape": 10,
+                  "warm": "#827194",
+                  "cool": "#5697ac",
+                  "density": 0.2082259159721434,
+                  "scale": 4.710106224240735,
+                  "drift": 0.0015927009992301464
+                },
+                "approachDirections": [
+                  [
+                    0.814046231641,
+                    -0.311532674045,
+                    0.49017968721
+                  ],
+                  [
+                    0.475650281843,
+                    0.316529620114,
+                    -0.820710551274
+                  ],
+                  [
+                    0.999317784271,
+                    -0.029172050956,
+                    -0.022648564685
+                  ],
+                  [
+                    0.84535059109,
+                    0.188868131536,
+                    -0.499711123583
+                  ],
+                  [
+                    0.734507574416,
+                    0.230698751479,
+                    -0.638182347916
+                  ],
+                  [
+                    0.741374657293,
+                    -0.279416273383,
+                    0.610155851969
+                  ],
+                  [
+                    0.574578266099,
+                    -0.322955123205,
+                    0.752037103155
+                  ]
+                ]
+              },
+              "satellites": []
+            },
+            {
+              "id": "sol/earth",
+              "name": "Земля",
+              "origin": "catalogue",
+              "position": [
+                -2650444.1615311215,
+                5755559.928483398,
+                -13275346.723953715
+              ],
+              "radius": 637.10084,
+              "semiMajorAu": 1.00000261,
+              "environment": {
+                "version": 1,
+                "seed": 1310247180,
+                "signature": "32.4.ocean-0-exposed.4.44.14.1310247180",
+                "surface": 32,
+                "variant": 4,
+                "material": 64,
+                "colors": [
+                  "#284a5a",
+                  "#56726f",
+                  "#b9b988",
+                  "#9bbbbe"
+                ],
+                "geography": 2.088052252389025,
+                "warp": 0.12,
+                "clouds": 0,
+                "atmosphere": 1,
+                "aurora": 6,
+                "ring": null,
+                "objects": 4,
+                "layout": 44,
+                "structure": 5,
+                "phenomenon": 14,
+                "moonStyle": 12,
+                "moonOrbit": 1,
+                "moonCount": 0,
+                "zones": 6,
+                "backdrop": {
+                  "shape": 1,
+                  "warm": "#ad6256",
+                  "cool": "#31768c",
+                  "density": 0.48,
+                  "scale": 5,
+                  "drift": 0
+                },
+                "approachDirections": [
+                  [
+                    0.03326378237,
+                    -0.413461689583,
+                    0.909913705815
+                  ],
+                  [
+                    -0.475650281843,
+                    -0.316529620114,
+                    0.820710551274
+                  ],
+                  [
+                    0.847692583749,
+                    -0.227991984625,
+                    0.47899576032
+                  ],
+                  [
+                    0.903566040455,
+                    0.150109809543,
+                    -0.401292232189
+                  ],
+                  [
+                    0.762708902501,
+                    0.217555709874,
+                    -0.609052249931
+                  ],
+                  [
+                    0.704581296288,
+                    -0.29276559252,
+                    0.64641589148
+                  ],
+                  [
+                    0.547423522003,
+                    -0.32910557654,
+                    0.769426414317
+                  ]
+                ]
+              },
+              "satellites": [
+                {
+                  "parent": "sol/earth",
+                  "id": "301",
+                  "name": "Луна",
+                  "radius": 173.74,
+                  "position": [
+                    -29160.83841877129,
+                    -7610.248730658794,
+                    26671.68338540655
+                  ],
+                  "style": 0,
+                  "origin": "catalogue"
+                }
+              ]
+            },
+            {
+              "id": "sol/mars",
+              "name": "Марс",
+              "origin": "catalogue",
+              "position": [
+                20804093.39037969,
+                -552678.066565391,
+                -21270.324343975928
+              ],
+              "radius": 338.95,
+              "semiMajorAu": 1.52371034,
+              "environment": {
+                "version": 1,
+                "seed": 1291988459,
+                "signature": "4.6.rock-4-exposed.23.32.18.1291988459",
+                "surface": 4,
+                "variant": 6,
+                "material": 8,
+                "colors": [
+                  "#3b3f4b",
+                  "#a07961",
+                  "#b1a896",
+                  "#7a95ac"
+                ],
+                "geography": 2.1169767254800536,
+                "warp": 0.35,
+                "clouds": null,
+                "atmosphere": 0,
+                "aurora": 8,
+                "ring": null,
+                "objects": 23,
+                "layout": 32,
+                "structure": 13,
+                "phenomenon": 18,
+                "moonStyle": 18,
+                "moonOrbit": 3,
+                "moonCount": 0,
+                "zones": 2,
+                "backdrop": {
+                  "shape": 0,
+                  "warm": "#bf795b",
+                  "cool": "#708bab",
+                  "density": 0.28686567313969136,
+                  "scale": 3.5785835555754604,
+                  "drift": 0.0029150079591199756
+                },
+                "approachDirections": [
+                  [
+                    -0.961608439442,
+                    -0.103414650161,
+                    0.254194058401
+                  ],
+                  [
+                    -0.999317784271,
+                    0.029172050956,
+                    0.022648564685
+                  ],
+                  [
+                    -0.847692583749,
+                    0.227991984625,
+                    -0.47899576032
+                  ],
+                  [
+                    0.661207632185,
+                    0.282814398389,
+                    -0.694852850037
+                  ],
+                  [
+                    0.607650670929,
+                    0.278416370766,
+                    -0.743804400773
+                  ],
+                  [
+                    0.688608955332,
+                    -0.298267972529,
+                    0.660949259172
+                  ],
+                  [
+                    0.525126044495,
+                    -0.333446174399,
+                    0.782979109665
+                  ]
+                ]
+              },
+              "satellites": []
+            },
+            {
+              "id": "sol/jupiter",
+              "name": "Юпитер",
+              "origin": "catalogue",
+              "position": [
+                59814029.89669311,
+                16132809.49769364,
+                -41036164.282245055
+              ],
+              "radius": 6991.1,
+              "semiMajorAu": 5.202887,
+              "environment": {
+                "version": 1,
+                "seed": 2584468799,
+                "signature": "50.5.gas-2-coated.8.26.3.2584468799",
+                "surface": 50,
+                "variant": 5,
+                "material": 101,
+                "colors": [
+                  "#393a55",
+                  "#827194",
+                  "#d7cbb2",
+                  "#5697ac"
+                ],
+                "geography": 5.1880933959037066,
+                "warp": 0.5800000000000001,
+                "clouds": null,
+                "atmosphere": 8,
+                "aurora": null,
+                "ring": {
+                  "recipe": 17,
+                  "inner": 1.45,
+                  "outer": 1.85,
+                  "tilt": [
+                    1.609170288707868,
+                    0.29096323251724243,
+                    0.5744604032486678
+                  ],
+                  "density": 0.12,
+                  "tint": "#9b9186"
+                },
+                "objects": 8,
+                "layout": 26,
+                "structure": 11,
+                "phenomenon": 3,
+                "moonStyle": 7,
+                "moonOrbit": 6,
+                "moonCount": 0,
+                "zones": 6,
+                "backdrop": {
+                  "shape": 7,
+                  "warm": "#827194",
+                  "cool": "#5697ac",
+                  "density": 0.5152715092711151,
+                  "scale": 4.502424254454672,
+                  "drift": 0.004140256143175066
+                },
+                "approachDirections": [
+                  [
+                    -0.772594731939,
+                    -0.239335250221,
+                    0.588061236762
+                  ],
+                  [
+                    -0.84535059109,
+                    -0.188868131536,
+                    0.499711123583
+                  ],
+                  [
+                    -0.903566040455,
+                    -0.150109809543,
+                    0.401292232189
+                  ],
+                  [
+                    -0.661207632185,
+                    -0.282814398389,
+                    0.694852850037
+                  ],
+                  [
+                    0.556250162113,
+                    0.273149892707,
+                    -0.784840680179
+                  ],
+                  [
+                    0.530006595328,
+                    -0.343674639254,
+                    0.775229482955
+                  ],
+                  [
+                    0.416689262834,
+                    -0.354757574569,
+                    0.836969008701
+                  ]
+                ]
+              },
+              "satellites": []
+            },
+            {
+              "id": "sol/saturn",
+              "name": "Сатурн",
+              "origin": "catalogue",
+              "position": [
+                95963810.02927509,
+                33884370.28300023,
+                -92038161.27248311
+              ],
+              "radius": 5823.2,
+              "semiMajorAu": 9.53667594,
+              "environment": {
+                "version": 1,
+                "seed": 830707045,
+                "signature": "48.1.gas-0-exposed.16.17.19.830707045",
+                "surface": 48,
+                "variant": 1,
+                "material": 96,
+                "colors": [
+                  "#393a55",
+                  "#bc9061",
+                  "#d7cbb2",
+                  "#6c728d"
+                ],
+                "geography": 2.1238119070068935,
+                "warp": 0.12,
+                "clouds": null,
+                "atmosphere": 8,
+                "aurora": 12,
+                "ring": {
+                  "recipe": 10,
+                  "inner": 1.23,
+                  "outer": 2.32,
+                  "tilt": [
+                    1.1,
+                    0,
+                    0.1
+                  ],
+                  "density": 0.7,
+                  "tint": "#d4c3a3"
+                },
+                "objects": 16,
+                "layout": 17,
+                "structure": 8,
+                "phenomenon": 19,
+                "moonStyle": 8,
+                "moonOrbit": 6,
+                "moonCount": 0,
+                "zones": 2,
+                "backdrop": {
+                  "shape": 8,
+                  "warm": "#bc9061",
+                  "cool": "#6c728d",
+                  "density": 0.35686936985701323,
+                  "scale": 5.745722447568551,
+                  "drift": 0.0021164123453199864
+                },
+                "approachDirections": [
+                  [
+                    -0.682940960905,
+                    -0.257270968584,
+                    0.683668993477
+                  ],
+                  [
+                    -0.734507574416,
+                    -0.230698751479,
+                    0.638182347916
+                  ],
+                  [
+                    -0.762708902501,
+                    -0.217555709874,
+                    0.609052249931
+                  ],
+                  [
+                    -0.607650670929,
+                    -0.278416370766,
+                    0.743804400773
+                  ],
+                  [
+                    -0.556250162113,
+                    -0.273149892707,
+                    0.784840680179
+                  ],
+                  [
+                    0.36733246395,
+                    -0.364455463452,
+                    0.855709691477
+                  ],
+                  [
+                    0.312867688315,
+                    -0.36404940643,
+                    0.877258137201
+                  ]
+                ]
+              },
+              "satellites": []
+            },
+            {
+              "id": "sol/uranus",
+              "name": "Уран",
+              "origin": "catalogue",
+              "position": [
+                215801897.98789185,
+                -85015128.59760574,
+                187137369.3545744
+              ],
+              "radius": 2536.2,
+              "semiMajorAu": 19.18916464,
+              "environment": {
+                "version": 1,
+                "seed": 3947482228,
+                "signature": "56.4.gas-8-exposed.18.5.25.3947482228",
+                "surface": 56,
+                "variant": 4,
+                "material": 112,
+                "colors": [
+                  "#393a55",
+                  "#aa725c",
+                  "#d7cbb2",
+                  "#8b989f"
+                ],
+                "geography": 2.2585307735111564,
+                "warp": 0.5800000000000001,
+                "clouds": null,
+                "atmosphere": 8,
+                "aurora": 2,
+                "ring": {
+                  "recipe": 5,
+                  "inner": 1.45,
+                  "outer": 2.04,
+                  "tilt": [
+                    0.15,
+                    0.15,
+                    0.5
+                  ],
+                  "density": 0.38,
+                  "tint": "#a6b7ba"
+                },
+                "objects": 18,
+                "layout": 5,
+                "structure": null,
+                "phenomenon": 25,
+                "moonStyle": 21,
+                "moonOrbit": 1,
+                "moonCount": 0,
+                "zones": 6,
+                "backdrop": {
+                  "shape": 5,
+                  "warm": "#aa725c",
+                  "cool": "#8b989f",
+                  "density": 0.4412740110605955,
+                  "scale": 6.119908100133761,
+                  "drift": 0.0012092293454334141
+                },
+                "approachDirections": [
+                  [
+                    -0.73841901018,
+                    0.278129028899,
+                    -0.614313933334
+                  ],
+                  [
+                    -0.741374657293,
+                    0.279416273383,
+                    -0.610155851969
+                  ],
+                  [
+                    -0.704581296288,
+                    0.29276559252,
+                    -0.64641589148
+                  ],
+                  [
+                    -0.688608955332,
+                    0.298267972529,
+                    -0.660949259172
+                  ],
+                  [
+                    -0.530006595328,
+                    0.343674639254,
+                    -0.775229482955
+                  ],
+                  [
+                    -0.36733246395,
+                    0.364455463452,
+                    -0.855709691477
+                  ],
+                  [
+                    0.20672292321,
+                    -0.359849710621,
+                    0.909820761901
+                  ]
+                ]
+              },
+              "satellites": []
+            },
+            {
+              "id": "sol/neptune",
+              "name": "Нептун",
+              "origin": "catalogue",
+              "position": [
+                251395673.42816097,
+                -146974439.12421766,
+                343791509.49390286
+              ],
+              "radius": 2462.2,
+              "semiMajorAu": 30.06992276,
+              "environment": {
+                "version": 1,
+                "seed": 2873322727,
+                "signature": "51.0.gas-3-exposed.10.0.27.2873322727",
+                "surface": 51,
+                "variant": 0,
+                "material": 102,
+                "colors": [
+                  "#393a55",
+                  "#827194",
+                  "#d7cbb2",
+                  "#5697ac"
+                ],
+                "geography": 6.365238617509602,
+                "warp": 0.12,
+                "clouds": null,
+                "atmosphere": 8,
+                "aurora": null,
+                "ring": {
+                  "recipe": 12,
+                  "inner": 1.45,
+                  "outer": 1.85,
+                  "tilt": [
+                    1.6685698357602843,
+                    0.1823853402165696,
+                    0.44370964560657744
+                  ],
+                  "density": 0.12,
+                  "tint": "#9b9186"
+                },
+                "objects": 10,
+                "layout": 0,
+                "structure": 18,
+                "phenomenon": 27,
+                "moonStyle": 3,
+                "moonOrbit": 9,
+                "moonCount": 0,
+                "zones": 3,
+                "backdrop": {
+                  "shape": 11,
+                  "warm": "#827194",
+                  "cool": "#5697ac",
+                  "density": 0.4337954094819725,
+                  "scale": 3.3050687805283814,
+                  "drift": 0.0018646059278398753
+                },
+                "approachDirections": [
+                  [
+                    -0.567877713881,
+                    0.322727144475,
+                    -0.757206769843
+                  ],
+                  [
+                    -0.574578266099,
+                    0.322955123205,
+                    -0.752037103155
+                  ],
+                  [
+                    -0.547423522003,
+                    0.32910557654,
+                    -0.769426414317
+                  ],
+                  [
+                    -0.525126044495,
+                    0.333446174399,
+                    -0.782979109665
+                  ],
+                  [
+                    -0.416689262834,
+                    0.354757574569,
+                    -0.836969008701
+                  ],
+                  [
+                    -0.312867688315,
+                    0.36404940643,
+                    -0.877258137201
+                  ],
+                  [
+                    -0.20672292321,
+                    0.359849710621,
+                    -0.909820761901
+                  ]
+                ]
+              },
+              "satellites": []
+            }
+          ]
+        },
+        "stream": {
+          "sector": "0,0,0",
+          "cached": 0,
+          "pending": 0,
+          "queued": 0,
+          "failed": 0,
+          "completed": 124,
+          "discarded": 0
+        },
+        "navigation": {
+          "groups": 0,
+          "points": 0
+        },
+        "planets": {
+          "active": 0,
+          "queued": 0,
+          "created": 2,
+          "disposed": 0
+        },
+        "jobs": {
+          "total": 29,
+          "lastMs": 0.19999998807907104,
+          "maxMs": 0.699999988079071
+        }
+      },
+      "travel": {
+        "systemId": "athyg:4.0:1",
+        "atHome": true,
+        "selected": "base",
+        "cruising": false,
+        "cruiseSpeed": 0,
+        "warping": null,
+        "visited": [],
+        "status": "База у Земли. Выберите объект или откройте звёздную карту.",
+        "address": {
+          "version": 1,
+          "anchor": {
+            "catalogId": "athyg:4.0:1",
+            "title": "Sol",
+            "positionParsecs": [
+              0.00000485,
+              0,
+              0
+            ],
+            "frame": "equatorial",
+            "equinox": "J2000.0",
+            "distanceSource": "OTHER",
+            "qualityFlags": [
+              "source-solar-reference-preserved"
+            ]
+          },
+          "local": {
+            "sector": [
+              -53,
+              115,
+              -265
+            ],
+            "offset": [
+              -444.16153112147003,
+              5659.9284833977,
+              -17135.42143371515
+            ]
+          }
+        }
+      },
+      "flightDust": {
+        "kind": "illustrative-local-dust",
+        "count": 420,
+        "speed": 0,
+        "displacement": [
+          0,
+          0,
+          0
+        ],
+        "sample": [
+          -94.94050598144531,
+          54.99604797363281,
+          -188.4995574951172,
+          -442.6173095703125,
+          362.1107177734375,
+          -409.5864562988281,
+          422.2568054199219,
+          -481.7000732421875,
+          96.14598846435547,
+          -247.38172912597656,
+          137.92025756835938,
+          -375.2585144042969
+        ],
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "visible": true,
+        "opacity": 0.43396535934633745,
+        "resets": 1,
+        "originShifts": 1,
+        "maxOffset": 619.6695556640625
+      },
+      "flightFX": {
+        "budgetPerEffect": 260,
+        "maxActive": 2,
+        "effects": {
+          "warp": {
+            "preset": "6749a1da7a6538e4bae6c320db525d94",
+            "requested": false,
+            "ready": false,
+            "failed": false,
+            "particles": 0,
+            "position": null,
+            "simulationUnitsPerFlightUnit": 0.008695652173913044
+          },
+          "scan": {
+            "preset": "d773d301d86b3254180a6887af308eef",
+            "requested": false,
+            "ready": false,
+            "failed": false,
+            "particles": 0,
+            "position": null,
+            "simulationUnitsPerFlightUnit": 0.008
+          },
+          "anomaly": {
+            "preset": null,
+            "requested": false,
+            "ready": false,
+            "failed": false,
+            "particles": 0,
+            "position": null,
+            "simulationUnitsPerFlightUnit": 0.0038461538461538464
+          }
+        }
+      },
+      "tour": null,
+      "projectiles": 0,
+      "planetCount": 8,
+      "visibleFullPlanets": 1,
+      "visiblePlanets": 1,
+      "players": {
+        "local": 1,
+        "remote": 0,
+        "bots": 0
+      },
+      "ship": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "worldPosition": {
+          "sector": [
+            -53,
+            115,
+            -265
+          ],
+          "offset": [
+            -444.16153112147003,
+            5659.9284833977,
+            -17135.42143371515
+          ]
+        },
+        "cameraOffset": [
+          0,
+          127.00859370953881,
+          359.28883786729523
+        ],
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      }
+    },
+    "realtime": {
+      "configured": false,
+      "subscribed": false,
+      "systemId": "athyg:4.0:1",
+      "sendAttempts": 0,
+      "received": 0,
+      "byEvent": {
+        "position": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "shoot": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "hit": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "die": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "chat": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "sonar": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "voice-signal": {
+          "sendAttempts": 0,
+          "received": 0
+        }
+      }
+    }
+  },
+  "proxima": {
+    "timestampMs": 7820.800000011921,
+    "fps": 200,
+    "frameTimeMs": 5,
+    "p95FrameTimeMs": 5.0999999940395355,
+    "sampleFrames": 180,
+    "graphicsMode": "LOW",
+    "starMap": {
+      "open": false
+    },
+    "flightInputBlocked": false,
+    "renderer": {
+      "calls": 56,
+      "triangles": 20037,
+      "points": 7414,
+      "lines": 420,
+      "geometries": 36,
+      "textures": 19,
+      "programs": 37,
+      "pixelRatio": 0.75,
+      "width": 633,
+      "height": 292
+    },
+    "memory": {
+      "jsHeapUsedBytes": 19896645,
+      "jsHeapAllocatedBytes": 46223625,
+      "gpuBytes": null
+    },
+    "world": {
+      "scene": "free-flight",
+      "worldSeed": "universe-explorer:world:v1",
+      "space": {
+        "origin": {
+          "origin": {
+            "sector": [
+              -89,
+              16,
+              -31
+            ],
+            "offset": [
+              -23630.0753249377,
+              -17457.3202797384,
+              8979.051362028113
+            ]
+          },
+          "shifts": 2
+        },
+        "system": {
+          "id": "athyg:4.0:1440825",
+          "title": "Proxima Centauri",
+          "spectrum": "M5Ve",
+          "starRadiusIsIllustrative": true,
+          "fullPlanets": 1,
+          "sky": {
+            "status": "ready",
+            "points": 6671,
+            "bytes": 139540,
+            "observerCatalogId": "athyg:4.0:1440825",
+            "localParallax": "system-anchor",
+            "unitsPerParsec": 3085677581491.367
+          },
+          "visualStyle": "cinematic",
+          "decorativeBackground": true,
+          "backdrop": {
+            "shape": 2,
+            "warm": "#bc9061",
+            "cool": "#6c728d",
+            "density": 0.24489349100738764,
+            "scale": 3.910334529727697,
+            "drift": 0.004203381682746112
+          },
+          "debris": {
+            "body": "athyg:4.0:1440825/generated-1/zone-0",
+            "origin": "procedural-gameplay",
+            "instances": 51,
+            "layout": 33,
+            "objects": 5,
+            "structure": 9,
+            "phenomenon": {
+              "recipe": 2,
+              "name": "Резонанс · бегущая волна",
+              "particles": 120
+            }
+          },
+          "zones": [
+            {
+              "body": "athyg:4.0:1440825/generated-1/zone-0",
+              "origin": "procedural-gameplay",
+              "instances": 51,
+              "layout": 33,
+              "objects": 5,
+              "structure": 9,
+              "phenomenon": {
+                "recipe": 2,
+                "name": "Резонанс · бегущая волна",
+                "particles": 120
+              }
+            }
+          ],
+          "bodies": [
+            {
+              "id": "athyg:4.0:1440825/generated-1",
+              "name": "Мир 1 · игровой",
+              "origin": "procedural",
+              "position": [
+                -4473630.075324938,
+                782542.6797202616,
+                -1566864.4621304667
+              ],
+              "radius": 6614.504497498274,
+              "semiMajorAu": 0.325022477300372,
+              "environment": {
+                "version": 1,
+                "seed": 4245954069,
+                "signature": "55.0.gas-7-exposed.5.33.2.4245954069",
+                "surface": 55,
+                "variant": 0,
+                "material": 110,
+                "colors": [
+                  "#393a55",
+                  "#bc9061",
+                  "#d7cbb2",
+                  "#6c728d"
+                ],
+                "geography": 6.809929025843739,
+                "warp": 0.35,
+                "clouds": null,
+                "atmosphere": 11,
+                "aurora": 6,
+                "ring": {
+                  "recipe": 29,
+                  "inner": 1.2473131720721722,
+                  "outer": 2.3847089240886272,
+                  "tilt": [
+                    1.2490225602522362,
+                    0.15190085908398032,
+                    0.6146158361807466
+                  ],
+                  "density": 0.7728042518440634,
+                  "tint": "#d7cbb2"
+                },
+                "objects": 5,
+                "layout": 33,
+                "structure": 9,
+                "phenomenon": 2,
+                "moonStyle": 15,
+                "moonOrbit": 7,
+                "moonCount": 3,
+                "zones": 6,
+                "backdrop": {
+                  "shape": 2,
+                  "warm": "#bc9061",
+                  "cool": "#6c728d",
+                  "density": 0.24489349100738764,
+                  "scale": 3.910334529727697,
+                  "drift": 0.004203381682746112
+                },
+                "approachDirections": [
+                  [
+                    0.999749470033,
+                    -0.021876455736,
+                    -0.004734749553
+                  ],
+                  [
+                    0.738339075632,
+                    -0.269074261312,
+                    0.618429018801
+                  ],
+                  [
+                    0.727132637684,
+                    -0.26810857068,
+                    0.63197778564
+                  ]
+                ]
+              },
+              "satellites": [
+                {
+                  "parent": "athyg:4.0:1440825/generated-1",
+                  "id": "athyg:4.0:1440825/generated-1/moon-1",
+                  "name": "Спутник 1 · игровой",
+                  "radius": 489.11887807971414,
+                  "position": [
+                    9140.664977589115,
+                    -3482.7360960109704,
+                    -23043.84206907769
+                  ],
+                  "style": 15,
+                  "origin": "procedural"
+                },
+                {
+                  "parent": "athyg:4.0:1440825/generated-1",
+                  "id": "athyg:4.0:1440825/generated-1/moon-2",
+                  "name": "Спутник 2 · игровой",
+                  "radius": 579.0052232853233,
+                  "position": [
+                    -39926.08599361495,
+                    3473.861479349481,
+                    22985.122355859916
+                  ],
+                  "style": 22,
+                  "origin": "procedural"
+                },
+                {
+                  "parent": "athyg:4.0:1440825/generated-1",
+                  "id": "athyg:4.0:1440825/generated-1/moon-3",
+                  "name": "Спутник 3 · игровой",
+                  "radius": 255.52155366728863,
+                  "position": [
+                    15430.138689779753,
+                    -9799.538098236739,
+                    -64839.540539498295
+                  ],
+                  "style": 5,
+                  "origin": "procedural"
+                }
+              ]
+            },
+            {
+              "id": "athyg:4.0:1440825/generated-2",
+              "name": "Мир 2 · игровой",
+              "origin": "procedural",
+              "position": [
+                12451225.73350284,
+                412194.03734788386,
+                -1629253.3171421927
+              ],
+              "radius": 692.4445954267867,
+              "semiMajorAu": 0.9813720881175247,
+              "environment": {
+                "version": 1,
+                "seed": 1530803714,
+                "signature": "46.1.mineral-6-coated.17.47.9.1530803714",
+                "surface": 46,
+                "variant": 1,
+                "material": 93,
+                "colors": [
+                  "#313e47",
+                  "#a08365",
+                  "#c8b68b",
+                  "#999e98"
+                ],
+                "geography": 5.751386666868347,
+                "warp": 0.12,
+                "clouds": 20,
+                "atmosphere": 12,
+                "aurora": 11,
+                "ring": {
+                  "recipe": 8,
+                  "inner": 1.8469931732444091,
+                  "outer": 2.7801188464602453,
+                  "tilt": [
+                    0.7995603677192469,
+                    0.26905279443599284,
+                    0.008044382371008397
+                  ],
+                  "density": 0.7631471925135702,
+                  "tint": "#c8b68b"
+                },
+                "objects": 17,
+                "layout": 47,
+                "structure": 0,
+                "phenomenon": 9,
+                "moonStyle": 1,
+                "moonOrbit": 6,
+                "moonCount": 0,
+                "zones": 3,
+                "backdrop": {
+                  "shape": 3,
+                  "warm": "#bc9061",
+                  "cool": "#6c728d",
+                  "density": 0.37173774784430863,
+                  "scale": 5.70380523558706,
+                  "drift": 0.003983142584562302
+                },
+                "approachDirections": [
+                  [
+                    -0.999749470033,
+                    0.021876455736,
+                    0.004734749553
+                  ],
+                  [
+                    0.458893523829,
+                    -0.344056917778,
+                    0.81917127093
+                  ],
+                  [
+                    0.653577892399,
+                    -0.292574073028,
+                    0.698023173225
+                  ]
+                ]
+              },
+              "satellites": []
+            },
+            {
+              "id": "athyg:4.0:1440825/generated-3",
+              "name": "Мир 3 · игровой",
+              "origin": "procedural",
+              "position": [
+                27497384.709863134,
+                -10868712.7808697,
+                25217057.11460269
+              ],
+              "radius": 4893.255990929902,
+              "semiMajorAu": 2.6610397759571667,
+              "environment": {
+                "version": 1,
+                "seed": 1617130775,
+                "signature": "63.1.gas-15-exposed.15.24.19.1617130775",
+                "surface": 63,
+                "variant": 1,
+                "material": 126,
+                "colors": [
+                  "#393a55",
+                  "#7a8696",
+                  "#d7cbb2",
+                  "#bba095"
+                ],
+                "geography": 7.596652656923979,
+                "warp": 0.12,
+                "clouds": null,
+                "atmosphere": 9,
+                "aurora": null,
+                "ring": {
+                  "recipe": 30,
+                  "inner": 1.374973598360084,
+                  "outer": 2.611930072270334,
+                  "tilt": [
+                    1.8400403787909538,
+                    0.03242706600576639,
+                    0.020956254191696645
+                  ],
+                  "density": 0.4158520673820749,
+                  "tint": "#d7cbb2"
+                },
+                "objects": 15,
+                "layout": 24,
+                "structure": 17,
+                "phenomenon": 19,
+                "moonStyle": 4,
+                "moonOrbit": 7,
+                "moonCount": 1,
+                "zones": 2,
+                "backdrop": {
+                  "shape": 10,
+                  "warm": "#7a8696",
+                  "cool": "#bba095",
+                  "density": 0.1935556605644524,
+                  "scale": 2.6797104694880542,
+                  "drift": 0.0043308222983032465
+                },
+                "approachDirections": [
+                  [
+                    -0.738339075632,
+                    0.269074261312,
+                    -0.618429018801
+                  ],
+                  [
+                    -0.458893523829,
+                    0.344056917778,
+                    -0.81917127093
+                  ],
+                  [
+                    0.721143555975,
+                    -0.267566884038,
+                    0.639030464252
+                  ]
+                ]
+              },
+              "satellites": []
+            },
+            {
+              "id": "athyg:4.0:1440825/generated-4",
+              "name": "Мир 4 · игровой",
+              "origin": "procedural",
+              "position": [
+                86823712.79507735,
+                -32880641.77290548,
+                77782108.01239875
+              ],
+              "radius": 6919.322428293526,
+              "semiMajorAu": 7.640500272440312,
+              "environment": {
+                "version": 1,
+                "seed": 3411205884,
+                "signature": "49.5.gas-1-coated.27.31.12.3411205884",
+                "surface": 49,
+                "variant": 5,
+                "material": 99,
+                "colors": [
+                  "#393a55",
+                  "#698785",
+                  "#d7cbb2",
+                  "#a0829a"
+                ],
+                "geography": 3.367335168509744,
+                "warp": 0.35,
+                "clouds": null,
+                "atmosphere": 9,
+                "aurora": null,
+                "ring": {
+                  "recipe": 2,
+                  "inner": 1.404681924805045,
+                  "outer": 2.624154002950527,
+                  "tilt": [
+                    1.6859238814145145,
+                    0.41534279042389244,
+                    0.5075873700901866
+                  ],
+                  "density": 0.4413903408870101,
+                  "tint": "#d7cbb2"
+                },
+                "objects": 27,
+                "layout": 31,
+                "structure": 7,
+                "phenomenon": 12,
+                "moonStyle": 4,
+                "moonOrbit": 5,
+                "moonCount": 0,
+                "zones": 5,
+                "backdrop": {
+                  "shape": 3,
+                  "warm": "#698785",
+                  "cool": "#a0829a",
+                  "density": 0.5354996781051159,
+                  "scale": 5.728121373057365,
+                  "drift": 0.0018847031155601144
+                },
+                "approachDirections": [
+                  [
+                    -0.727132637684,
+                    0.26810857068,
+                    -0.63197778564
+                  ],
+                  [
+                    -0.653577892399,
+                    0.292574073028,
+                    -0.698023173225
+                  ],
+                  [
+                    -0.721143555975,
+                    0.267566884038,
+                    -0.639030464252
+                  ]
+                ]
+              },
+              "satellites": []
+            }
+          ]
+        },
+        "stream": {
+          "sector": "0,0,0",
+          "cached": 0,
+          "pending": 0,
+          "queued": 0,
+          "failed": 0,
+          "completed": 124,
+          "discarded": 0
+        },
+        "navigation": {
+          "groups": 0,
+          "points": 0
+        },
+        "planets": {
+          "active": 0,
+          "queued": 0,
+          "created": 2,
+          "disposed": 0
+        },
+        "jobs": {
+          "total": 29,
+          "lastMs": 0.19999998807907104,
+          "maxMs": 0.699999988079071
+        }
+      },
+      "travel": {
+        "systemId": "athyg:4.0:1440825",
+        "atHome": false,
+        "selected": "athyg:4.0:1440825/generated-1",
+        "cruising": false,
+        "cruiseSpeed": 0,
+        "warping": null,
+        "visited": [],
+        "status": "Прибытие: Proxima Centauri. Обычный полёт.",
+        "address": {
+          "version": 1,
+          "anchor": {
+            "catalogId": "athyg:4.0:1440825",
+            "title": "Proxima Centauri",
+            "positionParsecs": [
+              -0.4745,
+              -0.3633,
+              -1.1567
+            ],
+            "frame": "equatorial",
+            "equinox": "J2000.0",
+            "distanceSource": "G_R3",
+            "qualityFlags": []
+          },
+          "local": {
+            "sector": [
+              -89,
+              16,
+              -31
+            ],
+            "offset": [
+              -23630.0753249377,
+              -17457.3202797384,
+              8979.051362028113
+            ]
+          }
+        }
+      },
+      "flightDust": {
+        "kind": "illustrative-local-dust",
+        "count": 420,
+        "speed": 0,
+        "displacement": [
+          0,
+          0,
+          0
+        ],
+        "sample": [
+          -94.94050598144531,
+          54.99604797363281,
+          -188.4995574951172,
+          -442.6173095703125,
+          362.1107177734375,
+          -409.5864562988281,
+          422.2568054199219,
+          -481.7000732421875,
+          96.14598846435547,
+          -247.38172912597656,
+          137.92025756835938,
+          -375.2585144042969
+        ],
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "visible": true,
+        "opacity": 0.9999999117859862,
+        "resets": 2,
+        "originShifts": 2,
+        "maxOffset": 619.6695556640625
+      },
+      "flightFX": {
+        "budgetPerEffect": 260,
+        "maxActive": 2,
+        "effects": {
+          "warp": {
+            "preset": "6749a1da7a6538e4bae6c320db525d94",
+            "requested": false,
+            "ready": false,
+            "failed": false,
+            "particles": 0,
+            "position": null,
+            "simulationUnitsPerFlightUnit": 0.008695652173913044
+          },
+          "scan": {
+            "preset": "d773d301d86b3254180a6887af308eef",
+            "requested": false,
+            "ready": false,
+            "failed": false,
+            "particles": 0,
+            "position": null,
+            "simulationUnitsPerFlightUnit": 0.008
+          },
+          "anomaly": {
+            "preset": "AuraSoftGreen",
+            "requested": true,
+            "ready": true,
+            "failed": false,
+            "particles": 28,
+            "position": [
+              578.3865873850882,
+              -2073.2905870943796,
+              -1069.172913627699
+            ],
+            "simulationUnitsPerFlightUnit": 0.005555555555555556
+          }
+        }
+      },
+      "tour": null,
+      "projectiles": 0,
+      "planetCount": 4,
+      "visibleFullPlanets": 1,
+      "visiblePlanets": 1,
+      "players": {
+        "local": 1,
+        "remote": 0,
+        "bots": 0
+      },
+      "ship": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "worldPosition": {
+          "sector": [
+            -89,
+            16,
+            -31
+          ],
+          "offset": [
+            -23630.0753249377,
+            -17457.3202797384,
+            8979.051362028113
+          ]
+        },
+        "cameraOffset": [
+          0,
+          125,
+          360
+        ],
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      }
+    },
+    "realtime": {
+      "configured": false,
+      "subscribed": false,
+      "systemId": "athyg:4.0:1440825",
+      "sendAttempts": 0,
+      "received": 0,
+      "byEvent": {
+        "position": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "shoot": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "hit": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "die": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "chat": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "sonar": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "voice-signal": {
+          "sendAttempts": 0,
+          "received": 0
+        }
+      }
+    }
+  }
+}

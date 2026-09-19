@@ -1,0 +1,125 @@
+{
+  "origin": "User-supplied EpicToonFX-ThreeJS adaptation; original VFX by Archanor VFX",
+  "usage": "Three candidate presets for local visual review. User authorized use of their purchased/adapted library. Not MIT or CC0.",
+  "presets": [
+    {
+      "id": "d773d301d86b3254180a6887af308eef",
+      "name": "ScanExplosion"
+    },
+    {
+      "id": "6749a1da7a6538e4bae6c320db525d94",
+      "name": "SpinPortalBlue"
+    },
+    {
+      "id": "beb57d582b696b645928b556533430b2",
+      "name": "Plexus"
+    }
+  ],
+  "files": [
+    {
+      "file": "public/assets/fx-preview/effects/d773d301d86b3254180a6887af308eef.json",
+      "category": "asset",
+      "sourceSha256": "56f31dabc3e4df2326d6123919c6e121c6cb530af867922619205d75cc23b761",
+      "bytes": 9162,
+      "sha256": "56f31dabc3e4df2326d6123919c6e121c6cb530af867922619205d75cc23b761"
+    },
+    {
+      "file": "public/assets/fx-preview/textures/a4280d58393322842afb10bcbcfc2a83.png",
+      "category": "asset",
+      "sourceSha256": "0d1f60531d815b052d211ff8112e1e82d792555dbbc6d44d9ae957d93de805cd",
+      "bytes": 48676,
+      "sha256": "0d1f60531d815b052d211ff8112e1e82d792555dbbc6d44d9ae957d93de805cd"
+    },
+    {
+      "file": "public/assets/fx-preview/textures/c164f9cd69bbdea4fb535a9e6624bea8.png",
+      "category": "asset",
+      "sourceSha256": "c8559bc1dc24dcd80f184e0b5ec171a30e3ae7f183554882479a48a35a8412b2",
+      "bytes": 15384,
+      "sha256": "c8559bc1dc24dcd80f184e0b5ec171a30e3ae7f183554882479a48a35a8412b2"
+    },
+    {
+      "file": "public/assets/fx-preview/textures/410f2af71183e2c49baecd196e30fdec.png",
+      "category": "asset",
+      "sourceSha256": "c7203c9376aedd691b7a6ad2ddefd7dbceba4ee292cdd5dac9db3650e7dc8e13",
+      "bytes": 94893,
+      "sha256": "c7203c9376aedd691b7a6ad2ddefd7dbceba4ee292cdd5dac9db3650e7dc8e13"
+    },
+    {
+      "file": "public/assets/fx-preview/effects/6749a1da7a6538e4bae6c320db525d94.json",
+      "category": "asset",
+      "sourceSha256": "dc930f2b3c48687d2b33f814e720d26dd516ac41a1a4481a7628818e2ee9664b",
+      "bytes": 10105,
+      "sha256": "dc930f2b3c48687d2b33f814e720d26dd516ac41a1a4481a7628818e2ee9664b"
+    },
+    {
+      "file": "public/assets/fx-preview/textures/75c822b01a637d547abc69e6f1f590b4.png",
+      "category": "asset",
+      "sourceSha256": "09add033266af5fc6194eb912aaf349813f26598ebe37ccc98300cd11146e822",
+      "bytes": 65262,
+      "sha256": "09add033266af5fc6194eb912aaf349813f26598ebe37ccc98300cd11146e822"
+    },
+    {
+      "file": "public/assets/fx-preview/textures/aeff4b420fe6391408de71cc5ac46f8a.png",
+      "category": "asset",
+      "sourceSha256": "27d87ecb1643fde339f6350b0d4c11b9df088e768220a8c5679160ccb00b1cc0",
+      "bytes": 311047,
+      "sha256": "27d87ecb1643fde339f6350b0d4c11b9df088e768220a8c5679160ccb00b1cc0"
+    },
+    {
+      "file": "public/assets/fx-preview/textures/391a79d0916dfeb459e5daafb9fbe41f.png",
+      "category": "asset",
+      "sourceSha256": "bd68c67e5db6347f12237150c84d6e83055480b11a37906a0d140d3e2294a17c",
+      "bytes": 152784,
+      "sha256": "bd68c67e5db6347f12237150c84d6e83055480b11a37906a0d140d3e2294a17c"
+    },
+    {
+      "file": "public/assets/fx-preview/effects/beb57d582b696b645928b556533430b2.json",
+      "category": "asset",
+      "sourceSha256": "fdc36339db98648dc1939c91957f6c0b4abbc3975e78bddb53f730802bd0dcc6",
+      "bytes": 12981,
+      "sha256": "fdc36339db98648dc1939c91957f6c0b4abbc3975e78bddb53f730802bd0dcc6"
+    },
+    {
+      "file": "public/assets/fx-preview/textures/6eafc1a51ff61174abfe403602dad939.png",
+      "category": "asset",
+      "sourceSha256": "74c2a40f4ad85def13006522a4c814eb39b4c8b3197b4ba1de15b8061ba61961",
+      "bytes": 22244,
+      "sha256": "74c2a40f4ad85def13006522a4c814eb39b4c8b3197b4ba1de15b8061ba61961"
+    },
+    {
+      "file": "src/vendor/epic-fx/epic-fx.js",
+      "category": "runtime",
+      "sourceSha256": "74dacb8e219e0c629303c6c509b3f93921709933fda6db07541f8fe876366207",
+      "bytes": 12165,
+      "sha256": "7d345f1df5bc92ce045999d72f7040404f633b223ed893935589010f8a72407f"
+    },
+    {
+      "file": "src/vendor/epic-fx/simulation.js",
+      "category": "runtime",
+      "sourceSha256": "0375f91328fc68c9aebef9059b32ee15a6590c556bce97edcd241d2fbae50194",
+      "bytes": 18075,
+      "sha256": "0375f91328fc68c9aebef9059b32ee15a6590c556bce97edcd241d2fbae50194"
+    },
+    {
+      "file": "src/vendor/epic-fx/render.js",
+      "category": "runtime",
+      "sourceSha256": "2e95a3e68f9d5191dcc8ef1c682cea35da2996373368c6782d517ddeb53ad89d",
+      "bytes": 7372,
+      "sha256": "2e95a3e68f9d5191dcc8ef1c682cea35da2996373368c6782d517ddeb53ad89d"
+    },
+    {
+      "file": "src/vendor/epic-fx/curves.js",
+      "category": "runtime",
+      "sourceSha256": "066a5ffede81e1aa86760f8907c0c9bb84fcc07dc82b2a8e8ec05c7745774fd7",
+      "bytes": 1852,
+      "sha256": "066a5ffede81e1aa86760f8907c0c9bb84fcc07dc82b2a8e8ec05c7745774fd7"
+    },
+    {
+      "file": "src/vendor/epic-fx/shaders.js",
+      "category": "runtime",
+      "sourceSha256": "134ff8ad826e4d1b74045be7b12af157cdc41dc5b80b3b5887b376b49f895b89",
+      "bytes": 4058,
+      "sha256": "134ff8ad826e4d1b74045be7b12af157cdc41dc5b80b3b5887b376b49f895b89"
+    }
+  ]
+}

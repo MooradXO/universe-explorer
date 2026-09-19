@@ -1,0 +1,93 @@
+{
+  "errors": [],
+  "effects": [
+    {
+      "direction": "cinema",
+      "quality": "HIGH",
+      "paused": false,
+      "ship": "ready",
+      "fps": 200,
+      "drawCalls": 12,
+      "triangles": 45595,
+      "geometries": 12,
+      "textures": 6,
+      "effect": {
+        "selected": "warp",
+        "ready": true,
+        "status": "EpicToonFX · SpinPortalBlue",
+        "particles": 33,
+        "budget": 1200,
+        "bounds": [
+          2.166575915078438,
+          2.1665759150784374,
+          2.1665759150784374
+        ]
+      }
+    },
+    {
+      "direction": "cinema",
+      "quality": "HIGH",
+      "paused": false,
+      "ship": "ready",
+      "fps": 200,
+      "drawCalls": 11,
+      "triangles": 45585,
+      "geometries": 12,
+      "textures": 6,
+      "effect": {
+        "selected": "scan",
+        "ready": true,
+        "status": "EpicToonFX · ScanExplosion",
+        "particles": 28,
+        "budget": 1200,
+        "bounds": [
+          2.9795783591370055,
+          2.979578359137005,
+          2.979578359137005
+        ]
+      }
+    },
+    {
+      "direction": "cinema",
+      "quality": "HIGH",
+      "paused": false,
+      "ship": "ready",
+      "fps": 200,
+      "drawCalls": 13,
+      "triangles": 45687,
+      "geometries": 14,
+      "textures": 5,
+      "effect": {
+        "selected": "anomaly",
+        "ready": true,
+        "status": "EpicToonFX · Plexus",
+        "particles": 43,
+        "budget": 1200,
+        "bounds": [
+          0.9063924816783091,
+          0.9525779953863985,
+          1.0127420935187055
+        ]
+      }
+    }
+  ],
+  "mobile": {
+    "direction": "cinema",
+    "quality": "LOW",
+    "paused": false,
+    "ship": "ready",
+    "fps": 171,
+    "drawCalls": 9,
+    "triangles": 35129,
+    "geometries": 9,
+    "textures": 2,
+    "effect": {
+      "selected": "none",
+      "ready": false,
+      "status": "",
+      "particles": 0,
+      "budget": 450,
+      "bounds": null
+    }
+  }
+}

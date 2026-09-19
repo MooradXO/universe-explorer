@@ -1,3 +1,4 @@
+import { hudIcon } from './HudArt';
 import { usesMobileLayout } from './uiPlatform';
 import './styles/mobile-flight-controls.css';
 
@@ -85,7 +86,7 @@ export class MobileControlsUI {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = `mobile-weapon mobile-weapon--${weapon.type}`;
-      button.innerHTML = `<kbd>${weapon.key}</kbd><span>${weapon.label}</span>`;
+      button.innerHTML = hudIcon(weapon.type) + `<span>${weapon.label}</span>`;
       this.bindTap(button, () => window.dispatchEvent(new CustomEvent<WeaponType>('SelectWeaponType', { detail: weapon.type })));
       this.weaponButtons.set(weapon.type, button);
       weaponRail.appendChild(button);
@@ -133,6 +134,7 @@ export class MobileControlsUI {
     this.setWeapon('laser');
     this.setLaserColor('red');
     this.setVoiceMuted(true);
+    window.addEventListener('HudPanelState', event => { this.mobileLayer.inert = !!(event as CustomEvent).detail.id; });
   }
 
   private bindJoystick(zone: HTMLDivElement, knob: HTMLDivElement): void {
@@ -202,7 +204,8 @@ export class MobileControlsUI {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = `mobile-action mobile-action--${tone}${large ? ' mobile-action--large' : ''}`;
-    button.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true">${ACTION_ICONS[tone as keyof typeof ACTION_ICONS]}</svg><span>${label}</span>`;
+    const symbol = tone === 'fire' ? hudIcon('bounties') : tone === 'boost' ? hudIcon('boost') : `<svg viewBox="0 0 24 24" aria-hidden="true">${ACTION_ICONS[tone as keyof typeof ACTION_ICONS]}</svg>`;
+    button.innerHTML = symbol + `<span>${label}</span>`;
     if (action) this.bindTap(button, action);
     return button;
   }

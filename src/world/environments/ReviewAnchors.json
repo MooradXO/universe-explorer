@@ -1,0 +1,321 @@
+[
+  {
+    "id": "athyg:4.0:1440825",
+    "title": "Proxima Centauri",
+    "names": [
+      "Proxima Centauri"
+    ],
+    "distance": 1.302,
+    "positioned": true,
+    "position": [
+      -0.4745,
+      -0.3633,
+      -1.1567
+    ],
+    "raHours": 14.495985,
+    "decDegrees": -62.679485,
+    "magnitude": 11.187,
+    "spectrum": "M5Ve",
+    "identifiers": [
+      {
+        "catalog": "tycho",
+        "release": "2",
+        "value": "9010-4949-1"
+      },
+      {
+        "catalog": "gaia",
+        "release": "DR3",
+        "value": "5853498713190525696"
+      },
+      {
+        "catalog": "hyg",
+        "release": null,
+        "value": "70666"
+      },
+      {
+        "catalog": "hipparcos",
+        "release": null,
+        "value": "70890"
+      },
+      {
+        "catalog": "gliese-jahreiss",
+        "release": null,
+        "value": "551"
+      }
+    ],
+    "distanceSource": "G_R3",
+    "positionSource": "HIP_X",
+    "flags": [],
+    "gaiaMatches": 1
+  },
+  {
+    "id": "athyg:4.0:586693",
+    "title": "Sirius",
+    "names": [
+      "Sirius",
+      "Alp CMa",
+      "9 CMa"
+    ],
+    "distance": 2.6371,
+    "positioned": true,
+    "position": [
+      -0.4944,
+      2.4768,
+      -0.7584
+    ],
+    "raHours": 6.7525694,
+    "decDegrees": -16.71314306,
+    "magnitude": -1.088,
+    "spectrum": "A0m...",
+    "identifiers": [
+      {
+        "catalog": "tycho",
+        "release": "2",
+        "value": "5949-2777-1"
+      },
+      {
+        "catalog": "hyg",
+        "release": null,
+        "value": "32263"
+      },
+      {
+        "catalog": "hipparcos",
+        "release": null,
+        "value": "32349"
+      },
+      {
+        "catalog": "henry-draper",
+        "release": null,
+        "value": "48915"
+      },
+      {
+        "catalog": "bright-star",
+        "release": null,
+        "value": "2491"
+      },
+      {
+        "catalog": "gliese-jahreiss",
+        "release": null,
+        "value": "244A"
+      }
+    ],
+    "distanceSource": "H",
+    "positionSource": "T",
+    "flags": [],
+    "gaiaMatches": 0
+  },
+  {
+    "id": "athyg:4.0:1897139",
+    "title": "Vega",
+    "names": [
+      "Vega",
+      "Alp Lyr",
+      "3 Lyr"
+    ],
+    "distance": 7.6787,
+    "positioned": true,
+    "position": [
+      0.9605,
+      -5.9082,
+      4.8097
+    ],
+    "raHours": 18.61560722,
+    "decDegrees": 38.78299311,
+    "magnitude": 0.087,
+    "spectrum": "A0V",
+    "identifiers": [
+      {
+        "catalog": "tycho",
+        "release": "2",
+        "value": "3105-2070-1"
+      },
+      {
+        "catalog": "hyg",
+        "release": null,
+        "value": "90979"
+      },
+      {
+        "catalog": "hipparcos",
+        "release": null,
+        "value": "91262"
+      },
+      {
+        "catalog": "henry-draper",
+        "release": null,
+        "value": "172167"
+      },
+      {
+        "catalog": "bright-star",
+        "release": null,
+        "value": "7001"
+      },
+      {
+        "catalog": "gliese-jahreiss",
+        "release": null,
+        "value": "721"
+      }
+    ],
+    "distanceSource": "H",
+    "positionSource": "T",
+    "flags": [],
+    "gaiaMatches": 0
+  },
+  {
+    "id": "athyg:4.0:464934",
+    "title": "Betelgeuse",
+    "names": [
+      "Betelgeuse",
+      "Alp Ori",
+      "58 Ori"
+    ],
+    "distance": 152.6718,
+    "positioned": true,
+    "position": [
+      3.1895,
+      151.3642,
+      19.682
+    ],
+    "raHours": 5.91952477,
+    "decDegrees": 7.40703634,
+    "magnitude": 0.769,
+    "spectrum": "M2IA",
+    "identifiers": [
+      {
+        "catalog": "tycho",
+        "release": "2",
+        "value": "129-1873-1"
+      },
+      {
+        "catalog": "hyg",
+        "release": null,
+        "value": "27919"
+      },
+      {
+        "catalog": "hipparcos",
+        "release": null,
+        "value": "27989"
+      },
+      {
+        "catalog": "henry-draper",
+        "release": null,
+        "value": "39801"
+      },
+      {
+        "catalog": "bright-star",
+        "release": null,
+        "value": "2061"
+      }
+    ],
+    "distanceSource": "H",
+    "positionSource": "T",
+    "flags": [],
+    "gaiaMatches": 0
+  },
+  {
+    "id": "athyg:4.0:2095118",
+    "title": "Altair",
+    "names": [
+      "Altair",
+      "Alp Aql",
+      "53 Aql"
+    ],
+    "distance": 5.1295,
+    "positioned": true,
+    "position": [
+      2.3555,
+      -4.4876,
+      0.7907
+    ],
+    "raHours": 19.84630057,
+    "decDegrees": 8.86738491,
+    "magnitude": 0.955,
+    "spectrum": "A1N",
+    "identifiers": [
+      {
+        "catalog": "tycho",
+        "release": "2",
+        "value": "1058-3399-1"
+      },
+      {
+        "catalog": "hyg",
+        "release": null,
+        "value": "97338"
+      },
+      {
+        "catalog": "hipparcos",
+        "release": null,
+        "value": "97649"
+      },
+      {
+        "catalog": "henry-draper",
+        "release": null,
+        "value": "187642"
+      },
+      {
+        "catalog": "bright-star",
+        "release": null,
+        "value": "7557"
+      },
+      {
+        "catalog": "gliese-jahreiss",
+        "release": null,
+        "value": "768"
+      }
+    ],
+    "distanceSource": "H",
+    "positionSource": "T",
+    "flags": [],
+    "gaiaMatches": 0
+  },
+  {
+    "id": "athyg:4.0:390195",
+    "title": "Rigel",
+    "names": [
+      "Rigel",
+      "Bet Ori",
+      "19 Ori"
+    ],
+    "distance": 264.5503,
+    "positioned": true,
+    "position": [
+      51.6011,
+      256.7097,
+      -37.74
+    ],
+    "raHours": 5.24229757,
+    "decDegrees": -8.20163919,
+    "magnitude": 0.283,
+    "spectrum": "B8 Ia",
+    "identifiers": [
+      {
+        "catalog": "tycho",
+        "release": "2",
+        "value": "5331-1752-1"
+      },
+      {
+        "catalog": "hyg",
+        "release": null,
+        "value": "24378"
+      },
+      {
+        "catalog": "hipparcos",
+        "release": null,
+        "value": "24436"
+      },
+      {
+        "catalog": "henry-draper",
+        "release": null,
+        "value": "34085"
+      },
+      {
+        "catalog": "bright-star",
+        "release": null,
+        "value": "1713"
+      }
+    ],
+    "distanceSource": "H",
+    "positionSource": "T",
+    "flags": [],
+    "gaiaMatches": 0
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "created": "2026-09-17",
+  "tool": "image_gen.imagegen",
+  "purpose": "Source material details for procedural 3D worlds, not complete planet appearances.",
+  "records": [
+    {
+      "name": "rock",
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless terrain albedo texture for a cinematic 3D space game. Generate one high-detail orthographic satellite surface texture, wide 2:1 aspect. It fills the entire image edge to edge. Dry airless grey-brown basaltic regolith with convincing circular impact craters in varied sizes, subdued ejecta rays, older overlapping basins, fine dusty rough terrain and fractured patches. Realistic orbital geology, physically plausible subdued charcoal, warm grey and muted umber. Flat neutral diffuse illumination: no large directional shadows, no sky, no stars, no planet sphere, no horizon, no vignette, no text or borders. Uniform detail distribution, smoothly tileable on opposite sides. Fine believable material texture, not painterly, not cartoony, avoid repeating identical craters. Intended as material detail sampled by a procedural planetary shader, not a screenshot of a planet."
+    },
+    {
+      "name": "ice",
+      "prompt": "Photorealistic natural game material asset. One seamless wide 2:1 orthographic orbital albedo texture of ancient fractured water ice: vast ivory and pale blue polygonal plates, branching dark blue fissures, fine frost grains, subtle rust mineral inclusions along cracks, smooth translucent ice patches. Realistic frozen-moon geology, not crystalline fantasy. Entire image is terrain, flat neutral diffuse illumination, no directional shadows, no globe, no sky, no horizon, no border, no words. Tileable edges. Crisp realistic detail and strong cracks at multiple sizes; moderate contrast, cinematic restrained palette. This is a texture sampled as detail beneath independent procedural global geology."
+    },
+    {
+      "name": "mineral",
+      "prompt": "Photorealistic natural game material asset. One seamless wide 2:1 orthographic satellite albedo texture of an alien mineral desert: deep charcoal basalt plates, oxidized copper layered sediment, pale desaturated mineral veins, small cracked salt flats and sinuous stratified rocky ridges. Plausible geology under neutral diffuse lighting, detailed rough microtexture. No shadows from a sun, no glow or bloom, no sphere or horizon, no sky, no labels or border. Seamlessly tileable terrain covers entire image. Restrained cinematic bronze, slate and grey tones, very realistic surface material."
+    },
+    {
+      "name": "cloud",
+      "prompt": "A production game texture, wide 2:1 equirectangular global cloud opacity map. Black background is transparent atmosphere, clouds are grayscale white. Satellite-scale realistic turbulent cloud systems: several large spiral cyclones, filamentary fronts, broad broken stratocumulus patches, thin high cirrus, variable clear gaps. Seamless wrap left to right, smooth low detail near top and bottom pole rows. Flat cloud density only, no planet sphere, no blue earth underneath, no lighting or shadow, no text or frame. Subtle fine wispy detail. Used as a neutral density source for varied procedural planetary cloud layers."
+    }
+  ]
+}

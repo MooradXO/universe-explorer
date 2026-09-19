@@ -1,0 +1,14 @@
+[
+  {
+    "guard": false,
+    "opened": true,
+    "held": true,
+    "value": "star"
+  },
+  {
+    "guard": true,
+    "opened": true,
+    "held": true,
+    "value": "star"
+  }
+]

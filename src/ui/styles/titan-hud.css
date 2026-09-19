@@ -1,0 +1,236 @@
+/* Titan & Copper: raster artwork decorates live, accessible controls. */
+body.titan-ui #ui-layer { --hud-paper:#ece8df; --hud-brass-hot:#edb879; --hud-copper:#b58a5c; font-family:'Rajdhani',sans-serif; }
+body.titan-ui .hud-icon { width:32px; height:32px; object-fit:contain; flex:0 0 auto; pointer-events:none; }
+body.titan-ui .top-command-bar { position:absolute; z-index:1010; top:40px; left:50%; transform:translateX(-50%); display:flex; gap:3px; width:max-content; max-width:calc(100vw - 60px); padding:0; pointer-events:auto; }
+body.titan-ui .command-button { box-sizing:border-box; display:flex; align-items:center; justify-content:center; gap:9px; width:130px; height:48px; margin:0; padding:8px 12px; border:0; border-radius:0; color:#ede9e0; background:transparent url('/assets/ui/titan-v1/button-surface.png') center/100% 220% no-repeat; font:700 14px 'Rajdhani',sans-serif; letter-spacing:1.7px; cursor:pointer; text-shadow:0 1px 2px #000; }
+body.titan-ui .command-button .hud-icon { width:30px; height:30px; }
+body.titan-ui .command-button:hover, body.titan-ui .command-button.is-active { filter:brightness(1.3); box-shadow:inset 0 -2px #edb879; }
+body.titan-ui .command-button:disabled { opacity:.45; cursor:default; filter:none; }
+body.titan-ui .command-button.has-unread::after { content:''; width:5px; height:5px; border-radius:50%; background:#8bdcdd; position:absolute; margin:0 0 27px 105px; }
+body.titan-ui .cockpit-corners { position:absolute; inset:17px; pointer-events:none; z-index:90; }
+body.titan-ui .cockpit-corners i { position:absolute; width:23px; height:21px; border-color:#bc9764; border-style:solid; border-width:0; }
+body.titan-ui .cockpit-corners .tl { top:0; left:0; border-top-width:1px; border-left-width:1px; }
+body.titan-ui .cockpit-corners .tr { top:0; right:0; border-top-width:1px; border-right-width:1px; }
+body.titan-ui .cockpit-corners .bl { bottom:0; left:0; border-bottom-width:1px; border-left-width:1px; }
+body.titan-ui .cockpit-corners .br { bottom:0; right:0; border-bottom-width:1px; border-right-width:1px; }
+body.titan-ui #hud-crosshair { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:96px; height:96px; opacity:.85; background:url('/assets/ui/titan-v1/reticle.png') center/contain no-repeat; pointer-events:none; }
+
+body.titan-ui .hud-window { position:absolute; z-index:1000!important; box-sizing:border-box; flex-direction:column; gap:0; padding:22px!important; border:0!important; border-radius:0; background:transparent!important; border-image:url('/assets/ui/titan-v1/panel-surface.png') 90 fill / 22px / 0 stretch!important; box-shadow:0 18px 60px #0008!important; clip-path:none!important; backdrop-filter:none; color:#ece8df!important; font:15px/1.5 'Rajdhani',sans-serif; pointer-events:auto; max-height:calc(100dvh - 255px)!important; overflow:auto; overscroll-behavior:contain; scrollbar-color:#856745 #141719; }
+body.titan-ui .hud-window[hidden] { display:none!important; }
+body.titan-ui .hud-window--right { top:204px; right:25px; width:430px; }
+body.titan-ui .hud-window--system { top:105px; left:50%; transform:translateX(-50%); width:370px; }
+body.titan-ui .hud-window--center { position:absolute!important; top:50%!important; left:50%!important; right:auto; transform:translate(-50%,-50%)!important; width:min(840px,calc(100vw - 80px))!important; max-width:none; }
+body.titan-ui .hud-window__header { display:flex; align-items:center; gap:12px; padding:0 0 15px; margin:0 0 18px; border-bottom:1px solid #80664780; flex-shrink:0; }
+body.titan-ui .hud-window__header h2 { margin:0; color:#eee9df; font:600 25px/1.2 'Rajdhani',sans-serif; letter-spacing:2px; }
+body.titan-ui .hud-window__header .hud-icon { width:35px; height:35px; }
+body.titan-ui .hud-window button, body.titan-ui .star-map button { min-height:38px; padding:9px 16px; border:1px solid #a17b50; border-radius:1px; background:#211e19 url('/assets/ui/titan-v1/button-surface.png') center/100% 220% no-repeat; color:#eae5d9; font:600 14px 'Rajdhani',sans-serif; letter-spacing:1px; cursor:pointer; box-shadow:none; }
+body.titan-ui .hud-window button:hover, body.titan-ui .star-map button:hover { filter:brightness(1.25); }
+body.titan-ui .hud-window button:disabled, body.titan-ui .star-map button:disabled { opacity:.4; cursor:default; filter:none; }
+body.titan-ui .hud-window .hud-close { margin:0 0 0 auto!important; align-self:center!important; min-width:36px!important; min-height:36px!important; width:36px!important; height:36px!important; padding:0!important; border:0!important; background:none!important; font:300 30px/1 'Rajdhani',sans-serif!important; color:#cbbba1!important; box-shadow:none!important; }
+body.titan-ui #ui-layer :is(button,input,summary,[role=combobox]):focus-visible { outline:2px solid #edb879; outline-offset:2px; }
+body.titan-ui .system-actions { display:grid; gap:12px; }
+body.titan-ui .system-actions button { display:grid; gap:4px; text-align:left; padding:15px 18px; }
+body.titan-ui .system-actions small { font-size:13px; color:#b2ada4; letter-spacing:.2px; font-weight:400; }
+body.titan-ui .manual-grid { min-height:0; overflow:auto; display:grid; grid-template-columns:1fr 1fr; gap:20px 35px; }
+body.titan-ui .manual-grid h3 { margin:0 0 10px; font-size:14px; color:#d4ae77; letter-spacing:1.5px; }
+body.titan-ui .manual-grid dl { display:grid; grid-template-columns:125px 1fr; margin:0 0 20px; gap:8px 10px; font-size:15px; }
+body.titan-ui .manual-grid dt { color:#ede6d6; }
+body.titan-ui .manual-grid dd { margin:0; color:#b5b6b4; }
+body.titan-ui .manual-navigation { grid-column:1/-1; border-top:1px solid #81644570; padding-top:15px; }
+body.titan-ui .manual-navigation p { margin:7px 0; color:#babbb8; }
+body.titan-ui .wanted-columns { display:flex; justify-content:space-between; color:#9f9483; font-size:12px; letter-spacing:1.5px; margin:0 8px 10px; }
+body.titan-ui .command-leaderboard { display:grid; gap:9px; }
+body.titan-ui .command-leaderboard__row { display:grid; grid-template-columns:24px 32px minmax(0,1fr) auto; align-items:center; gap:9px; padding:14px 10px; border:1px solid #745b3f70; background:#060b0c80; }
+body.titan-ui .wanted-rank { color:#b38f63; font:13px 'Share Tech Mono',monospace; }
+body.titan-ui .wanted-pilot { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:18px; }
+body.titan-ui .command-leaderboard__row strong { color:#dcb884; font-weight:500; font-size:16px; }
+body.titan-ui .comms-channel { margin-bottom:15px; font-size:12px; letter-spacing:2px; color:#cfaf7f; }
+body.titan-ui .chat-container { height:480px; }
+body.titan-ui .chat-messages { flex:1; min-height:0; overflow-y:auto; display:flex; flex-direction:column; gap:15px; padding:0 4px 18px; }
+body.titan-ui .chat-messages:empty::after { content:'Channel ready. Say hello to nearby pilots.'; color:#989d9c; font-size:15px; }
+body.titan-ui .chat-message { display:grid; gap:4px; overflow-wrap:anywhere; }
+body.titan-ui .chat-message strong { font-size:14px; color:#cbb58f; font-weight:600; }
+body.titan-ui .chat-message span { color:#d9dbd8; font-size:16px; }
+body.titan-ui .chat-compose { display:flex; gap:8px; padding-top:15px; border-top:1px solid #80664780; flex-shrink:0; }
+body.titan-ui .chat-compose input { min-width:0; flex:1; border:1px solid #756045; background:#080d10; color:#e7e7e0; font:16px 'Rajdhani',sans-serif; padding:10px; }
+body.titan-ui .chat-compose input::placeholder { color:#a3a39a; }
+body.titan-ui .hangar-content { min-height:0; overflow:auto; padding-right:3px; }
+body.titan-ui .hangar-balance { display:flex; justify-content:space-between; gap:12px; font-size:13px; letter-spacing:1px; color:#a9a393; margin-bottom:18px; }
+body.titan-ui .hangar-balance strong { color:#ddb97c; font-size:18px; white-space:nowrap; }
+body.titan-ui .hangar-section-title { margin:17px 0 10px!important; padding:0!important; color:#ba9b71!important; font:600 13px 'Rajdhani',sans-serif!important; letter-spacing:2px!important; background:none!important; border:0!important; text-shadow:none!important; }
+body.titan-ui .hangar-maintenance, body.titan-ui .hangar-weapons { display:grid; gap:14px; grid-template-columns:repeat(2,minmax(0,1fr)); }
+body.titan-ui .hangar-weapons { grid-template-columns:repeat(3,minmax(0,1fr)); }
+body.titan-ui .hangar-card { display:flex; flex-direction:column; align-items:flex-start; padding:18px; border:1px solid #745b3f70; background:#080d0f80; }
+body.titan-ui .hangar-card .hud-icon { width:45px; height:45px; margin-bottom:8px; }
+body.titan-ui .hangar-card h3 { margin:0 0 6px; font-size:18px; font-weight:600; letter-spacing:.5px; }
+body.titan-ui .hangar-card p { margin:0 0 18px; font-size:14px; color:#aaaead; }
+body.titan-ui .hangar-card button { margin-top:auto; width:100%; font-size:13px; }
+body.titan-ui .hangar-maintenance .hangar-card { display:grid; grid-template-columns:45px 1fr; gap:0 14px; }
+body.titan-ui .hangar-maintenance .hud-icon { grid-row:1/3; }
+body.titan-ui .hangar-maintenance button { grid-column:1/-1; }
+body.titan-ui .object-window { padding:28px!important; }
+body.titan-ui .object-window h2 { margin:0; color:#dfbc84; }
+body.titan-ui .object-window p { color:#b7b8b4; }
+
+body.titan-ui .radar-shell { top:auto!important; bottom:28px; left:26px!important; width:210px!important; height:210px!important; padding:9px!important; background:transparent; border:0; box-shadow:none; clip-path:none; }
+body.titan-ui .radar-shell::before, body.titan-ui .radar-shell__heading { display:none; }
+body.titan-ui .radar-shell::after { display:block; inset:0; width:auto!important; height:auto!important; border:0; border-radius:0; box-shadow:none; background:url('/assets/ui/titan-v1/radar-rim.png') center/contain no-repeat; }
+body.titan-ui .radar-display { width:100%!important; height:100%!important; border:0; box-shadow:none!important; background:radial-gradient(circle,#07232195,#02080bc9 70%); }
+body.titan-ui #hud-stats-container { top:auto!important; bottom:49px!important; left:265px!important; width:296px!important; padding:0!important; border:0!important; background:none!important; box-shadow:none!important; clip-path:none!important; gap:8px; }
+body.titan-ui .flight-status::before { display:none; }
+body.titan-ui .flight-status__primary { width:100%; padding:0; border:0; }
+body.titan-ui .flight-status__bar { display:grid; grid-template-columns:29px 57px minmax(0,1fr) 45px; gap:9px; align-items:center; padding:8px 0; border-top:1px solid #9c805e60; margin:0!important; }
+body.titan-ui .flight-status__bar .hud-icon { width:29px; height:29px; grid-column:1; grid-row:1; }
+body.titan-ui .flight-status__bar-header { display:contents; font:600 14px 'Rajdhani',sans-serif; letter-spacing:1px; }
+body.titan-ui .flight-status__bar-header > :first-child { grid-column:2; grid-row:1; color:var(--status-color); }
+body.titan-ui .flight-status__bar-value { grid-column:4; grid-row:1; text-align:right; color:#ece8df; text-shadow:none; font:15px 'Share Tech Mono',monospace; }
+body.titan-ui .flight-status__bar-track { grid-column:3; grid-row:1; height:7px; border:0; transform:none; background:#1c211f; }
+body.titan-ui .flight-status__bar-fill { background:var(--status-color); box-shadow:0 0 6px color-mix(in srgb,var(--status-color) 25%,transparent); }
+body.titan-ui .flight-status__bar--hull { --status-color:#f47d65; }
+body.titan-ui .flight-status__bar--shield { --status-color:#70dce7; }
+body.titan-ui .flight-status__bar--boost { --status-color:#f1cd69; }
+body.titan-ui .flight-status__systems { display:none; width:100%; padding:0; }
+body.titan-ui .flight-status__systems.has-damage { display:block; }
+body.titan-ui #hud-fps-counter.flight-fps { display:none!important; }
+body.titan-ui .flight-kill-feed { top:205px; right:27px; }
+body.titan-ui[data-hud-window]:not([data-hud-window=""]) .flight-kill-feed { visibility:hidden; }
+
+body.titan-ui .system-navigation { top:112px; right:25px; z-index:1010; display:flex; align-items:center; gap:12px; width:365px; max-height:none; overflow:visible; box-sizing:border-box; padding:15px 17px; border:0; border-image:url('/assets/ui/titan-v1/panel-surface.png') 90 fill / 14px / 0 stretch; background:transparent; color:#e8e4dc; }
+body.titan-ui .navigation-symbol { width:42px; height:42px; flex-shrink:0; display:grid; place-items:center; border-radius:50%; }
+body.titan-ui .navigation-symbol .hud-icon { width:42px; height:42px; }
+body.titan-ui .is-home-system .navigation-symbol { background:radial-gradient(circle at 30% 30%,transparent 25%,#02070bc9 76%),url('/assets/environments/low/earth.webp') 43% center/auto 100%; border:1px solid #56737c; box-shadow:inset -6px -3px 8px #000,0 0 5px #84c1d02a; }
+body.titan-ui .is-home-system .navigation-symbol .hud-icon { visibility:hidden; }
+body.titan-ui .navigation-destination { min-width:0; flex:1; }
+body.titan-ui .system-navigation__heading { display:flex; align-items:center; gap:5px; }
+body.titan-ui .system-navigation__heading strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font:600 11px 'Rajdhani',sans-serif; letter-spacing:1.5px; color:#d7b787; }
+body.titan-ui .system-navigation button { width:auto; border:0; color:#ece6d9; background:transparent; margin:0; font:600 15px 'Rajdhani',sans-serif; letter-spacing:1.2px; cursor:pointer; }
+body.titan-ui .system-navigation .navigation-info { margin-left:auto; min-height:20px; height:20px; padding:0 5px; color:#ccb99b; line-height:15px; }
+body.titan-ui .system-navigation .navigation-cruise { flex:0 0 77px; min-height:38px; padding:8px; background:url('/assets/ui/titan-v1/button-surface.png') center/100% 220%; font-size:12px; }
+body.titan-ui .system-object-picker [role=combobox] { width:100%; min-height:26px; padding:2px 0; text-transform:uppercase; text-align:left; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+body.titan-ui .system-object-picker [role=listbox] { position:absolute; top:calc(100% + 19px); right:-99px; width:328px; box-sizing:border-box; max-height:min(300px,calc(100dvh - 225px)); padding:10px; background:#101619; border:1px solid #a28059; box-shadow:0 12px 30px #000b; }
+body.titan-ui .system-object-picker [role=option] { width:100%; min-height:37px; padding:7px 10px; font-size:14px; letter-spacing:.8px; }
+body.titan-ui .system-object-picker [role=option]:hover, body.titan-ui .system-object-picker [role=option].is-active { background:#383127; }
+body.titan-ui .navigation-details__body { display:grid; gap:18px; color:#b7b9b6; }
+body.titan-ui .navigation-details__body output { color:#e3c18b; font-size:20px; }
+body.titan-ui .navigation-details__body p { margin:0; }
+body.titan-ui .system-navigation__note { font-size:13px; line-height:1.5; }
+body.titan-ui .system-navigation__credits { font-size:12px; color:#ad9471; line-height:1.5; }
+
+body.titan-ui .star-map { color:#ece8df; }
+body.titan-ui .star-map .hud-metal-panel { border:0; border-image:url('/assets/ui/titan-v1/panel-surface.png') 90 fill / 17px / 0 stretch; background:transparent; clip-path:none; box-shadow:none; }
+body.titan-ui .star-map h1 { font-size:25px; font-weight:600; }
+body.titan-ui .star-map__header { padding:15px 23px; }
+body.titan-ui .star-map__search, body.titan-ui .star-map__card { width:270px; padding:23px; }
+body.titan-ui .star-map__tools { padding:10px; }
+body.titan-ui .star-map__hint, body.titan-ui .star-map__card dl { font-size:14px; }
+body.titan-ui .star-map__result small { font-size:12px; }
+body.titan-ui .star-map input { border-color:#8d7454; background:#081016; }
+body.titan-ui .star-map__online-search select { border-color:#8d7454; }
+body.titan-ui .star-map__eyebrow { color:#cfb389; }
+body.titan-ui .star-map button { letter-spacing:.5px; font-size:14px; }
+
+body.titan-ui .mobile-flight-controls { z-index:900; }
+body.titan-ui[data-hud-window]:not([data-hud-window=""]) .mobile-flight-controls { visibility:hidden; }
+body.titan-ui .mobile-weapon-rail { top:auto; bottom:88px; right:13px; padding:4px; grid-template-columns:repeat(3,64px) 44px; border:1px solid #96734d80; background:#101719e0; box-shadow:none; clip-path:none; }
+body.titan-ui .mobile-weapon-rail::after { display:none; }
+body.titan-ui .mobile-weapon, body.titan-ui .mobile-color-button { border-color:#796345; background:url('/assets/ui/titan-v1/button-surface.png') center/100% 220%; clip-path:none; }
+body.titan-ui .mobile-weapon.is-selected { border-color:#d8b177; box-shadow:inset 0 -2px #d8b177; background:#463727; }
+body.titan-ui .mobile-joystick { border:1px solid #ba8e5c; box-shadow:0 0 0 5px #060f1280; background:radial-gradient(circle,#3a332340,#030b11b0); }
+body.titan-ui .mobile-joystick__knob { background:radial-gradient(circle at 35% 30%,#655744,#131b1e 75%); border-color:#aa8457; box-shadow:0 3px 8px #0009; }
+body.titan-ui .mobile-action { border:1px solid #a27f52; background:#0a1218c9; box-shadow:none; color:#d9c09a; }
+body.titan-ui .mobile-action--fire { color:#f1846c; border-color:#c47858; }
+body.titan-ui .mobile-action--boost { color:#edc57b; }
+body.titan-ui .mobile-action .hud-icon { width:24px; height:24px; }
+body.titan-ui .mobile-weapon .hud-icon { width:24px; height:24px; }
+body.titan-ui .mobile-weapon kbd { display:none; }
+body.titan-ui .mobile-weapon span { font-size:8px; }
+body.titan-ui .mobile-look-zone { top:145px; }
+@media (max-width:1300px) and (min-width:1025px) and (min-height:551px) {
+  body.titan-ui .command-button { width:114px; font-size:12px; }
+  body.titan-ui .top-command-bar { top:25px; }
+  body.titan-ui .system-navigation { top:90px; }
+  body.titan-ui .hud-window--right { top:180px; }
+  body.titan-ui .hud-window--system { top:85px; }
+}
+@media (max-width:1024px), (max-height:550px) {
+  body.titan-ui .top-command-bar { top:7px; gap:2px; max-width:calc(100vw - 40px); }
+  body.titan-ui .command-button { width:91px; height:38px; gap:5px; padding:4px 7px; font-size:11px; letter-spacing:.7px; }
+  body.titan-ui .command-button .hud-icon { width:23px; height:23px; }
+  body.titan-ui .cockpit-corners { inset:8px; }
+  body.titan-ui .cockpit-corners i { width:14px; height:13px; }
+  body.titan-ui .system-navigation { top:56px; right:12px; width:294px; gap:8px; padding:10px 13px; }
+  body.titan-ui .navigation-symbol { width:30px; height:30px; }
+  body.titan-ui .navigation-symbol .hud-icon { width:30px; height:30px; }
+  body.titan-ui .system-navigation__heading strong { font-size:9px; letter-spacing:1px; }
+  body.titan-ui .system-navigation .navigation-cruise { flex-basis:63px; min-height:34px; font-size:11px; }
+  body.titan-ui .system-object-picker [role=combobox] { font-size:13px; }
+  body.titan-ui .system-object-picker [role=listbox] { width:268px; right:-79px; top:calc(100% + 14px); max-height:calc(100dvh - 150px); }
+  body.titan-ui .radar-shell { left:14px!important; bottom:147px!important; width:100px!important; height:100px!important; padding:4px!important; }
+  body.titan-ui #hud-stats-container { left:127px!important; bottom:151px!important; width:220px!important; }
+  body.titan-ui .flight-status__bar { grid-template-columns:20px 45px minmax(0,1fr) 35px; gap:5px; padding:3px 0; }
+  body.titan-ui .flight-status__bar .hud-icon { width:20px; height:20px; }
+  body.titan-ui .flight-status__bar-header { font-size:11px; letter-spacing:.7px; }
+  body.titan-ui .flight-status__bar-value { font-size:11px; }
+  body.titan-ui .flight-status__bar-track { height:5px; }
+  body.titan-ui .flight-status__systems.has-damage { position:absolute; bottom:100%; background:#081014df; padding:5px; }
+  body.titan-ui #hud-crosshair { width:68px; height:68px; }
+  body.titan-ui .hud-window { max-height:calc(100dvh - 143px)!important; padding:18px!important; }
+  body.titan-ui .hud-window--right { top:127px; right:12px; width:350px; }
+  body.titan-ui .hud-window--system { top:58px; width:320px; max-height:calc(100dvh - 78px)!important; }
+  body.titan-ui .hud-window--center { top:127px!important; left:50%!important; transform:translateX(-50%)!important; width:min(740px,calc(100vw - 32px))!important; }
+  body.titan-ui .hud-window__header { margin-bottom:12px; padding-bottom:10px; }
+  body.titan-ui .hud-window__header h2 { font-size:20px; }
+  body.titan-ui .hud-window__header .hud-icon { width:26px; height:26px; }
+  body.titan-ui .chat-container { height:370px; }
+  body.titan-ui .comms-channel { margin-bottom:8px; font-size:10px; }
+  body.titan-ui .command-leaderboard__row { padding:8px; }
+  body.titan-ui .wanted-pilot { font-size:15px; }
+  body.titan-ui .command-leaderboard__row strong { font-size:14px; }
+  body.titan-ui .manual-grid { gap:12px 20px; }
+  body.titan-ui .manual-grid dl { grid-template-columns:110px 1fr; font-size:13px; gap:5px; }
+  body.titan-ui .manual-navigation p { font-size:13px; }
+  body.titan-ui .hangar-card { padding:12px; }
+  body.titan-ui .hangar-card h3 { font-size:16px; }
+  body.titan-ui .hangar-card p { font-size:13px; }
+  body.titan-ui .hangar-card button { font-size:12px; }
+  body.titan-ui[data-hud-window]:not([data-hud-window=""]) :is(.radar-shell,#hud-stats-container,#hud-crosshair) { visibility:hidden; }
+  body.titan-ui .star-map__header { padding:9px 16px; }
+  body.titan-ui .star-map h1 { font-size:18px; }
+  body.titan-ui .star-map__search, body.titan-ui .star-map__card { width:184px; padding:16px; }
+  body.titan-ui .star-map__hint, body.titan-ui .star-map__card dl { font-size:12px; }
+  body.titan-ui .star-map__tools { padding:5px; bottom:57px; }
+  body.titan-ui .star-map button { font-size:12px; }
+}
+@media (max-width:720px) {
+  body.titan-ui .command-button { width:82px; font-size:10px; gap:3px; padding:4px; }
+  body.titan-ui .command-button .hud-icon { width:20px; height:20px; }
+  body.titan-ui .hangar-weapons { grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+  body.titan-ui .hangar-maintenance { gap:8px; }
+  body.titan-ui .hangar-card { padding:9px; }
+  body.titan-ui .hangar-balance { font-size:10px; }
+  body.titan-ui .hud-window--right { width:320px; }
+  body.titan-ui .star-map__search,body.titan-ui .star-map__card { width:157px; }
+  body.titan-ui .star-map__tools { gap:3px; }
+  body.titan-ui .star-map__tools button { padding:4px 6px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  body.titan-ui .hud-window, body.titan-ui .command-button { transition:none; }
+}
+
+/* Legacy ID rules must not give HANGAR a different colour or baseline. */
+body.titan-ui #btn-hangar { border:0!important; color:#ede9e0!important; text-shadow:0 1px 2px #000!important; box-shadow:none!important; background:transparent url('/assets/ui/titan-v1/button-surface.png') center/100% 220% no-repeat!important; }
+body.titan-ui #btn-hangar:hover, body.titan-ui #btn-hangar.is-active { box-shadow:inset 0 -2px #edb879!important; }
+body.titan-ui .hud-window button, body.titan-ui .star-map button { border-color:transparent; }
+body.titan-ui .base-ship-label { width:auto; max-width:190px; padding:7px 12px; border:0; background:#080f12c9; border-left:1px solid #a88960; box-shadow:none; clip-path:none; text-align:left; }
+body.titan-ui .base-ship-label__callsign { margin:0; font-size:12px; letter-spacing:1px; color:#dcd2bf; }
+body.titan-ui .base-ship-label__dock { color:#a48f70; font:8px 'Rajdhani',sans-serif; letter-spacing:1px; }
+body.titan-ui[data-hud-window]:not([data-hud-window=""]) .base-ship-label { visibility:hidden; }
+body.titan-ui .hud-window::before { content:''; position:absolute; inset:12px; z-index:-1; background:#101416; }
+
+/* Reserve the command row, destination widget and flight instruments around central windows. */
+body.titan-ui .hud-window--center { top:204px!important; bottom:196px; margin-block:auto; height:max-content; max-height:calc(100dvh - 400px)!important; transform:translateX(-50%)!important; }
+body.titan-ui .hud-window--system { left:max(25px,calc(50% - 397px)); transform:none; }
+@media (max-width:1024px), (max-height:550px) {
+  body.titan-ui .hud-window--center { top:127px!important; bottom:auto; margin-block:0; max-height:calc(100dvh - 143px)!important; }
+  body.titan-ui .hud-window--system { top:127px; left:12px; max-height:calc(100dvh - 143px)!important; }
+}

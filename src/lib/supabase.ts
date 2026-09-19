@@ -10,9 +10,10 @@ export const supabase = createClient(
   supabaseAnonKey || '<token>',
   {
     auth: {
-      persistSession: isSupabaseConfigured,
-      autoRefreshToken: isSupabaseConfigured,
-      detectSessionInUrl: isSupabaseConfigured,
+      // Entry is guest-only; old OAuth sessions must not resume in the background.
+      persistSession: false,
+      autoRefreshToken: false,
+      detectSessionInUrl: false,
     },
   },
 );

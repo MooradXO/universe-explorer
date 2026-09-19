@@ -21,6 +21,8 @@ export interface BotState {
 export class BotAI {
   private botStates: Map<string, BotState> = new Map();
   private maxGalaxyRadius = 25000;
+  private readonly patrolCenter = new THREE.Vector3();
+  private readonly obstaclePosition = new THREE.Vector3();
   
   constructor(
     private scene: THREE.Scene,
@@ -28,7 +30,13 @@ export class BotAI {
     private combatSystem: CombatSystem
   ) {}
 
-  public spawnBots(count: number) {
+  public shiftOrigin(delta: THREE.Vector3) {
+    this.patrolCenter.sub(delta);
+    for (const state of this.botStates.values()) state.wanderTarget.sub(delta);
+  }
+
+  public spawnBots(count: number, center = new THREE.Vector3()) {
+    this.patrolCenter.copy(center);
     // Clear old bots if any
     for (const id of this.multiplayer.players.keys()) {
       if (id.startsWith('bot_')) {
@@ -51,6 +59,7 @@ export class BotAI {
         (Math.random() - 0.5) * 30000
       );
 
+      startPos.add(this.patrolCenter);
       const squadId = Math.floor(i / 5); // 5 bots per squad
       
       this.botStates.set(id, {
@@ -70,7 +79,7 @@ export class BotAI {
           (Math.random() - 0.5) * 30000,
           (Math.random() - 0.5) * 4000,
           (Math.random() - 0.5) * 30000
-        )
+        ).add(this.patrolCenter)
       });
 
       // Synchronize with combatSystem bot HP
@@ -235,7 +244,7 @@ export class BotAI {
                 (Math.random() - 0.5) * 30000,
                 (Math.random() - 0.5) * 4000,
                 (Math.random() - 0.5) * 30000
-              );
+              ).add(this.patrolCenter);
             }
             const wanderForce = state.wanderTarget.clone().sub(p.position).normalize().multiplyScalar(200);
             steer.add(wanderForce);
@@ -303,18 +312,19 @@ export class BotAI {
         const radius = star.userData.radius || 150;
         const dangerZone = radius + 600;
         const dangerZoneSq = dangerZone * dangerZone;
-        const distSq = p.position.distanceToSquared(star.position);
+        star.getWorldPosition(this.obstaclePosition);
+        const distSq = p.position.distanceToSquared(this.obstaclePosition);
         if (distSq < dangerZoneSq) {
           const dist = Math.sqrt(distSq);
-          const avoidForce = p.position.clone().sub(star.position).normalize().multiplyScalar(400 * (dangerZone / (dist + 1)));
+          const avoidForce = p.position.clone().sub(this.obstaclePosition).normalize().multiplyScalar(400 * (dangerZone / (dist + 1)));
           steer.add(avoidForce);
         }
       }
 
-      // 2. Galaxy Boundary constraint
-      const centerDist = p.position.length();
+      // 2. Keep this squad near its patrol center, independently of render origin
+      const centerDist = p.position.distanceTo(this.patrolCenter);
       if (centerDist > this.maxGalaxyRadius) {
-        const returnForce = p.position.clone().negate().normalize().multiplyScalar(300);
+        const returnForce = this.patrolCenter.clone().sub(p.position).normalize().multiplyScalar(300);
         steer.add(returnForce);
       }
 

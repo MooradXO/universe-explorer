@@ -10,6 +10,7 @@ window.localPlayerBounty = 50000;
 type WeaponType = 'laser' | 'shotgun' | 'missile';
 
 export class ShipController {
+  public onRespawn?: () => void;
   private shipGroup: THREE.Group | null = null;
   private camera: THREE.PerspectiveCamera;
 
@@ -68,6 +69,16 @@ export class ShipController {
   public shieldRegenDelay = 0;
   public isDead = false;
   public isTyping = false;
+  private inputBlocks = new Set<string>();
+  public get inputBlocked() { return this.inputBlocks.size > 0; }
+  public setInputBlocked(reason: string, blocked: boolean) {
+    if (blocked) this.inputBlocks.add(reason); else this.inputBlocks.delete(reason);
+    if (this.inputBlocked) {
+      this.keys = {}; this.mouseInput.set(0, 0); this.touchMoveX = 0; this.touchMoveY = 0;
+      this.touchBoost = false; this.isBoosting = false; this.isFreeLooking = false;
+      this.stopPrimaryFire();
+    }
+  }
   private spawnPosition = new THREE.Vector3();
 
   // Component Damage & Upgrade System (Sprint 4)
@@ -88,12 +99,13 @@ export class ShipController {
   }
 
   private selectWeapon(weapon: WeaponType): void {
+    if (this.inputBlocked) return;
     this.activeWeapon = weapon;
     window.dispatchEvent(new CustomEvent<WeaponType>('WeaponChanged', { detail: weapon }));
   }
 
   private startPrimaryFire() {
-    if (this.isPrimaryFireHeld) return;
+    if (this.inputBlocked || this.isPrimaryFireHeld) return;
     this.isPrimaryFireHeld = true;
     window.dispatchEvent(new CustomEvent('PrimaryFireStart'));
   }
@@ -177,8 +189,9 @@ export class ShipController {
     this.velocity.set(0, 0, 0);
     
     // Respawn after 5 seconds
+    const respawningShip = this.shipGroup;
     setTimeout(() => {
-      if (this.shipGroup) {
+      if (this.shipGroup && this.shipGroup === respawningShip) {
         this.shipGroup.position.copy(this.spawnPosition);
         // Randomize spawn slightly so they don't clip into base
         this.shipGroup.position.x += (Math.random() - 0.5) * 50;
@@ -186,9 +199,21 @@ export class ShipController {
         this.currentHP = this.maxHP;
         this.currentShield = this.maxShield;
         this.isDead = false;
+        this.onRespawn?.();
         console.log("Respawned!");
       }
     }, 5000);
+  }
+
+  public shiftOrigin(delta: THREE.Vector3) {
+    this.spawnPosition.sub(delta);
+  }
+
+  public clearShip() {
+    this.shipGroup = null;
+    this.velocity.set(0, 0, 0);
+    this.keys = {};
+    this.stopPrimaryFire();
   }
 
   public setShip(shipGroup: THREE.Group) {
@@ -197,10 +222,19 @@ export class ShipController {
     this.velocity.set(0, 0, 0);
   }
 
+  /** Travel changes motion without repairing the ship or resetting combat cooldowns. */
+  public resetTransitMotion() {
+    this.velocity.set(0, 0, 0); this.angularVelocity.set(0, 0, 0); this.targetAngularVelocity.set(0, 0, 0);
+    this.isStunting = false; this.stuntType = null; this.keys = {}; this.mouseInput.set(0, 0);
+    this.touchMoveX = 0; this.touchMoveY = 0; this.touchBoost = false; this.isBoosting = false;
+    this.stopPrimaryFire();
+    if (this.shipGroup) this.targetQuaternion.copy(this.shipGroup.quaternion);
+  }
+
   private initListeners() {
     window.addEventListener('keydown', (e) => {
-      if ((e.target as HTMLElement).tagName === 'INPUT') return; // Let user type freely in Market/Chat
-      if (this.isTyping) return; // Completely ignore WASD/Space/Shift while typing!
+      if ((e.target as HTMLElement).tagName === 'INPUT') return; // Let user type freely in chat and search inputs.
+      if (this.isTyping || this.inputBlocked) return;
 
       // Prevent scrolling when pressing movement keys
       if (['KeyW', 'KeyA', 'KeyS', 'KeyD', 'KeyQ', 'Space'].includes(e.code)) {
@@ -264,6 +298,7 @@ export class ShipController {
 
     // Mobile Virtual Joystick Hooks
     window.addEventListener('DualJoystickMove', ((e: CustomEvent) => {
+      if (this.inputBlocked) return;
       this.touchMoveX = e.detail.x;
       this.touchMoveY = e.detail.y;
     }) as EventListener);
@@ -272,10 +307,11 @@ export class ShipController {
       this.addTouchLook(e.detail.dx, e.detail.dy);
     }) as EventListener);
 
-    window.addEventListener('TouchBoostOn', () => { this.touchBoost = true; });
+    window.addEventListener('TouchBoostOn', () => { if (!this.inputBlocked) this.touchBoost = true; });
     window.addEventListener('TouchBoostOff', () => { this.touchBoost = false; });
 
     window.addEventListener('TouchStunt', () => {
+      if (this.inputBlocked) return;
       if (!this.isStunting) {
         this.isStunting = true;
         this.stuntType = 'uturn'; // Default mobile stunt is U-Turn
@@ -298,6 +334,7 @@ export class ShipController {
     });
 
     window.addEventListener('mousedown', (e) => {
+      if (this.inputBlocked) return;
       if (navigator.maxTouchPoints > 0) return; // Ignore general mousedown shooting on mobile devices!
 
       // Only ignore clicks if they hit UI elements
@@ -332,6 +369,7 @@ export class ShipController {
     window.addEventListener('contextmenu', e => e.preventDefault());
 
     window.addEventListener('mousemove', (e) => {
+      if (this.inputBlocked) return;
       if (document.pointerLockElement === document.body && this.shipGroup && !this.isDead && !this.isStunting) {
         let dx = e.movementX;
         let dy = e.movementY;
@@ -354,6 +392,7 @@ export class ShipController {
     });
 
     window.addEventListener('ToggleLaserColor', () => {
+      if (this.inputBlocked) return;
       this.laserColor = this.laserColor === 'red' ? 'blue' : 'red';
       window.dispatchEvent(new CustomEvent('LaserColorChanged', { detail: this.laserColor }));
     });
@@ -372,12 +411,13 @@ export class ShipController {
     });
 
     window.addEventListener('ToggleCameraView', () => {
+      if (this.inputBlocked) return;
       this.viewMode = this.viewMode === 'first' ? 'third' : 'first';
     });
   }
 
   public addTouchLook(dx: number, dy: number) {
-    if (!this.shipGroup || this.isDead) return;
+    if (!this.shipGroup || this.isDead || this.inputBlocked) return;
     
     if (this.isFreeLooking) {
       this.freeLookYaw -= dx * 0.005;

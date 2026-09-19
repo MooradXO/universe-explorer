@@ -1,3 +1,4 @@
+import { hudIcon } from './HudArt';
 import './styles/flight-status.css';
 
 type StatusTone = 'hull' | 'shield' | 'boost';
@@ -31,7 +32,7 @@ export class FlightStatusUI {
 
     const hull = this.createStatusBar('HULL', 'hull', true);
     const shield = this.createStatusBar('SHIELD', 'shield', true);
-    const boost = this.createStatusBar('THRUST', 'boost', false);
+    const boost = this.createStatusBar('BOOST', 'boost', false);
     primary.append(hull.root, shield.root, boost.root);
 
     const systemsPanel = document.createElement('div');
@@ -90,6 +91,7 @@ export class FlightStatusUI {
   }
 
   public updateSubsystems(engines: number, weapons: number, shieldGenerator: number): void {
+    this.subsystems.engine.value.closest('.flight-status__systems')?.classList.toggle('has-damage', Math.min(engines, weapons, shieldGenerator) < 100);
     this.updateSubsystem(this.subsystems.engine, engines);
     this.updateSubsystem(this.subsystems.weapon, weapons);
     this.updateSubsystem(this.subsystems.generator, shieldGenerator);
@@ -145,6 +147,9 @@ export class FlightStatusUI {
     fill.className = 'flight-status__bar-fill';
     track.appendChild(fill);
 
+    root.insertAdjacentHTML('afterbegin', hudIcon(tone));
+    root.setAttribute('role', 'meter'); root.setAttribute('aria-label', label);
+    root.setAttribute('aria-valuemin', '0'); root.setAttribute('aria-valuemax', '100');
     root.append(header, track);
     return { root, fill, value };
   }
@@ -181,6 +186,7 @@ export class FlightStatusUI {
     criticalThreshold: number,
   ): void {
     const percent = this.clampPercent(max > 0 ? (current / max) * 100 : 0);
+    bar.root.setAttribute('aria-valuenow', String(Math.round(percent)));
     bar.fill.style.width = `${percent}%`;
     bar.value.textContent = bar.root.classList.contains('flight-status__bar--boost')
       ? (percent < criticalThreshold ? 'LOW' : 'READY')

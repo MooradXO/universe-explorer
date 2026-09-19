@@ -1,0 +1,47 @@
+{
+  "states": [
+    {
+      "location": "ice",
+      "quality": "LOW",
+      "flight": true,
+      "fps": 186,
+      "camera": [
+        0.6964325503743813,
+        3.4114773689465427,
+        28.770898083574004
+      ],
+      "calls": 10,
+      "geometries": 7,
+      "textures": 0
+    },
+    {
+      "location": "yard",
+      "quality": "LOW",
+      "flight": true,
+      "fps": 189,
+      "camera": [
+        0.7074587431851644,
+        3.417783468634868,
+        28.76352764946747
+      ],
+      "calls": 43,
+      "geometries": 23,
+      "textures": 0
+    },
+    {
+      "location": "rift",
+      "quality": "LOW",
+      "flight": true,
+      "fps": 200,
+      "camera": [
+        0.7102144281272853,
+        3.419357954139272,
+        28.761666953354137
+      ],
+      "calls": 17,
+      "geometries": 17,
+      "textures": 1
+    }
+  ],
+  "issues": []
+}

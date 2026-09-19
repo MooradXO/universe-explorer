@@ -1,0 +1,26 @@
+{
+  "desktop-high": {
+    "points": 16955,
+    "tiles": 32,
+    "cache": 50,
+    "mapCalls": 32,
+    "geometryBefore": 71,
+    "geometryClosed": 71,
+    "geometryReopenedClosed": 71,
+    "texturesBefore": 14,
+    "texturesClosed": 14,
+    "errors": []
+  },
+  "mobile-low": {
+    "points": 5998,
+    "tiles": 20,
+    "cache": 27,
+    "mapCalls": 20,
+    "geometryBefore": 57,
+    "geometryClosed": 57,
+    "geometryReopenedClosed": 57,
+    "texturesBefore": 11,
+    "texturesClosed": 11,
+    "errors": []
+  }
+}

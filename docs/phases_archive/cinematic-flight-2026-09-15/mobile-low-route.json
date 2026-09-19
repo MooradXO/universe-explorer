@@ -1,0 +1,1192 @@
+{
+  "initial": {
+    "timestampMs": 2577.800000000745,
+    "fps": 77.0905133320199,
+    "frameTimeMs": 12.971764705899883,
+    "p95FrameTimeMs": 10.900000002235174,
+    "sampleFrames": 170,
+    "graphicsMode": "LOW",
+    "starMap": {
+      "open": false
+    },
+    "flightInputBlocked": false,
+    "renderer": {
+      "calls": 41,
+      "triangles": 51410,
+      "points": 6878,
+      "lines": 0,
+      "geometries": 24,
+      "textures": 11,
+      "programs": 23,
+      "pixelRatio": 0.75,
+      "width": 633,
+      "height": 292
+    },
+    "memory": {
+      "jsHeapUsedBytes": 23287782,
+      "jsHeapAllocatedBytes": 37096098,
+      "gpuBytes": null
+    },
+    "world": {
+      "scene": "free-flight",
+      "worldSeed": "universe-explorer:world:v1",
+      "space": {
+        "origin": {
+          "origin": {
+            "sector": [
+              -53,
+              115,
+              -265
+            ],
+            "offset": [
+              -444.16153112147003,
+              5659.9284833977,
+              -17135.42143371515
+            ]
+          },
+          "shifts": 1
+        },
+        "system": {
+          "id": "athyg:4.0:1",
+          "title": "Sol",
+          "spectrum": "G2 V",
+          "starRadiusIsIllustrative": false,
+          "fullPlanets": 1,
+          "sky": {
+            "status": "ready",
+            "points": 6671,
+            "bytes": 139540,
+            "observerCatalogId": "athyg:4.0:1",
+            "localParallax": "system-anchor",
+            "unitsPerParsec": 3085677581491.367
+          },
+          "visualStyle": "cinematic",
+          "decorativeBackground": true,
+          "debris": {
+            "body": "sol/earth/orbital-art",
+            "origin": "procedural-gameplay",
+            "instances": 36
+          },
+          "bodies": [
+            {
+              "id": "sol/mercury",
+              "name": "Меркурий",
+              "origin": "catalogue",
+              "position": [
+                -1946098.0613990638,
+                -2999311.2215723116,
+                5992859.070291958
+              ],
+              "radius": 243.94,
+              "semiMajorAu": 0.38709927
+            },
+            {
+              "id": "sol/venus",
+              "name": "Венера",
+              "origin": "catalogue",
+              "position": [
+                -10745859.729243945,
+                368327.09771475766,
+                692979.9573463777
+              ],
+              "radius": 605.1800000000001,
+              "semiMajorAu": 0.72333566
+            },
+            {
+              "id": "sol/earth",
+              "name": "Земля",
+              "origin": "catalogue",
+              "position": [
+                -2650444.1615311215,
+                5755559.928483398,
+                -13275346.723953715
+              ],
+              "radius": 637.10084,
+              "semiMajorAu": 1.00000261
+            },
+            {
+              "id": "sol/mars",
+              "name": "Марс",
+              "origin": "catalogue",
+              "position": [
+                20804093.39037969,
+                -552678.066565391,
+                -21270.324343975928
+              ],
+              "radius": 338.95,
+              "semiMajorAu": 1.52371034
+            },
+            {
+              "id": "sol/jupiter",
+              "name": "Юпитер",
+              "origin": "catalogue",
+              "position": [
+                59814029.89669311,
+                16132809.49769364,
+                -41036164.282245055
+              ],
+              "radius": 6991.1,
+              "semiMajorAu": 5.202887
+            },
+            {
+              "id": "sol/saturn",
+              "name": "Сатурн",
+              "origin": "catalogue",
+              "position": [
+                95963810.02927509,
+                33884370.28300023,
+                -92038161.27248311
+              ],
+              "radius": 5823.2,
+              "semiMajorAu": 9.53667594
+            },
+            {
+              "id": "sol/uranus",
+              "name": "Уран",
+              "origin": "catalogue",
+              "position": [
+                215801897.98789185,
+                -85015128.59760574,
+                187137369.3545744
+              ],
+              "radius": 2536.2,
+              "semiMajorAu": 19.18916464
+            },
+            {
+              "id": "sol/neptune",
+              "name": "Нептун",
+              "origin": "catalogue",
+              "position": [
+                251395673.42816097,
+                -146974439.12421766,
+                343791509.49390286
+              ],
+              "radius": 2462.2,
+              "semiMajorAu": 30.06992276
+            }
+          ]
+        },
+        "stream": {
+          "sector": "0,0,0",
+          "cached": 0,
+          "pending": 0,
+          "queued": 0,
+          "failed": 0,
+          "completed": 124,
+          "discarded": 0
+        },
+        "navigation": {
+          "groups": 0,
+          "points": 0
+        },
+        "planets": {
+          "active": 0,
+          "queued": 0,
+          "created": 2,
+          "disposed": 0
+        },
+        "jobs": {
+          "total": 29,
+          "lastMs": 0.19999999925494194,
+          "maxMs": 2
+        }
+      },
+      "travel": {
+        "systemId": "athyg:4.0:1",
+        "atHome": true,
+        "selected": "base",
+        "cruising": false,
+        "cruiseSpeed": 0,
+        "warping": null,
+        "visited": [],
+        "status": "База у Земли. Выберите объект или откройте звёздную карту.",
+        "address": {
+          "version": 1,
+          "anchor": {
+            "catalogId": "athyg:4.0:1",
+            "title": "Sol",
+            "positionParsecs": [
+              0.00000485,
+              0,
+              0
+            ],
+            "frame": "equatorial",
+            "equinox": "J2000.0",
+            "distanceSource": "OTHER",
+            "qualityFlags": [
+              "source-solar-reference-preserved"
+            ]
+          },
+          "local": {
+            "sector": [
+              -53,
+              115,
+              -265
+            ],
+            "offset": [
+              -444.16153112147003,
+              5659.9284833977,
+              -17135.42143371515
+            ]
+          }
+        }
+      },
+      "tour": null,
+      "projectiles": 0,
+      "planetCount": 8,
+      "visibleFullPlanets": 1,
+      "visiblePlanets": 1,
+      "players": {
+        "local": 1,
+        "remote": 0,
+        "bots": 0
+      },
+      "ship": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "worldPosition": {
+          "sector": [
+            -53,
+            115,
+            -265
+          ],
+          "offset": [
+            -444.16153112147003,
+            5659.9284833977,
+            -17135.42143371515
+          ]
+        },
+        "cameraOffset": [
+          0,
+          127.80822530560427,
+          359.0057205257764
+        ],
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      }
+    },
+    "realtime": {
+      "configured": false,
+      "subscribed": false,
+      "systemId": "athyg:4.0:1",
+      "sendAttempts": 0,
+      "received": 0,
+      "byEvent": {
+        "position": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "shoot": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "hit": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "die": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "chat": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "sonar": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "voice-signal": {
+          "sendAttempts": 0,
+          "received": 0
+        }
+      }
+    }
+  },
+  "mars": {
+    "timestampMs": 25923.699999999255,
+    "fps": 199.93335554798517,
+    "frameTimeMs": 5.001666666670806,
+    "p95FrameTimeMs": 5.199999999254942,
+    "sampleFrames": 180,
+    "graphicsMode": "LOW",
+    "starMap": {
+      "open": false
+    },
+    "flightInputBlocked": false,
+    "renderer": {
+      "calls": 40,
+      "triangles": 11779,
+      "points": 6878,
+      "lines": 0,
+      "geometries": 25,
+      "textures": 12,
+      "programs": 25,
+      "pixelRatio": 0.75,
+      "width": 633,
+      "height": 292
+    },
+    "memory": {
+      "jsHeapUsedBytes": 19612761,
+      "jsHeapAllocatedBytes": 31537213,
+      "gpuBytes": null
+    },
+    "world": {
+      "scene": "free-flight",
+      "worldSeed": "universe-explorer:world:v1",
+      "space": {
+        "origin": {
+          "origin": {
+            "sector": [
+              416,
+              -11,
+              0
+            ],
+            "offset": [
+              -3614.828412413597,
+              -604.8622068450786,
+              -18608.969030146993
+            ]
+          },
+          "shifts": 1182
+        },
+        "system": {
+          "id": "athyg:4.0:1",
+          "title": "Sol",
+          "spectrum": "G2 V",
+          "starRadiusIsIllustrative": false,
+          "fullPlanets": 1,
+          "sky": {
+            "status": "ready",
+            "points": 6671,
+            "bytes": 139540,
+            "observerCatalogId": "athyg:4.0:1",
+            "localParallax": "system-anchor",
+            "unitsPerParsec": 3085677581491.367
+          },
+          "visualStyle": "cinematic",
+          "decorativeBackground": true,
+          "debris": {
+            "body": "sol/mars/orbital-art",
+            "origin": "procedural-gameplay",
+            "instances": 36
+          },
+          "bodies": [
+            {
+              "id": "sol/mercury",
+              "name": "Меркурий",
+              "origin": "catalogue",
+              "position": [
+                -1946098.0613990638,
+                -2999311.2215723116,
+                5992859.070291958
+              ],
+              "radius": 243.94,
+              "semiMajorAu": 0.38709927
+            },
+            {
+              "id": "sol/venus",
+              "name": "Венера",
+              "origin": "catalogue",
+              "position": [
+                -10745859.729243945,
+                368327.09771475766,
+                692979.9573463777
+              ],
+              "radius": 605.1800000000001,
+              "semiMajorAu": 0.72333566
+            },
+            {
+              "id": "sol/earth",
+              "name": "Земля",
+              "origin": "catalogue",
+              "position": [
+                -2650444.1615311215,
+                5755559.928483398,
+                -13275346.723953715
+              ],
+              "radius": 637.10084,
+              "semiMajorAu": 1.00000261
+            },
+            {
+              "id": "sol/mars",
+              "name": "Марс",
+              "origin": "catalogue",
+              "position": [
+                20804093.39037969,
+                -552678.066565391,
+                -21270.324343975928
+              ],
+              "radius": 338.95,
+              "semiMajorAu": 1.52371034
+            },
+            {
+              "id": "sol/jupiter",
+              "name": "Юпитер",
+              "origin": "catalogue",
+              "position": [
+                59814029.89669311,
+                16132809.49769364,
+                -41036164.282245055
+              ],
+              "radius": 6991.1,
+              "semiMajorAu": 5.202887
+            },
+            {
+              "id": "sol/saturn",
+              "name": "Сатурн",
+              "origin": "catalogue",
+              "position": [
+                95963810.02927509,
+                33884370.28300023,
+                -92038161.27248311
+              ],
+              "radius": 5823.2,
+              "semiMajorAu": 9.53667594
+            },
+            {
+              "id": "sol/uranus",
+              "name": "Уран",
+              "origin": "catalogue",
+              "position": [
+                215801897.98789185,
+                -85015128.59760574,
+                187137369.3545744
+              ],
+              "radius": 2536.2,
+              "semiMajorAu": 19.18916464
+            },
+            {
+              "id": "sol/neptune",
+              "name": "Нептун",
+              "origin": "catalogue",
+              "position": [
+                251395673.42816097,
+                -146974439.12421766,
+                343791509.49390286
+              ],
+              "radius": 2462.2,
+              "semiMajorAu": 30.06992276
+            }
+          ]
+        },
+        "stream": {
+          "sector": "0,0,0",
+          "cached": 0,
+          "pending": 0,
+          "queued": 0,
+          "failed": 0,
+          "completed": 124,
+          "discarded": 0
+        },
+        "navigation": {
+          "groups": 0,
+          "points": 0
+        },
+        "planets": {
+          "active": 0,
+          "queued": 0,
+          "created": 2,
+          "disposed": 0
+        },
+        "jobs": {
+          "total": 29,
+          "lastMs": 0.19999999925494194,
+          "maxMs": 2
+        }
+      },
+      "travel": {
+        "systemId": "athyg:4.0:1",
+        "atHome": true,
+        "selected": "sol/mars",
+        "cruising": false,
+        "cruiseSpeed": 0,
+        "warping": null,
+        "visited": [
+          "sol/mars"
+        ],
+        "status": "Орбитальная точка отмечена в журнале: Марс. Орбита JPL на J2000; поверхность иллюстративная.",
+        "address": {
+          "version": 1,
+          "anchor": {
+            "catalogId": "athyg:4.0:1",
+            "title": "Sol",
+            "positionParsecs": [
+              0.00000485,
+              0,
+              0
+            ],
+            "frame": "equatorial",
+            "equinox": "J2000.0",
+            "distanceSource": "OTHER",
+            "qualityFlags": [
+              "source-solar-reference-preserved"
+            ]
+          },
+          "local": {
+            "sector": [
+              416,
+              -11,
+              0
+            ],
+            "offset": [
+              4093.390379689634,
+              -2678.0665653910255,
+              -14253.47434397593
+            ]
+          }
+        }
+      },
+      "tour": null,
+      "projectiles": 0,
+      "planetCount": 8,
+      "visibleFullPlanets": 1,
+      "visiblePlanets": 1,
+      "players": {
+        "local": 1,
+        "remote": 0,
+        "bots": 0
+      },
+      "ship": {
+        "position": [
+          7708.218792103231,
+          -2073.204358545947,
+          4355.494686171063
+        ],
+        "worldPosition": {
+          "sector": [
+            416,
+            -11,
+            0
+          ],
+          "offset": [
+            4093.390379689634,
+            -2678.0665653910255,
+            -14253.47434397593
+          ]
+        },
+        "cameraOffset": [
+          0,
+          125,
+          360
+        ],
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      }
+    },
+    "realtime": {
+      "configured": false,
+      "subscribed": false,
+      "systemId": "athyg:4.0:1",
+      "sendAttempts": 0,
+      "received": 0,
+      "byEvent": {
+        "position": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "shoot": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "hit": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "die": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "chat": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "sonar": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "voice-signal": {
+          "sendAttempts": 0,
+          "received": 0
+        }
+      }
+    }
+  },
+  "arrival": {
+    "timestampMs": 29333.699999999255,
+    "fps": 193.52757768028442,
+    "frameTimeMs": 5.167222222209805,
+    "p95FrameTimeMs": 5.199999999254942,
+    "sampleFrames": 180,
+    "graphicsMode": "LOW",
+    "starMap": {
+      "open": false
+    },
+    "flightInputBlocked": false,
+    "renderer": {
+      "calls": 41,
+      "triangles": 11971,
+      "points": 6874,
+      "lines": 0,
+      "geometries": 25,
+      "textures": 11,
+      "programs": 24,
+      "pixelRatio": 0.75,
+      "width": 633,
+      "height": 292
+    },
+    "memory": {
+      "jsHeapUsedBytes": 20075132,
+      "jsHeapAllocatedBytes": 36461584,
+      "gpuBytes": null
+    },
+    "world": {
+      "scene": "free-flight",
+      "worldSeed": "universe-explorer:world:v1",
+      "space": {
+        "origin": {
+          "origin": {
+            "sector": [
+              -89,
+              16,
+              -31
+            ],
+            "offset": [
+              -23630.0753249377,
+              -17457.3202797384,
+              8979.051362028113
+            ]
+          },
+          "shifts": 1183
+        },
+        "system": {
+          "id": "athyg:4.0:1440825",
+          "title": "Proxima Centauri",
+          "spectrum": "M5Ve",
+          "starRadiusIsIllustrative": true,
+          "fullPlanets": 1,
+          "sky": {
+            "status": "ready",
+            "points": 6671,
+            "bytes": 139540,
+            "observerCatalogId": "athyg:4.0:1440825",
+            "localParallax": "system-anchor",
+            "unitsPerParsec": 3085677581491.367
+          },
+          "visualStyle": "cinematic",
+          "decorativeBackground": true,
+          "debris": {
+            "body": "athyg:4.0:1440825/generated-1/orbital-art",
+            "origin": "procedural-gameplay",
+            "instances": 36
+          },
+          "bodies": [
+            {
+              "id": "athyg:4.0:1440825/generated-1",
+              "name": "Мир 1 · игровой",
+              "origin": "procedural",
+              "position": [
+                -4473630.075324938,
+                782542.6797202616,
+                -1566864.4621304667
+              ],
+              "radius": 6614.504497498274,
+              "semiMajorAu": 0.325022477300372
+            },
+            {
+              "id": "athyg:4.0:1440825/generated-2",
+              "name": "Мир 2 · игровой",
+              "origin": "procedural",
+              "position": [
+                12451225.73350284,
+                412194.03734788386,
+                -1629253.3171421927
+              ],
+              "radius": 692.4445954267867,
+              "semiMajorAu": 0.9813720881175247
+            },
+            {
+              "id": "athyg:4.0:1440825/generated-3",
+              "name": "Мир 3 · игровой",
+              "origin": "procedural",
+              "position": [
+                27497384.709863134,
+                -10868712.7808697,
+                25217057.11460269
+              ],
+              "radius": 4893.255990929902,
+              "semiMajorAu": 2.6610397759571667
+            },
+            {
+              "id": "athyg:4.0:1440825/generated-4",
+              "name": "Мир 4 · игровой",
+              "origin": "procedural",
+              "position": [
+                86823712.79507735,
+                -32880641.77290548,
+                77782108.01239875
+              ],
+              "radius": 6919.322428293526,
+              "semiMajorAu": 7.640500272440312
+            }
+          ]
+        },
+        "stream": {
+          "sector": "0,0,0",
+          "cached": 0,
+          "pending": 0,
+          "queued": 0,
+          "failed": 0,
+          "completed": 124,
+          "discarded": 0
+        },
+        "navigation": {
+          "groups": 0,
+          "points": 0
+        },
+        "planets": {
+          "active": 0,
+          "queued": 0,
+          "created": 2,
+          "disposed": 0
+        },
+        "jobs": {
+          "total": 29,
+          "lastMs": 0.19999999925494194,
+          "maxMs": 2
+        }
+      },
+      "travel": {
+        "systemId": "athyg:4.0:1440825",
+        "atHome": false,
+        "selected": "athyg:4.0:1440825/generated-1",
+        "cruising": false,
+        "cruiseSpeed": 0,
+        "warping": null,
+        "visited": [
+          "sol/mars"
+        ],
+        "status": "Прибытие: Proxima Centauri. Обычный полёт.",
+        "address": {
+          "version": 1,
+          "anchor": {
+            "catalogId": "athyg:4.0:1440825",
+            "title": "Proxima Centauri",
+            "positionParsecs": [
+              -0.4745,
+              -0.3633,
+              -1.1567
+            ],
+            "frame": "equatorial",
+            "equinox": "J2000.0",
+            "distanceSource": "G_R3",
+            "qualityFlags": []
+          },
+          "local": {
+            "sector": [
+              -89,
+              16,
+              -31
+            ],
+            "offset": [
+              -23630.0753249377,
+              -17457.3202797384,
+              8979.051362028113
+            ]
+          }
+        }
+      },
+      "tour": null,
+      "projectiles": 0,
+      "planetCount": 4,
+      "visibleFullPlanets": 1,
+      "visiblePlanets": 1,
+      "players": {
+        "local": 1,
+        "remote": 0,
+        "bots": 0
+      },
+      "ship": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "worldPosition": {
+          "sector": [
+            -89,
+            16,
+            -31
+          ],
+          "offset": [
+            -23630.0753249377,
+            -17457.3202797384,
+            8979.051362028113
+          ]
+        },
+        "cameraOffset": [
+          0,
+          125,
+          360
+        ],
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      }
+    },
+    "realtime": {
+      "configured": false,
+      "subscribed": false,
+      "systemId": "athyg:4.0:1440825",
+      "sendAttempts": 0,
+      "received": 0,
+      "byEvent": {
+        "position": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "shoot": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "hit": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "die": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "chat": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "sonar": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "voice-signal": {
+          "sendAttempts": 0,
+          "received": 0
+        }
+      }
+    }
+  },
+  "returned": {
+    "timestampMs": 4318.800000000745,
+    "fps": 195.6521739130435,
+    "frameTimeMs": 5.111111111111111,
+    "p95FrameTimeMs": 5.199999999254942,
+    "sampleFrames": 180,
+    "graphicsMode": "LOW",
+    "starMap": {
+      "open": false
+    },
+    "flightInputBlocked": false,
+    "renderer": {
+      "calls": 41,
+      "triangles": 51410,
+      "points": 6878,
+      "lines": 0,
+      "geometries": 24,
+      "textures": 11,
+      "programs": 23,
+      "pixelRatio": 0.75,
+      "width": 633,
+      "height": 292
+    },
+    "memory": {
+      "jsHeapUsedBytes": 47327984,
+      "jsHeapAllocatedBytes": 71740496,
+      "gpuBytes": null
+    },
+    "world": {
+      "scene": "free-flight",
+      "worldSeed": "universe-explorer:world:v1",
+      "space": {
+        "origin": {
+          "origin": {
+            "sector": [
+              -53,
+              115,
+              -265
+            ],
+            "offset": [
+              -444.16153112147003,
+              5659.928483398631,
+              -17135.42143371515
+            ]
+          },
+          "shifts": 2
+        },
+        "system": {
+          "id": "athyg:4.0:1",
+          "title": "Sol",
+          "spectrum": "G2 V",
+          "starRadiusIsIllustrative": false,
+          "fullPlanets": 1,
+          "sky": {
+            "status": "ready",
+            "points": 6671,
+            "bytes": 139540,
+            "observerCatalogId": "athyg:4.0:1",
+            "localParallax": "system-anchor",
+            "unitsPerParsec": 3085677581491.367
+          },
+          "visualStyle": "cinematic",
+          "decorativeBackground": true,
+          "debris": {
+            "body": "sol/earth/orbital-art",
+            "origin": "procedural-gameplay",
+            "instances": 36
+          },
+          "bodies": [
+            {
+              "id": "sol/mercury",
+              "name": "Меркурий",
+              "origin": "catalogue",
+              "position": [
+                -1946098.0613990638,
+                -2999311.2215723116,
+                5992859.070291958
+              ],
+              "radius": 243.94,
+              "semiMajorAu": 0.38709927
+            },
+            {
+              "id": "sol/venus",
+              "name": "Венера",
+              "origin": "catalogue",
+              "position": [
+                -10745859.729243945,
+                368327.09771475766,
+                692979.9573463777
+              ],
+              "radius": 605.1800000000001,
+              "semiMajorAu": 0.72333566
+            },
+            {
+              "id": "sol/earth",
+              "name": "Земля",
+              "origin": "catalogue",
+              "position": [
+                -2650444.1615311215,
+                5755559.928483398,
+                -13275346.723953715
+              ],
+              "radius": 637.10084,
+              "semiMajorAu": 1.00000261
+            },
+            {
+              "id": "sol/mars",
+              "name": "Марс",
+              "origin": "catalogue",
+              "position": [
+                20804093.39037969,
+                -552678.066565391,
+                -21270.324343975928
+              ],
+              "radius": 338.95,
+              "semiMajorAu": 1.52371034
+            },
+            {
+              "id": "sol/jupiter",
+              "name": "Юпитер",
+              "origin": "catalogue",
+              "position": [
+                59814029.89669311,
+                16132809.49769364,
+                -41036164.282245055
+              ],
+              "radius": 6991.1,
+              "semiMajorAu": 5.202887
+            },
+            {
+              "id": "sol/saturn",
+              "name": "Сатурн",
+              "origin": "catalogue",
+              "position": [
+                95963810.02927509,
+                33884370.28300023,
+                -92038161.27248311
+              ],
+              "radius": 5823.2,
+              "semiMajorAu": 9.53667594
+            },
+            {
+              "id": "sol/uranus",
+              "name": "Уран",
+              "origin": "catalogue",
+              "position": [
+                215801897.98789185,
+                -85015128.59760574,
+                187137369.3545744
+              ],
+              "radius": 2536.2,
+              "semiMajorAu": 19.18916464
+            },
+            {
+              "id": "sol/neptune",
+              "name": "Нептун",
+              "origin": "catalogue",
+              "position": [
+                251395673.42816097,
+                -146974439.12421766,
+                343791509.49390286
+              ],
+              "radius": 2462.2,
+              "semiMajorAu": 30.06992276
+            }
+          ]
+        },
+        "stream": {
+          "sector": "0,0,0",
+          "cached": 0,
+          "pending": 0,
+          "queued": 0,
+          "failed": 0,
+          "completed": 124,
+          "discarded": 0
+        },
+        "navigation": {
+          "groups": 0,
+          "points": 0
+        },
+        "planets": {
+          "active": 0,
+          "queued": 0,
+          "created": 2,
+          "disposed": 0
+        },
+        "jobs": {
+          "total": 29,
+          "lastMs": 0.19999999925494194,
+          "maxMs": 1
+        }
+      },
+      "travel": {
+        "systemId": "athyg:4.0:1",
+        "atHome": true,
+        "selected": "base",
+        "cruising": false,
+        "cruiseSpeed": 0,
+        "warping": null,
+        "visited": [
+          "sol/mars",
+          "athyg:4.0:1440825/generated-1"
+        ],
+        "status": "Прибытие: Sol. Обычный полёт.",
+        "address": {
+          "version": 1,
+          "anchor": {
+            "catalogId": "athyg:4.0:1",
+            "title": "Sol",
+            "positionParsecs": [
+              0.00000485,
+              0,
+              0
+            ],
+            "frame": "equatorial",
+            "equinox": "J2000.0",
+            "distanceSource": "OTHER",
+            "qualityFlags": [
+              "source-solar-reference-preserved"
+            ]
+          },
+          "local": {
+            "sector": [
+              -53,
+              115,
+              -265
+            ],
+            "offset": [
+              -444.16153112147003,
+              5659.928483398631,
+              -17135.42143371515
+            ]
+          }
+        }
+      },
+      "tour": null,
+      "projectiles": 0,
+      "planetCount": 8,
+      "visibleFullPlanets": 1,
+      "visiblePlanets": 1,
+      "players": {
+        "local": 1,
+        "remote": 0,
+        "bots": 0
+      },
+      "ship": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "worldPosition": {
+          "sector": [
+            -53,
+            115,
+            -265
+          ],
+          "offset": [
+            -444.16153112147003,
+            5659.928483398631,
+            -17135.42143371515
+          ]
+        },
+        "cameraOffset": [
+          0,
+          129.37460737349548,
+          358.4511277244834
+        ],
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      }
+    },
+    "realtime": {
+      "configured": false,
+      "subscribed": false,
+      "systemId": "athyg:4.0:1",
+      "sendAttempts": 0,
+      "received": 0,
+      "byEvent": {
+        "position": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "shoot": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "hit": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "die": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "chat": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "sonar": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "voice-signal": {
+          "sendAttempts": 0,
+          "received": 0
+        }
+      }
+    }
+  },
+  "issues": []
+}

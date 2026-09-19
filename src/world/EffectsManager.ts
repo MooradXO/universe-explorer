@@ -1,14 +1,12 @@
 import * as THREE from 'three';
 import { Engine } from '../core/Engine';
 import { Settings } from '../core/Settings';
+import { FlightDust } from './visuals/FlightDust';
 
 export class EffectsManager {
   private engine: Engine;
   
-  // Space Dust
-  public spaceDustLines: THREE.LineSegments | null = null;
-  private spaceDustParticles: { pos: THREE.Vector3; speed: number }[] = [];
-  private spaceDustCount = 120;
+  readonly motion: FlightDust;
 
   // Ion Trail
   public ionTrailPoints: THREE.Points | null = null;
@@ -20,61 +18,21 @@ export class EffectsManager {
 
   constructor(engine: Engine, bgDotTexture: THREE.Texture) {
     this.engine = engine;
+    this.motion = new FlightDust(Settings.graphicsMode === 'LOW');
+    engine.scene.add(this.motion.group);
     this.bgDotTexture = bgDotTexture;
     if (Settings.graphicsMode === 'LOW') {
-      this.spaceDustCount = 80;
       this.maxIonParticles = 200;
     }
   }
 
-  public init(laserColor: 'red' | 'blue') {
-    this.buildSpaceDust(laserColor);
-    this.buildIonTrail();
+  public shiftOrigin(delta: THREE.Vector3) {
+    this.motion.shiftOrigin(delta);
+    for (const particle of this.ionParticles) particle.pos.sub(delta);
   }
 
-  private buildSpaceDust(laserColor: 'red' | 'blue') {
-    const isLow = Settings.graphicsMode === 'LOW';
-    if (isLow) return;
-
-    const count = this.spaceDustCount;
-    const positions = new Float32Array(count * 2 * 3);
-
-    for (let i = 0; i < count; i++) {
-      const pos = new THREE.Vector3(
-        (Math.random() - 0.5) * 3000,
-        (Math.random() - 0.5) * 3000,
-        (Math.random() - 0.5) * 3000
-      );
-      this.spaceDustParticles.push({
-        pos,
-        speed: 0.5 + Math.random() * 0.5
-      });
-
-      const idx = i * 6;
-      positions[idx] = pos.x;
-      positions[idx+1] = pos.y;
-      positions[idx+2] = pos.z;
-
-      positions[idx+3] = pos.x;
-      positions[idx+4] = pos.y;
-      positions[idx+5] = pos.z;
-    }
-
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-    const color = laserColor === 'red' ? 0xff4444 : 0x4488ff;
-    const mat = new THREE.LineBasicMaterial({
-      color: color,
-      transparent: true,
-      opacity: 0.45,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-      toneMapped: false
-    });
-
-    this.spaceDustLines = new THREE.LineSegments(geo, mat);
-    this.engine.scene.add(this.spaceDustLines);
+  public init() {
+    this.buildIonTrail();
   }
 
   private buildIonTrail() {
@@ -131,75 +89,12 @@ export class EffectsManager {
 
   public update(
     dt: number,
-    playerPos: THREE.Vector3,
     shipVelocity: THREE.Vector3,
     isBoosting: boolean,
     laserColor: 'red' | 'blue',
     engineColorHex: number = laserColor === 'red' ? 0xff2222 : 0x2288ff
   ) {
     const speed = shipVelocity.length();
-
-    // 1. Space Dust Update
-    if (this.spaceDustLines) {
-      // Update dust line material color based on current laser color
-      const mat = this.spaceDustLines.material as THREE.LineBasicMaterial;
-      const targetColor = laserColor === 'red' ? 0xff4444 : 0x4488ff;
-      if (mat.color.getHex() !== targetColor) {
-        mat.color.setHex(targetColor);
-      }
-      const targetOpacity = isBoosting ? 0.35 : 0.12;
-      mat.opacity = THREE.MathUtils.lerp(mat.opacity, targetOpacity, dt * 5.0);
-
-      const geo = this.spaceDustLines.geometry;
-      const positions = geo.getAttribute('position') as THREE.BufferAttribute;
-      const pArray = positions.array as Float32Array;
-      
-      const shift = shipVelocity.clone().multiplyScalar(-dt);
-      if (speed < 5) {
-        shift.set(0, 0, dt * 15); // Gentle drift when stationary
-      }
-
-      for (let i = 0; i < this.spaceDustCount; i++) {
-        const particle = this.spaceDustParticles[i];
-        particle.pos.add(shift);
-        
-        const boxHalf = 1500;
-        if (particle.pos.x < -boxHalf) particle.pos.x += boxHalf * 2;
-        if (particle.pos.x > boxHalf) particle.pos.x -= boxHalf * 2;
-        if (particle.pos.y < -boxHalf) particle.pos.y += boxHalf * 2;
-        if (particle.pos.y > boxHalf) particle.pos.y -= boxHalf * 2;
-        if (particle.pos.z < -boxHalf) particle.pos.z += boxHalf * 2;
-        if (particle.pos.z > boxHalf) particle.pos.z -= boxHalf * 2;
-
-        const gX = playerPos.x + particle.pos.x;
-        const gY = playerPos.y + particle.pos.y;
-        const gZ = playerPos.z + particle.pos.z;
-
-        const idx = i * 6;
-        pArray[idx] = gX;
-        pArray[idx+1] = gY;
-        pArray[idx+2] = gZ;
-
-        const tailLength = Math.max(1.5, speed * (isBoosting ? 0.08 : 0.015));
-        
-        let tailX = 0;
-        let tailY = 0;
-        let tailZ = 0;
-        
-        if (speed > 5) {
-          tailX = (shipVelocity.x / speed) * tailLength;
-          tailY = (shipVelocity.y / speed) * tailLength;
-          tailZ = (shipVelocity.z / speed) * tailLength;
-        } else {
-          tailZ = tailLength;
-        }
-
-        pArray[idx+3] = gX + tailX;
-        pArray[idx+4] = gY + tailY;
-        pArray[idx+5] = gZ + tailZ;
-      }
-      positions.needsUpdate = true;
-    }
 
     // 2. Ion Engine Trail Update
     if (this.ionTrailPoints) {

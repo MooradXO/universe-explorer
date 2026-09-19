@@ -28,7 +28,7 @@ export class ISSSatellite {
     
     public update(cameraPosition: THREE.Vector3) {
         if (!this.label) return;
-        const dist = this.mesh.position.distanceTo(cameraPosition);
+        const dist = this.mesh.getWorldPosition(new THREE.Vector3()).distanceTo(cameraPosition);
         
         // Hide entire object from rendering rather than HTML display block string parsing
         this.label.visible = dist < 4000;
@@ -116,7 +116,7 @@ export class ISSSatellite {
             duration: 5,
             ease: "linear",
             onUpdate: () => {
-                 this.mesh.lookAt(this.center);
+                 this.mesh.lookAt(this.mesh.parent!.localToWorld(this.center.clone()));
             }
         });
 

@@ -1,0 +1,20 @@
+[
+  {
+    "mode": "HIGH",
+    "menu": true,
+    "flight": true,
+    "warpAndReturn": true,
+    "constellationRequests": [],
+    "errors": [],
+    "pass": true
+  },
+  {
+    "mode": "LOW",
+    "menu": true,
+    "flight": true,
+    "warpAndReturn": true,
+    "constellationRequests": [],
+    "errors": [],
+    "pass": true
+  }
+]

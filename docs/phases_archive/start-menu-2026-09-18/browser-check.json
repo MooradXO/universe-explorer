@@ -1,0 +1,227 @@
+[
+  {
+    "name": "desktop",
+    "width": 1920,
+    "height": 945,
+    "mode": "HIGH",
+    "rotate": false,
+    "initial": {
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "scrollHeight": 945,
+      "clientHeight": 945,
+      "brand": {
+        "top": 34,
+        "bottom": 293.453125,
+        "left": 48,
+        "right": 518
+      },
+      "console": {
+        "top": 502.203125,
+        "bottom": 848.203125,
+        "left": 48,
+        "right": 518
+      }
+    },
+    "identity": {
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "scrollHeight": 945,
+      "clientHeight": 945,
+      "brand": {
+        "top": 34,
+        "bottom": 293.453125,
+        "left": 48,
+        "right": 518
+      },
+      "console": {
+        "top": 406.40625,
+        "bottom": 848.203125,
+        "left": 48,
+        "right": 518
+      }
+    },
+    "errors": [],
+    "failed": []
+  },
+  {
+    "name": "laptop",
+    "width": 1366,
+    "height": 768,
+    "mode": "HIGH",
+    "rotate": false,
+    "initial": {
+      "scrollWidth": 1366,
+      "clientWidth": 1366,
+      "scrollHeight": 768,
+      "clientHeight": 768,
+      "brand": {
+        "top": 20,
+        "bottom": 192,
+        "left": 48,
+        "right": 408
+      },
+      "console": {
+        "top": 441.703125,
+        "bottom": 707,
+        "left": 48,
+        "right": 408
+      }
+    },
+    "identity": {
+      "scrollWidth": 1366,
+      "clientWidth": 1366,
+      "scrollHeight": 768,
+      "clientHeight": 768,
+      "brand": {
+        "top": 20,
+        "bottom": 192,
+        "left": 48,
+        "right": 408
+      },
+      "console": {
+        "top": 330.703125,
+        "bottom": 707,
+        "left": 48,
+        "right": 408
+      }
+    },
+    "errors": [],
+    "failed": []
+  },
+  {
+    "name": "landscape",
+    "width": 844,
+    "height": 390,
+    "mode": "LOW",
+    "rotate": false,
+    "initial": {
+      "scrollWidth": 844,
+      "clientWidth": 844,
+      "scrollHeight": 390,
+      "clientHeight": 390,
+      "brand": {
+        "top": 14,
+        "bottom": 91,
+        "left": 26,
+        "right": 346
+      },
+      "console": {
+        "top": 99,
+        "bottom": 291.09375,
+        "left": 26,
+        "right": 346
+      }
+    },
+    "identity": {
+      "scrollWidth": 844,
+      "clientWidth": 844,
+      "scrollHeight": 390,
+      "clientHeight": 390,
+      "brand": {
+        "top": 14,
+        "bottom": 91,
+        "left": 26,
+        "right": 346
+      },
+      "console": {
+        "top": 99,
+        "bottom": 364.09375,
+        "left": 26,
+        "right": 346
+      }
+    },
+    "errors": [],
+    "failed": []
+  },
+  {
+    "name": "portrait-rotation",
+    "width": 390,
+    "height": 844,
+    "mode": "LOW",
+    "rotate": true,
+    "initial": {
+      "scrollWidth": 844,
+      "clientWidth": 844,
+      "scrollHeight": 390,
+      "clientHeight": 390,
+      "brand": {
+        "top": 14,
+        "bottom": 91,
+        "left": 26,
+        "right": 346
+      },
+      "console": {
+        "top": 99,
+        "bottom": 291.09375,
+        "left": 26,
+        "right": 346
+      }
+    },
+    "identity": {
+      "scrollWidth": 844,
+      "clientWidth": 844,
+      "scrollHeight": 390,
+      "clientHeight": 390,
+      "brand": {
+        "top": 14,
+        "bottom": 91,
+        "left": 26,
+        "right": 346
+      },
+      "console": {
+        "top": 99,
+        "bottom": 364.09375,
+        "left": 26,
+        "right": 346
+      }
+    },
+    "errors": [],
+    "failed": []
+  },
+  {
+    "name": "small-phone-rotation",
+    "width": 320,
+    "height": 568,
+    "mode": "LOW",
+    "rotate": true,
+    "initial": {
+      "scrollWidth": 568,
+      "clientWidth": 568,
+      "scrollHeight": 320,
+      "clientHeight": 320,
+      "brand": {
+        "top": 8,
+        "bottom": 54,
+        "left": 26,
+        "right": 346
+      },
+      "console": {
+        "top": 62,
+        "bottom": 186.890625,
+        "left": 26,
+        "right": 346
+      }
+    },
+    "identity": {
+      "scrollWidth": 568,
+      "clientWidth": 568,
+      "scrollHeight": 320,
+      "clientHeight": 320,
+      "brand": {
+        "top": 8,
+        "bottom": 54,
+        "left": 26,
+        "right": 346
+      },
+      "console": {
+        "top": 62,
+        "bottom": 259.890625,
+        "left": 26,
+        "right": 346
+      }
+    },
+    "errors": [],
+    "failed": []
+  }
+]

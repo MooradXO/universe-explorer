@@ -6,39 +6,10 @@ import { PhysicsEngine } from './physics/PhysicsEngine';
 import { AuthManager } from './auth/AuthManager';
 import { AuthUI } from './ui/AuthUI';
 import { usesMobileLayout } from './ui/uiPlatform';
-
-interface PlanetSmokeHook {
-  enterAtmosphereAt: (index: number) => boolean;
-  getManifestSummary: () => {
-    planets: { biome: string }[];
-  };
-}
-
-function startDevPlanetSmoke(auth: AuthManager) {
-  if (!import.meta.env.DEV) return;
-
-  const requestedPlanet = new URLSearchParams(window.location.search).get('planetSmoke');
-  if (!requestedPlanet) return;
-
-  void auth.signInAsGuest();
-  let attempts = 0;
-  const tryEnterAtmosphere = () => {
-    const smoke = (window as unknown as { __universePlanetSmoke?: PlanetSmokeHook }).__universePlanetSmoke;
-    if (smoke) {
-      const numericIndex = Number(requestedPlanet);
-      const planets = smoke.getManifestSummary().planets;
-      const planetIndex = Number.isInteger(numericIndex) && numericIndex >= 0
-        ? numericIndex
-        : planets.findIndex((planet) => planet.biome === requestedPlanet);
-      if (planetIndex >= 0 && smoke.enterAtmosphereAt(planetIndex)) return;
-    }
-
-    attempts += 1;
-    if (attempts < 80) window.setTimeout(tryEnterAtmosphere, 100);
-  };
-
-  window.setTimeout(tryEnterAtmosphere, 250);
-}
+import { installUniverseDebug } from './debug/UniverseDebug';
+import type { StarMapUI } from './ui/star-map/StarMapUI';
+import { hudPanels } from './ui/HudPanels';
+import './ui/styles/titan-hud.css';
 
 function startDevUiSmoke(ui: UIManager) {
   if (!import.meta.env.DEV) return;
@@ -69,6 +40,27 @@ async function main() {
 
   // Initialize World Generation
   const world = new WorldBuilder(engine, ui);
+  installUniverseDebug(engine, world);
+  let starMap: StarMapUI | null = null;
+  let mapLoading = false;
+  window.addEventListener('OpenStarMap', async () => {
+    if (starMap || mapLoading) { hudPanels.close('star-map'); return; }
+    if (uiLayer.style.display === 'none' || engine.shipController.isDead || world.isWarping) return;
+    mapLoading = true;
+    let cancelled = false;
+    hudPanels.openExternal('star-map', () => { cancelled = true; starMap?.close(); },
+      document.getElementById('btn-star-map') ?? undefined);
+    try {
+      const { StarMapUI } = await import('./ui/star-map/StarMapUI');
+      if (!cancelled && uiLayer.style.display !== 'none' && !engine.shipController.isDead) {
+        starMap = new StarMapUI(engine, uiLayer, () => { starMap = null; hudPanels.releaseExternal('star-map'); }, world.currentSystemId ?
+          { currentSystemId: world.currentSystemId, warp: object => world.warpTo(object) } : undefined);
+      }
+    } finally {
+      mapLoading = false;
+      if (!starMap) hudPanels.releaseExternal('star-map');
+    }
+  });
 
   // Initialize Auth
   let authUI: AuthUI;
@@ -83,19 +75,20 @@ async function main() {
       world.spawnUserShip(auth);
       console.log(`[Auth] Welcome ${auth.profile.username}! Ship size: ${auth.profile.ship_size}`);
     } else {
+      hudPanels.closeAll();
+      starMap?.close();
       uiLayer.style.display = 'none';
       ui.setMobileControlsVisible(false);
       world.removeUserShip();
     }
   });
   authUI = new AuthUI(auth);
-  startDevPlanetSmoke(auth);
 
   // Save position every 30 seconds
   setInterval(() => {
     if (auth.isLoggedIn) {
-      const pos = engine.camera.position;
-      auth.savePosition(pos.x, pos.y, pos.z);
+      const pos = world.getPlayerAbsolutePosition();
+      if (pos) auth.savePosition(...pos);
     }
   }, 30000);
 
@@ -114,6 +107,7 @@ async function main() {
 
     physics.update(deltaTime);
     world.update(deltaTime);
+    if (engine.shipController.isDead) starMap?.close();
   });
 }
 

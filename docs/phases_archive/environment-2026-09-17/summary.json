@@ -1,0 +1,77 @@
+{
+  "unitTests": 67,
+  "finalBrowserScenarios": 10,
+  "libraryBrowserScenarios": 20,
+  "qualities": {
+    "HIGH": {
+      "cellsDuring24Seconds": 4,
+      "fieldCounts": [
+        34,
+        38,
+        37,
+        39,
+        34
+      ],
+      "farObjects": [
+        1151,
+        1633,
+        1371,
+        1500,
+        1151
+      ],
+      "maxGeometries": 71,
+      "maxTextures": 17,
+      "maxDrawCalls": 64,
+      "maxGenerationMs": 3.5,
+      "systemReturnResources": [
+        [
+          59,
+          19
+        ],
+        [
+          59,
+          19
+        ],
+        [
+          59,
+          19
+        ]
+      ]
+    },
+    "LOW": {
+      "cellsDuring24Seconds": 4,
+      "fieldCounts": [
+        34,
+        38,
+        37,
+        39,
+        34
+      ],
+      "farObjects": [
+        1151,
+        1633,
+        1371,
+        1500,
+        1151
+      ],
+      "maxGeometries": 52,
+      "maxTextures": 14,
+      "maxDrawCalls": 60,
+      "maxGenerationMs": 6.1,
+      "systemReturnResources": [
+        [
+          45,
+          17
+        ],
+        [
+          45,
+          17
+        ],
+        [
+          45,
+          17
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,2865 @@
+{
+  "browser": "msedge",
+  "samples": [
+    {
+      "timestampMs": 7618.5,
+      "fps": 200.02222469196363,
+      "frameTimeMs": 4.999444444436166,
+      "p95FrameTimeMs": 5.100000001490116,
+      "sampleFrames": 180,
+      "graphicsMode": "LOW",
+      "starMap": {
+        "open": false
+      },
+      "flightInputBlocked": false,
+      "renderer": {
+        "calls": 85,
+        "triangles": 58416,
+        "points": 13775,
+        "lines": 18816,
+        "geometries": 57,
+        "textures": 11,
+        "programs": 24,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 17238890,
+        "jsHeapAllocatedBytes": 29868366,
+        "gpuBytes": null
+      },
+      "world": {
+        "scene": "near-base",
+        "worldSeed": "universe-explorer:world:v1",
+        "space": {
+          "origin": {
+            "origin": {
+              "sector": [
+                0,
+                0,
+                0
+              ],
+              "offset": [
+                0,
+                100,
+                9800
+              ]
+            },
+            "shifts": 1
+          },
+          "stream": {
+            "sector": "0,0,0",
+            "cached": 125,
+            "pending": 0,
+            "queued": 0,
+            "failed": 0,
+            "completed": 124,
+            "discarded": 0
+          },
+          "navigation": {
+            "groups": 27,
+            "points": 1100
+          },
+          "planets": {
+            "active": 1,
+            "queued": 0,
+            "created": 3,
+            "disposed": 2
+          },
+          "jobs": {
+            "total": 30,
+            "lastMs": 0.3999999985098839,
+            "maxMs": 1.699999999254942
+          }
+        },
+        "tour": null,
+        "projectiles": 0,
+        "planetCount": 80,
+        "visibleFullPlanets": 0,
+        "visiblePlanets": 58,
+        "players": {
+          "local": 1,
+          "remote": 0,
+          "bots": 0
+        },
+        "ship": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "worldPosition": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "cameraOffset": [
+            0,
+            125,
+            360
+          ],
+          "speed": 0,
+          "viewMode": "third",
+          "hp": 1000
+        }
+      },
+      "realtime": {
+        "configured": false,
+        "subscribed": false,
+        "sendAttempts": 0,
+        "received": 0,
+        "byEvent": {
+          "position": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "shoot": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "hit": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "die": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "chat": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "sonar": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "voice-signal": {
+            "sendAttempts": 0,
+            "received": 0
+          }
+        }
+      }
+    },
+    {
+      "timestampMs": 8629.300000000745,
+      "fps": 200,
+      "frameTimeMs": 5,
+      "p95FrameTimeMs": 5.100000001490116,
+      "sampleFrames": 180,
+      "graphicsMode": "LOW",
+      "starMap": {
+        "open": false
+      },
+      "flightInputBlocked": false,
+      "renderer": {
+        "calls": 85,
+        "triangles": 58416,
+        "points": 13775,
+        "lines": 18816,
+        "geometries": 57,
+        "textures": 11,
+        "programs": 24,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 18279538,
+        "jsHeapAllocatedBytes": 29868366,
+        "gpuBytes": null
+      },
+      "world": {
+        "scene": "near-base",
+        "worldSeed": "universe-explorer:world:v1",
+        "space": {
+          "origin": {
+            "origin": {
+              "sector": [
+                0,
+                0,
+                0
+              ],
+              "offset": [
+                0,
+                100,
+                9800
+              ]
+            },
+            "shifts": 1
+          },
+          "stream": {
+            "sector": "0,0,0",
+            "cached": 125,
+            "pending": 0,
+            "queued": 0,
+            "failed": 0,
+            "completed": 124,
+            "discarded": 0
+          },
+          "navigation": {
+            "groups": 27,
+            "points": 1100
+          },
+          "planets": {
+            "active": 1,
+            "queued": 0,
+            "created": 3,
+            "disposed": 2
+          },
+          "jobs": {
+            "total": 30,
+            "lastMs": 0.3999999985098839,
+            "maxMs": 1.699999999254942
+          }
+        },
+        "tour": null,
+        "projectiles": 0,
+        "planetCount": 80,
+        "visibleFullPlanets": 0,
+        "visiblePlanets": 58,
+        "players": {
+          "local": 1,
+          "remote": 0,
+          "bots": 0
+        },
+        "ship": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "worldPosition": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "cameraOffset": [
+            0,
+            125,
+            360
+          ],
+          "speed": 0,
+          "viewMode": "third",
+          "hp": 1000
+        }
+      },
+      "realtime": {
+        "configured": false,
+        "subscribed": false,
+        "sendAttempts": 0,
+        "received": 0,
+        "byEvent": {
+          "position": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "shoot": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "hit": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "die": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "chat": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "sonar": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "voice-signal": {
+            "sendAttempts": 0,
+            "received": 0
+          }
+        }
+      }
+    },
+    {
+      "timestampMs": 9639.5,
+      "fps": 200,
+      "frameTimeMs": 5,
+      "p95FrameTimeMs": 5.100000001490116,
+      "sampleFrames": 180,
+      "graphicsMode": "LOW",
+      "starMap": {
+        "open": false
+      },
+      "flightInputBlocked": false,
+      "renderer": {
+        "calls": 85,
+        "triangles": 58416,
+        "points": 13775,
+        "lines": 18816,
+        "geometries": 57,
+        "textures": 11,
+        "programs": 24,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 19142826,
+        "jsHeapAllocatedBytes": 29868366,
+        "gpuBytes": null
+      },
+      "world": {
+        "scene": "near-base",
+        "worldSeed": "universe-explorer:world:v1",
+        "space": {
+          "origin": {
+            "origin": {
+              "sector": [
+                0,
+                0,
+                0
+              ],
+              "offset": [
+                0,
+                100,
+                9800
+              ]
+            },
+            "shifts": 1
+          },
+          "stream": {
+            "sector": "0,0,0",
+            "cached": 125,
+            "pending": 0,
+            "queued": 0,
+            "failed": 0,
+            "completed": 124,
+            "discarded": 0
+          },
+          "navigation": {
+            "groups": 27,
+            "points": 1100
+          },
+          "planets": {
+            "active": 1,
+            "queued": 0,
+            "created": 3,
+            "disposed": 2
+          },
+          "jobs": {
+            "total": 30,
+            "lastMs": 0.3999999985098839,
+            "maxMs": 1.699999999254942
+          }
+        },
+        "tour": null,
+        "projectiles": 0,
+        "planetCount": 80,
+        "visibleFullPlanets": 0,
+        "visiblePlanets": 58,
+        "players": {
+          "local": 1,
+          "remote": 0,
+          "bots": 0
+        },
+        "ship": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "worldPosition": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "cameraOffset": [
+            0,
+            125,
+            360
+          ],
+          "speed": 0,
+          "viewMode": "third",
+          "hp": 1000
+        }
+      },
+      "realtime": {
+        "configured": false,
+        "subscribed": false,
+        "sendAttempts": 0,
+        "received": 0,
+        "byEvent": {
+          "position": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "shoot": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "hit": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "die": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "chat": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "sonar": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "voice-signal": {
+            "sendAttempts": 0,
+            "received": 0
+          }
+        }
+      }
+    },
+    {
+      "timestampMs": 10651.300000000745,
+      "fps": 199.97778024630819,
+      "frameTimeMs": 5.000555555563834,
+      "p95FrameTimeMs": 5.100000001490116,
+      "sampleFrames": 180,
+      "graphicsMode": "LOW",
+      "starMap": {
+        "open": false
+      },
+      "flightInputBlocked": false,
+      "renderer": {
+        "calls": 85,
+        "triangles": 58416,
+        "points": 13775,
+        "lines": 18816,
+        "geometries": 57,
+        "textures": 11,
+        "programs": 24,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 19825394,
+        "jsHeapAllocatedBytes": 29868366,
+        "gpuBytes": null
+      },
+      "world": {
+        "scene": "near-base",
+        "worldSeed": "universe-explorer:world:v1",
+        "space": {
+          "origin": {
+            "origin": {
+              "sector": [
+                0,
+                0,
+                0
+              ],
+              "offset": [
+                0,
+                100,
+                9800
+              ]
+            },
+            "shifts": 1
+          },
+          "stream": {
+            "sector": "0,0,0",
+            "cached": 125,
+            "pending": 0,
+            "queued": 0,
+            "failed": 0,
+            "completed": 124,
+            "discarded": 0
+          },
+          "navigation": {
+            "groups": 27,
+            "points": 1100
+          },
+          "planets": {
+            "active": 1,
+            "queued": 0,
+            "created": 3,
+            "disposed": 2
+          },
+          "jobs": {
+            "total": 30,
+            "lastMs": 0.3999999985098839,
+            "maxMs": 1.699999999254942
+          }
+        },
+        "tour": null,
+        "projectiles": 0,
+        "planetCount": 80,
+        "visibleFullPlanets": 0,
+        "visiblePlanets": 58,
+        "players": {
+          "local": 1,
+          "remote": 0,
+          "bots": 0
+        },
+        "ship": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "worldPosition": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "cameraOffset": [
+            0,
+            125,
+            360
+          ],
+          "speed": 0,
+          "viewMode": "third",
+          "hp": 1000
+        }
+      },
+      "realtime": {
+        "configured": false,
+        "subscribed": false,
+        "sendAttempts": 0,
+        "received": 0,
+        "byEvent": {
+          "position": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "shoot": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "hit": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "die": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "chat": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "sonar": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "voice-signal": {
+            "sendAttempts": 0,
+            "received": 0
+          }
+        }
+      }
+    },
+    {
+      "timestampMs": 11662.900000002235,
+      "fps": 199.97778024630819,
+      "frameTimeMs": 5.000555555563834,
+      "p95FrameTimeMs": 5.100000001490116,
+      "sampleFrames": 180,
+      "graphicsMode": "LOW",
+      "starMap": {
+        "open": false
+      },
+      "flightInputBlocked": false,
+      "renderer": {
+        "calls": 85,
+        "triangles": 58416,
+        "points": 13775,
+        "lines": 18816,
+        "geometries": 57,
+        "textures": 11,
+        "programs": 24,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 20361194,
+        "jsHeapAllocatedBytes": 29868366,
+        "gpuBytes": null
+      },
+      "world": {
+        "scene": "near-base",
+        "worldSeed": "universe-explorer:world:v1",
+        "space": {
+          "origin": {
+            "origin": {
+              "sector": [
+                0,
+                0,
+                0
+              ],
+              "offset": [
+                0,
+                100,
+                9800
+              ]
+            },
+            "shifts": 1
+          },
+          "stream": {
+            "sector": "0,0,0",
+            "cached": 125,
+            "pending": 0,
+            "queued": 0,
+            "failed": 0,
+            "completed": 124,
+            "discarded": 0
+          },
+          "navigation": {
+            "groups": 27,
+            "points": 1100
+          },
+          "planets": {
+            "active": 1,
+            "queued": 0,
+            "created": 3,
+            "disposed": 2
+          },
+          "jobs": {
+            "total": 30,
+            "lastMs": 0.3999999985098839,
+            "maxMs": 1.699999999254942
+          }
+        },
+        "tour": null,
+        "projectiles": 0,
+        "planetCount": 80,
+        "visibleFullPlanets": 0,
+        "visiblePlanets": 58,
+        "players": {
+          "local": 1,
+          "remote": 0,
+          "bots": 0
+        },
+        "ship": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "worldPosition": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "cameraOffset": [
+            0,
+            125,
+            360
+          ],
+          "speed": 0,
+          "viewMode": "third",
+          "hp": 1000
+        }
+      },
+      "realtime": {
+        "configured": false,
+        "subscribed": false,
+        "sendAttempts": 0,
+        "received": 0,
+        "byEvent": {
+          "position": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "shoot": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "hit": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "die": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "chat": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "sonar": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "voice-signal": {
+            "sendAttempts": 0,
+            "received": 0
+          }
+        }
+      }
+    },
+    {
+      "timestampMs": 12673.400000002235,
+      "fps": 199.97778024630819,
+      "frameTimeMs": 5.000555555563834,
+      "p95FrameTimeMs": 5.100000001490116,
+      "sampleFrames": 180,
+      "graphicsMode": "LOW",
+      "starMap": {
+        "open": false
+      },
+      "flightInputBlocked": false,
+      "renderer": {
+        "calls": 85,
+        "triangles": 58416,
+        "points": 13775,
+        "lines": 18816,
+        "geometries": 57,
+        "textures": 11,
+        "programs": 24,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 14388382,
+        "jsHeapAllocatedBytes": 29868366,
+        "gpuBytes": null
+      },
+      "world": {
+        "scene": "near-base",
+        "worldSeed": "universe-explorer:world:v1",
+        "space": {
+          "origin": {
+            "origin": {
+              "sector": [
+                0,
+                0,
+                0
+              ],
+              "offset": [
+                0,
+                100,
+                9800
+              ]
+            },
+            "shifts": 1
+          },
+          "stream": {
+            "sector": "0,0,0",
+            "cached": 125,
+            "pending": 0,
+            "queued": 0,
+            "failed": 0,
+            "completed": 124,
+            "discarded": 0
+          },
+          "navigation": {
+            "groups": 27,
+            "points": 1100
+          },
+          "planets": {
+            "active": 1,
+            "queued": 0,
+            "created": 3,
+            "disposed": 2
+          },
+          "jobs": {
+            "total": 30,
+            "lastMs": 0.3999999985098839,
+            "maxMs": 1.699999999254942
+          }
+        },
+        "tour": null,
+        "projectiles": 0,
+        "planetCount": 80,
+        "visibleFullPlanets": 0,
+        "visiblePlanets": 58,
+        "players": {
+          "local": 1,
+          "remote": 0,
+          "bots": 0
+        },
+        "ship": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "worldPosition": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "cameraOffset": [
+            0,
+            125,
+            360
+          ],
+          "speed": 0,
+          "viewMode": "third",
+          "hp": 1000
+        }
+      },
+      "realtime": {
+        "configured": false,
+        "subscribed": false,
+        "sendAttempts": 0,
+        "received": 0,
+        "byEvent": {
+          "position": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "shoot": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "hit": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "die": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "chat": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "sonar": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "voice-signal": {
+            "sendAttempts": 0,
+            "received": 0
+          }
+        }
+      }
+    },
+    {
+      "timestampMs": 13684.699999999255,
+      "fps": 200,
+      "frameTimeMs": 5,
+      "p95FrameTimeMs": 5.099999997764826,
+      "sampleFrames": 180,
+      "graphicsMode": "LOW",
+      "starMap": {
+        "open": false
+      },
+      "flightInputBlocked": false,
+      "renderer": {
+        "calls": 85,
+        "triangles": 58416,
+        "points": 13775,
+        "lines": 18816,
+        "geometries": 57,
+        "textures": 11,
+        "programs": 24,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 15130102,
+        "jsHeapAllocatedBytes": 30130510,
+        "gpuBytes": null
+      },
+      "world": {
+        "scene": "near-base",
+        "worldSeed": "universe-explorer:world:v1",
+        "space": {
+          "origin": {
+            "origin": {
+              "sector": [
+                0,
+                0,
+                0
+              ],
+              "offset": [
+                0,
+                100,
+                9800
+              ]
+            },
+            "shifts": 1
+          },
+          "stream": {
+            "sector": "0,0,0",
+            "cached": 125,
+            "pending": 0,
+            "queued": 0,
+            "failed": 0,
+            "completed": 124,
+            "discarded": 0
+          },
+          "navigation": {
+            "groups": 27,
+            "points": 1100
+          },
+          "planets": {
+            "active": 1,
+            "queued": 0,
+            "created": 3,
+            "disposed": 2
+          },
+          "jobs": {
+            "total": 30,
+            "lastMs": 0.3999999985098839,
+            "maxMs": 1.699999999254942
+          }
+        },
+        "tour": null,
+        "projectiles": 0,
+        "planetCount": 80,
+        "visibleFullPlanets": 0,
+        "visiblePlanets": 58,
+        "players": {
+          "local": 1,
+          "remote": 0,
+          "bots": 0
+        },
+        "ship": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "worldPosition": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "cameraOffset": [
+            0,
+            125,
+            360
+          ],
+          "speed": 0,
+          "viewMode": "third",
+          "hp": 1000
+        }
+      },
+      "realtime": {
+        "configured": false,
+        "subscribed": false,
+        "sendAttempts": 0,
+        "received": 0,
+        "byEvent": {
+          "position": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "shoot": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "hit": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "die": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "chat": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "sonar": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "voice-signal": {
+            "sendAttempts": 0,
+            "received": 0
+          }
+        }
+      }
+    },
+    {
+      "timestampMs": 14695.699999999255,
+      "fps": 200,
+      "frameTimeMs": 5,
+      "p95FrameTimeMs": 5.099999997764826,
+      "sampleFrames": 180,
+      "graphicsMode": "LOW",
+      "starMap": {
+        "open": false
+      },
+      "flightInputBlocked": false,
+      "renderer": {
+        "calls": 85,
+        "triangles": 58416,
+        "points": 13775,
+        "lines": 18816,
+        "geometries": 57,
+        "textures": 11,
+        "programs": 24,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 15610618,
+        "jsHeapAllocatedBytes": 30130510,
+        "gpuBytes": null
+      },
+      "world": {
+        "scene": "near-base",
+        "worldSeed": "universe-explorer:world:v1",
+        "space": {
+          "origin": {
+            "origin": {
+              "sector": [
+                0,
+                0,
+                0
+              ],
+              "offset": [
+                0,
+                100,
+                9800
+              ]
+            },
+            "shifts": 1
+          },
+          "stream": {
+            "sector": "0,0,0",
+            "cached": 125,
+            "pending": 0,
+            "queued": 0,
+            "failed": 0,
+            "completed": 124,
+            "discarded": 0
+          },
+          "navigation": {
+            "groups": 27,
+            "points": 1100
+          },
+          "planets": {
+            "active": 1,
+            "queued": 0,
+            "created": 3,
+            "disposed": 2
+          },
+          "jobs": {
+            "total": 30,
+            "lastMs": 0.3999999985098839,
+            "maxMs": 1.699999999254942
+          }
+        },
+        "tour": null,
+        "projectiles": 0,
+        "planetCount": 80,
+        "visibleFullPlanets": 0,
+        "visiblePlanets": 58,
+        "players": {
+          "local": 1,
+          "remote": 0,
+          "bots": 0
+        },
+        "ship": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "worldPosition": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "cameraOffset": [
+            0,
+            125,
+            360
+          ],
+          "speed": 0,
+          "viewMode": "third",
+          "hp": 1000
+        }
+      },
+      "realtime": {
+        "configured": false,
+        "subscribed": false,
+        "sendAttempts": 0,
+        "received": 0,
+        "byEvent": {
+          "position": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "shoot": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "hit": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "die": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "chat": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "sonar": {
+            "sendAttempts": 0,
+            "received": 0
+          },
+          "voice-signal": {
+            "sendAttempts": 0,
+            "received": 0
+          }
+        }
+      }
+    }
+  ],
+  "averageFps": 199.994445678861,
+  "planets": [
+    {
+      "id": "planet-1",
+      "name": "Mars-Class-1",
+      "radius": 194.53719309531152,
+      "position": [
+        -1699.950493639335,
+        12090.39460227359,
+        4024.803379434161
+      ],
+      "seed": 2410796837,
+      "biome": "desert",
+      "visual": {
+        "landColor": 10712121,
+        "waterColor": 2326716,
+        "surfaceTint": 13071690,
+        "rimColor": 14853725,
+        "cloudColor": 16438166,
+        "cloudCoverage": 0.2066188283916563,
+        "cloudSpeed": 0.01782349407270085
+      }
+    },
+    {
+      "id": "planet-2",
+      "name": "Neptune-Class-2",
+      "radius": 63.56646683998406,
+      "position": [
+        -17273.5318163177,
+        1641.6395752457902,
+        -13710.29341535177
+      ],
+      "seed": 3295874095,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 4092265,
+        "waterColor": 1137103,
+        "surfaceTint": 1860247,
+        "rimColor": 6865632,
+        "cloudColor": 14215935,
+        "cloudCoverage": 0.8664175712782889,
+        "cloudSpeed": 0.01938748086891137
+      }
+    },
+    {
+      "id": "planet-3",
+      "name": "Ice Giant-3",
+      "radius": 59.699771739542484,
+      "position": [
+        1652.4058330105618,
+        11285.599402617663,
+        12285.692439763807
+      ],
+      "seed": 505889797,
+      "biome": "ice",
+      "visual": {
+        "landColor": 11594197,
+        "waterColor": 7523327,
+        "surfaceTint": 12111813,
+        "rimColor": 12181485,
+        "cloudColor": 16119295,
+        "cloudCoverage": 0.6280570534057915,
+        "cloudSpeed": 0.017934295537613797
+      }
+    },
+    {
+      "id": "planet-4",
+      "name": "Jupiter-Class-4",
+      "radius": 171.7428536619991,
+      "position": [
+        -3179.627942154184,
+        16791.887299041264,
+        11604.572046780959
+      ],
+      "seed": 1170902099,
+      "biome": "gas",
+      "visual": {
+        "landColor": 10053229,
+        "waterColor": 6534139,
+        "surfaceTint": 11431763,
+        "rimColor": 11823686,
+        "cloudColor": 14396548,
+        "cloudCoverage": 0.9320294859353453,
+        "cloudSpeed": 0.019929833057378422
+      }
+    },
+    {
+      "id": "planet-5",
+      "name": "Saturn-Class-5",
+      "radius": 112.3526000417769,
+      "position": [
+        14105.859593837522,
+        5172.075153677724,
+        -6054.530362598598
+      ],
+      "seed": 1726148710,
+      "biome": "gas",
+      "visual": {
+        "landColor": 9200212,
+        "waterColor": 7650812,
+        "surfaceTint": 11376195,
+        "rimColor": 12484668,
+        "cloudColor": 14006130,
+        "cloudCoverage": 0.8535547267645598,
+        "cloudSpeed": 0.022599566593645145
+      }
+    },
+    {
+      "id": "planet-6",
+      "name": "Dusty Titan-6",
+      "radius": 141.09264370054007,
+      "position": [
+        6901.32059098687,
+        2035.5409156763926,
+        16235.130652785301
+      ],
+      "seed": 1458156542,
+      "biome": "desert",
+      "visual": {
+        "landColor": 10847297,
+        "waterColor": 3836852,
+        "surfaceTint": 12876585,
+        "rimColor": 15704690,
+        "cloudColor": 16044937,
+        "cloudCoverage": 0.3353383795078844,
+        "cloudSpeed": 0.025819919900619423
+      }
+    },
+    {
+      "id": "planet-7",
+      "name": "Rocky World-7",
+      "radius": 231.25342475250363,
+      "position": [
+        -2567.1172596048564,
+        -9870.595156098716,
+        9120.892835198902
+      ],
+      "seed": 1556923605,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 1520402,
+        "waterColor": 16405532,
+        "surfaceTint": 3482394,
+        "rimColor": 14635048,
+        "cloudColor": 6772300,
+        "cloudCoverage": 0.8154685141146183,
+        "cloudSpeed": 0.019507220465433784
+      }
+    },
+    {
+      "id": "planet-8",
+      "name": "Terrestrial-8",
+      "radius": 65.08089140988886,
+      "position": [
+        -14603.586914017797,
+        2975.5192663287744,
+        -6086.547041195445
+      ],
+      "seed": 2890377553,
+      "biome": "forest",
+      "visual": {
+        "landColor": 3756069,
+        "waterColor": 1734571,
+        "surfaceTint": 6779707,
+        "rimColor": 8899829,
+        "cloudColor": 15660793,
+        "cloudCoverage": 0.5054731919430197,
+        "cloudSpeed": 0.021279239404776603
+      }
+    },
+    {
+      "id": "planet-9",
+      "name": "Gas Colossus-9",
+      "radius": 92.86007964983582,
+      "position": [
+        -3581.5179522614926,
+        5478.438368299976,
+        -3088.4508130839095
+      ],
+      "seed": 1705303813,
+      "biome": "gas",
+      "visual": {
+        "landColor": 10648916,
+        "waterColor": 7647474,
+        "surfaceTint": 12423767,
+        "rimColor": 12156240,
+        "cloudColor": 13741946,
+        "cloudCoverage": 0.9789553805720062,
+        "cloudSpeed": 0.03040408182177227
+      }
+    },
+    {
+      "id": "planet-10",
+      "name": "Brown Dwarf-10",
+      "radius": 130.0768231973052,
+      "position": [
+        16201.310468022712,
+        3868.8239583279938,
+        -7901.875837706029
+      ],
+      "seed": 1803515029,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 3420200,
+        "waterColor": 16731168,
+        "surfaceTint": 2698523,
+        "rimColor": 14902579,
+        "cloudColor": 6446406,
+        "cloudCoverage": 0.8238247870560735,
+        "cloudSpeed": 0.01727335716016125
+      }
+    },
+    {
+      "id": "planet-11",
+      "name": "Neptune-Class-11",
+      "radius": 123.85324169881642,
+      "position": [
+        -16.850462998263538,
+        8151.385030942038,
+        -5984.424028429203
+      ],
+      "seed": 105431873,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 4221777,
+        "waterColor": 1596104,
+        "surfaceTint": 2453402,
+        "rimColor": 6863839,
+        "cloudColor": 14082815,
+        "cloudCoverage": 0.7736887443624436,
+        "cloudSpeed": 0.019438137757065706
+      }
+    },
+    {
+      "id": "planet-12",
+      "name": "Neptune-Class-12",
+      "radius": 106.46292939782143,
+      "position": [
+        -16884.83829202596,
+        14819.992016418837,
+        -7398.374329204671
+      ],
+      "seed": 3123301550,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 3761511,
+        "waterColor": 479678,
+        "surfaceTint": 3566227,
+        "rimColor": 6796011,
+        "cloudColor": 14347262,
+        "cloudCoverage": 0.9160802723653614,
+        "cloudSpeed": 0.02789017545944778
+      }
+    },
+    {
+      "id": "planet-13",
+      "name": "Neptune-Class-13",
+      "radius": 125.36570401862264,
+      "position": [
+        -14414.728779229335,
+        -3761.7821304593235,
+        9315.946261631325
+      ],
+      "seed": 4194644686,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 2977893,
+        "waterColor": 1331896,
+        "surfaceTint": 1412002,
+        "rimColor": 6993130,
+        "cloudColor": 14672639,
+        "cloudCoverage": 0.9043612394295633,
+        "cloudSpeed": 0.026011875777111854
+      }
+    },
+    {
+      "id": "planet-14",
+      "name": "Gas Colossus-14",
+      "radius": 137.7973438706249,
+      "position": [
+        4791.938958805986,
+        7055.725759710185,
+        -2013.1059223785996
+      ],
+      "seed": 2693694917,
+      "biome": "gas",
+      "visual": {
+        "landColor": 10059871,
+        "waterColor": 7319807,
+        "surfaceTint": 11039570,
+        "rimColor": 12020038,
+        "cloudColor": 13740417,
+        "cloudCoverage": 0.8542802517302335,
+        "cloudSpeed": 0.02384748304220848
+      }
+    },
+    {
+      "id": "planet-15",
+      "name": "Gas Colossus-15",
+      "radius": 167.37011852674186,
+      "position": [
+        12070.071953348815,
+        -12163.779779803008,
+        18158.15230656881
+      ],
+      "seed": 3224181051,
+      "biome": "gas",
+      "visual": {
+        "landColor": 8086627,
+        "waterColor": 8172788,
+        "surfaceTint": 12358729,
+        "rimColor": 11960137,
+        "cloudColor": 14396542,
+        "cloudCoverage": 0.9240340225864202,
+        "cloudSpeed": 0.026589266831278806
+      }
+    },
+    {
+      "id": "planet-16",
+      "name": "Ice Giant-16",
+      "radius": 56.643547397106886,
+      "position": [
+        -10990.017524454743,
+        17635.099589824677,
+        -5790.030746720731
+      ],
+      "seed": 252616262,
+      "biome": "ice",
+      "visual": {
+        "landColor": 10872285,
+        "waterColor": 7004652,
+        "surfaceTint": 10934756,
+        "rimColor": 12968437,
+        "cloudColor": 16777209,
+        "cloudCoverage": 0.6485342124011367,
+        "cloudSpeed": 0.016748315105261282
+      }
+    },
+    {
+      "id": "planet-17",
+      "name": "Neptune-Class-17",
+      "radius": 234.93079370819032,
+      "position": [
+        -11419.951941934414,
+        -16924.78520271834,
+        -6391.45421446301
+      ],
+      "seed": 2899360328,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 4477022,
+        "waterColor": 415954,
+        "surfaceTint": 3704976,
+        "rimColor": 5487589,
+        "cloudColor": 13887487,
+        "cloudCoverage": 0.769120793165639,
+        "cloudSpeed": 0.01869902690557996
+      }
+    },
+    {
+      "id": "planet-18",
+      "name": "Brown Dwarf-18",
+      "radius": 156.4458091277629,
+      "position": [
+        14436.254458269104,
+        10963.282649754547,
+        5805.103669990785
+      ],
+      "seed": 1567074919,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 3084816,
+        "waterColor": 16734747,
+        "surfaceTint": 2565403,
+        "rimColor": 14771235,
+        "cloudColor": 7229003,
+        "cloudCoverage": 0.6421360800601542,
+        "cloudSpeed": 0.02096470871107653
+      }
+    },
+    {
+      "id": "planet-19",
+      "name": "Dusty Titan-19",
+      "radius": 206.6802941262722,
+      "position": [
+        -16668.438707711175,
+        -9655.686607584357,
+        322.10514473263174
+      ],
+      "seed": 1038740046,
+      "biome": "desert",
+      "visual": {
+        "landColor": 12157500,
+        "waterColor": 2326722,
+        "surfaceTint": 11953719,
+        "rimColor": 15312494,
+        "cloudColor": 15975312,
+        "cloudCoverage": 0.36345359312370423,
+        "cloudSpeed": 0.018196941454708578
+      }
+    },
+    {
+      "id": "planet-20",
+      "name": "Ice Giant-20",
+      "radius": 96.52026244439185,
+      "position": [
+        202.61731697246432,
+        -14252.550635137595,
+        -17540.569324046373
+      ],
+      "seed": 211560441,
+      "biome": "ice",
+      "visual": {
+        "landColor": 11133678,
+        "waterColor": 7458559,
+        "surfaceTint": 10008786,
+        "rimColor": 12834555,
+        "cloudColor": 16187391,
+        "cloudCoverage": 0.5754917677026242,
+        "cloudSpeed": 0.017970338216621896
+      }
+    },
+    {
+      "id": "planet-21",
+      "name": "Jupiter-Class-21",
+      "radius": 110.22904338315129,
+      "position": [
+        644.8727304814383,
+        -16606.793861137703,
+        -6329.7656597569585
+      ],
+      "seed": 2995820430,
+      "biome": "gas",
+      "visual": {
+        "landColor": 9270616,
+        "waterColor": 7977215,
+        "surfaceTint": 10064990,
+        "rimColor": 12021319,
+        "cloudColor": 14461555,
+        "cloudCoverage": 0.9216694921720773,
+        "cloudSpeed": 0.02705196665204596
+      }
+    },
+    {
+      "id": "planet-22",
+      "name": "Jupiter-Class-22",
+      "radius": 140.43565201573074,
+      "position": [
+        -14903.952676104382,
+        -2604.7809922602028,
+        8152.041849098168
+      ],
+      "seed": 839808604,
+      "biome": "gas",
+      "visual": {
+        "landColor": 8550219,
+        "waterColor": 7649279,
+        "surfaceTint": 10582882,
+        "rimColor": 12218683,
+        "cloudColor": 14726529,
+        "cloudCoverage": 0.9116153900045901,
+        "cloudSpeed": 0.029746794058606033
+      }
+    },
+    {
+      "id": "planet-23",
+      "name": "Saturn-Class-23",
+      "radius": 115.14129908755422,
+      "position": [
+        -14943.303659674712,
+        13988.049761974253,
+        17874.83021907974
+      ],
+      "seed": 144202264,
+      "biome": "gas",
+      "visual": {
+        "landColor": 9734494,
+        "waterColor": 7912959,
+        "surfaceTint": 11103308,
+        "rimColor": 11435840,
+        "cloudColor": 14596984,
+        "cloudCoverage": 0.8000650137197226,
+        "cloudSpeed": 0.028062563362228687
+      }
+    },
+    {
+      "id": "planet-24",
+      "name": "Dusty Titan-24",
+      "radius": 50.192467495799065,
+      "position": [
+        -18508.868894423358,
+        -5970.5459454562515,
+        -9352.529331226833
+      ],
+      "seed": 3032939777,
+      "biome": "desert",
+      "visual": {
+        "landColor": 11038250,
+        "waterColor": 3637949,
+        "surfaceTint": 12018993,
+        "rimColor": 14591074,
+        "cloudColor": 16040590,
+        "cloudCoverage": 0.24682904888875784,
+        "cloudSpeed": 0.02217028178116307
+      }
+    },
+    {
+      "id": "planet-25",
+      "name": "Neptune-Class-25",
+      "radius": 96.05339881964028,
+      "position": [
+        -8717.7067034645,
+        18186.17489479948,
+        -9894.945536507294
+      ],
+      "seed": 3110701261,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 2647120,
+        "waterColor": 1141180,
+        "surfaceTint": 3961504,
+        "rimColor": 5949169,
+        "cloudColor": 14020088,
+        "cloudCoverage": 0.830601800866425,
+        "cloudSpeed": 0.019779325686355587
+      }
+    },
+    {
+      "id": "planet-26",
+      "name": "Jupiter-Class-26",
+      "radius": 99.56493079662323,
+      "position": [
+        -7020.377449225634,
+        8577.214149408974,
+        -8043.983794050291
+      ],
+      "seed": 3495199394,
+      "biome": "gas",
+      "visual": {
+        "landColor": 8482395,
+        "waterColor": 7782394,
+        "surfaceTint": 10915941,
+        "rimColor": 11169858,
+        "cloudColor": 14133374,
+        "cloudCoverage": 0.8315792240668088,
+        "cloudSpeed": 0.024003689001793976
+      }
+    },
+    {
+      "id": "planet-27",
+      "name": "Dusty Titan-27",
+      "radius": 209.56723419949412,
+      "position": [
+        254.3959824834019,
+        -13871.241122251377,
+        -14295.450883219019
+      ],
+      "seed": 1752869609,
+      "biome": "desert",
+      "visual": {
+        "landColor": 12158506,
+        "waterColor": 2328755,
+        "surfaceTint": 11635266,
+        "rimColor": 14984545,
+        "cloudColor": 16105606,
+        "cloudCoverage": 0.24466282857581975,
+        "cloudSpeed": 0.018927597176935523
+      }
+    },
+    {
+      "id": "planet-28",
+      "name": "Saturn-Class-28",
+      "radius": 132.27927898988128,
+      "position": [
+        193.31475778017193,
+        -6096.178240841255,
+        -10228.877406916581
+      ],
+      "seed": 2046984394,
+      "biome": "gas",
+      "visual": {
+        "landColor": 8877164,
+        "waterColor": 7259391,
+        "surfaceTint": 12481859,
+        "rimColor": 11234638,
+        "cloudColor": 14922367,
+        "cloudCoverage": 0.921424173656851,
+        "cloudSpeed": 0.025009202055977658
+      }
+    },
+    {
+      "id": "planet-29",
+      "name": "Neptune-Class-29",
+      "radius": 226.01129431277514,
+      "position": [
+        12908.79571752157,
+        6776.231888215989,
+        7301.031061797403
+      ],
+      "seed": 3084933100,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 2978396,
+        "waterColor": 1338055,
+        "surfaceTint": 2788489,
+        "rimColor": 6735329,
+        "cloudColor": 14936830,
+        "cloudCoverage": 0.8908756446372718,
+        "cloudSpeed": 0.02463427565058926
+      }
+    },
+    {
+      "id": "planet-30",
+      "name": "Ice Giant-30",
+      "radius": 103.92936384305358,
+      "position": [
+        -6173.053861130029,
+        18514.270725427195,
+        -3168.3467561379075
+      ],
+      "seed": 740549179,
+      "biome": "ice",
+      "visual": {
+        "landColor": 11330528,
+        "waterColor": 7463410,
+        "surfaceTint": 10738883,
+        "rimColor": 11791086,
+        "cloudColor": 15596792,
+        "cloudCoverage": 0.6432120434008539,
+        "cloudSpeed": 0.02029506037972169
+      }
+    },
+    {
+      "id": "planet-31",
+      "name": "Jupiter-Class-31",
+      "radius": 197.79368452727795,
+      "position": [
+        -4343.571138451807,
+        10523.466736776754,
+        18011.160695459694
+      ],
+      "seed": 2868194312,
+      "biome": "gas",
+      "visual": {
+        "landColor": 10191190,
+        "waterColor": 6794751,
+        "surfaceTint": 11170912,
+        "rimColor": 11172155,
+        "cloudColor": 14334070,
+        "cloudCoverage": 0.8698430757969619,
+        "cloudSpeed": 0.029968429536228074
+      }
+    },
+    {
+      "id": "planet-32",
+      "name": "Jupiter-Class-32",
+      "radius": 105.29401269741356,
+      "position": [
+        95.49055248498917,
+        10331.7301167408,
+        3205.050970427692
+      ],
+      "seed": 1307216576,
+      "biome": "gas",
+      "visual": {
+        "landColor": 10256985,
+        "waterColor": 6667007,
+        "surfaceTint": 10907208,
+        "rimColor": 12150601,
+        "cloudColor": 14529918,
+        "cloudCoverage": 0.9148257195483893,
+        "cloudSpeed": 0.02362667747995351
+      }
+    },
+    {
+      "id": "planet-33",
+      "name": "Mars-Class-33",
+      "radius": 74.58673948422074,
+      "position": [
+        14590.286579914391,
+        -14372.042889590375,
+        -12516.565702389926
+      ],
+      "seed": 1587445292,
+      "biome": "desert",
+      "visual": {
+        "landColor": 10972215,
+        "waterColor": 2986411,
+        "surfaceTint": 11039788,
+        "rimColor": 14855017,
+        "cloudColor": 15782291,
+        "cloudCoverage": 0.23301638636738065,
+        "cloudSpeed": 0.018620871649170295
+      }
+    },
+    {
+      "id": "planet-34",
+      "name": "Jupiter-Class-34",
+      "radius": 139.3180012702942,
+      "position": [
+        -12107.692056451924,
+        9767.18463934958,
+        17170.01825454645
+      ],
+      "seed": 1355116579,
+      "biome": "gas",
+      "visual": {
+        "landColor": 8420719,
+        "waterColor": 8108031,
+        "surfaceTint": 11570271,
+        "rimColor": 11038271,
+        "cloudColor": 14660730,
+        "cloudCoverage": 0.9715439185500145,
+        "cloudSpeed": 0.021692619157731536
+      }
+    },
+    {
+      "id": "planet-35",
+      "name": "Neptune-Class-35",
+      "radius": 121.21499790810049,
+      "position": [
+        -7779.304098221473,
+        11760.669460636564,
+        -4266.183235449716
+      ],
+      "seed": 3538503180,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 3498344,
+        "waterColor": 681919,
+        "surfaceTint": 1537670,
+        "rimColor": 5681892,
+        "cloudColor": 15003647,
+        "cloudCoverage": 0.8560302146989852,
+        "cloudSpeed": 0.022207196595862042
+      }
+    },
+    {
+      "id": "planet-36",
+      "name": "Mars-Class-36",
+      "radius": 103.01713696680963,
+      "position": [
+        11360.61753204558,
+        -6805.954378796741,
+        14852.266560774297
+      ],
+      "seed": 834486301,
+      "biome": "desert",
+      "visual": {
+        "landColor": 12022846,
+        "waterColor": 3702459,
+        "surfaceTint": 11831594,
+        "rimColor": 14787682,
+        "cloudColor": 15911055,
+        "cloudCoverage": 0.18789193003438415,
+        "cloudSpeed": 0.021519439265760595
+      }
+    },
+    {
+      "id": "planet-37",
+      "name": "Neptune-Class-37",
+      "radius": 228.28409359790385,
+      "position": [
+        1853.3443246269599,
+        18528.08869443834,
+        -7342.891037114896
+      ],
+      "seed": 2308338647,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 2904136,
+        "waterColor": 617417,
+        "surfaceTint": 3441567,
+        "rimColor": 6866155,
+        "cloudColor": 13888761,
+        "cloudCoverage": 0.7626985100843012,
+        "cloudSpeed": 0.022890267547860273
+      }
+    },
+    {
+      "id": "planet-38",
+      "name": "Neptune-Class-38",
+      "radius": 77.70160385407507,
+      "position": [
+        5568.950742599554,
+        -5525.413417490199,
+        18649.20244552195
+      ],
+      "seed": 2555687335,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 2585186,
+        "waterColor": 1268419,
+        "surfaceTint": 2646655,
+        "rimColor": 7060192,
+        "cloudColor": 14284286,
+        "cloudCoverage": 0.8717527317162602,
+        "cloudSpeed": 0.026442862703187856
+      }
+    },
+    {
+      "id": "planet-39",
+      "name": "Gas Colossus-39",
+      "radius": 109.08327456563711,
+      "position": [
+        -15415.544580901042,
+        3419.9331857962534,
+        11208.994901971892
+      ],
+      "seed": 2749662033,
+      "biome": "gas",
+      "visual": {
+        "landColor": 9200456,
+        "waterColor": 6531825,
+        "surfaceTint": 11503445,
+        "rimColor": 11102797,
+        "cloudColor": 13740659,
+        "cloudCoverage": 0.8414839882869274,
+        "cloudSpeed": 0.02236923609135207
+      }
+    },
+    {
+      "id": "planet-40",
+      "name": "Brown Dwarf-40",
+      "radius": 97.94058669358492,
+      "position": [
+        9382.441287743859,
+        6698.450332623906,
+        15739.507565740496
+      ],
+      "seed": 740041222,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 3025716,
+        "waterColor": 16203536,
+        "surfaceTint": 4143408,
+        "rimColor": 13848633,
+        "cloudColor": 7232339,
+        "cloudCoverage": 0.6679321069363504,
+        "cloudSpeed": 0.021553016522042456
+      }
+    },
+    {
+      "id": "planet-41",
+      "name": "Neptune-Class-41",
+      "radius": 234.68269649893045,
+      "position": [
+        1774.6338882716373,
+        18388.797467923723,
+        1625.6590490229428
+      ],
+      "seed": 2353499514,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 3821394,
+        "waterColor": 1468115,
+        "surfaceTint": 1667482,
+        "rimColor": 5946091,
+        "cloudColor": 13952255,
+        "cloudCoverage": 0.8123910431563853,
+        "cloudSpeed": 0.021052370661217717
+      }
+    },
+    {
+      "id": "planet-42",
+      "name": "Terrestrial-42",
+      "radius": 105.92059195041656,
+      "position": [
+        -4352.693451801315,
+        -17324.281664332375,
+        -10205.965623026714
+      ],
+      "seed": 3741804250,
+      "biome": "forest",
+      "visual": {
+        "landColor": 3235396,
+        "waterColor": 1736099,
+        "surfaceTint": 6524220,
+        "rimColor": 9555711,
+        "cloudColor": 15135999,
+        "cloudCoverage": 0.49574109315872195,
+        "cloudSpeed": 0.017588116182980593
+      }
+    },
+    {
+      "id": "planet-43",
+      "name": "Brown Dwarf-43",
+      "radius": 57.76652870699763,
+      "position": [
+        3196.606630808674,
+        -12726.215165457688,
+        4809.492357890122
+      ],
+      "seed": 2819889200,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 3677716,
+        "waterColor": 15811349,
+        "surfaceTint": 4790819,
+        "rimColor": 14375476,
+        "cloudColor": 7229257,
+        "cloudCoverage": 0.6546851088851691,
+        "cloudSpeed": 0.02160219100859482
+      }
+    },
+    {
+      "id": "planet-44",
+      "name": "Rocky World-44",
+      "radius": 191.2427286617458,
+      "position": [
+        -15164.769336115569,
+        15129.20792447403,
+        18263.32239434123
+      ],
+      "seed": 3539075608,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 1585180,
+        "waterColor": 16730899,
+        "surfaceTint": 2693689,
+        "rimColor": 14509350,
+        "cloudColor": 6837573,
+        "cloudCoverage": 0.6886205065622926,
+        "cloudSpeed": 0.02249337570985779
+      }
+    },
+    {
+      "id": "planet-45",
+      "name": "Gas Colossus-45",
+      "radius": 183.89141377992928,
+      "position": [
+        -14487.419690703973,
+        3525.814731256105,
+        -8891.23308879789
+      ],
+      "seed": 4211247960,
+      "biome": "gas",
+      "visual": {
+        "landColor": 9004634,
+        "waterColor": 8236799,
+        "surfaceTint": 9864543,
+        "rimColor": 11762249,
+        "cloudColor": 13743735,
+        "cloudCoverage": 0.9116056297440082,
+        "cloudSpeed": 0.025446646393425768
+      }
+    },
+    {
+      "id": "planet-46",
+      "name": "Terrestrial-46",
+      "radius": 235.5075724888593,
+      "position": [
+        16178.645365289412,
+        -17612.14420257602,
+        -7388.180861016735
+      ],
+      "seed": 3174758777,
+      "biome": "forest",
+      "visual": {
+        "landColor": 3627590,
+        "waterColor": 3044276,
+        "surfaceTint": 7236414,
+        "rimColor": 8377590,
+        "cloudColor": 15723511,
+        "cloudCoverage": 0.5598592807073146,
+        "cloudSpeed": 0.015174947138824502
+      }
+    },
+    {
+      "id": "planet-47",
+      "name": "Ice Giant-47",
+      "radius": 151.54494140297174,
+      "position": [
+        -13385.440735146403,
+        -399.7361316578463,
+        7715.139939682558
+      ],
+      "seed": 2855732004,
+      "biome": "ice",
+      "visual": {
+        "landColor": 12175069,
+        "waterColor": 8906236,
+        "surfaceTint": 11653608,
+        "rimColor": 12574704,
+        "cloudColor": 15792383,
+        "cloudCoverage": 0.7230143208988011,
+        "cloudSpeed": 0.02149639365734765
+      }
+    },
+    {
+      "id": "planet-48",
+      "name": "Ice Giant-48",
+      "radius": 213.3384465239942,
+      "position": [
+        6820.032876566984,
+        -2702.408458571881,
+        -8705.091616138816
+      ],
+      "seed": 4133005392,
+      "biome": "ice",
+      "visual": {
+        "landColor": 12837853,
+        "waterColor": 7068401,
+        "surfaceTint": 11974874,
+        "rimColor": 11987179,
+        "cloudColor": 16579583,
+        "cloudCoverage": 0.5976529727224261,
+        "cloudSpeed": 0.01782050679810345
+      }
+    },
+    {
+      "id": "planet-49",
+      "name": "Saturn-Class-49",
+      "radius": 144.74118067882955,
+      "position": [
+        15823.44617927447,
+        15437.925947480835,
+        16289.247572422028
+      ],
+      "seed": 64168288,
+      "biome": "gas",
+      "visual": {
+        "landColor": 10388312,
+        "waterColor": 6793727,
+        "surfaceTint": 9930048,
+        "rimColor": 10843199,
+        "cloudColor": 13742452,
+        "cloudCoverage": 0.86431589666754,
+        "cloudSpeed": 0.02206628723772243
+      }
+    },
+    {
+      "id": "planet-50",
+      "name": "Rocky World-50",
+      "radius": 231.75611654296517,
+      "position": [
+        -15012.19920173753,
+        4846.161184832454,
+        -18015.40002634283
+      ],
+      "seed": 2690613107,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 3215635,
+        "waterColor": 16733192,
+        "surfaceTint": 4930872,
+        "rimColor": 14703399,
+        "cloudColor": 6511176,
+        "cloudCoverage": 0.654866920048371,
+        "cloudSpeed": 0.0199263079525996
+      }
+    },
+    {
+      "id": "planet-51",
+      "name": "Rocky World-51",
+      "radius": 208.55308510363102,
+      "position": [
+        4768.40766496025,
+        5582.686857087538,
+        10714.880426530726
+      ],
+      "seed": 826633971,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 3022117,
+        "waterColor": 16733462,
+        "surfaceTint": 3220523,
+        "rimColor": 14503468,
+        "cloudColor": 7164240,
+        "cloudCoverage": 0.8004743929579854,
+        "cloudSpeed": 0.017783876874479465
+      }
+    },
+    {
+      "id": "planet-52",
+      "name": "Dusty Titan-52",
+      "radius": 212.00140654109418,
+      "position": [
+        -6527.591819758527,
+        4170.122111099772,
+        -16709.307217388414
+      ],
+      "seed": 1258338900,
+      "biome": "desert",
+      "visual": {
+        "landColor": 12674125,
+        "waterColor": 3640253,
+        "surfaceTint": 13273931,
+        "rimColor": 15509620,
+        "cloudColor": 15451530,
+        "cloudCoverage": 0.22554484640248124,
+        "cloudSpeed": 0.02455248953632545
+      }
+    },
+    {
+      "id": "planet-53",
+      "name": "Rocky World-53",
+      "radius": 101.9952003378421,
+      "position": [
+        13212.58638636209,
+        -12725.921004312113,
+        1585.7592516113073
+      ],
+      "seed": 184779077,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 2173492,
+        "waterColor": 16734755,
+        "surfaceTint": 4134675,
+        "rimColor": 14309428,
+        "cloudColor": 7691590,
+        "cloudCoverage": 0.7732769616972655,
+        "cloudSpeed": 0.018471574520939033
+      }
+    },
+    {
+      "id": "planet-54",
+      "name": "Mars-Class-54",
+      "radius": 117.69165149889886,
+      "position": [
+        -2621.164862648584,
+        -3380.3238213295117,
+        -53.149464656598866
+      ],
+      "seed": 412626,
+      "biome": "desert",
+      "visual": {
+        "landColor": 10978632,
+        "waterColor": 3906240,
+        "surfaceTint": 11956295,
+        "rimColor": 14199918,
+        "cloudColor": 15846539,
+        "cloudCoverage": 0.29249127099290495,
+        "cloudSpeed": 0.02547109378250316
+      }
+    },
+    {
+      "id": "planet-55",
+      "name": "Mars-Class-55",
+      "radius": 219.92326020263135,
+      "position": [
+        -13694.12484636996,
+        -1822.6977117592469,
+        3409.4321017619222
+      ],
+      "seed": 3378255101,
+      "biome": "desert",
+      "visual": {
+        "landColor": 11168069,
+        "waterColor": 2070186,
+        "surfaceTint": 13405006,
+        "rimColor": 14922078,
+        "cloudColor": 15714956,
+        "cloudCoverage": 0.23542563064955177,
+        "cloudSpeed": 0.023333573455340227
+      }
+    },
+    {
+      "id": "planet-56",
+      "name": "Rocky World-56",
+      "radius": 65.42735840193927,
+      "position": [
+        4505.733103724197,
+        9169.0265777288,
+        11205.966537818313
+      ],
+      "seed": 948961196,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 1904679,
+        "waterColor": 16729120,
+        "surfaceTint": 4469004,
+        "rimColor": 14378019,
+        "cloudColor": 6507600,
+        "cloudCoverage": 0.683997518485412,
+        "cloudSpeed": 0.017917615916305224
+      }
+    },
+    {
+      "id": "planet-57",
+      "name": "Neptune-Class-57",
+      "radius": 72.79675821773708,
+      "position": [
+        -17814.4952544244,
+        16670.188814168796,
+        -15948.677810956724
+      ],
+      "seed": 1991565099,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 1993060,
+        "waterColor": 1927623,
+        "surfaceTint": 3899523,
+        "rimColor": 5816043,
+        "cloudColor": 14086911,
+        "cloudCoverage": 0.8444360423646867,
+        "cloudSpeed": 0.028087397482120434
+      }
+    },
+    {
+      "id": "planet-58",
+      "name": "Neptune-Class-58",
+      "radius": 249.4370653759688,
+      "position": [
+        -5824.966213549487,
+        9318.890623399056,
+        -11911.715799942613
+      ],
+      "seed": 2445864181,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 2582371,
+        "waterColor": 1070537,
+        "surfaceTint": 3172987,
+        "rimColor": 6796783,
+        "cloudColor": 13887743,
+        "cloudCoverage": 0.8369370951596647,
+        "cloudSpeed": 0.025085723704556005
+      }
+    },
+    {
+      "id": "planet-59",
+      "name": "Neptune-Class-59",
+      "radius": 169.65288538485765,
+      "position": [
+        12657.581776147708,
+        -15785.884548677132,
+        9125.825855880976
+      ],
+      "seed": 4027990735,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 2184040,
+        "waterColor": 2254798,
+        "surfaceTint": 2515842,
+        "rimColor": 6863839,
+        "cloudColor": 14150906,
+        "cloudCoverage": 0.737135246656835,
+        "cloudSpeed": 0.020405842016921378
+      }
+    },
+    {
+      "id": "planet-60",
+      "name": "Dusty Titan-60",
+      "radius": 63.94822676666081,
+      "position": [
+        -10234.094242332503,
+        14466.570387594402,
+        -3103.4144310979173
+      ],
+      "seed": 304409320,
+      "biome": "desert",
+      "visual": {
+        "landColor": 11889482,
+        "waterColor": 3051699,
+        "surfaceTint": 11824459,
+        "rimColor": 15772783,
+        "cloudColor": 15583120,
+        "cloudCoverage": 0.2967320105712861,
+        "cloudSpeed": 0.024125448385509663
+      }
+    },
+    {
+      "id": "planet-61",
+      "name": "Rocky World-61",
+      "radius": 76.62525177001953,
+      "position": [
+        -14702.497606049292,
+        11095.084383850917,
+        -7509.472430683672
+      ],
+      "seed": 996829595,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 3417134,
+        "waterColor": 15943189,
+        "surfaceTint": 2758682,
+        "rimColor": 13326391,
+        "cloudColor": 7360070,
+        "cloudCoverage": 0.7899239636119455,
+        "cloudSpeed": 0.024088372917869128
+      }
+    },
+    {
+      "id": "planet-62",
+      "name": "Terrestrial-62",
+      "radius": 67.09802853874862,
+      "position": [
+        -4812.472115736455,
+        -6951.915740501136,
+        9473.423773306422
+      ],
+      "seed": 1845409734,
+      "biome": "forest",
+      "visual": {
+        "landColor": 4281906,
+        "waterColor": 1541285,
+        "surfaceTint": 6454311,
+        "rimColor": 9163263,
+        "cloudColor": 14810111,
+        "cloudCoverage": 0.6061267808545381,
+        "cloudSpeed": 0.017043398322393186
+      }
+    },
+    {
+      "id": "planet-63",
+      "name": "Rocky World-63",
+      "radius": 168.5372353065759,
+      "position": [
+        -18218.726164195687,
+        6502.622252446599,
+        -13895.023227087222
+      ],
+      "seed": 462801197,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 3941148,
+        "waterColor": 16662289,
+        "surfaceTint": 3936795,
+        "rimColor": 14962469,
+        "cloudColor": 7757647,
+        "cloudCoverage": 0.8078613874129951,
+        "cloudSpeed": 0.01904399416890461
+      }
+    },
+    {
+      "id": "planet-64",
+      "name": "Terrestrial-64",
+      "radius": 175.61551108956337,
+      "position": [
+        -5289.706808980554,
+        15361.446415772662,
+        -2074.411031208001
+      ],
+      "seed": 919397481,
+      "biome": "forest",
+      "visual": {
+        "landColor": 2579782,
+        "waterColor": 2717880,
+        "surfaceTint": 7046735,
+        "rimColor": 9488889,
+        "cloudColor": 15657718,
+        "cloudCoverage": 0.47163180960342294,
+        "cloudSpeed": 0.021730131271397696
+      }
+    },
+    {
+      "id": "planet-65",
+      "name": "Jupiter-Class-65",
+      "radius": 249.77833242155612,
+      "position": [
+        -882.2792064165697,
+        6841.519771842286,
+        -17050.63707777299
+      ],
+      "seed": 16638371,
+      "biome": "gas",
+      "visual": {
+        "landColor": 8221286,
+        "waterColor": 7646975,
+        "surfaceTint": 10251861,
+        "rimColor": 11037766,
+        "cloudColor": 14332286,
+        "cloudCoverage": 0.9327177728991956,
+        "cloudSpeed": 0.026220372784268114
+      }
+    },
+    {
+      "id": "planet-66",
+      "name": "Neptune-Class-66",
+      "radius": 63.81753636524081,
+      "position": [
+        8378.743543289602,
+        8817.297307541594,
+        434.8272399511188
+      ],
+      "seed": 819458059,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 3104870,
+        "waterColor": 2253495,
+        "surfaceTint": 2588563,
+        "rimColor": 5878001,
+        "cloudColor": 14017529,
+        "cloudCoverage": 0.8585982645209879,
+        "cloudSpeed": 0.02410275307633914
+      }
+    },
+    {
+      "id": "planet-67",
+      "name": "Brown Dwarf-67",
+      "radius": 240.78528890386224,
+      "position": [
+        -7015.483334544115,
+        -5344.815491116606,
+        -2268.5600502882153
+      ],
+      "seed": 3992108994,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 3152406,
+        "waterColor": 16006411,
+        "surfaceTint": 3617295,
+        "rimColor": 13654819,
+        "cloudColor": 7690327,
+        "cloudCoverage": 0.7846425589732826,
+        "cloudSpeed": 0.01899981811811682
+      }
+    },
+    {
+      "id": "planet-68",
+      "name": "Jupiter-Class-68",
+      "radius": 73.7037792801857,
+      "position": [
+        -17648.435276350938,
+        14720.674609998241,
+        9174.183901632205
+      ],
+      "seed": 889544607,
+      "biome": "gas",
+      "visual": {
+        "landColor": 9333842,
+        "waterColor": 6996479,
+        "surfaceTint": 10124618,
+        "rimColor": 10975297,
+        "cloudColor": 14462848,
+        "cloudCoverage": 0.9124747921247035,
+        "cloudSpeed": 0.020949704919005746
+      }
+    },
+    {
+      "id": "planet-69",
+      "name": "Gas Colossus-69",
+      "radius": 186.13932826556265,
+      "position": [
+        -9451.109418296255,
+        -10424.489391152747,
+        -11107.691211509518
+      ],
+      "seed": 2460297446,
+      "biome": "gas",
+      "visual": {
+        "landColor": 10189162,
+        "waterColor": 7713530,
+        "surfaceTint": 11769171,
+        "rimColor": 10908236,
+        "cloudColor": 14658933,
+        "cloudCoverage": 0.9721427501644939,
+        "cloudSpeed": 0.028594781055273494
+      }
+    },
+    {
+      "id": "planet-70",
+      "name": "Neptune-Class-70",
+      "radius": 123.04456229321659,
+      "position": [
+        -7754.317880608141,
+        -15648.316300939769,
+        -17023.816393339075
+      ],
+      "seed": 4239048406,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 3502407,
+        "waterColor": 2184898,
+        "surfaceTint": 1607567,
+        "rimColor": 6863327,
+        "cloudColor": 14346751,
+        "cloudCoverage": 0.7551869070436805,
+        "cloudSpeed": 0.020270195593568494
+      }
+    },
+    {
+      "id": "planet-71",
+      "name": "Mars-Class-71",
+      "radius": 144.17277369648218,
+      "position": [
+        -4062.0380284963176,
+        -12085.943322745152,
+        7198.791837436147
+      ],
+      "seed": 2002553524,
+      "biome": "desert",
+      "visual": {
+        "landColor": 12484172,
+        "waterColor": 3510714,
+        "surfaceTint": 13401407,
+        "rimColor": 14459761,
+        "cloudColor": 16041365,
+        "cloudCoverage": 0.19208059443160894,
+        "cloudSpeed": 0.018954220173833893
+      }
+    },
+    {
+      "id": "planet-72",
+      "name": "Rocky World-72",
+      "radius": 167.61868614703417,
+      "position": [
+        -4158.3194135455415,
+        15274.458439671434,
+        12035.065336385742
+      ],
+      "seed": 1037940118,
+      "biome": "volcanic",
+      "visual": {
+        "landColor": 3616033,
+        "waterColor": 16074762,
+        "surfaceTint": 3551007,
+        "rimColor": 13391406,
+        "cloudColor": 7034697,
+        "cloudCoverage": 0.6792305406741798,
+        "cloudSpeed": 0.016096588446917012
+      }
+    },
+    {
+      "id": "planet-73",
+      "name": "Neptune-Class-73",
+      "radius": 101.77685176022351,
+      "position": [
+        -6941.462625400163,
+        -6799.336307449266,
+        13034.4469769625
+      ],
+      "seed": 693364418,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 2712394,
+        "waterColor": 1397454,
+        "surfaceTint": 1605536,
+        "rimColor": 5882855,
+        "cloudColor": 14151935,
+        "cloudCoverage": 0.8919078201800584,
+        "cloudSpeed": 0.025624581885810474
+      }
+    },
+    {
+      "id": "planet-74",
+      "name": "Neptune-Class-74",
+      "radius": 65.12634577229619,
+      "position": [
+        7375.985733233392,
+        15777.98598445952,
+        -1852.8781860368326
+      ],
+      "seed": 2640171265,
+      "biome": "oceanic",
+      "visual": {
+        "landColor": 2254152,
+        "waterColor": 1269971,
+        "surfaceTint": 2978955,
+        "rimColor": 6274785,
+        "cloudColor": 14611703,
+        "cloudCoverage": 0.8108434099517762,
+        "cloudSpeed": 0.019286171196151992
+      }
+    },
+    {
+      "id": "planet-75",
+      "name": "Saturn-Class-75",
+      "radius": 83.2819011528045,
+      "position": [
+        -2501.437146565877,
+        17406.925509567373,
+        -731.9088676013052
+      ],
+      "seed": 396067630,
+      "biome": "gas",
+      "visual": {
+        "landColor": 9012839,
+        "waterColor": 6402303,
+        "surfaceTint": 10453589,
+        "rimColor": 11040828,
+        "cloudColor": 14005874,
+        "cloudCoverage": 0.9854418736882509,
+        "cloudSpeed": 0.020967555704927074
+      }
+    },
+    {
+      "id": "planet-76",
+      "name": "Ice Giant-76",
+      "radius": 237.60093511082232,
+      "position": [
+        -9915.227559395134,
+        16829.20986204408,
+        16440.679811057635
+      ],
+      "seed": 2775447335,
+      "biome": "ice",
+      "visual": {
+        "landColor": 10872541,
+        "waterColor": 8441323,
+        "surfaceTint": 9951961,
+        "rimColor": 11984634,
+        "cloudColor": 16710393,
+        "cloudCoverage": 0.6429433286655695,
+        "cloudSpeed": 0.016683496006636416
+      }
+    },
+    {
+      "id": "planet-77",
+      "name": "Terrestrial-77",
+      "radius": 157.0260226726532,
+      "position": [
+        4487.923244596459,
+        -7046.1012568557635,
+        -10024.063236778602
+      ],
+      "seed": 455935525,
+      "biome": "forest",
+      "visual": {
+        "landColor": 2380358,
+        "waterColor": 1274275,
+        "surfaceTint": 7504170,
+        "rimColor": 9816573,
+        "cloudColor": 14873334,
+        "cloudCoverage": 0.6198629318270833,
+        "cloudSpeed": 0.01678094566951506
+      }
+    },
+    {
+      "id": "planet-78",
+      "name": "Ice Giant-78",
+      "radius": 135.71310467086732,
+      "position": [
+        -4935.405307332985,
+        14666.740529355593,
+        10651.160762063228
+      ],
+      "seed": 2114148885,
+      "biome": "ice",
+      "visual": {
+        "landColor": 10998494,
+        "waterColor": 7260661,
+        "surfaceTint": 12306119,
+        "rimColor": 12572138,
+        "cloudColor": 15728639,
+        "cloudCoverage": 0.5564491180237383,
+        "cloudSpeed": 0.018968820281943775
+      }
+    },
+    {
+      "id": "planet-79",
+      "name": "Terrestrial-79",
+      "radius": 145.72294717654586,
+      "position": [
+        17756.369017297402,
+        -17024.006330757402,
+        2073.3563520479947
+      ],
+      "seed": 3072830212,
+      "biome": "forest",
+      "visual": {
+        "landColor": 4283437,
+        "waterColor": 2001584,
+        "surfaceTint": 6389047,
+        "rimColor": 8636924,
+        "cloudColor": 15071743,
+        "cloudCoverage": 0.538152935449034,
+        "cloudSpeed": 0.018430386673680042
+      }
+    },
+    {
+      "id": "planet-80",
+      "name": "Saturn-Class-80",
+      "radius": 168.97755567915738,
+      "position": [
+        -6809.987218002789,
+        -14667.333217221312,
+        -5498.8065850920975
+      ],
+      "seed": 3077767557,
+      "biome": "gas",
+      "visual": {
+        "landColor": 9660003,
+        "waterColor": 7122943,
+        "surfaceTint": 11769151,
+        "rimColor": 11169853,
+        "cloudColor": 14790263,
+        "cloudCoverage": 0.9919181938283146,
+        "cloudSpeed": 0.024623482018918733
+      }
+    }
+  ],
+  "issues": []
+}

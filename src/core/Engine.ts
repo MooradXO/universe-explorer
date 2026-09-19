@@ -2,28 +2,45 @@ import * as THREE from 'three';
 import { ShipController } from './ShipController';
 import { Settings } from './Settings';
 import { AdaptiveRenderQuality } from './AdaptiveRenderQuality';
+import { FrameMetrics } from '../debug/FrameMetrics';
 // @ts-ignore
 import { CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 
+export interface EngineOverlayView {
+  scene: THREE.Scene;
+  camera: THREE.PerspectiveCamera;
+  update(dt: number): void;
+  resize(width: number, height: number): void;
+  snapshot(): unknown;
+}
+
 export class Engine {
   public scene: THREE.Scene;
-  public activeScene: THREE.Scene;
   public camera: THREE.PerspectiveCamera;
   public renderer: THREE.WebGLRenderer;
   public css2dRenderer: CSS2DRenderer;
   public shipController: ShipController;
+  public readonly frameMetrics = new FrameMetrics();
 
   private clock: THREE.Clock;
   private loopCallbacks: ((dt: number) => void)[] = [];
   private renderQuality: AdaptiveRenderQuality;
   private isLoopRunning = false;
   private labelRenderAccumulator = 0;
+  private overlayView: EngineOverlayView | null = null;
+
+  public setOverlayView(view: EngineOverlayView | null) {
+    this.overlayView = view;
+    this.css2dRenderer.domElement.style.visibility = view ? 'hidden' : '';
+    view?.resize(window.innerWidth, window.innerHeight);
+  }
+
+  public getOverlaySnapshot() { return this.overlayView?.snapshot() ?? { open: false }; }
 
 
   constructor(container: HTMLElement) {
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0x020208);
-    this.activeScene = this.scene;
     // NO FOG — it was hiding all distant stars
 
     this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 200000);
@@ -41,7 +58,7 @@ export class Engine {
     this.renderer.toneMappingExposure = 1.25;
     container.appendChild(this.renderer.domElement);
 
-    // CSS2D Renderer for constellation names
+    // CSS2D Renderer for world object labels
     this.css2dRenderer = new CSS2DRenderer();
     this.css2dRenderer.setSize(window.innerWidth, window.innerHeight);
     this.css2dRenderer.domElement.style.position = 'absolute';
@@ -61,18 +78,6 @@ export class Engine {
     );
     this.renderQuality.resize(window.innerWidth, window.innerHeight);
 
-    if (import.meta.env.DEV) {
-      (window as any).__universeRenderStats = () => ({
-        calls: this.renderer.info.render.calls,
-        triangles: this.renderer.info.render.triangles,
-        points: this.renderer.info.render.points,
-        lines: this.renderer.info.render.lines,
-        geometries: this.renderer.info.memory.geometries,
-        textures: this.renderer.info.memory.textures,
-        pixelRatio: this.renderer.getPixelRatio(),
-      });
-    }
-
     this.clock = new THREE.Clock();
 
     window.addEventListener('resize', this.onResize.bind(this));
@@ -80,6 +85,7 @@ export class Engine {
   }
 
   private onResize() {
+    this.overlayView?.resize(window.innerWidth, window.innerHeight);
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
     this.renderQuality.resize(window.innerWidth, window.innerHeight);
@@ -92,16 +98,19 @@ export class Engine {
 
     const animate = () => {
       requestAnimationFrame(animate);
-      const dt = Math.min(this.clock.getDelta(), 0.05);
+      const elapsedSeconds = this.clock.getDelta();
+      this.frameMetrics.record(elapsedSeconds);
+      const dt = Math.min(elapsedSeconds, 0.05);
       this.shipController.update(dt);
       this.loopCallbacks.forEach(cb => cb(dt));
       
-      this.renderer.render(this.activeScene, this.camera);
+      this.overlayView?.update(dt);
+      this.renderer.render(this.overlayView?.scene ?? this.scene, this.overlayView?.camera ?? this.camera);
       
       this.labelRenderAccumulator += dt;
-      if (this.labelRenderAccumulator >= 0.1 && this.css2dRenderer.domElement.style.display !== 'none') {
+      if (!this.overlayView && this.labelRenderAccumulator >= 0.1 && this.css2dRenderer.domElement.style.display !== 'none') {
         this.labelRenderAccumulator %= 0.1;
-        this.css2dRenderer.render(this.activeScene, this.camera);
+        this.css2dRenderer.render(this.scene, this.camera);
       }
 
       this.renderQuality.sampleFrame(dt);
@@ -109,8 +118,4 @@ export class Engine {
     animate();
   }
 
-  public setActiveScene(scene: THREE.Scene) {
-    this.activeScene = scene;
-    this.css2dRenderer.domElement.style.display = scene === this.scene ? 'block' : 'none';
-  }
 }

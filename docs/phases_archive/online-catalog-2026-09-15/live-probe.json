@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-09-15T18:04:46.777Z",
+  "beforeBytes": 14255,
+  "checks": [
+    {
+      "path": "enrich/1440825",
+      "provider": "gaia",
+      "status": "ok",
+      "cache": "cached",
+      "responseBytes": 418,
+      "observedRecords": 1,
+      "localMatches": 1,
+      "measurementCount": 14,
+      "names": 0,
+      "sha256": "4928f06a50247bdf4b90bba4d370ba0ac809eb185818e298d10d0c24f54a561b"
+    },
+    {
+      "path": "enrich/1440825",
+      "provider": "simbad",
+      "status": "ok",
+      "cache": "fresh",
+      "responseBytes": 1360,
+      "observedRecords": 1,
+      "localMatches": 1,
+      "measurementCount": 9,
+      "names": 55,
+      "sha256": "9bcb94de1e0c4dc3c4722518983ce49bc6328531e43ffd8c97dcda3c542dcd92"
+    },
+    {
+      "path": "enrich/586693",
+      "provider": "simbad",
+      "status": "ok",
+      "cache": "cached",
+      "responseBytes": 1329,
+      "observedRecords": 1,
+      "localMatches": 0,
+      "measurementCount": 9,
+      "names": 63,
+      "sha256": "b549ad88fe0dd6bfd60fa3c4b59bd1a6402f7ca024d68cdd8abb125bae21c852"
+    },
+    {
+      "path": "online?source=ned&q=M31",
+      "provider": "ned",
+      "status": "ok",
+      "cache": "cached",
+      "responseBytes": 11154,
+      "observedRecords": 1,
+      "localMatches": 0,
+      "measurementCount": 16,
+      "names": 6,
+      "sha256": "c6c65bc85d25402e2515481a2c1d88cf709c64fa5ee33df75a9fb58dc4d705ef"
+    }
+  ],
+  "afterBytes": 18264,
+  "limitBytes": 33554432
+}

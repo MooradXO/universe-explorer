@@ -1,0 +1,1414 @@
+{
+  "screens": [
+    {
+      "mode": "desktop",
+      "name": "flight",
+      "inputBlocked": false,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 893,
+            "width": 296,
+            "height": 138,
+            "top": 893,
+            "right": 561,
+            "bottom": 1031,
+            "left": 265
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 842,
+            "width": 210,
+            "height": 210,
+            "top": 842,
+            "right": 236,
+            "bottom": 1052,
+            "left": 26
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 562.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1357.5,
+            "bottom": 88,
+            "left": 562.5
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 1530,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1895,
+            "bottom": 188,
+            "left": 1530
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "desktop",
+      "name": "manual",
+      "active": "manual",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 893,
+            "width": 296,
+            "height": 138,
+            "top": 893,
+            "right": 561,
+            "bottom": 1031,
+            "left": 265
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 842,
+            "width": 210,
+            "height": 210,
+            "top": 842,
+            "right": 236,
+            "bottom": 1052,
+            "left": 26
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 562.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1357.5,
+            "bottom": 88,
+            "left": 562.5
+          }
+        },
+        {
+          "id": "flight-manual",
+          "b": {
+            "x": 540,
+            "y": 232.5,
+            "width": 840,
+            "height": 623,
+            "top": 232.5,
+            "right": 1380,
+            "bottom": 855.5,
+            "left": 540
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 1530,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1895,
+            "bottom": 188,
+            "left": 1530
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "desktop",
+      "name": "bounties",
+      "active": "bounties",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 893,
+            "width": 296,
+            "height": 138,
+            "top": 893,
+            "right": 561,
+            "bottom": 1031,
+            "left": 265
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 842,
+            "width": 210,
+            "height": 210,
+            "top": 842,
+            "right": 236,
+            "bottom": 1052,
+            "left": 26
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 562.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1357.5,
+            "bottom": 88,
+            "left": 562.5
+          }
+        },
+        {
+          "id": "leaderboard-container",
+          "b": {
+            "x": 1465,
+            "y": 204,
+            "width": 430,
+            "height": 204,
+            "top": 204,
+            "right": 1895,
+            "bottom": 408,
+            "left": 1465
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 1530,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1895,
+            "bottom": 188,
+            "left": 1530
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "desktop",
+      "name": "comms",
+      "active": "comms",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 893,
+            "width": 296,
+            "height": 138,
+            "top": 893,
+            "right": 561,
+            "bottom": 1031,
+            "left": 265
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 842,
+            "width": 210,
+            "height": 210,
+            "top": 842,
+            "right": 236,
+            "bottom": 1052,
+            "left": 26
+          }
+        },
+        {
+          "id": "chat-container",
+          "b": {
+            "x": 1465,
+            "y": 204,
+            "width": 430,
+            "height": 480,
+            "top": 204,
+            "right": 1895,
+            "bottom": 684,
+            "left": 1465
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 562.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1357.5,
+            "bottom": 88,
+            "left": 562.5
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 1530,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1895,
+            "bottom": 188,
+            "left": 1530
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "desktop",
+      "name": "hangar",
+      "active": "hangar",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 893,
+            "width": 296,
+            "height": 138,
+            "top": 893,
+            "right": 561,
+            "bottom": 1031,
+            "left": 265
+          }
+        },
+        {
+          "id": "hangar-panel",
+          "b": {
+            "x": 540,
+            "y": 255.5,
+            "width": 840,
+            "height": 577,
+            "top": 255.5,
+            "right": 1380,
+            "bottom": 832.5,
+            "left": 540
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 842,
+            "width": 210,
+            "height": 210,
+            "top": 842,
+            "right": 236,
+            "bottom": 1052,
+            "left": 26
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 562.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1357.5,
+            "bottom": 88,
+            "left": 562.5
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 1530,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1895,
+            "bottom": 188,
+            "left": 1530
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "desktop",
+      "name": "picker",
+      "active": "destination-picker",
+      "inputBlocked": false,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 893,
+            "width": 296,
+            "height": 138,
+            "top": 893,
+            "right": 561,
+            "bottom": 1031,
+            "left": 265
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 842,
+            "width": 210,
+            "height": 210,
+            "top": 842,
+            "right": 236,
+            "bottom": 1052,
+            "left": 26
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 562.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1357.5,
+            "bottom": 88,
+            "left": 562.5
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 1530,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1895,
+            "bottom": 188,
+            "left": 1530
+          }
+        },
+        {
+          "id": "system-object-options",
+          "b": {
+            "x": 1560,
+            "y": 192,
+            "width": 328,
+            "height": 300,
+            "top": 192,
+            "right": 1888,
+            "bottom": 492,
+            "left": 1560
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "desktop",
+      "name": "map",
+      "active": "star-map",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "star-map",
+          "b": {
+            "x": 0,
+            "y": 0,
+            "width": 1920,
+            "height": 1080,
+            "top": 0,
+            "right": 1920,
+            "bottom": 1080,
+            "left": 0
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "desktop",
+      "name": "returned",
+      "active": "",
+      "inputBlocked": false,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 893,
+            "width": 296,
+            "height": 138,
+            "top": 893,
+            "right": 561,
+            "bottom": 1031,
+            "left": 265
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 842,
+            "width": 210,
+            "height": 210,
+            "top": 842,
+            "right": 236,
+            "bottom": 1052,
+            "left": 26
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 562.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1357.5,
+            "bottom": 88,
+            "left": 562.5
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 1530,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1895,
+            "bottom": 188,
+            "left": 1530
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "laptop",
+      "name": "flight",
+      "inputBlocked": false,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 581,
+            "width": 296,
+            "height": 138,
+            "top": 581,
+            "right": 561,
+            "bottom": 719,
+            "left": 265
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 530,
+            "width": 210,
+            "height": 210,
+            "top": 530,
+            "right": 236,
+            "bottom": 740,
+            "left": 26
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 285.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1080.5,
+            "bottom": 88,
+            "left": 285.5
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 976,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1341,
+            "bottom": 188,
+            "left": 976
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "laptop",
+      "name": "manual",
+      "active": "manual",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 581,
+            "width": 296,
+            "height": 138,
+            "top": 581,
+            "right": 561,
+            "bottom": 719,
+            "left": 265
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 530,
+            "width": 210,
+            "height": 210,
+            "top": 530,
+            "right": 236,
+            "bottom": 740,
+            "left": 26
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 285.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1080.5,
+            "bottom": 88,
+            "left": 285.5
+          }
+        },
+        {
+          "id": "flight-manual",
+          "b": {
+            "x": 263,
+            "y": 204,
+            "width": 840,
+            "height": 368,
+            "top": 204,
+            "right": 1103,
+            "bottom": 572,
+            "left": 263
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 976,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1341,
+            "bottom": 188,
+            "left": 976
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "laptop",
+      "name": "bounties",
+      "active": "bounties",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 581,
+            "width": 296,
+            "height": 138,
+            "top": 581,
+            "right": 561,
+            "bottom": 719,
+            "left": 265
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 530,
+            "width": 210,
+            "height": 210,
+            "top": 530,
+            "right": 236,
+            "bottom": 740,
+            "left": 26
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 285.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1080.5,
+            "bottom": 88,
+            "left": 285.5
+          }
+        },
+        {
+          "id": "leaderboard-container",
+          "b": {
+            "x": 911,
+            "y": 204,
+            "width": 430,
+            "height": 204,
+            "top": 204,
+            "right": 1341,
+            "bottom": 408,
+            "left": 911
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 976,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1341,
+            "bottom": 188,
+            "left": 976
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "laptop",
+      "name": "comms",
+      "active": "comms",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 581,
+            "width": 296,
+            "height": 138,
+            "top": 581,
+            "right": 561,
+            "bottom": 719,
+            "left": 265
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 530,
+            "width": 210,
+            "height": 210,
+            "top": 530,
+            "right": 236,
+            "bottom": 740,
+            "left": 26
+          }
+        },
+        {
+          "id": "chat-container",
+          "b": {
+            "x": 911,
+            "y": 204,
+            "width": 430,
+            "height": 480,
+            "top": 204,
+            "right": 1341,
+            "bottom": 684,
+            "left": 911
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 285.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1080.5,
+            "bottom": 88,
+            "left": 285.5
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 976,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1341,
+            "bottom": 188,
+            "left": 976
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "laptop",
+      "name": "hangar",
+      "active": "hangar",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 581,
+            "width": 296,
+            "height": 138,
+            "top": 581,
+            "right": 561,
+            "bottom": 719,
+            "left": 265
+          }
+        },
+        {
+          "id": "hangar-panel",
+          "b": {
+            "x": 263,
+            "y": 204,
+            "width": 840,
+            "height": 368,
+            "top": 204,
+            "right": 1103,
+            "bottom": 572,
+            "left": 263
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 530,
+            "width": 210,
+            "height": 210,
+            "top": 530,
+            "right": 236,
+            "bottom": 740,
+            "left": 26
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 285.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1080.5,
+            "bottom": 88,
+            "left": 285.5
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 976,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1341,
+            "bottom": 188,
+            "left": 976
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "laptop",
+      "name": "picker",
+      "active": "destination-picker",
+      "inputBlocked": false,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 581,
+            "width": 296,
+            "height": 138,
+            "top": 581,
+            "right": 561,
+            "bottom": 719,
+            "left": 265
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 530,
+            "width": 210,
+            "height": 210,
+            "top": 530,
+            "right": 236,
+            "bottom": 740,
+            "left": 26
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 285.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1080.5,
+            "bottom": 88,
+            "left": 285.5
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 976,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1341,
+            "bottom": 188,
+            "left": 976
+          }
+        },
+        {
+          "id": "system-object-options",
+          "b": {
+            "x": 1006,
+            "y": 192,
+            "width": 328,
+            "height": 300,
+            "top": 192,
+            "right": 1334,
+            "bottom": 492,
+            "left": 1006
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "laptop",
+      "name": "map",
+      "active": "star-map",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "star-map",
+          "b": {
+            "x": 0,
+            "y": 0,
+            "width": 1366,
+            "height": 768,
+            "top": 0,
+            "right": 1366,
+            "bottom": 768,
+            "left": 0
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "laptop",
+      "name": "returned",
+      "active": "",
+      "inputBlocked": false,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 265,
+            "y": 581,
+            "width": 296,
+            "height": 138,
+            "top": 581,
+            "right": 561,
+            "bottom": 719,
+            "left": 265
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 26,
+            "y": 530,
+            "width": 210,
+            "height": 210,
+            "top": 530,
+            "right": 236,
+            "bottom": 740,
+            "left": 26
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 285.5,
+            "y": 40,
+            "width": 795,
+            "height": 48,
+            "top": 40,
+            "right": 1080.5,
+            "bottom": 88,
+            "left": 285.5
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 976,
+            "y": 112,
+            "width": 365,
+            "height": 76,
+            "top": 112,
+            "right": 1341,
+            "bottom": 188,
+            "left": 976
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "touch",
+      "name": "flight",
+      "inputBlocked": false,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 127,
+            "y": 158,
+            "width": 149.60000610351562,
+            "height": 55.08000183105469,
+            "top": 158,
+            "right": 276.6000061035156,
+            "bottom": 213.0800018310547,
+            "left": 127
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 14,
+            "y": 143,
+            "width": 100,
+            "height": 100,
+            "top": 143,
+            "right": 114,
+            "bottom": 243,
+            "left": 14
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 144,
+            "y": 7,
+            "width": 556,
+            "height": 38,
+            "top": 7,
+            "right": 700,
+            "bottom": 45,
+            "left": 144
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 538,
+            "y": 56,
+            "width": 294,
+            "height": 66,
+            "top": 56,
+            "right": 832,
+            "bottom": 122,
+            "left": 538
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "touch",
+      "name": "manual",
+      "active": "manual",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 144,
+            "y": 7,
+            "width": 556,
+            "height": 38,
+            "top": 7,
+            "right": 700,
+            "bottom": 45,
+            "left": 144
+          }
+        },
+        {
+          "id": "flight-manual",
+          "b": {
+            "x": 52,
+            "y": 127,
+            "width": 740,
+            "height": 247,
+            "top": 127,
+            "right": 792,
+            "bottom": 374,
+            "left": 52
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 538,
+            "y": 56,
+            "width": 294,
+            "height": 66,
+            "top": 56,
+            "right": 832,
+            "bottom": 122,
+            "left": 538
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "touch",
+      "name": "bounties",
+      "active": "bounties",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 144,
+            "y": 7,
+            "width": 556,
+            "height": 38,
+            "top": 7,
+            "right": 700,
+            "bottom": 45,
+            "left": 144
+          }
+        },
+        {
+          "id": "leaderboard-container",
+          "b": {
+            "x": 482,
+            "y": 127,
+            "width": 350,
+            "height": 173,
+            "top": 127,
+            "right": 832,
+            "bottom": 300,
+            "left": 482
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 538,
+            "y": 56,
+            "width": 294,
+            "height": 66,
+            "top": 56,
+            "right": 832,
+            "bottom": 122,
+            "left": 538
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "touch",
+      "name": "comms",
+      "active": "comms",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "chat-container",
+          "b": {
+            "x": 482,
+            "y": 127,
+            "width": 350,
+            "height": 247,
+            "top": 127,
+            "right": 832,
+            "bottom": 374,
+            "left": 482
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 144,
+            "y": 7,
+            "width": 556,
+            "height": 38,
+            "top": 7,
+            "right": 700,
+            "bottom": 45,
+            "left": 144
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 538,
+            "y": 56,
+            "width": 294,
+            "height": 66,
+            "top": 56,
+            "right": 832,
+            "bottom": 122,
+            "left": 538
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "touch",
+      "name": "hangar",
+      "active": "hangar",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "hangar-panel",
+          "b": {
+            "x": 52,
+            "y": 127,
+            "width": 740,
+            "height": 247,
+            "top": 127,
+            "right": 792,
+            "bottom": 374,
+            "left": 52
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 144,
+            "y": 7,
+            "width": 556,
+            "height": 38,
+            "top": 7,
+            "right": 700,
+            "bottom": 45,
+            "left": 144
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 538,
+            "y": 56,
+            "width": 294,
+            "height": 66,
+            "top": 56,
+            "right": 832,
+            "bottom": 122,
+            "left": 538
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "touch",
+      "name": "picker",
+      "active": "destination-picker",
+      "inputBlocked": false,
+      "bounds": [
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 144,
+            "y": 7,
+            "width": 556,
+            "height": 38,
+            "top": 7,
+            "right": 700,
+            "bottom": 45,
+            "left": 144
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 538,
+            "y": 56,
+            "width": 294,
+            "height": 66,
+            "top": 56,
+            "right": 832,
+            "bottom": 122,
+            "left": 538
+          }
+        },
+        {
+          "id": "system-object-options",
+          "b": {
+            "x": 559,
+            "y": 126,
+            "width": 268,
+            "height": 240,
+            "top": 126,
+            "right": 827,
+            "bottom": 366,
+            "left": 559
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "touch",
+      "name": "map",
+      "active": "star-map",
+      "inputBlocked": true,
+      "bounds": [
+        {
+          "id": "star-map",
+          "b": {
+            "x": 0,
+            "y": 0,
+            "width": 844,
+            "height": 390,
+            "top": 0,
+            "right": 844,
+            "bottom": 390,
+            "left": 0
+          }
+        }
+      ],
+      "missingImages": []
+    },
+    {
+      "mode": "touch",
+      "name": "returned",
+      "active": "",
+      "inputBlocked": false,
+      "bounds": [
+        {
+          "id": "hud-stats-container",
+          "b": {
+            "x": 127,
+            "y": 158,
+            "width": 149.60000610351562,
+            "height": 55.08000183105469,
+            "top": 158,
+            "right": 276.6000061035156,
+            "bottom": 213.0800018310547,
+            "left": 127
+          }
+        },
+        {
+          "id": "radar-shell hud-metal-panel",
+          "b": {
+            "x": 14,
+            "y": 143,
+            "width": 100,
+            "height": 100,
+            "top": 143,
+            "right": 114,
+            "bottom": 243,
+            "left": 14
+          }
+        },
+        {
+          "id": "top-command-bar",
+          "b": {
+            "x": 144,
+            "y": 7,
+            "width": 556,
+            "height": 38,
+            "top": 7,
+            "right": 700,
+            "bottom": 45,
+            "left": 144
+          }
+        },
+        {
+          "id": "system-navigation is-home-system",
+          "b": {
+            "x": 538,
+            "y": 56,
+            "width": 294,
+            "height": 66,
+            "top": 56,
+            "right": 832,
+            "bottom": 122,
+            "left": 538
+          }
+        }
+      ],
+      "missingImages": []
+    }
+  ],
+  "errors": []
+}

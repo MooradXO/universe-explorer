@@ -1,0 +1,1189 @@
+{
+  "samples": [
+    {
+      "index": 0,
+      "body": "sol/mercury",
+      "renderer": {
+        "calls": 63,
+        "triangles": 28526,
+        "points": 7538,
+        "lines": 420,
+        "geometries": 45,
+        "textures": 16,
+        "programs": 29,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "sol/mercury/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 30,
+        "layout": 10,
+        "objects": 11,
+        "structure": null,
+        "phenomenon": {
+          "recipe": 16,
+          "name": "Магнитные нити · пульсирующий",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 5,
+        "warm": "#7a8696",
+        "cool": "#bba095",
+        "density": 0.42389793109148743,
+        "scale": 3.3783513629343362,
+        "drift": 0.004427066551521421
+      }
+    },
+    {
+      "index": 1,
+      "body": "sol/venus",
+      "renderer": {
+        "calls": 60,
+        "triangles": 36431,
+        "points": 7658,
+        "lines": 420,
+        "geometries": 41,
+        "textures": 14,
+        "programs": 28,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "sol/venus/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 14,
+        "layout": 30,
+        "objects": 15,
+        "structure": 8,
+        "phenomenon": {
+          "recipe": 26,
+          "name": "Линза · бегущая волна",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 10,
+        "warm": "#827194",
+        "cool": "#5697ac",
+        "density": 0.2082259159721434,
+        "scale": 4.710106224240735,
+        "drift": 0.0015927009992301464
+      }
+    },
+    {
+      "index": 2,
+      "body": "sol/earth",
+      "renderer": {
+        "calls": 63,
+        "triangles": 77048,
+        "points": 7538,
+        "lines": 420,
+        "geometries": 43,
+        "textures": 15,
+        "programs": 31,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "sol/earth/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 27,
+        "layout": 44,
+        "objects": 4,
+        "structure": 5,
+        "phenomenon": {
+          "recipe": 14,
+          "name": "Радиоэхо · бегущая волна",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 1,
+        "warm": "#ad6256",
+        "cool": "#31768c",
+        "density": 0.48,
+        "scale": 5,
+        "drift": 0
+      }
+    },
+    {
+      "index": 3,
+      "body": "sol/mars",
+      "renderer": {
+        "calls": 58,
+        "triangles": 41907,
+        "points": 7658,
+        "lines": 420,
+        "geometries": 36,
+        "textures": 17,
+        "programs": 28,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "sol/mars/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 39,
+        "layout": 32,
+        "objects": 23,
+        "structure": 13,
+        "phenomenon": {
+          "recipe": 18,
+          "name": "Магнитные нити · бегущая волна",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 0,
+        "warm": "#bf795b",
+        "cool": "#708bab",
+        "density": 0.28686567313969136,
+        "scale": 3.5785835555754604,
+        "drift": 0.0029150079591199756
+      }
+    },
+    {
+      "index": 4,
+      "body": "sol/jupiter",
+      "renderer": {
+        "calls": 67,
+        "triangles": 40107,
+        "points": 7538,
+        "lines": 420,
+        "geometries": 49,
+        "textures": 20,
+        "programs": 31,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "sol/jupiter/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 26,
+        "layout": 26,
+        "objects": 8,
+        "structure": 11,
+        "phenomenon": {
+          "recipe": 3,
+          "name": "Резонанс · раздвоенный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 7,
+        "warm": "#827194",
+        "cool": "#5697ac",
+        "density": 0.5152715092711151,
+        "scale": 4.502424254454672,
+        "drift": 0.004140256143175066
+      }
+    },
+    {
+      "index": 5,
+      "body": "sol/saturn",
+      "renderer": {
+        "calls": 77,
+        "triangles": 48536,
+        "points": 7418,
+        "lines": 420,
+        "geometries": 60,
+        "textures": 18,
+        "programs": 31,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "sol/saturn/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 27,
+        "layout": 17,
+        "objects": 16,
+        "structure": 8,
+        "phenomenon": {
+          "recipe": 19,
+          "name": "Магнитные нити · раздвоенный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 8,
+        "warm": "#bc9061",
+        "cool": "#6c728d",
+        "density": 0.35686936985701323,
+        "scale": 5.745722447568551,
+        "drift": 0.0021164123453199864
+      }
+    },
+    {
+      "index": 6,
+      "body": "sol/uranus",
+      "renderer": {
+        "calls": 62,
+        "triangles": 31103,
+        "points": 7418,
+        "lines": 420,
+        "geometries": 42,
+        "textures": 18,
+        "programs": 37,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "sol/uranus/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 41,
+        "layout": 5,
+        "objects": 18,
+        "structure": null,
+        "phenomenon": {
+          "recipe": 25,
+          "name": "Линза · орбитальный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 5,
+        "warm": "#aa725c",
+        "cool": "#8b989f",
+        "density": 0.4412740110605955,
+        "scale": 6.119908100133761,
+        "drift": 0.0012092293454334141
+      }
+    },
+    {
+      "index": 7,
+      "body": "sol/neptune",
+      "renderer": {
+        "calls": 62,
+        "triangles": 33227,
+        "points": 7658,
+        "lines": 420,
+        "geometries": 44,
+        "textures": 18,
+        "programs": 30,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "sol/neptune/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 52,
+        "layout": 0,
+        "objects": 10,
+        "structure": 18,
+        "phenomenon": {
+          "recipe": 27,
+          "name": "Линза · раздвоенный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 11,
+        "warm": "#827194",
+        "cool": "#5697ac",
+        "density": 0.4337954094819725,
+        "scale": 3.3050687805283814,
+        "drift": 0.0018646059278398753
+      }
+    },
+    {
+      "index": 8,
+      "body": "athyg:4.0:1440825/generated-1",
+      "renderer": {
+        "calls": 65,
+        "triangles": 40447,
+        "points": 7654,
+        "lines": 420,
+        "geometries": 44,
+        "textures": 18,
+        "programs": 33,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:1440825/generated-1/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 51,
+        "layout": 33,
+        "objects": 5,
+        "structure": 9,
+        "phenomenon": {
+          "recipe": 2,
+          "name": "Резонанс · бегущая волна",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 2,
+        "warm": "#bc9061",
+        "cool": "#6c728d",
+        "density": 0.24489349100738764,
+        "scale": 3.910334529727697,
+        "drift": 0.004203381682746112
+      }
+    },
+    {
+      "index": 9,
+      "body": "athyg:4.0:1440825/generated-2",
+      "renderer": {
+        "calls": 71,
+        "triangles": 34895,
+        "points": 7654,
+        "lines": 420,
+        "geometries": 52,
+        "textures": 19,
+        "programs": 33,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:1440825/generated-2/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 44,
+        "layout": 47,
+        "objects": 17,
+        "structure": 0,
+        "phenomenon": {
+          "recipe": 9,
+          "name": "Вихрь частиц · орбитальный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 3,
+        "warm": "#bc9061",
+        "cool": "#6c728d",
+        "density": 0.37173774784430863,
+        "scale": 5.70380523558706,
+        "drift": 0.003983142584562302
+      }
+    },
+    {
+      "index": 10,
+      "body": "athyg:4.0:1440825/generated-3",
+      "renderer": {
+        "calls": 61,
+        "triangles": 38985,
+        "points": 7534,
+        "lines": 420,
+        "geometries": 41,
+        "textures": 15,
+        "programs": 30,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:1440825/generated-3/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 48,
+        "layout": 24,
+        "objects": 15,
+        "structure": 17,
+        "phenomenon": {
+          "recipe": 19,
+          "name": "Магнитные нити · раздвоенный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 10,
+        "warm": "#7a8696",
+        "cool": "#bba095",
+        "density": 0.1935556605644524,
+        "scale": 2.6797104694880542,
+        "drift": 0.0043308222983032465
+      }
+    },
+    {
+      "index": 11,
+      "body": "athyg:4.0:1440825/generated-4",
+      "renderer": {
+        "calls": 65,
+        "triangles": 33531,
+        "points": 7414,
+        "lines": 420,
+        "geometries": 45,
+        "textures": 18,
+        "programs": 32,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:1440825/generated-4/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 14,
+        "layout": 31,
+        "objects": 27,
+        "structure": 7,
+        "phenomenon": {
+          "recipe": 12,
+          "name": "Радиоэхо · пульсирующий",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 3,
+        "warm": "#698785",
+        "cool": "#a0829a",
+        "density": 0.5354996781051159,
+        "scale": 5.728121373057365,
+        "drift": 0.0018847031155601144
+      }
+    },
+    {
+      "index": 12,
+      "body": "athyg:4.0:586693/generated-1",
+      "renderer": {
+        "calls": 60,
+        "triangles": 39145,
+        "points": 7534,
+        "lines": 420,
+        "geometries": 38,
+        "textures": 16,
+        "programs": 31,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:586693/generated-1/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 50,
+        "layout": 18,
+        "objects": 26,
+        "structure": 20,
+        "phenomenon": {
+          "recipe": 21,
+          "name": "Пылевая волна · орбитальный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 0,
+        "warm": "#7a8696",
+        "cool": "#bba095",
+        "density": 0.40417294699698686,
+        "scale": 4.396643834142014,
+        "drift": 0.003625915165990591
+      }
+    },
+    {
+      "index": 13,
+      "body": "athyg:4.0:586693/generated-2",
+      "renderer": {
+        "calls": 62,
+        "triangles": 37318,
+        "points": 7414,
+        "lines": 420,
+        "geometries": 40,
+        "textures": 18,
+        "programs": 33,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:586693/generated-2/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 50,
+        "layout": 14,
+        "objects": 7,
+        "structure": 8,
+        "phenomenon": {
+          "recipe": 23,
+          "name": "Пылевая волна · раздвоенный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 10,
+        "warm": "#bf795b",
+        "cool": "#708bab",
+        "density": 0.44509951474145054,
+        "scale": 3.845641339337453,
+        "drift": 0.002118498486466706
+      }
+    },
+    {
+      "index": 14,
+      "body": "athyg:4.0:586693/generated-3",
+      "renderer": {
+        "calls": 62,
+        "triangles": 34418,
+        "points": 7414,
+        "lines": 420,
+        "geometries": 42,
+        "textures": 17,
+        "programs": 36,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:586693/generated-3/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 41,
+        "layout": 37,
+        "objects": 5,
+        "structure": null,
+        "phenomenon": {
+          "recipe": 24,
+          "name": "Линза · пульсирующий",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 0,
+        "warm": "#a09a75",
+        "cool": "#557a82",
+        "density": 0.3889341999962926,
+        "scale": 5.588585178367794,
+        "drift": 0.0013822133913636207
+      }
+    },
+    {
+      "index": 15,
+      "body": "athyg:4.0:586693/generated-4",
+      "renderer": {
+        "calls": 63,
+        "triangles": 41615,
+        "points": 7414,
+        "lines": 420,
+        "geometries": 41,
+        "textures": 20,
+        "programs": 31,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:586693/generated-4/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 54,
+        "layout": 9,
+        "objects": 27,
+        "structure": null,
+        "phenomenon": {
+          "recipe": 5,
+          "name": "Плазменная струя · орбитальный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 3,
+        "warm": "#7a8696",
+        "cool": "#bba095",
+        "density": 0.18984760839492082,
+        "scale": 2.7533153190277515,
+        "drift": 0.004783401836641133
+      }
+    },
+    {
+      "index": 16,
+      "body": "athyg:4.0:1897139/generated-1",
+      "renderer": {
+        "calls": 64,
+        "triangles": 35637,
+        "points": 7414,
+        "lines": 420,
+        "geometries": 43,
+        "textures": 19,
+        "programs": 32,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:1897139/generated-1/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 29,
+        "layout": 37,
+        "objects": 2,
+        "structure": null,
+        "phenomenon": {
+          "recipe": 19,
+          "name": "Магнитные нити · раздвоенный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 3,
+        "warm": "#bc9061",
+        "cool": "#6c728d",
+        "density": 0.46194220401346686,
+        "scale": 5.50059458464384,
+        "drift": 0.0011699373284354807
+      }
+    },
+    {
+      "index": 17,
+      "body": "athyg:4.0:1897139/generated-2",
+      "renderer": {
+        "calls": 62,
+        "triangles": 34497,
+        "points": 7414,
+        "lines": 420,
+        "geometries": 43,
+        "textures": 18,
+        "programs": 32,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:1897139/generated-2/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 28,
+        "layout": 20,
+        "objects": 13,
+        "structure": 15,
+        "phenomenon": {
+          "recipe": 2,
+          "name": "Резонанс · бегущая волна",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 8,
+        "warm": "#a09a75",
+        "cool": "#557a82",
+        "density": 0.23479167774319648,
+        "scale": 6.263999464688823,
+        "drift": 0.003629406759515405
+      }
+    },
+    {
+      "index": 18,
+      "body": "athyg:4.0:1897139/generated-3",
+      "renderer": {
+        "calls": 65,
+        "triangles": 39397,
+        "points": 7414,
+        "lines": 420,
+        "geometries": 43,
+        "textures": 18,
+        "programs": 32,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:1897139/generated-3/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 32,
+        "layout": 18,
+        "objects": 8,
+        "structure": 6,
+        "phenomenon": {
+          "recipe": 14,
+          "name": "Радиоэхо · бегущая волна",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 6,
+        "warm": "#7a8696",
+        "cool": "#bba095",
+        "density": 0.18015100697055458,
+        "scale": 5.914527437882498,
+        "drift": 0.0019764255126938223
+      }
+    },
+    {
+      "index": 19,
+      "body": "athyg:4.0:1897139/generated-4",
+      "renderer": {
+        "calls": 75,
+        "triangles": 39483,
+        "points": 7534,
+        "lines": 420,
+        "geometries": 52,
+        "textures": 20,
+        "programs": 37,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:1897139/generated-4/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 33,
+        "layout": 45,
+        "objects": 19,
+        "structure": 9,
+        "phenomenon": {
+          "recipe": 18,
+          "name": "Магнитные нити · бегущая волна",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 7,
+        "warm": "#698785",
+        "cool": "#a0829a",
+        "density": 0.5565915815718472,
+        "scale": 3.117099659377709,
+        "drift": 0.003948565661907196
+      }
+    },
+    {
+      "index": 20,
+      "body": "athyg:4.0:464934/generated-1",
+      "renderer": {
+        "calls": 62,
+        "triangles": 35031,
+        "points": 3101,
+        "lines": 420,
+        "geometries": 42,
+        "textures": 19,
+        "programs": 30,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:464934/generated-1/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 52,
+        "layout": 47,
+        "objects": 28,
+        "structure": 3,
+        "phenomenon": {
+          "recipe": 31,
+          "name": "Криовыброс · раздвоенный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 8,
+        "warm": "#bc9061",
+        "cool": "#6c728d",
+        "density": 0.18984631832689047,
+        "scale": 2.863683323282748,
+        "drift": 0.004678482168354094
+      }
+    },
+    {
+      "index": 21,
+      "body": "athyg:4.0:464934/generated-2",
+      "renderer": {
+        "calls": 67,
+        "triangles": 32715,
+        "points": 3461,
+        "lines": 420,
+        "geometries": 47,
+        "textures": 17,
+        "programs": 39,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:464934/generated-2/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 32,
+        "layout": 8,
+        "objects": 9,
+        "structure": 23,
+        "phenomenon": {
+          "recipe": 5,
+          "name": "Плазменная струя · орбитальный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 10,
+        "warm": "#aa725c",
+        "cool": "#8b989f",
+        "density": 0.3953985064476728,
+        "scale": 2.3139922593720255,
+        "drift": 0.002468787780031562
+      }
+    },
+    {
+      "index": 22,
+      "body": "athyg:4.0:464934/generated-3",
+      "renderer": {
+        "calls": 62,
+        "triangles": 42911,
+        "points": 3341,
+        "lines": 420,
+        "geometries": 43,
+        "textures": 18,
+        "programs": 29,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:464934/generated-3/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 51,
+        "layout": 35,
+        "objects": 5,
+        "structure": null,
+        "phenomenon": {
+          "recipe": 1,
+          "name": "Резонанс · орбитальный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 0,
+        "warm": "#bf795b",
+        "cool": "#708bab",
+        "density": 0.5575934034958482,
+        "scale": 5.416797216795384,
+        "drift": 0.0029635231913998725
+      }
+    },
+    {
+      "index": 23,
+      "body": "athyg:4.0:464934/generated-4",
+      "renderer": {
+        "calls": 66,
+        "triangles": 49353,
+        "points": 3221,
+        "lines": 420,
+        "geometries": 42,
+        "textures": 20,
+        "programs": 32,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:464934/generated-4/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 45,
+        "layout": 45,
+        "objects": 20,
+        "structure": 1,
+        "phenomenon": {
+          "recipe": 12,
+          "name": "Радиоэхо · пульсирующий",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 10,
+        "warm": "#bc9061",
+        "cool": "#6c728d",
+        "density": 0.2123227485641837,
+        "scale": 2.426804681262001,
+        "drift": 0.0016104647442698478
+      }
+    },
+    {
+      "index": 24,
+      "body": "athyg:4.0:2095118/generated-1",
+      "renderer": {
+        "calls": 66,
+        "triangles": 34391,
+        "points": 7534,
+        "lines": 420,
+        "geometries": 49,
+        "textures": 19,
+        "programs": 29,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:2095118/generated-1/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 28,
+        "layout": 25,
+        "objects": 22,
+        "structure": null,
+        "phenomenon": {
+          "recipe": 31,
+          "name": "Криовыброс · раздвоенный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 10,
+        "warm": "#bf795b",
+        "cool": "#708bab",
+        "density": 0.24689544348046183,
+        "scale": 5.7234416788443925,
+        "drift": 0.002588838134892285
+      }
+    },
+    {
+      "index": 25,
+      "body": "athyg:4.0:2095118/generated-2",
+      "renderer": {
+        "calls": 61,
+        "triangles": 38553,
+        "points": 7414,
+        "lines": 420,
+        "geometries": 41,
+        "textures": 16,
+        "programs": 30,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:2095118/generated-2/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 44,
+        "layout": 40,
+        "objects": 31,
+        "structure": 14,
+        "phenomenon": {
+          "recipe": 22,
+          "name": "Пылевая волна · бегущая волна",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 2,
+        "warm": "#827194",
+        "cool": "#5697ac",
+        "density": 0.25897730339318514,
+        "scale": 5.161592110060155,
+        "drift": 0.003108458082191646
+      }
+    },
+    {
+      "index": 26,
+      "body": "athyg:4.0:2095118/generated-3",
+      "renderer": {
+        "calls": 60,
+        "triangles": 39321,
+        "points": 7414,
+        "lines": 420,
+        "geometries": 39,
+        "textures": 15,
+        "programs": 29,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:2095118/generated-3/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 31,
+        "layout": 22,
+        "objects": 30,
+        "structure": null,
+        "phenomenon": {
+          "recipe": 23,
+          "name": "Пылевая волна · раздвоенный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 2,
+        "warm": "#bf795b",
+        "cool": "#708bab",
+        "density": 0.4646350588835776,
+        "scale": 2.6857721942476926,
+        "drift": 0.0032975577861070636
+      }
+    },
+    {
+      "index": 27,
+      "body": "athyg:4.0:2095118/generated-4",
+      "renderer": {
+        "calls": 70,
+        "triangles": 37995,
+        "points": 7414,
+        "lines": 420,
+        "geometries": 52,
+        "textures": 19,
+        "programs": 35,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:2095118/generated-4/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 39,
+        "layout": 32,
+        "objects": 0,
+        "structure": 19,
+        "phenomenon": {
+          "recipe": 0,
+          "name": "Резонанс · пульсирующий",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 11,
+        "warm": "#aa725c",
+        "cool": "#8b989f",
+        "density": 0.5429323199391365,
+        "scale": 4.7754139443393795,
+        "drift": 0.00467607571836561
+      }
+    },
+    {
+      "index": 28,
+      "body": "athyg:4.0:390195/generated-1",
+      "renderer": {
+        "calls": 61,
+        "triangles": 42920,
+        "points": 9093,
+        "lines": 420,
+        "geometries": 40,
+        "textures": 15,
+        "programs": 31,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:390195/generated-1/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 38,
+        "layout": 14,
+        "objects": 5,
+        "structure": null,
+        "phenomenon": {
+          "recipe": 19,
+          "name": "Магнитные нити · раздвоенный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 6,
+        "warm": "#a09a75",
+        "cool": "#557a82",
+        "density": 0.22731833515688776,
+        "scale": 2.8651992766652254,
+        "drift": 0.0035721976552158595
+      }
+    },
+    {
+      "index": 29,
+      "body": "athyg:4.0:390195/generated-2",
+      "renderer": {
+        "calls": 71,
+        "triangles": 44003,
+        "points": 9213,
+        "lines": 420,
+        "geometries": 48,
+        "textures": 20,
+        "programs": 34,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:390195/generated-2/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 40,
+        "layout": 4,
+        "objects": 24,
+        "structure": null,
+        "phenomenon": {
+          "recipe": 15,
+          "name": "Радиоэхо · раздвоенный",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 10,
+        "warm": "#bf795b",
+        "cool": "#708bab",
+        "density": 0.2681255383603275,
+        "scale": 4.927746333926915,
+        "drift": 0.004303790641948581
+      }
+    },
+    {
+      "index": 30,
+      "body": "athyg:4.0:390195/generated-3",
+      "renderer": {
+        "calls": 65,
+        "triangles": 43969,
+        "points": 9093,
+        "lines": 420,
+        "geometries": 43,
+        "textures": 19,
+        "programs": 33,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:390195/generated-3/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 48,
+        "layout": 33,
+        "objects": 27,
+        "structure": 11,
+        "phenomenon": {
+          "recipe": 16,
+          "name": "Магнитные нити · пульсирующий",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 8,
+        "warm": "#7a8696",
+        "cool": "#bba095",
+        "density": 0.3290306434221566,
+        "scale": 5.361382239311933,
+        "drift": 0.002041887693107128
+      }
+    },
+    {
+      "index": 31,
+      "body": "athyg:4.0:390195/generated-4",
+      "renderer": {
+        "calls": 66,
+        "triangles": 40067,
+        "points": 9093,
+        "lines": 420,
+        "geometries": 47,
+        "textures": 17,
+        "programs": 31,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "zone": {
+        "body": "athyg:4.0:390195/generated-4/zone-0",
+        "origin": "procedural-gameplay",
+        "instances": 14,
+        "layout": 30,
+        "objects": 30,
+        "structure": null,
+        "phenomenon": {
+          "recipe": 20,
+          "name": "Пылевая волна · пульсирующий",
+          "particles": 120
+        }
+      },
+      "backdrop": {
+        "shape": 6,
+        "warm": "#7a8696",
+        "cool": "#bba095",
+        "density": 0.2469172785244882,
+        "scale": 2.9371022517327217,
+        "drift": 0.00375438045617193
+      }
+    }
+  ],
+  "issues": []
+}

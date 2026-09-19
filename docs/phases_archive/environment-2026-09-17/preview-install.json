@@ -1,0 +1,9 @@
+{
+  "url": "http://127.0.0.1:3001/",
+  "filesVerified": 178,
+  "oldChunksRetained": 16,
+  "oldEntry": "/assets/main-gyTh6mHu.js",
+  "newEntry": "/assets/main-SRo6W5Vg.js",
+  "entrySha256": "3e8ec740cbf9b4d426cd8057dfe4c142813d637be676e108bb23b904273c4594",
+  "forcedReload": false
+}

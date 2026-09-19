@@ -1,0 +1,10 @@
+{
+  "status": "pass",
+  "inputRows": 2558654,
+  "acceptedRows": 2558654,
+  "rejectedRows": 0,
+  "datasetSha256": "e8d70d1a62e60161fc6df490ee36781a628eaed444bac38327299c12bb7359f8",
+  "allGaiaIdsPreserved": true,
+  "sampledRows": 355,
+  "maxAngularPositionResidualPc": 0.00010720139065274169
+}

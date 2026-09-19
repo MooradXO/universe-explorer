@@ -1,0 +1,18 @@
+{
+  "status": "pass",
+  "fullImports": 2,
+  "rowsPerImport": 2558654,
+  "datasetSha256": "e8d70d1a62e60161fc6df490ee36781a628eaed444bac38327299c12bb7359f8",
+  "sqliteSha256": "ab3a1d92883552da071403541ce099eea669dbadf93b577e62c4076d9222b16e",
+  "identicalCanonicalRecords": true,
+  "identicalRejectedRows": true,
+  "identicalDatabaseBytes": true,
+  "elapsedSeconds": [
+    141.784,
+    141.664
+  ],
+  "peakRssBytes": [
+    347869184,
+    352690176
+  ]
+}

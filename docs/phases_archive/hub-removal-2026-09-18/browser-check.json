@@ -1,0 +1,16 @@
+[
+  {
+    "mode": "HIGH",
+    "removedUI": false,
+    "errors": [],
+    "searchRequests": [],
+    "scene": "free-flight"
+  },
+  {
+    "mode": "LOW",
+    "removedUI": false,
+    "errors": [],
+    "searchRequests": [],
+    "scene": "free-flight"
+  }
+]

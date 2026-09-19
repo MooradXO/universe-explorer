@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "catalog": "AT-HYG",
+  "release": "4.0",
+  "inputRows": 2558654,
+  "acceptedRows": 2558654,
+  "rejectedRows": 0,
+  "position3d": {
+    "available": 2533349,
+    "missing": 25305,
+    "invalid": 0
+  },
+  "rejectionReasons": {},
+  "qualityFlags": {
+    "source-solar-reference-preserved": 1,
+    "no-usable-3d-position": 25305,
+    "cartesian-velocity-without-measured-rv": 178847
+  },
+  "distanceSources": {
+    "OTHER": 11,
+    "G_R3": 2523680,
+    "N": 25305,
+    "G_R2": 7702,
+    "H": 1781,
+    "GJ": 175
+  },
+  "positionSources": {
+    "OTHER": 1,
+    "T": 2447776,
+    "T_X": 108557,
+    "HIP_X": 888,
+    "GJ": 1432
+  },
+  "properNames": 640,
+  "missingSpectrum": 2197329,
+  "missingColorIndex": 4030,
+  "gaiaIdsAboveJsSafeInteger": 2547976,
+  "distanceRangeParsecs": [
+    0.00000485,
+    941129.7121
+  ],
+  "maxDistanceNormDifferenceParsecs": 0.00013318719533117473,
+  "limitations": [
+    "Numerical validity does not establish scientific distance reliability.",
+    "Per-measurement errors and epochs are absent; epoch is explicitly null, equinox is J2000.0.",
+    "Some secondary-star distances were assigned from their primary by the upstream compiler.",
+    "Gaia IDs identify DR3; distance and velocity source codes are independent.",
+    "Positions are preserved in source parsecs; no game-scale conversion or solar recentering.",
+    "Identity collisions remain separate records and are not merged automatically."
+  ],
+  "identityCollisions": {
+    "gaia:DR3": {
+      "identifiers": 1163,
+      "records": 2327
+    },
+    "tycho:2": {
+      "identifiers": 0,
+      "records": 0
+    }
+  },
+  "datasetSha256": "e8d70d1a62e60161fc6df490ee36781a628eaed444bac38327299c12bb7359f8",
+  "rejectedRowsSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "inputIntegrity": {
+    "bytes": 199688001,
+    "sha256": "69ad04dd33d7c7bb4f5e1b4682798075811547ea9fb8d0e802e5b319c46818a6"
+  },
+  "database": {
+    "file": "catalog.sqlite",
+    "bytes": 5446770688,
+    "sha256": "ab3a1d92883552da071403541ce099eea669dbadf93b577e62c4076d9222b16e"
+  },
+  "elapsedSeconds": 141.664,
+  "peakRssBytes": 352690176,
+  "identityExamplesOmitted": "Aggregate report only; actual object records remain in the local data directory."
+}

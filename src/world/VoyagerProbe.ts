@@ -38,12 +38,12 @@ export class VoyagerProbe {
     this.mesh.position.z -= driftSpeed * 2 * dt; // Escaping outward
 
     // Orient dish toward Earth (which is at the center 0,0,0)
-    this.mesh.lookAt(this.center);
+    this.mesh.lookAt(this.mesh.parent!.localToWorld(this.center.clone()));
     // Rotate dish slightly to keep receiver aligned
     this.mesh.rotateY(Math.PI); // Flip 180 so parabolic dish faces the center (Earth)
 
     if (!this.label) return;
-    const dist = this.mesh.position.distanceTo(cameraPosition);
+    const dist = this.mesh.getWorldPosition(new THREE.Vector3()).distanceTo(cameraPosition);
 
     // Show label only when within scanning range
     this.label.visible = dist < 5000;

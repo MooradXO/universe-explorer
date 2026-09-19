@@ -1,6 +1,9 @@
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
 import * as THREE from 'three';
 import { Settings } from '../core/Settings';
+import { RealtimeMetrics } from './RealtimeMetrics';
+import type { FloatingOrigin } from '../world/space/FloatingOrigin';
+import type { Triple } from '../world/space/WorldPosition';
 
 export interface NetworkPlayer {
   id: string;
@@ -16,6 +19,21 @@ export interface NetworkPlayer {
 export class MultiplayerManager {
   public players: Map<string, NetworkPlayer> = new Map();
   private channel: any;
+  private coordinateFrame: FloatingOrigin | null = null;
+  private systemId: string | null = null;
+
+  public setSystemId(id: string | null) {
+    if (id === this.systemId) return;
+    this.systemId = id; this.players.clear(); this.lastSendTime = 0;
+  }
+  private sameSystem(data: { systemId?: string }) { return (data.systemId ?? null) === this.systemId; }
+  private systemTag() { return this.systemId ? { systemId: this.systemId } : {}; }
+
+  public setCoordinateFrame(frame: FloatingOrigin) { this.coordinateFrame = frame; }
+  public shiftOrigin(delta: THREE.Vector3) {
+    for (const player of this.players.values()) { player.position.sub(delta); player.targetPosition.sub(delta); }
+  }
+  private readonly metrics = new RealtimeMetrics();
   private myId: string | null = null;
   private myUsername: string = 'Pilot';
   private lastSendTime = 0;
@@ -47,24 +65,39 @@ export class MultiplayerManager {
 
 
     this.channel
-      .on('broadcast', { event: 'position' }, (payload: any) => this.handlePositionBroadcast(payload.payload))
+      .on('broadcast', { event: 'position' }, (payload: any) => {
+        this.metrics.recordReceived('position');
+        this.handlePositionBroadcast(payload.payload);
+      })
       .on('broadcast', { event: 'shoot' }, (payload: any) => {
-        if (this.onShootCallback && payload.payload.id !== this.myId) this.onShootCallback(payload.payload);
+        this.metrics.recordReceived('shoot');
+        if (this.sameSystem(payload.payload) && this.onShootCallback && payload.payload.id !== this.myId) this.onShootCallback(payload.payload);
       })
       .on('broadcast', { event: 'hit' }, (payload: any) => {
-        if (this.onHitCallback) this.onHitCallback(payload.payload);
+        this.metrics.recordReceived('hit');
+        if (this.sameSystem(payload.payload) && this.onHitCallback) this.onHitCallback(payload.payload);
       })
       .on('broadcast', { event: 'die' }, (payload: any) => {
-        if (this.onDieCallback) this.onDieCallback(payload.payload);
+        this.metrics.recordReceived('die');
+        if (this.sameSystem(payload.payload) && this.onDieCallback) this.onDieCallback(payload.payload);
       })
       .on('broadcast', { event: 'chat' }, (payload: any) => {
+        this.metrics.recordReceived('chat');
         if (this.onChatCallback) this.onChatCallback(payload.payload);
       })
       .on('broadcast', { event: 'sonar' }, (payload: any) => {
-        if (this.onSonarCallback && payload.payload.id !== this.myId) this.onSonarCallback(payload.payload);
+        this.metrics.recordReceived('sonar');
+        if (this.sameSystem(payload.payload) && this.onSonarCallback && payload.payload.id !== this.myId) {
+          const data = payload.payload;
+          const global: Triple = [data.posX, data.posY, data.posZ];
+          if (!global.every((value) => Number.isFinite(value) && Math.abs(value) <= Number.MAX_SAFE_INTEGER)) return;
+          const [posX, posY, posZ] = this.coordinateFrame?.fromAbsolute(global) ?? global;
+          this.onSonarCallback({ ...data, posX, posY, posZ });
+        }
       })
       .on('broadcast', { event: 'voice-signal' }, (payload: any) => {
-        if (this.onVoiceSignalCallback && payload.payload.targetId === this.myId) {
+        this.metrics.recordReceived('voice-signal');
+        if (this.sameSystem(payload.payload) && this.onVoiceSignalCallback && payload.payload.targetId === this.myId) {
           this.onVoiceSignalCallback(payload.payload);
         }
       })
@@ -76,51 +109,63 @@ export class MultiplayerManager {
       });
   }
 
+  public getDebugStats() {
+    return { configured: isSupabaseConfigured, subscribed: this.isSubscribed, systemId: this.systemId, ...this.metrics.snapshot() };
+  }
+
   public broadcastPosition(pos: THREE.Vector3, quat: THREE.Quaternion) {
     if (!this.channel || !this.myId || !this.isSubscribed) return;
     const now = Date.now();
     if (now - this.lastSendTime < 100) return; // 10Hz tick limit
     this.lastSendTime = now;
 
+    const coordinates = pos.toArray() as Triple;
+    const [x, y, z] = this.coordinateFrame?.toAbsolute(coordinates) ?? coordinates;
+    this.metrics.recordSent('position');
     this.channel.send({
       type: 'broadcast',
       event: 'position',
       payload: {
         id: this.myId,
         username: this.myUsername,
-        x: pos.x, y: pos.y, z: pos.z,
+        x, y, z,
         qx: quat.x, qy: quat.y, qz: quat.z, qw: quat.w,
-        bounty: window.localPlayerBounty || 100
+        bounty: window.localPlayerBounty || 100,
+        ...this.systemTag()
       }
     });
   }
 
   public broadcastShoot(dir: THREE.Vector3, color: string = 'red', weaponType: string = 'laser') {
     if (!this.channel || !this.isSubscribed) return;
+    this.metrics.recordSent('shoot');
     this.channel.send({
       type: 'broadcast', event: 'shoot',
-      payload: { id: this.myId, dirx: dir.x, diry: dir.y, dirz: dir.z, color, weaponType }
+      payload: { id: this.myId, dirx: dir.x, diry: dir.y, dirz: dir.z, color, weaponType, ...this.systemTag() }
     });
   }
 
   public broadcastHit(targetId: string, damage: number) {
     if (!this.channel || !this.isSubscribed) return;
+    this.metrics.recordSent('hit');
     this.channel.send({
       type: 'broadcast', event: 'hit',
-      payload: { targetId, damage, shooterId: this.myId }
+      payload: { targetId, damage, shooterId: this.myId, ...this.systemTag() }
     });
   }
 
   public broadcastDie(killerId: string, killerName: string) {
     if (!this.channel || !this.isSubscribed) return;
+    this.metrics.recordSent('die');
     this.channel.send({
       type: 'broadcast', event: 'die',
-      payload: { killedId: this.myId, killerId, killerName }
+      payload: { killedId: this.myId, killerId, killerName, ...this.systemTag() }
     });
   }
 
   public broadcastChat(message: string) {
     if (!this.channel || !this.isSubscribed) return;
+    this.metrics.recordSent('chat');
     this.channel.send({
       type: 'broadcast', event: 'chat',
       payload: { username: this.myUsername, message }
@@ -129,23 +174,32 @@ export class MultiplayerManager {
 
   public broadcastSonar(pos: THREE.Vector3) {
     if (!this.channel || !this.isSubscribed) return;
+    const coordinates = pos.toArray() as Triple;
+    const [posX, posY, posZ] = this.coordinateFrame?.toAbsolute(coordinates) ?? coordinates;
+    this.metrics.recordSent('sonar');
     this.channel.send({
       type: 'broadcast', event: 'sonar',
-      payload: { id: this.myId, posX: pos.x, posY: pos.y, posZ: pos.z }
+      payload: { id: this.myId, posX, posY, posZ, ...this.systemTag() }
     });
   }
 
   public sendVoiceSignal(targetId: string, signal: any) {
     if (!this.channel || !this.isSubscribed) return;
+    this.metrics.recordSent('voice-signal');
     this.channel.send({
       type: 'broadcast', event: 'voice-signal',
-      payload: { senderId: this.myId, targetId, signal }
+      payload: { senderId: this.myId, targetId, signal, ...this.systemTag() }
     });
   }
 
   private handlePositionBroadcast(data: any) {
+    if (!this.sameSystem(data)) { if (data.id !== this.myId) this.players.delete(data.id); return; }
     if (data.id === this.myId) return; // Prevent local ghost
     const playerId = data.id;
+    const coordinates: Triple = [data.x, data.y, data.z];
+    if (!coordinates.every((value) => Number.isFinite(value) && Math.abs(value) <= Number.MAX_SAFE_INTEGER)) return;
+    const [x, y, z] = this.coordinateFrame?.fromAbsolute(coordinates) ?? coordinates;
+    data = { ...data, x, y, z };
 
     // --- SPATIAL CULLING (NETWORK LAYER) ---
     // Ignore updates from ships outside our draw distance (Potato mode optimization)

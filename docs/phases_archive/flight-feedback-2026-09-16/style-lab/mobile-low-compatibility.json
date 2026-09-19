@@ -1,0 +1,116 @@
+{
+  "issues": [],
+  "baseline": {
+    "direction": "cinema",
+    "quality": "LOW",
+    "paused": false,
+    "ship": "ready",
+    "fps": 199,
+    "drawCalls": 9,
+    "triangles": 35129,
+    "geometries": 9,
+    "textures": 3,
+    "effect": {
+      "selected": "none",
+      "ready": false,
+      "status": "Эффекты выключены",
+      "particles": 0,
+      "budget": 450,
+      "bounds": null
+    }
+  },
+  "states": [
+    {
+      "direction": "cinema",
+      "quality": "LOW",
+      "paused": false,
+      "ship": "ready",
+      "fps": 0,
+      "drawCalls": 12,
+      "triangles": 35177,
+      "geometries": 12,
+      "textures": 6,
+      "effect": {
+        "selected": "warp",
+        "ready": true,
+        "status": "EpicToonFX · SpinPortalBlue",
+        "particles": 24,
+        "budget": 450,
+        "bounds": [
+          6.2643835992222225,
+          6.2643835992222225,
+          6.2643835992222225
+        ]
+      }
+    },
+    {
+      "direction": "cinema",
+      "quality": "LOW",
+      "paused": false,
+      "ship": "ready",
+      "fps": 163,
+      "drawCalls": 9,
+      "triangles": 35129,
+      "geometries": 12,
+      "textures": 6,
+      "effect": {
+        "selected": "scan",
+        "ready": true,
+        "status": "EpicToonFX · ScanExplosion",
+        "particles": 0,
+        "budget": 450,
+        "bounds": [
+          3.9999999999999996,
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "direction": "cinema",
+      "quality": "LOW",
+      "paused": false,
+      "ship": "ready",
+      "fps": 199,
+      "drawCalls": 13,
+      "triangles": 35191,
+      "geometries": 14,
+      "textures": 5,
+      "effect": {
+        "selected": "anomaly",
+        "ready": true,
+        "status": "EpicToonFX · Plexus",
+        "particles": 18,
+        "budget": 450,
+        "bounds": [
+          0.7887425719213939,
+          1.013133522887617,
+          0.9040999531251734
+        ]
+      }
+    }
+  ],
+  "final": {
+    "direction": "cinema",
+    "quality": "LOW",
+    "paused": false,
+    "ship": "ready",
+    "fps": 199,
+    "drawCalls": 12,
+    "triangles": 35163,
+    "geometries": 12,
+    "textures": 6,
+    "effect": {
+      "selected": "warp",
+      "ready": true,
+      "status": "EpicToonFX · SpinPortalBlue",
+      "particles": 17,
+      "budget": 450,
+      "bounds": [
+        6.2643835992222225,
+        6.2643835992222225,
+        6.2643835992222225
+      ]
+    }
+  }
+}

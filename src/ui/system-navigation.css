@@ -1,0 +1,16 @@
+.system-navigation{position:absolute;top:80px;right:20px;width:255px;max-height:calc(100dvh - 140px);overflow:auto;padding:14px;color:#dfd6c1;font-size:12px;pointer-events:auto;z-index:12;background:rgba(12,16,19,.92)}
+.system-navigation summary{color:#d4b47c;letter-spacing:.09em;cursor:pointer;margin-bottom:10px}
+.system-navigation select,.system-navigation button{box-sizing:border-box;width:100%;min-height:33px;margin:4px 0;padding:7px;background:#191a17;color:#e0d8c7;border:1px solid #665239;font:inherit}
+.system-navigation button:disabled{opacity:.45;cursor:default}.system-navigation output{display:block;padding:7px 0;color:#e2bc76}
+.system-navigation p{line-height:1.4;margin:6px 0 0}.system-navigation__note{color:#aaa99e;font-size:11px}
+.system-navigation__credits{display:block;color:#b59a6c;font-size:10px;margin-top:8px}
+.system-object-picker{position:relative}.system-object-picker [role=combobox]{text-align:left;cursor:pointer}
+.system-object-picker [role=listbox]{position:relative;max-height:220px;overflow-y:auto;overscroll-behavior:contain;border:1px solid #9b7c50;padding:3px;background:#10171c}
+.system-object-picker [hidden]{display:none}.system-object-picker [role=option]{display:block;text-align:left;border:0;margin:0;min-height:36px;cursor:pointer;background:transparent}
+.system-object-picker [role=option]:hover,.system-object-picker [role=option].is-active{background:#38424a}
+.system-object-picker [aria-selected=true]{color:#ffcf85}.system-object-picker button:focus-visible{outline:2px solid #efc07c;outline-offset:-2px}
+@media(max-width:960px){.system-object-picker [role=listbox]{max-height:144px}.system-object-picker [role=option]{min-height:36px}}
+.stellar-warp{position:absolute;inset:0;z-index:20;pointer-events:none;display:grid;place-items:center;color:#ffe7b4;font-size:clamp(20px,3vw,42px);letter-spacing:.18em;background:radial-gradient(ellipse,transparent 12%,#9d692844 75%,#dbaa6688);animation:stellar-transit .6s ease-in-out infinite alternate}
+.stellar-warp[hidden]{display:none}@keyframes stellar-transit{to{background-color:#bd9e4920;letter-spacing:.23em}}
+@media(max-width:960px){.system-navigation{top:65px;right:10px;width:228px;box-sizing:border-box;max-height:calc(100dvh - 155px);padding:8px;font-size:11px}.system-navigation__note{max-height:40px;overflow:auto}.system-navigation select,.system-navigation button{min-height:30px;margin:2px 0}.system-navigation summary{margin-bottom:4px}}
+@media(prefers-reduced-motion:reduce){.stellar-warp{animation:none}}

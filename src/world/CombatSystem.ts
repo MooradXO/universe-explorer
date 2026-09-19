@@ -60,6 +60,13 @@ export class CombatSystem {
   private sparksPool: THREE.Points[] = [];
 
   public lasers: LaserInstance[] = [];
+  private readonly pendingPositions = new Set<THREE.Vector3>();
+  private readonly obstaclePosition = new THREE.Vector3();
+
+  public shiftOrigin(delta: THREE.Vector3) {
+    for (const laser of this.lasers) laser.lastPosition?.sub(delta);
+    for (const position of this.pendingPositions) position.sub(delta);
+  }
   public get laserColor(): 'red' | 'blue' {
     return this.engine.shipController.laserColor;
   }
@@ -68,6 +75,11 @@ export class CombatSystem {
   }
   public lastShootTime = 0;
   public botHP: Map<string, number> = new Map();
+
+  public clearProjectiles() {
+    for (const laser of this.lasers) this.returnLaserToPool(laser.mesh as THREE.Group);
+    this.lasers.length = 0; this.botHP.clear();
+  }
 
   constructor(
     engine: Engine,
@@ -721,8 +733,10 @@ export class CombatSystem {
                     (Math.random() - 0.5) * 120
                   );
                   const explodePos = deathPos.clone().add(offset);
+                  this.pendingPositions.add(explodePos);
                   
                   gsap.delayedCall(delay, () => {
+                    this.pendingPositions.delete(explodePos);
                     const colors = [0xff22ff, 0xffaa00, 0xff0000, 0x00ffff, 0xffffff];
                     const randomColor = colors[Math.floor(Math.random() * colors.length)];
                     this.createExplosionAt(explodePos, randomColor, 25 + Math.random() * 20);
@@ -759,15 +773,18 @@ export class CombatSystem {
                   new THREE.ConeGeometry(5, 20, 4),
                   new THREE.MeshStandardMaterial({ color: 0x555555, roughness: 0.9 })
                 );
-                fragment.position.copy(p.position);
-                this.engine.scene.add(fragment);
+                const debrisAnchor = new THREE.Group();
+                debrisAnchor.position.copy(p.position);
+                debrisAnchor.add(fragment);
+                this.engine.scene.add(debrisAnchor);
                 gsap.to(fragment.position, {
                   x: fragment.position.x + (Math.random() - 0.5) * 200,
                   y: fragment.position.y + (Math.random() - 0.5) * 200,
                   z: fragment.position.z + (Math.random() - 0.5) * 200,
                   duration: 2,
                   onComplete: () => {
-                    this.engine.scene.remove(fragment);
+                    debrisAnchor.removeFromParent();
+                    gsap.killTweensOf(fragment.rotation);
                     fragment.geometry.dispose();
                     if (Array.isArray(fragment.material)) {
                       fragment.material.forEach((m) => m.dispose());
@@ -852,11 +869,12 @@ export class CombatSystem {
           if (!star || !star.userData) continue;
           const r = star.userData.radius || (star.userData.isStar ? 50 : 0);
           if (r > 0) {
-            const AC = star.position.clone().sub(prevPos);
+            star.getWorldPosition(this.obstaclePosition);
+            const AC = this.obstaclePosition.clone().sub(prevPos);
             let t = lenAB2 > 0.0001 ? AC.dot(AB) / lenAB2 : 0;
             t = Math.max(0, Math.min(1, t));
             const closestPoint = prevPos.clone().addScaledVector(AB, t);
-            const distSq = closestPoint.distanceToSquared(star.position);
+            const distSq = closestPoint.distanceToSquared(this.obstaclePosition);
 
             if (distSq < r * r) {
               const laserColor = (l.mesh.children[1] as THREE.Mesh)?.material instanceof THREE.MeshBasicMaterial
@@ -880,11 +898,12 @@ export class CombatSystem {
           if (!o.mesh || !o.mesh.visible || !o.mesh.userData) continue;
           const r = o.mesh.userData.radius || 15;
           
-          const AC = o.mesh.position.clone().sub(prevPos);
+          o.mesh.getWorldPosition(this.obstaclePosition);
+          const AC = this.obstaclePosition.clone().sub(prevPos);
           let t = lenAB2 > 0.0001 ? AC.dot(AB) / lenAB2 : 0;
           t = Math.max(0, Math.min(1, t));
           const closestPoint = prevPos.clone().addScaledVector(AB, t);
-          const distSq = closestPoint.distanceToSquared(o.mesh.position);
+          const distSq = closestPoint.distanceToSquared(this.obstaclePosition);
 
           if (distSq < r * r) {
             const laserColor = (l.mesh.children[1] as THREE.Mesh)?.material instanceof THREE.MeshBasicMaterial

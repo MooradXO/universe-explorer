@@ -3,6 +3,8 @@ node_modules/
 
 # Build output
 dist/
+/*-verify-dist/
+/.git-publication-build/
 
 # IDE
 .vscode/
@@ -17,8 +19,12 @@ desktop.ini
 
 # Environment
 .env
-.env.local
-.env.production
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
 
 # Logs
 *.log
@@ -27,5 +33,18 @@ npm-debug.log*
 # Local verification output
 /build_*.txt
 /dev_output.txt
+/test-results/
+/playwright-report/
 /tsc_output*.txt
 /*-smoke.png
+
+# Local catalogue databases and downloaded research data
+/.catalog-research/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Retired constellation art and its local review archive (removed from the game)
+/docs/art-direction/constellations/
+/docs/phases_archive/constellation-volume-2026-09-18/
+/docs/phases_archive/illustrated-atlas-2026-09-18/

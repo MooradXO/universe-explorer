@@ -1,0 +1,62 @@
+[
+  {
+    "name": "desktop",
+    "width": 1920,
+    "height": 945,
+    "mode": "HIGH",
+    "layout": {
+      "center": 960,
+      "bottomGap": 42,
+      "top": 803,
+      "width": 420
+    },
+    "guestEntry": true,
+    "errors": [],
+    "github": []
+  },
+  {
+    "name": "laptop",
+    "width": 1366,
+    "height": 768,
+    "mode": "HIGH",
+    "layout": {
+      "center": 683,
+      "bottomGap": 30,
+      "top": 648,
+      "width": 380
+    },
+    "guestEntry": true,
+    "errors": [],
+    "github": []
+  },
+  {
+    "name": "mobile",
+    "width": 844,
+    "height": 390,
+    "mode": "LOW",
+    "layout": {
+      "center": 422,
+      "bottomGap": 18,
+      "top": 302,
+      "width": 300
+    },
+    "guestEntry": true,
+    "errors": [],
+    "github": []
+  },
+  {
+    "name": "small-mobile",
+    "width": 568,
+    "height": 320,
+    "mode": "LOW",
+    "layout": {
+      "center": 284,
+      "bottomGap": 18,
+      "top": 232,
+      "width": 300
+    },
+    "guestEntry": true,
+    "errors": [],
+    "github": []
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "status": "complete",
+  "sourceDatasetSha256": "e8d70d1a62e60161fc6df490ee36781a628eaed444bac38327299c12bb7359f8",
+  "tileCount": 2622,
+  "verifiedLeafRecords": 2533349,
+  "missingAndDuplicateLeafRecords": 0,
+  "maxLeafAxisRoundingErrorParsecs": 0.014900000067427754,
+  "manifestSha256": "e8341711e64776ed48b6fa9b4969fa741da18b418dd835f429838fdacae9f173",
+  "searchSha256": "ffd8483617cb9346a70c558174f03e6733602859db38d81d786d936214710921"
+}

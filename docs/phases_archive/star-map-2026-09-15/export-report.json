@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "status": "complete",
+  "totalRecords": 2558654,
+  "positionedRecords": 2533349,
+  "leafRecords": 2533349,
+  "largestLeaf": 4079,
+  "tileCount": 2622,
+  "tileBytes": 57310346,
+  "manifestBytes": 442711,
+  "searchBytes": 1486831616,
+  "sourceDatasetSha256": "e8d70d1a62e60161fc6df490ee36781a628eaed444bac38327299c12bb7359f8"
+}

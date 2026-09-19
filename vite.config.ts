@@ -1,6 +1,19 @@
 import { defineConfig } from 'vite';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { localStarMapPlugin } from './scripts/catalog/map-server.mjs';
 export default defineConfig({
+  plugins: [localStarMapPlugin(fileURLToPath(new URL('../.catalog-research/athyg-4.0/map-v1/', import.meta.url))), {
+    name: 'ship-third-party-notices',
+    generateBundle() {
+      this.emitFile({
+        type: 'asset', fileName: 'THIRD_PARTY_NOTICES.md',
+        source: readFileSync(new URL('./THIRD_PARTY_NOTICES.md', import.meta.url), 'utf8'),
+      });
+    },
+  }],
   server: {
+    host: '127.0.0.1',
     port: 3000,
     open: false
   },
@@ -10,6 +23,11 @@ export default defineConfig({
     // with Vite 8/Rolldown). App code stays below this measured budget.
     chunkSizeWarningLimit: 600,
     rollupOptions: {
+      input: {
+        main: fileURLToPath(new URL('./index.html', import.meta.url)),
+        visualLab: fileURLToPath(new URL('./visual-lab.html', import.meta.url)),
+        environments: fileURLToPath(new URL('./environments.html', import.meta.url)),
+      },
       output: {
         manualChunks(id) {
           const normalizedId = id.replace(/\\/g, '/');
