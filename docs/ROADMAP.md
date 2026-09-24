@@ -9,8 +9,8 @@
 - [x] Compact mobile HUD and independent two-thumb flight/steering/fire.
 - [x] Versioned procedural world generation, worker detail maps, bounded caches and survey journal.
 - [x] Composite scene workshop with 17 object types, full JSON projects and isolated preview flight.
-- [ ] Publish the complete source revision with English documentation.
-- [ ] Deploy that revision to the existing server and verify rollback and neighbouring services.
+- [x] Publish the complete source revision with English documentation and an English workshop.
+- [x] Deploy that revision to the existing server and verify rollback references and neighbouring services.
 
 ## Proposed next milestone: closed group alpha
 

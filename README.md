@@ -9,7 +9,7 @@ A browser space game built with TypeScript, Vite and Three.js.
 ![TypeScript](https://img.shields.io/badge/TypeScript-typed-3178c6)
 ![Code license MIT](https://img.shields.io/badge/code_license-MIT-c58d58)
 
-[Play the game](https://universe.projectai.biz/) · [Workshop guide](docs/WORKSHOP.md) · [Multiplayer](docs/MULTIPLAYER.md) · [Deployment](docs/DEPLOYMENT.md)
+[Play the game](https://universe.projectai.biz/) · [Open the workshop](https://universe.projectai.biz/environments.html) · [Workshop guide](docs/WORKSHOP.md) · [Multiplayer](docs/MULTIPLAYER.md)
 
 ![Universe Explorer: planetary flight and the Titan & Copper HUD](docs/images/flight.png)
 
@@ -73,7 +73,7 @@ The separate client preview uses http://127.0.0.1:3012/ and connects to ws://127
 
 ## Workshop
 
-Open `/environments.html` on a local development or preview server. Start with an existing world or a blank scene, add objects, edit their parameters, save a project and export JSON. The workshop uses the game's rendering components. Its flight preview is local: it does not publish a scene to the shared server or include the server's combat, bots and economy. See [WORKSHOP.md](docs/WORKSHOP.md) for controls, libraries and limits.
+Open the [live English workshop](https://universe.projectai.biz/environments.html), or `/environments.html` on a local development server. Start with an existing world or a blank scene, add objects, edit their parameters, save a project and export JSON. The workshop uses the game's rendering components. Its flight preview is local: it does not publish a scene to the shared server or include the server's combat, bots and economy. See [WORKSHOP.md](docs/WORKSHOP.md) for controls, libraries and limits.
 
 ## A closer look
 
@@ -118,6 +118,8 @@ Open `/environments.html` on a local development or preview server. Start with a
 ## Deployment and verification
 
 A full installation needs the static client, catalogue API/data and multiplayer service. Copying only `dist/` does not provide the complete online game. [Deployment instructions](docs/DEPLOYMENT.md) describe isolated releases, persistent data and rollback.
+
+The September 24 release is live. See its [verification and deployment record](docs/phases_archive/release-2026-09-24/README.md) for the installed source commit, checks and rollback references.
 
 [DEBUG_API.md](docs/DEBUG_API.md) documents test fixtures. [CHANGELOG.md](CHANGELOG.md) records the current changes; [ROADMAP.md](docs/ROADMAP.md) separates completed work from proposals. Historical reports describe the build tested on their stated date. Old constellation artwork was subsequently removed.
 

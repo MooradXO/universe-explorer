@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-24T17:09:09.375Z",
+  "sourceCommit": "7a2c2f407cbfaa916018e47588047f00afba5462",
+  "checks": [
+    "index.html: exact HTML and 11 referenced asset hashes",
+    "environments.html: exact HTML and 7 referenced asset hashes",
+    "public health; catalogue search; private metrics and missing assets return 404",
+    "HIGH: live menu and English workshop with baked Jupiter surface",
+    "LOW: live menu and English workshop with baked Jupiter surface"
+  ],
+  "pageErrors": [],
+  "publicGameConnections": 0
+}
