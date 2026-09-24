@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-24 multiplayer visual hotfix
+
+- Smoothed automatic cruise turns between network snapshots, including mobile rendering and the return to manual steering.
+- Restored internal GLB transforms in instanced ships. Other players' ships now retain the same model size as the local ship instead of appearing 100 times smaller.
+- Added real two-browser HIGH/LOW checks for visible remote ships, damage and cruise rotation at 240 ms simulated latency.
+
 ## 2026-09-24 source update
 
 ### Flight, presentation and controls

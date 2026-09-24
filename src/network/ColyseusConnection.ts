@@ -7,6 +7,7 @@ import type { Group } from 'three';
 import { FlightModel } from './shared/FlightModel';
 import { NET, type PilotInput, type SelfSnapshot, type TravelArrival, type WorldSnapshot } from './shared/Protocol';
 import { WorldDecoder, type PackedWorld } from './shared/WorldCodec';
+import { NetworkAttitude } from './NetworkAttitude';
 
 interface Hooks {
   identity(id: string): void;
@@ -22,6 +23,7 @@ export class ColyseusConnection {
   private model = new FlightModel(); private pending: PilotInput[] = []; private outgoing: PilotInput[] = [];
   private seq = 0; private epoch = 0; private accumulator = 0; private sendTime = 0;
   private correction = new Vector3(); private rendered = new Vector3(); private initialized = false;
+  private attitude = new NetworkAttitude();
   private lastAckAt = 0; private controller: ShipController | undefined;
   private lastWorldAt = 0; private voiceTime = 0;
   private voiceQueue: Record<string, unknown>[] = [];
@@ -105,7 +107,7 @@ export class ColyseusConnection {
     this.correctionDistance = wasInitialized ? before.distanceTo(this.model.position) : 0;
     if (wasInitialized && this.correctionDistance < 500 && !self.cruise && !self.warp) this.correction.copy(before).sub(this.model.position);
     else this.correction.set(0, 0, 0);
-    if (!wasInitialized) this.rendered.copy(this.model.position);
+    if (!wasInitialized) { this.rendered.copy(this.model.position); this.attitude.reset(this.model.quaternion); }
     this.initialized = true;
   }
   frame(dt: number, controller: ShipController, ship: Group, frame: FloatingOrigin) {
@@ -141,9 +143,10 @@ export class ColyseusConnection {
       this.send('sync', {}); this.lastAckAt = performance.now();
     }
     this.correction.multiplyScalar(Math.exp(-dt * 12));
-    if (self.cruise) this.rendered.lerp(this.model.position, Math.min(1, dt * 12));
+    if (self.cruise) this.rendered.lerp(this.model.position, 1 - Math.exp(-dt * 12));
     else this.rendered.copy(this.model.position).add(this.correction);
-    ship.position.fromArray(frame.fromAbsolute(this.rendered.toArray())); ship.quaternion.copy(this.model.quaternion);
+    ship.position.fromArray(frame.fromAbsolute(this.rendered.toArray()));
+    ship.quaternion.copy(this.attitude.update(this.model.quaternion, dt, !!self.cruise));
     controller.velocity.copy(this.model.velocity); controller.currentBoost = this.model.currentBoost; controller.isBoosting = this.model.isBoosting;
   }
   send(type: string, data: Record<string, unknown> = {}) {

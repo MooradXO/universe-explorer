@@ -15,10 +15,12 @@ const planets = window.__UNIVERSE_DEBUG__.planets();
 | Field | Meaning |
 | --- | --- |
 | fps / frameTimeMs / p95FrameTimeMs | Last 180 nonzero frames, before the 50 ms simulation clamp; not GPU queries |
+| lastFrameTimeMs | Most recent engine frame duration, before the simulation clamp; use this to measure rendered movement rather than the timing of a later debug callback |
 | renderer | Frame draw counts, WebGL resource counts, buffer size and pixel ratio |
 | memory | JS heap when supported; gpuBytes is null |
 | starMap | Selection, camera/centre/scale, blocks/cache/requests/errors and point budgets |
 | world.ship | Positions, world address, camera offset, speed, health and mobile input copy |
+| world.remoteVisuals | Detailed player/bot instance counts, distant ships and the baked player model dimensions at its configured scale |
 | world.space | Floating origin, streaming/cache/jobs, navigation batches and resource lifecycle |
 | world.flightDust / flightFX | Motion samples, readiness, positions, particles and effect budgets |
 | world.travel | System address, target, cruise/warp status and surveyed sites |

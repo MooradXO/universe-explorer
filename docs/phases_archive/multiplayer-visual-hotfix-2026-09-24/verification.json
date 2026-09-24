@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "baseline": false,
+  "latencyMs": 240,
+  "results": [
+    {
+      "quality": "HIGH",
+      "visual": {
+        "detailedPlayers": 1,
+        "detailedBots": 0,
+        "distantShips": 0,
+        "playerModelSize": [
+          205.43352699279785,
+          159.69474983215332,
+          138.8194088935852
+        ]
+      },
+      "damage": 20,
+      "frames": 1148,
+      "turningFrames": 512,
+      "maxAngularSpeed": 1.2000000001177415,
+      "errors": []
+    },
+    {
+      "quality": "LOW",
+      "visual": {
+        "detailedPlayers": 1,
+        "detailedBots": 0,
+        "distantShips": 0,
+        "playerModelSize": [
+          205.43352699279785,
+          159.69474983215332,
+          138.8194088935852
+        ]
+      },
+      "damage": 40,
+      "frames": 1299,
+      "turningFrames": 511,
+      "maxAngularSpeed": 1.2000000001621505,
+      "errors": []
+    }
+  ]
+}

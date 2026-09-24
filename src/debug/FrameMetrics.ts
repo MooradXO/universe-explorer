@@ -17,6 +17,7 @@ export class FrameMetrics {
     return {
       fps: frameTimeMs ? 1000 / frameTimeMs : 0,
       frameTimeMs,
+      lastFrameTimeMs: this.count ? this.samples[(this.cursor + this.samples.length - 1) % this.samples.length] : 0,
       p95FrameTimeMs: values[Math.max(0, Math.ceil(values.length * 0.95) - 1)] ?? 0,
       sampleFrames: values.length,
     };

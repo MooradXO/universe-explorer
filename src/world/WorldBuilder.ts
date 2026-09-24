@@ -28,6 +28,7 @@ import { Settings } from '../core/Settings';
 import type { VoiceChatManager } from '../network/VoiceChatManager';
 import { faceFlightDirection, steerFlightDirection } from './systems/FlightOrientation';
 import { loadModelClone } from './ModelLoader';
+import { createModelInstances } from './ModelInstances';
 import { ShipEngineVFX } from './ShipEngineVFX';
 import { getSpaceSmokeState, SPACE_SMOKE_BASE } from '../debug/SpaceSmokeState';
 import {
@@ -288,21 +289,8 @@ export class WorldBuilder {
   }
 
   private createInstancedMeshFromModel(model: THREE.Object3D): THREE.InstancedMesh | null {
-    let tGeo: THREE.BufferGeometry | undefined;
-    let tMat: THREE.Material | THREE.Material[] | undefined;
-    model.traverse((child: any) => {
-      if (child.isMesh && !tGeo) {
-        tGeo = child.geometry;
-        tMat = child.material;
-      }
-    });
-
-    if (!tGeo || !tMat) return null;
-
-    const mesh = new THREE.InstancedMesh(tGeo, tMat, this.maxInstances);
-    mesh.count = 0;
-    mesh.frustumCulled = false;
-    this.engine.scene.add(mesh);
+    const mesh = createModelInstances(model, this.maxInstances);
+    if (mesh) this.engine.scene.add(mesh);
     return mesh;
   }
 
@@ -874,6 +862,13 @@ export class WorldBuilder {
       visibleFullPlanets,
       visiblePlanets: visibleFullPlanets + this.space.navigation.visiblePlanetCount(frustum, this.space.planets.activeIds),
       players: { local: this.userShipGroup ? 1 : 0, remote, bots },
+      remoteVisuals: {
+        detailedPlayers: this.lod0Mesh?.count ?? 0,
+        detailedBots: (this.botInterceptorMesh?.count ?? 0) + (this.botBomberMesh?.count ?? 0),
+        distantShips: this.lod1Mesh?.count ?? 0,
+        playerModelSize: this.lod0Mesh ? new THREE.Box3().setFromBufferAttribute(this.lod0Mesh.geometry.getAttribute('position') as THREE.BufferAttribute)
+          .getSize(new THREE.Vector3()).multiplyScalar(PLAYER_SHIP_VISUAL.scale).toArray() : null,
+      },
       voice: this.voiceChat?.getDebugState() ?? null,
       ship: this.userShipGroup ? {
         position: this.userShipGroup.position.toArray(),
