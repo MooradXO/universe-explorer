@@ -29,4 +29,24 @@ The script starts its own in-memory backend on loopback port 2577 and closes its
 
 ## Deployment
 
-Source commit, installed client release and passive verification will be recorded after publication. The previous client release remains available for rollback. Both existing Universe services and persistent data are retained.
+Published source: [`f4ceaf752f70799ce61ba2474ddc13a90d31974e`](https://github.com/MooradXO/universe-explorer/commit/f4ceaf752f70799ce61ba2474ddc13a90d31974e). Remote main was independently verified and [GitHub Verify passed](https://github.com/MooradXO/universe-explorer/actions/runs/36037164779).
+
+Installed **2026-09-24 at 17:53:20 UTC** as `/var/www/universe-explorer/releases/20260924-f4ceaf7`. Main client: `main-DD8BFON6.js`, SHA256 `984ec4d2c3ccb6e845c6945126988e0f11a008514c2950e95a77648421fd6843`. Build uses `VITE_MULTIPLAYER_URL=wss://universe.projectai.biz/multiplayer` and `VITE_LEGACY_REALTIME=false`.
+
+Only seven changed frontend files were uploaded in a 103,037-byte archive (SHA256 `a7fd8fd2f408c81517b5aebc2d7d421585339f9c82f912a1372f05f46a0a6ed1`). A separate release was copied from the previous version and patched, then **all 202 candidate files** were verified against the local production build before switching the frontend symlink. Previously hashed assets remain available for existing tabs.
+
+Both Universe service process IDs/restart counts, the backend release link, all Nginx virtual-host hashes, service configuration and neighbouring container identities remained unchanged. No service restart or Nginx reload was performed. Persistent guest and catalogue data were not rewritten by the deployment. The production cap remains 50.
+
+Public game/workshop HTML and referenced asset hashes matched the build. HIGH/LOW menu and English workshop loaded without page errors or public game WebSocket connections; multiplayer health, catalogue search and private-path checks passed. See [public-verification.json](public-verification.json).
+
+Backup: `/var/backups/universe-explorer/hotfix-20260924-f4ceaf7/`. Previous client: `/var/www/universe-explorer/releases/20260924-7a2c2f4`. To roll back this client hotfix, atomically restore only the frontend link:
+
+```sh
+set -eu
+test -d /var/www/universe-explorer/releases/20260924-7a2c2f4/public
+ln -s /var/www/universe-explorer/releases/20260924-7a2c2f4 /var/www/universe-explorer/current.rollback
+mv -Tf /var/www/universe-explorer/current.rollback /var/www/universe-explorer/current
+curl --fail https://universe.projectai.biz/
+```
+
+The backend requires no restart for this rollback. Existing browser tabs need a manual page refresh to load the newly selected client. Rollback references were retained and checked; a live rollback was not necessary.
