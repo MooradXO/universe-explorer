@@ -1,5 +1,5 @@
 param(
-  [ValidateSet('dev', 'build', 'preview', 'test', 'test:smoke', 'check:space', 'catalog:download', 'catalog:import', 'catalog:verify', 'catalog:map', 'ci', 'audit')]
+  [ValidateSet('dev', 'build', 'preview', 'test', 'test:smoke', 'check:space', 'catalog:download', 'catalog:import', 'catalog:verify', 'catalog:map', 'ci', 'audit', 'multiplayer:dev', 'multiplayer:check', 'multiplayer:build', 'multiplayer:preview', 'multiplayer:test', 'multiplayer:load', 'multiplayer:browser')]
   [string]$Task = 'dev'
 )
 

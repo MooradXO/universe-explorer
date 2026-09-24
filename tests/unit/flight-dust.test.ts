@@ -20,6 +20,8 @@ for (const low of [false, true]) {
     expect(dust.snapshot().speed).toBe(0); expect(dust.snapshot().sample).toEqual(beforeShift);
     position.add(new Vector3(3e8, -1e8, 2e8)); dust.update(.05, position, false);
     expect(dust.snapshot().maxOffset).toBeLessThanOrEqual(620);
+    expect(new Vector3().fromArray(dust.snapshot().visualDisplacement).length()).toBeCloseTo(125);
+    expect(new Vector3().fromArray(dust.snapshot().visualDisplacement).normalize().dot(new Vector3(3, -1, 2).normalize())).toBeCloseTo(1);
     dust.update(.05, position, true); expect(dust.snapshot().visible).toBe(false);
     position.set(0, 0, 0); dust.reset(position); dust.update(.016, position, false);
     expect(dust.snapshot().speed).toBe(0); expect(dust.snapshot().visible).toBe(true);

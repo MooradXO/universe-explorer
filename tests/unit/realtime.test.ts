@@ -1,3 +1,5 @@
+// These tests explicitly cover the retained rollback transport.
+vi.stubEnv('VITE_LEGACY_REALTIME', 'true');
 import { expect, it, vi } from 'vitest';
 import * as THREE from 'three';
 

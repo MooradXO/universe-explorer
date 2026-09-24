@@ -1,0 +1,512 @@
+[
+  {
+    "quality": "HIGH",
+    "pass": true,
+    "memory": [
+      {
+        "calls": 4,
+        "triangles": 9024,
+        "geometries": 23,
+        "textures": 13
+      },
+      {
+        "calls": 6,
+        "triangles": 22560,
+        "geometries": 23,
+        "textures": 13
+      },
+      {
+        "calls": 6,
+        "triangles": 22560,
+        "geometries": 23,
+        "textures": 13
+      },
+      {
+        "calls": 6,
+        "triangles": 22560,
+        "geometries": 23,
+        "textures": 13
+      }
+    ],
+    "flight": {
+      "before": [
+        0,
+        992.1756746247411,
+        19843.51349249482
+      ],
+      "after": [
+        0,
+        992.1756746247411,
+        19272.76447389986
+      ],
+      "shots": 2
+    },
+    "types": [
+      "planet",
+      "field",
+      "structure",
+      "phenomenon",
+      "model",
+      "fx",
+      "star",
+      "asteroid",
+      "ring",
+      "moon",
+      "blackhole",
+      "probe",
+      "projectile",
+      "engine",
+      "light",
+      "impact",
+      "group"
+    ],
+    "snapshot": {
+      "document": {
+        "format": "universe-scene",
+        "version": 1,
+        "name": "World 1 · generated",
+        "settings": {
+          "warp": false,
+          "seed": "universe-workshop",
+          "backdrop": 2,
+          "warm": "#bc9061",
+          "cool": "#6c728d",
+          "density": 0.24489349100738764,
+          "patternScale": 3.910334529727697,
+          "drift": 0.004203381682746112,
+          "stars": 1200,
+          "ambient": 0.8,
+          "light": 2.5,
+          "lightColor": "#fff0d5",
+          "lightX": -1,
+          "lightY": 0.5,
+          "lightZ": 1,
+          "exposure": 1.25
+        },
+        "entities": [
+          {
+            "id": "planet-1",
+            "name": "World 1 · generated",
+            "kind": "planet",
+            "parent": null,
+            "visible": true,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": 1,
+            "params": {
+              "seed": "4245954069",
+              "surface": 53,
+              "texture": "",
+              "material": 106,
+              "radius": 6614.504497498274,
+              "spin": 0.005,
+              "variant": 0,
+              "geography": 3.8,
+              "warp": 0.5800000000000001,
+              "color0": "#393a55",
+              "color1": "#9b907e",
+              "color2": "#d7cbb2",
+              "color3": "#adc7dc",
+              "geology": 8,
+              "circulation": 2,
+              "relief": 0,
+              "roughness": 0.76,
+              "ocean": 0,
+              "detail": 0.3,
+              "storms": 0.8,
+              "wind": 0.003,
+              "contrast": 1.06,
+              "frost": 0.2,
+              "activity": 0.6488997900858522,
+              "ice": 0.7636363636363637,
+              "clouds": -1,
+              "cloudCoverage": 0.4,
+              "cloudAltitude": 0.012,
+              "cloudSpeed": 0.004,
+              "cloudShadow": 0.2,
+              "atmosphere": 9,
+              "atmosphereThickness": 0.053099999999999994,
+              "atmosphereDensity": 0.6900000000000001,
+              "aurora": 5,
+              "auroraColor": "#6c728d",
+              "ring": 29,
+              "ringInner": 1.2473131720721722,
+              "ringOuter": 2.3847089240886272,
+              "ringTilt": 71.5637212190777,
+              "ringTurn": 35.21489343506078,
+              "ringDensity": 0.7728042518440634,
+              "ringColor": "#d7cbb2",
+              "moons": 3,
+              "moonStyle": 15,
+              "moonOrbit": 7,
+              "moonSize": 1,
+              "moonDistance": 1
+            }
+          }
+        ]
+      },
+      "selected": "",
+      "quality": "HIGH",
+      "paused": false,
+      "comparing": false,
+      "entities": [
+        {
+          "id": "planet-1",
+          "kind": "planet",
+          "status": "ready",
+          "visible": true,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "surface": {
+            "version": 2,
+            "texture": "procedural",
+            "geology": 8,
+            "circulation": 2,
+            "storms": 3,
+            "baked": true,
+            "blend": 0.9999724635506501,
+            "lod": 0.9999999417851131
+          },
+          "satellites": [
+            {
+              "parent": "workshop/planet-1",
+              "id": "workshop/planet-1/moon-1",
+              "name": "Moon 1 · generated",
+              "radius": 804.0307808784529,
+              "position": [
+                14502.155708387963,
+                -3049.3704817092607,
+                -20176.438826674228
+              ],
+              "style": 15,
+              "origin": "procedural"
+            },
+            {
+              "parent": "workshop/planet-1",
+              "id": "workshop/planet-1/moon-2",
+              "name": "Moon 2 · generated",
+              "radius": 400.5308296405216,
+              "position": [
+                -43211.53702402989,
+                -2442.931724892536,
+                -16163.88129966016
+              ],
+              "style": 22,
+              "origin": "procedural"
+            },
+            {
+              "parent": "workshop/planet-1",
+              "id": "workshop/planet-1/moon-3",
+              "name": "Moon 3 · generated",
+              "radius": 344.4090224453641,
+              "position": [
+                -46847.203188832624,
+                7234.450629935002,
+                47867.4045856378
+              ],
+              "style": 5,
+              "origin": "procedural"
+            }
+          ]
+        }
+      ],
+      "generation": {
+        "mode": "worker",
+        "entries": 3,
+        "queued": 0,
+        "active": 0,
+        "ready": 3,
+        "estimatedBytes": 2097152,
+        "budgetBytes": 8388608,
+        "jobs": 3,
+        "cancelled": 1,
+        "cacheHits": 0,
+        "lastJobMs": 154.29999999701977,
+        "maxPumpMs": 0.3999999910593033,
+        "failures": 0
+      },
+      "errors": [],
+      "render": {
+        "calls": 6,
+        "triangles": 22560,
+        "geometries": 23,
+        "textures": 13
+      },
+      "catalog": {
+        "types": 17,
+        "surfaces": 64,
+        "materials": 128,
+        "structures": 24,
+        "phenomena": 32,
+        "fx": 69,
+        "models": 4
+      }
+    }
+  },
+  {
+    "quality": "LOW",
+    "pass": true,
+    "memory": [
+      {
+        "calls": 4,
+        "triangles": 3648,
+        "geometries": 23,
+        "textures": 12
+      },
+      {
+        "calls": 6,
+        "triangles": 7968,
+        "geometries": 23,
+        "textures": 12
+      },
+      {
+        "calls": 6,
+        "triangles": 7968,
+        "geometries": 23,
+        "textures": 12
+      },
+      {
+        "calls": 6,
+        "triangles": 7968,
+        "geometries": 23,
+        "textures": 12
+      }
+    ],
+    "flight": {
+      "before": [
+        0,
+        992.1756746247411,
+        19843.51349249482
+      ],
+      "after": [
+        0,
+        992.1756746247411,
+        19271.22829072297
+      ],
+      "shots": 2
+    },
+    "types": [
+      "planet",
+      "field",
+      "structure",
+      "phenomenon",
+      "model",
+      "fx",
+      "star",
+      "asteroid",
+      "ring",
+      "moon",
+      "blackhole",
+      "probe",
+      "projectile",
+      "engine",
+      "light",
+      "impact",
+      "group"
+    ],
+    "snapshot": {
+      "document": {
+        "format": "universe-scene",
+        "version": 1,
+        "name": "World 1 · generated",
+        "settings": {
+          "warp": false,
+          "seed": "universe-workshop",
+          "backdrop": 2,
+          "warm": "#bc9061",
+          "cool": "#6c728d",
+          "density": 0.24489349100738764,
+          "patternScale": 3.910334529727697,
+          "drift": 0.004203381682746112,
+          "stars": 1200,
+          "ambient": 0.8,
+          "light": 2.5,
+          "lightColor": "#fff0d5",
+          "lightX": -1,
+          "lightY": 0.5,
+          "lightZ": 1,
+          "exposure": 1.25
+        },
+        "entities": [
+          {
+            "id": "planet-1",
+            "name": "World 1 · generated",
+            "kind": "planet",
+            "parent": null,
+            "visible": true,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": 1,
+            "params": {
+              "seed": "4245954069",
+              "surface": 53,
+              "texture": "",
+              "material": 106,
+              "radius": 6614.504497498274,
+              "spin": 0.005,
+              "variant": 0,
+              "geography": 3.8,
+              "warp": 0.5800000000000001,
+              "color0": "#393a55",
+              "color1": "#9b907e",
+              "color2": "#d7cbb2",
+              "color3": "#adc7dc",
+              "geology": 8,
+              "circulation": 2,
+              "relief": 0,
+              "roughness": 0.76,
+              "ocean": 0,
+              "detail": 0.3,
+              "storms": 0.8,
+              "wind": 0.003,
+              "contrast": 1.06,
+              "frost": 0.2,
+              "activity": 0.6488997900858522,
+              "ice": 0.7636363636363637,
+              "clouds": -1,
+              "cloudCoverage": 0.4,
+              "cloudAltitude": 0.012,
+              "cloudSpeed": 0.004,
+              "cloudShadow": 0.2,
+              "atmosphere": 9,
+              "atmosphereThickness": 0.053099999999999994,
+              "atmosphereDensity": 0.6900000000000001,
+              "aurora": 5,
+              "auroraColor": "#6c728d",
+              "ring": 29,
+              "ringInner": 1.2473131720721722,
+              "ringOuter": 2.3847089240886272,
+              "ringTilt": 71.5637212190777,
+              "ringTurn": 35.21489343506078,
+              "ringDensity": 0.7728042518440634,
+              "ringColor": "#d7cbb2",
+              "moons": 3,
+              "moonStyle": 15,
+              "moonOrbit": 7,
+              "moonSize": 1,
+              "moonDistance": 1
+            }
+          }
+        ]
+      },
+      "selected": "",
+      "quality": "LOW",
+      "paused": false,
+      "comparing": false,
+      "entities": [
+        {
+          "id": "planet-1",
+          "kind": "planet",
+          "status": "ready",
+          "visible": true,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "surface": {
+            "version": 2,
+            "texture": "procedural",
+            "geology": 8,
+            "circulation": 2,
+            "storms": 2,
+            "baked": true,
+            "blend": 0.9999628296813157,
+            "lod": 0.9999998982620879
+          },
+          "satellites": [
+            {
+              "parent": "workshop/planet-1",
+              "id": "workshop/planet-1/moon-1",
+              "name": "Moon 1 · generated",
+              "radius": 804.0307808784529,
+              "position": [
+                14502.155708387963,
+                -3049.3704817092607,
+                -20176.438826674228
+              ],
+              "style": 15,
+              "origin": "procedural"
+            },
+            {
+              "parent": "workshop/planet-1",
+              "id": "workshop/planet-1/moon-2",
+              "name": "Moon 2 · generated",
+              "radius": 400.5308296405216,
+              "position": [
+                -43211.53702402989,
+                -2442.931724892536,
+                -16163.88129966016
+              ],
+              "style": 22,
+              "origin": "procedural"
+            },
+            {
+              "parent": "workshop/planet-1",
+              "id": "workshop/planet-1/moon-3",
+              "name": "Moon 3 · generated",
+              "radius": 344.4090224453641,
+              "position": [
+                -46847.203188832624,
+                7234.450629935002,
+                47867.4045856378
+              ],
+              "style": 5,
+              "origin": "procedural"
+            }
+          ]
+        }
+      ],
+      "generation": {
+        "mode": "worker",
+        "entries": 3,
+        "queued": 0,
+        "active": 0,
+        "ready": 3,
+        "estimatedBytes": 524288,
+        "budgetBytes": 2097152,
+        "jobs": 3,
+        "cancelled": 1,
+        "cacheHits": 1,
+        "lastJobMs": 50.5,
+        "maxPumpMs": 0.10000000894069672,
+        "failures": 0
+      },
+      "errors": [],
+      "render": {
+        "calls": 6,
+        "triangles": 7968,
+        "geometries": 23,
+        "textures": 12
+      },
+      "catalog": {
+        "types": 17,
+        "surfaces": 64,
+        "materials": 128,
+        "structures": 24,
+        "phenomena": 32,
+        "fx": 69,
+        "models": 4
+      }
+    }
+  }
+]

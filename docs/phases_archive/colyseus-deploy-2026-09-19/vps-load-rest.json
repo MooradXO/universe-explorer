@@ -1,0 +1,166 @@
+{
+  "date": "2026-09-19T17:29:07.674Z",
+  "host": {
+    "platform": "linux",
+    "cpu": "QEMU Virtual CPU version 2.5+",
+    "logicalCPUs": 4,
+    "ramGiB": 5.786327362060547,
+    "node": "v24.19.0"
+  },
+  "seconds": 30,
+  "results": [
+    {
+      "mode": "clustered",
+      "count": 25,
+      "elapsed": 30.000234793,
+      "server": {
+        "players": 25,
+        "systems": 1,
+        "bots": 0,
+        "tick": 1714,
+        "tickMs": {
+          "p50": 2.2496419999988575,
+          "p95": 3.9082839999991847,
+          "p99": 5.877088000001095,
+          "max": 30.16397600000164
+        },
+        "activeShots": 213,
+        "fired": 5736,
+        "hits": 199,
+        "rejected": 38,
+        "socketBytesWritten": 14981991,
+        "elapsed": 34.297,
+        "cpuMicroseconds": 8020565,
+        "rssBytes": 180301824
+      },
+      "measurement": {
+        "observedTickHz": 49.99960868139596,
+        "serverCPUPercentOfOneCore": 22.257665801862448,
+        "serverRSSMiB": 171.94921875,
+        "outboundMbps": 3.60180061074764,
+        "shotsFired": 5175,
+        "hits": 188,
+        "rejected": 25,
+        "snapshotGapMs": {
+          "p50": 100.89420899999823,
+          "p95": 103.46183699999983,
+          "p99": 107.02680799999871,
+          "max": 127.61013399999865
+        },
+        "minSnapshotsPerSecond": 9.999921736279193,
+        "disconnects": 0,
+        "systems": 1,
+        "bots": 0,
+        "maxPendingInputs": 5,
+        "visiblePeersAtEnd": {
+          "min": 24,
+          "max": 24
+        },
+        "maxDistanceFromFirstAtEnd": 1396.0466788587642
+      },
+      "stderr": ""
+    },
+    {
+      "mode": "clustered",
+      "count": 50,
+      "elapsed": 30.000348665000004,
+      "server": {
+        "players": 50,
+        "systems": 1,
+        "bots": 0,
+        "tick": 1718,
+        "tickMs": {
+          "p50": 5.787344000000303,
+          "p95": 10.044913000001543,
+          "p99": 13.792623999999705,
+          "max": 38.808868000000075
+        },
+        "activeShots": 414,
+        "fired": 11700,
+        "hits": 912,
+        "rejected": 0,
+        "socketBytesWritten": 53099766,
+        "elapsed": 34.386,
+        "cpuMicroseconds": 17256781,
+        "rssBytes": 197361664
+      },
+      "measurement": {
+        "observedTickHz": 50.032751844352596,
+        "serverCPUPercentOfOneCore": 47.40365573347912,
+        "serverRSSMiB": 188.21875,
+        "outboundMbps": 12.815995583696658,
+        "shotsFired": 10500,
+        "hits": 867,
+        "rejected": 0,
+        "snapshotGapMs": {
+          "p50": 101.01577199999883,
+          "p95": 105.03073000001314,
+          "p99": 107.6539580000026,
+          "max": 112.89494099999865
+        },
+        "minSnapshotsPerSecond": 9.999883779684064,
+        "disconnects": 0,
+        "systems": 1,
+        "bots": 0,
+        "maxPendingInputs": 5,
+        "visiblePeersAtEnd": {
+          "min": 49,
+          "max": 49
+        },
+        "maxDistanceFromFirstAtEnd": 1364.1718604280345
+      },
+      "stderr": ""
+    },
+    {
+      "mode": "clustered",
+      "count": 100,
+      "elapsed": 30.000529825999998,
+      "server": {
+        "players": 100,
+        "systems": 1,
+        "bots": 0,
+        "tick": 1700,
+        "tickMs": {
+          "p50": 13.980170999999245,
+          "p95": 25.993351000000985,
+          "p99": 43.973134999996546,
+          "max": 80.00740099999894
+        },
+        "activeShots": 782,
+        "fired": 20775,
+        "hits": 2280,
+        "rejected": 1885,
+        "socketBytesWritten": 186205745,
+        "elapsed": 34.991,
+        "cpuMicroseconds": 35920854,
+        "rssBytes": 234008576
+      },
+      "measurement": {
+        "observedTickHz": 48.79913816492743,
+        "serverCPUPercentOfOneCore": 103.23088351979696,
+        "serverRSSMiB": 223.16796875,
+        "outboundMbps": 44.887096321643476,
+        "shotsFired": 18675,
+        "hits": 2226,
+        "rejected": 1785,
+        "snapshotGapMs": {
+          "p50": 99.65851100000145,
+          "p95": 142.57789000000048,
+          "p99": 181.78824299998814,
+          "max": 247.934706
+        },
+        "minSnapshotsPerSecond": 9.866492415859643,
+        "disconnects": 0,
+        "systems": 1,
+        "bots": 0,
+        "maxPendingInputs": 18,
+        "visiblePeersAtEnd": {
+          "min": 99,
+          "max": 99
+        },
+        "maxDistanceFromFirstAtEnd": 1214.803419565446
+      },
+      "stderr": ""
+    }
+  ]
+}

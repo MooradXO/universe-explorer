@@ -1,5 +1,5 @@
 import {it,expect} from 'vitest';
-import {buildSystem,SOLAR_SYSTEM,SOLAR_CATALOG_OBJECT} from '../../src/world/systems/SystemDescriptor';
+import {buildSystem,SOLAR_SYSTEM,SOLAR_CATALOG_OBJECT,bodyArrival} from '../../src/world/systems/SystemDescriptor';
 import {SURFACES,LIBRARY_COUNTS} from '../../src/world/environments/EnvironmentLibrary';
 import {orbitalZones,layoutPoint} from '../../src/world/systems/OrbitalSite';
 import {objectGeometry,landmarkGeometry} from '../../src/world/environments/EnvironmentGeometry';
@@ -30,7 +30,7 @@ it('keeps zone geometry inside bounds and the 32-world route clear at its arriva
    for(const rock of zone.rocks)expect(Math.hypot(...rock.offset)+rock.radius).toBeLessThan(zone.bound);
    for(const other of zones)expect(Math.hypot(...zone.arrival.map((v,i)=>v-other.center[i]))).toBeGreaterThan(other.bound+150);
    expect(Math.hypot(...zone.arrival.map((v,i)=>v-body.position[i]))).toBeGreaterThan(body.radius+3000);
-   const main=zones[0].arrival,offset=zone.center.map((v,i)=>v-main[i]);
+   const main=bodyArrival(body),offset=zone.center.map((v,i)=>v-main[i]);
    for(const dir of body.environment.approachDirections){const along=Math.max(0,dir.reduce((sum,v,i)=>sum+v*offset[i],0));expect(Math.hypot(...offset.map((v,i)=>v-dir[i]*along))).toBeGreaterThan(zone.bound+150);}
   }
  }

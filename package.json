@@ -14,20 +14,36 @@
     "catalog:download": "node --use-system-ca scripts/catalog/download-athyg.mjs",
     "catalog:import": "node scripts/catalog/import-athyg.mjs",
     "catalog:verify": "node scripts/catalog/verify-athyg.mjs",
-    "catalog:map": "node scripts/catalog/export-map.mjs"
+    "catalog:map": "node scripts/catalog/export-map.mjs",
+    "multiplayer:dev": "node --import tsx server/index.ts",
+    "multiplayer:check": "tsc -p tsconfig.server.json",
+    "multiplayer:build": "node scripts/multiplayer/build.mjs",
+    "multiplayer:preview": "node --use-system-ca node_modules/vite/bin/vite.js preview --outDir .colyseus-dist --host 127.0.0.1 --port 3012 --strictPort",
+    "multiplayer:test": "node --import tsx scripts/multiplayer/integration.ts",
+    "multiplayer:load": "node --import tsx scripts/multiplayer/load.ts",
+    "multiplayer:browser": "playwright test -c playwright.multiplayer.config.ts",
+    "docs:check": "node scripts/check-docs.mjs"
   },
   "dependencies": {
+    "@colyseus/core": "0.18.14",
+    "@colyseus/schema": "5.0.8",
+    "@colyseus/sdk": "0.18.2",
+    "@colyseus/ws-transport": "0.18.2",
     "@supabase/supabase-js": "^2.45.0",
     "@xmldom/xmldom": "^0.9.12",
     "cannon-es": "^0.20.0",
+    "express": "5.2.1",
     "gsap": "^3.12.5",
     "howler": "^2.2.4",
     "socket.io-client": "^4.7.4",
-    "three": "^0.160.0"
+    "three": "^0.160.0",
+    "tsx": "4.23.13"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
+    "@types/express": "5.0.6",
     "@types/howler": "^2.2.7",
+    "@types/node": "26.6.2",
     "@types/three": "^0.160.0",
     "typescript": "^5.2.2",
     "vite": "^8.2.0",

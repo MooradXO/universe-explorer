@@ -55,7 +55,7 @@ export class TopCommandBarUI {
         <dt>Enter</dt><dd>Open chat / send message</dd><dt>T</dt><dd>Toggle microphone</dd>
         <dt>Tab in flight</dt><dd>Wanted Board</dd><dt>Escape</dt><dd>Close current window</dd>
       </dl></section>
-      <section class="manual-navigation"><h3>NAVIGATION</h3><p>Choose a destination at the upper right, then select CRUISE. MAP opens the star catalogue. WARP returns to Earth Base. HANGAR is available near the base.</p><p>On a touch screen, use the flight stick and the fire, boost and manoeuvre controls. Only one menu opens at a time.</p></section>
+      <section class="manual-navigation"><h3>NAVIGATION</h3><p>Choose a destination at the upper right, then select CRUISE. MAP opens the star catalogue. WARP returns to Earth Base. HANGAR is available near the base.</p><p>Touch: hold the left stick to fly forward. Move it left/right or up/down to steer while holding FIRE with your other thumb. Centre the stick to fly straight; release it to slow down. Drag empty space to look without thrust. BOOST, camera and manoeuvre buttons sit beside FIRE. Only one menu opens at a time.</p></section>
     </div>`;
     layer.append(manual); hudPanels.register('manual', { element: manual, trigger: system });
     manual.querySelector('.hud-close')!.addEventListener('click', () => hudPanels.close('manual'));

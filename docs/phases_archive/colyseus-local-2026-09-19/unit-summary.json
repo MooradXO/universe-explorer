@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "tests": 84,
+  "passedTests": 84,
+  "failedTests": 0,
+  "files": [
+    {
+      "name": "catalog-expansion.test.ts",
+      "status": "passed",
+      "tests": 5
+    },
+    {
+      "name": "catalog.test.ts",
+      "status": "passed",
+      "tests": 11
+    },
+    {
+      "name": "celestial.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "name": "environment.test.ts",
+      "status": "passed",
+      "tests": 5
+    },
+    {
+      "name": "epic-space.test.ts",
+      "status": "passed",
+      "tests": 1
+    },
+    {
+      "name": "flight-dust.test.ts",
+      "status": "passed",
+      "tests": 2
+    },
+    {
+      "name": "gameplay-origin.test.ts",
+      "status": "passed",
+      "tests": 2
+    },
+    {
+      "name": "guest-auth.test.ts",
+      "status": "passed",
+      "tests": 1
+    },
+    {
+      "name": "multiplayer.test.ts",
+      "status": "passed",
+      "tests": 16
+    },
+    {
+      "name": "observability.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "name": "online-catalog.test.ts",
+      "status": "passed",
+      "tests": 5
+    },
+    {
+      "name": "orbital-site.test.ts",
+      "status": "passed",
+      "tests": 2
+    },
+    {
+      "name": "realtime.test.ts",
+      "status": "passed",
+      "tests": 3
+    },
+    {
+      "name": "space-environment.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "name": "space.test.ts",
+      "status": "passed",
+      "tests": 7
+    },
+    {
+      "name": "star-map.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "name": "stellar-address.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "name": "stellar-flight.test.ts",
+      "status": "passed",
+      "tests": 4
+    },
+    {
+      "name": "stellar-travel.test.ts",
+      "status": "passed",
+      "tests": 1
+    }
+  ]
+}

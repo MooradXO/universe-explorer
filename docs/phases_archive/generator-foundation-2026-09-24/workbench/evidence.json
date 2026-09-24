@@ -1,0 +1,2412 @@
+{
+  "results": [
+    {
+      "quality": "HIGH",
+      "preset": "rock",
+      "state": {
+        "world": 8,
+        "quality": "HIGH",
+        "profile": {
+          "version": 1,
+          "seed": 2886859063,
+          "signature": "51.3.gas-3-coated.27.43.1.2886859063:climate1:7",
+          "surface": 7,
+          "variant": 3,
+          "material": 15,
+          "colors": [
+            "#313039",
+            "#8e7965",
+            "#c1af91",
+            "#849eac"
+          ],
+          "geography": 4,
+          "warp": 0.35,
+          "clouds": null,
+          "atmosphere": null,
+          "aurora": null,
+          "ring": {
+            "recipe": 26,
+            "inner": 1.8983458410063758,
+            "outer": 3.322935081119649,
+            "tilt": [
+              1.9312687990722692,
+              0.05029662372544408,
+              0.6893315348774195
+            ],
+            "density": 0.3099014343181625,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 43,
+          "structure": null,
+          "phenomenon": 1,
+          "moonStyle": 4,
+          "moonOrbit": 11,
+          "moonCount": 5,
+          "zones": 6,
+          "backdrop": {
+            "shape": 4,
+            "warm": "#aa725c",
+            "cool": "#8b989f",
+            "density": 0.5180135572515427,
+            "scale": 5.332052313908934,
+            "drift": 0.0010094122299924492
+          },
+          "approachDirections": []
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 0,
+          "circulation": 0,
+          "storms": 3,
+          "baked": true,
+          "blend": 0.014888060396937353,
+          "lod": 0.5194775610127887
+        },
+        "zone": {
+          "body": "preview/1233588132/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 28,
+          "layout": 43,
+          "objects": 27,
+          "purpose": {
+            "kind": "resources",
+            "name": "Exposed deposits",
+            "description": "A fractured field exposes contrasting ice and mineral layers.",
+            "objective": "Survey the exposed composition; no extraction equipment is required."
+          },
+          "structure": null,
+          "phenomenon": {
+            "recipe": 1,
+            "name": "Резонанс · орбитальный",
+            "particles": 320
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "editor": {
+          "recipe": {
+            "version": 1,
+            "seed": "survey-seed-77",
+            "preset": "rock",
+            "geography": 4,
+            "activity": 0.6
+          },
+          "pinned": false,
+          "comparing": false,
+          "a": null,
+          "b": "51.3.gas-3-coated.27.43.1.2886859063:climate1:7"
+        },
+        "generation": {
+          "mode": "worker",
+          "entries": 1,
+          "queued": 0,
+          "active": 0,
+          "ready": 1,
+          "estimatedBytes": 699050.6666666666,
+          "budgetBytes": 8388608,
+          "jobs": 1,
+          "cancelled": 0,
+          "cacheHits": 0,
+          "lastJobMs": 151.1000000089407,
+          "maxPumpMs": 0.10000000894069672,
+          "failures": 0
+        },
+        "model": {
+          "version": 1,
+          "provenance": "illustrative-game-model",
+          "flux": 0.4259765790532264,
+          "temperatureK": 233,
+          "climate": "cold",
+          "composition": "rock",
+          "activity": 0.6,
+          "moisture": 0.8213678509928286,
+          "polarIce": 0,
+          "atmosphere": "none",
+          "regions": [
+            "Impact basins",
+            "Old highlands",
+            "Sediment plains"
+          ]
+        },
+        "fps": 0,
+        "drawCalls": 4,
+        "triangles": 15792,
+        "geometries": 3,
+        "textures": 3,
+        "fx": {
+          "budgetPerEffect": 700,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "HIGH",
+      "preset": "ice",
+      "state": {
+        "world": 8,
+        "quality": "HIGH",
+        "profile": {
+          "version": 1,
+          "seed": 2886859063,
+          "signature": "51.3.gas-3-coated.27.43.1.2886859063:climate1:31",
+          "surface": 31,
+          "variant": 3,
+          "material": 63,
+          "colors": [
+            "#294b62",
+            "#91b7c2",
+            "#e2e9dd",
+            "#8bcce0"
+          ],
+          "geography": 4,
+          "warp": 0.35,
+          "clouds": 23,
+          "atmosphere": 3,
+          "aurora": 7,
+          "ring": {
+            "recipe": 26,
+            "inner": 1.8983458410063758,
+            "outer": 3.322935081119649,
+            "tilt": [
+              1.9312687990722692,
+              0.05029662372544408,
+              0.6893315348774195
+            ],
+            "density": 0.3099014343181625,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 43,
+          "structure": null,
+          "phenomenon": 1,
+          "moonStyle": 4,
+          "moonOrbit": 11,
+          "moonCount": 5,
+          "zones": 6,
+          "backdrop": {
+            "shape": 4,
+            "warm": "#aa725c",
+            "cool": "#8b989f",
+            "density": 0.5180135572515427,
+            "scale": 5.332052313908934,
+            "drift": 0.0010094122299924492
+          },
+          "approachDirections": []
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 6,
+          "circulation": 0,
+          "storms": 3,
+          "baked": true,
+          "blend": 0.014296815877557378,
+          "lod": 0.5123126184562061
+        },
+        "zone": {
+          "body": "preview/1233588132/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 28,
+          "layout": 43,
+          "objects": 27,
+          "purpose": {
+            "kind": "resources",
+            "name": "Exposed deposits",
+            "description": "A fractured field exposes contrasting ice and mineral layers.",
+            "objective": "Survey the exposed composition; no extraction equipment is required."
+          },
+          "structure": null,
+          "phenomenon": {
+            "recipe": 1,
+            "name": "Резонанс · орбитальный",
+            "particles": 320
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "editor": {
+          "recipe": {
+            "version": 1,
+            "seed": "survey-seed-77",
+            "preset": "ice",
+            "geography": 4,
+            "activity": 0.6
+          },
+          "pinned": false,
+          "comparing": false,
+          "a": null,
+          "b": "51.3.gas-3-coated.27.43.1.2886859063:climate1:31"
+        },
+        "generation": {
+          "mode": "worker",
+          "entries": 1,
+          "queued": 0,
+          "active": 0,
+          "ready": 1,
+          "estimatedBytes": 699050.6666666666,
+          "budgetBytes": 8388608,
+          "jobs": 1,
+          "cancelled": 0,
+          "cacheHits": 0,
+          "lastJobMs": 156.59999999403954,
+          "maxPumpMs": 0.10000000894069672,
+          "failures": 0
+        },
+        "model": {
+          "version": 1,
+          "provenance": "illustrative-game-model",
+          "flux": 0.4259765790532264,
+          "temperatureK": 110,
+          "climate": "frozen",
+          "composition": "ice",
+          "activity": 0.6,
+          "moisture": 0.8213678509928286,
+          "polarIce": 1,
+          "atmosphere": "thin",
+          "regions": [
+            "Fractured ice",
+            "Frost plains",
+            "Buried ridges"
+          ]
+        },
+        "fps": 0,
+        "drawCalls": 8,
+        "triangles": 42864,
+        "geometries": 3,
+        "textures": 3,
+        "fx": {
+          "budgetPerEffect": 700,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "HIGH",
+      "preset": "ocean",
+      "state": {
+        "world": 8,
+        "quality": "HIGH",
+        "profile": {
+          "version": 1,
+          "seed": 2886859063,
+          "signature": "51.3.gas-3-coated.27.43.1.2886859063:climate1:39",
+          "surface": 39,
+          "variant": 3,
+          "material": 79,
+          "colors": [
+            "#0d354e",
+            "#486954",
+            "#bbba83",
+            "#83bfe0"
+          ],
+          "geography": 4,
+          "warp": 0.35,
+          "clouds": 23,
+          "atmosphere": 7,
+          "aurora": 7,
+          "ring": {
+            "recipe": 26,
+            "inner": 1.8983458410063758,
+            "outer": 3.322935081119649,
+            "tilt": [
+              1.9312687990722692,
+              0.05029662372544408,
+              0.6893315348774195
+            ],
+            "density": 0.3099014343181625,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 43,
+          "structure": null,
+          "phenomenon": 1,
+          "moonStyle": 4,
+          "moonOrbit": 11,
+          "moonCount": 5,
+          "zones": 6,
+          "backdrop": {
+            "shape": 4,
+            "warm": "#aa725c",
+            "cool": "#8b989f",
+            "density": 0.5180135572515427,
+            "scale": 5.332052313908934,
+            "drift": 0.0010094122299924492
+          },
+          "approachDirections": []
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 8,
+          "circulation": 0,
+          "storms": 3,
+          "baked": true,
+          "blend": 0.0145924824805862,
+          "lod": 0.5098183842392195
+        },
+        "zone": {
+          "body": "preview/1233588132/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 28,
+          "layout": 43,
+          "objects": 27,
+          "purpose": {
+            "kind": "resources",
+            "name": "Exposed deposits",
+            "description": "A fractured field exposes contrasting ice and mineral layers.",
+            "objective": "Survey the exposed composition; no extraction equipment is required."
+          },
+          "structure": null,
+          "phenomenon": {
+            "recipe": 1,
+            "name": "Резонанс · орбитальный",
+            "particles": 320
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "editor": {
+          "recipe": {
+            "version": 1,
+            "seed": "survey-seed-77",
+            "preset": "ocean",
+            "geography": 4,
+            "activity": 0.6
+          },
+          "pinned": false,
+          "comparing": false,
+          "a": null,
+          "b": "51.3.gas-3-coated.27.43.1.2886859063:climate1:39"
+        },
+        "generation": {
+          "mode": "worker",
+          "entries": 1,
+          "queued": 0,
+          "active": 0,
+          "ready": 1,
+          "estimatedBytes": 699050.6666666666,
+          "budgetBytes": 8388608,
+          "jobs": 1,
+          "cancelled": 0,
+          "cacheHits": 0,
+          "lastJobMs": 151.59999999403954,
+          "maxPumpMs": 0.09999999403953552,
+          "failures": 0
+        },
+        "model": {
+          "version": 1,
+          "provenance": "illustrative-game-model",
+          "flux": 0.4259765790532264,
+          "temperatureK": 285,
+          "climate": "temperate",
+          "composition": "ocean",
+          "activity": 0.6,
+          "moisture": 0.8,
+          "polarIce": 0,
+          "atmosphere": "dense",
+          "regions": [
+            "Coastal shelves",
+            "Continental uplands",
+            "Polar caps"
+          ]
+        },
+        "fps": 112,
+        "drawCalls": 8,
+        "triangles": 42864,
+        "geometries": 3,
+        "textures": 3,
+        "fx": {
+          "budgetPerEffect": 700,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "HIGH",
+      "preset": "mineral",
+      "state": {
+        "world": 8,
+        "quality": "HIGH",
+        "profile": {
+          "version": 1,
+          "seed": 2886859063,
+          "signature": "51.3.gas-3-coated.27.43.1.2886859063:climate1:47",
+          "surface": 47,
+          "variant": 3,
+          "material": 95,
+          "colors": [
+            "#26343a",
+            "#917c68",
+            "#dfc78a",
+            "#c5c9a2"
+          ],
+          "geography": 4,
+          "warp": 0.35,
+          "clouds": null,
+          "atmosphere": null,
+          "aurora": null,
+          "ring": {
+            "recipe": 26,
+            "inner": 1.8983458410063758,
+            "outer": 3.322935081119649,
+            "tilt": [
+              1.9312687990722692,
+              0.05029662372544408,
+              0.6893315348774195
+            ],
+            "density": 0.3099014343181625,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 43,
+          "structure": null,
+          "phenomenon": 1,
+          "moonStyle": 4,
+          "moonOrbit": 11,
+          "moonCount": 5,
+          "zones": 6,
+          "backdrop": {
+            "shape": 4,
+            "warm": "#aa725c",
+            "cool": "#8b989f",
+            "density": 0.5180135572515427,
+            "scale": 5.332052313908934,
+            "drift": 0.0010094122299924492
+          },
+          "approachDirections": []
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 4,
+          "circulation": 0,
+          "storms": 3,
+          "baked": true,
+          "blend": 0.014592482480587532,
+          "lod": 0.512312618456205
+        },
+        "zone": {
+          "body": "preview/1233588132/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 28,
+          "layout": 43,
+          "objects": 27,
+          "purpose": {
+            "kind": "resources",
+            "name": "Exposed deposits",
+            "description": "A fractured field exposes contrasting ice and mineral layers.",
+            "objective": "Survey the exposed composition; no extraction equipment is required."
+          },
+          "structure": null,
+          "phenomenon": {
+            "recipe": 1,
+            "name": "Резонанс · орбитальный",
+            "particles": 320
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "editor": {
+          "recipe": {
+            "version": 1,
+            "seed": "survey-seed-77",
+            "preset": "mineral",
+            "geography": 4,
+            "activity": 0.6
+          },
+          "pinned": false,
+          "comparing": false,
+          "a": null,
+          "b": "51.3.gas-3-coated.27.43.1.2886859063:climate1:47"
+        },
+        "generation": {
+          "mode": "worker",
+          "entries": 1,
+          "queued": 0,
+          "active": 0,
+          "ready": 1,
+          "estimatedBytes": 699050.6666666666,
+          "budgetBytes": 8388608,
+          "jobs": 1,
+          "cancelled": 0,
+          "cacheHits": 0,
+          "lastJobMs": 159.79999999701977,
+          "maxPumpMs": 0.09999999403953552,
+          "failures": 0
+        },
+        "model": {
+          "version": 1,
+          "provenance": "illustrative-game-model",
+          "flux": 0.4259765790532264,
+          "temperatureK": 233,
+          "climate": "cold",
+          "composition": "mineral",
+          "activity": 0.6,
+          "moisture": 0.8213678509928286,
+          "polarIce": 0,
+          "atmosphere": "none",
+          "regions": [
+            "Exposed veins",
+            "Layered basins",
+            "Crystal ridges"
+          ]
+        },
+        "fps": 112,
+        "drawCalls": 4,
+        "triangles": 15792,
+        "geometries": 3,
+        "textures": 2,
+        "fx": {
+          "budgetPerEffect": 700,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "HIGH",
+      "preset": "lava",
+      "state": {
+        "world": 8,
+        "quality": "HIGH",
+        "profile": {
+          "version": 1,
+          "seed": 2886859063,
+          "signature": "51.3.gas-3-coated.27.43.1.2886859063:climate1:23",
+          "surface": 23,
+          "variant": 3,
+          "material": 47,
+          "colors": [
+            "#171921",
+            "#653c35",
+            "#ce8254",
+            "#d78160"
+          ],
+          "geography": 4,
+          "warp": 0.35,
+          "clouds": null,
+          "atmosphere": null,
+          "aurora": null,
+          "ring": {
+            "recipe": 26,
+            "inner": 1.8983458410063758,
+            "outer": 3.322935081119649,
+            "tilt": [
+              1.9312687990722692,
+              0.05029662372544408,
+              0.6893315348774195
+            ],
+            "density": 0.3099014343181625,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 43,
+          "structure": null,
+          "phenomenon": 1,
+          "moonStyle": 4,
+          "moonOrbit": 11,
+          "moonCount": 5,
+          "zones": 6,
+          "backdrop": {
+            "shape": 4,
+            "warm": "#aa725c",
+            "cool": "#8b989f",
+            "density": 0.5180135572515427,
+            "scale": 5.332052313908934,
+            "drift": 0.0010094122299924492
+          },
+          "approachDirections": []
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 10,
+          "circulation": 0,
+          "storms": 3,
+          "baked": true,
+          "blend": 0.01488806039693702,
+          "lod": 0.5098688824546411
+        },
+        "zone": {
+          "body": "preview/1233588132/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 28,
+          "layout": 43,
+          "objects": 27,
+          "purpose": {
+            "kind": "resources",
+            "name": "Exposed deposits",
+            "description": "A fractured field exposes contrasting ice and mineral layers.",
+            "objective": "Survey the exposed composition; no extraction equipment is required."
+          },
+          "structure": null,
+          "phenomenon": {
+            "recipe": 1,
+            "name": "Резонанс · орбитальный",
+            "particles": 320
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "editor": {
+          "recipe": {
+            "version": 1,
+            "seed": "survey-seed-77",
+            "preset": "lava",
+            "geography": 4,
+            "activity": 0.6
+          },
+          "pinned": false,
+          "comparing": false,
+          "a": null,
+          "b": "51.3.gas-3-coated.27.43.1.2886859063:climate1:23"
+        },
+        "generation": {
+          "mode": "worker",
+          "entries": 1,
+          "queued": 0,
+          "active": 0,
+          "ready": 1,
+          "estimatedBytes": 699050.6666666666,
+          "budgetBytes": 8388608,
+          "jobs": 1,
+          "cancelled": 0,
+          "cacheHits": 0,
+          "lastJobMs": 159.79999999701977,
+          "maxPumpMs": 0,
+          "failures": 0
+        },
+        "model": {
+          "version": 1,
+          "provenance": "illustrative-game-model",
+          "flux": 0.4259765790532264,
+          "temperatureK": 1100,
+          "climate": "molten",
+          "composition": "lava",
+          "activity": 0.6,
+          "moisture": 0.8213678509928286,
+          "polarIce": 0,
+          "atmosphere": "none",
+          "regions": [
+            "Melt channels",
+            "Cooling crust",
+            "Volcanic ridges"
+          ]
+        },
+        "fps": 112,
+        "drawCalls": 4,
+        "triangles": 15792,
+        "geometries": 3,
+        "textures": 2,
+        "fx": {
+          "budgetPerEffect": 700,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "HIGH",
+      "preset": "gas",
+      "state": {
+        "world": 8,
+        "quality": "HIGH",
+        "profile": {
+          "version": 1,
+          "seed": 2886859063,
+          "signature": "51.3.gas-3-coated.27.43.1.2886859063:climate1:55",
+          "surface": 55,
+          "variant": 3,
+          "material": 111,
+          "colors": [
+            "#393a55",
+            "#9b907e",
+            "#d7cbb2",
+            "#adc7dc"
+          ],
+          "geography": 4,
+          "warp": 0.35,
+          "clouds": null,
+          "atmosphere": 11,
+          "aurora": 7,
+          "ring": {
+            "recipe": 26,
+            "inner": 1.8983458410063758,
+            "outer": 3.322935081119649,
+            "tilt": [
+              1.9312687990722692,
+              0.05029662372544408,
+              0.6893315348774195
+            ],
+            "density": 0.3099014343181625,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 43,
+          "structure": null,
+          "phenomenon": 1,
+          "moonStyle": 4,
+          "moonOrbit": 11,
+          "moonCount": 5,
+          "zones": 6,
+          "backdrop": {
+            "shape": 4,
+            "warm": "#aa725c",
+            "cool": "#8b989f",
+            "density": 0.5180135572515427,
+            "scale": 5.332052313908934,
+            "drift": 0.0010094122299924492
+          },
+          "approachDirections": []
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 0,
+          "circulation": 0,
+          "storms": 3,
+          "baked": true,
+          "blend": 0.014592482480587532,
+          "lod": 0.5171178587897449
+        },
+        "zone": {
+          "body": "preview/1233588132/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 28,
+          "layout": 43,
+          "objects": 27,
+          "purpose": {
+            "kind": "resources",
+            "name": "Exposed deposits",
+            "description": "A fractured field exposes contrasting ice and mineral layers.",
+            "objective": "Survey the exposed composition; no extraction equipment is required."
+          },
+          "structure": null,
+          "phenomenon": {
+            "recipe": 1,
+            "name": "Резонанс · орбитальный",
+            "particles": 320
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "editor": {
+          "recipe": {
+            "version": 1,
+            "seed": "survey-seed-77",
+            "preset": "gas",
+            "geography": 4,
+            "activity": 0.6
+          },
+          "pinned": false,
+          "comparing": false,
+          "a": null,
+          "b": "51.3.gas-3-coated.27.43.1.2886859063:climate1:55"
+        },
+        "generation": {
+          "mode": "worker",
+          "entries": 1,
+          "queued": 0,
+          "active": 0,
+          "ready": 1,
+          "estimatedBytes": 699050.6666666666,
+          "budgetBytes": 8388608,
+          "jobs": 1,
+          "cancelled": 0,
+          "cacheHits": 0,
+          "lastJobMs": 164.70000000298023,
+          "maxPumpMs": 0.09999999403953552,
+          "failures": 0
+        },
+        "model": {
+          "version": 1,
+          "provenance": "illustrative-game-model",
+          "flux": 0.4259765790532264,
+          "temperatureK": 233,
+          "climate": "cold",
+          "composition": "gas",
+          "activity": 0.6,
+          "moisture": 0.8213678509928286,
+          "polarIce": 0,
+          "atmosphere": "giant",
+          "regions": [
+            "Equatorial jets",
+            "Storm bands",
+            "Polar vortices"
+          ]
+        },
+        "fps": 149,
+        "drawCalls": 6,
+        "triangles": 29328,
+        "geometries": 3,
+        "textures": 3,
+        "fx": {
+          "budgetPerEffect": 700,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "HIGH",
+      "comparison": {
+        "recipe": {
+          "version": 1,
+          "seed": "survey-seed-88",
+          "preset": "ocean",
+          "geography": 4,
+          "activity": 0.6
+        },
+        "pinned": true,
+        "comparing": true,
+        "a": "51.3.gas-3-coated.27.43.1.2886859063:climate1:55",
+        "b": "49.5.gas-1-exposed.29.27.17.567361462:climate1:38"
+      },
+      "resources": [
+        {
+          "textures": 3,
+          "geometries": 3
+        },
+        {
+          "textures": 3,
+          "geometries": 3
+        },
+        {
+          "textures": 3,
+          "geometries": 3
+        }
+      ],
+      "imported": {
+        "version": 1,
+        "seed": "imported-97",
+        "preset": "ice",
+        "geography": 3.5,
+        "activity": 0.4
+      }
+    },
+    {
+      "quality": "LOW",
+      "preset": "rock",
+      "state": {
+        "world": 8,
+        "quality": "LOW",
+        "profile": {
+          "version": 1,
+          "seed": 2886859063,
+          "signature": "51.3.gas-3-coated.27.43.1.2886859063:climate1:7",
+          "surface": 7,
+          "variant": 3,
+          "material": 15,
+          "colors": [
+            "#313039",
+            "#8e7965",
+            "#c1af91",
+            "#849eac"
+          ],
+          "geography": 4,
+          "warp": 0.35,
+          "clouds": null,
+          "atmosphere": null,
+          "aurora": null,
+          "ring": {
+            "recipe": 26,
+            "inner": 1.8983458410063758,
+            "outer": 3.322935081119649,
+            "tilt": [
+              1.9312687990722692,
+              0.05029662372544408,
+              0.6893315348774195
+            ],
+            "density": 0.3099014343181625,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 43,
+          "structure": null,
+          "phenomenon": 1,
+          "moonStyle": 4,
+          "moonOrbit": 11,
+          "moonCount": 5,
+          "zones": 6,
+          "backdrop": {
+            "shape": 4,
+            "warm": "#aa725c",
+            "cool": "#8b989f",
+            "density": 0.5180135572515427,
+            "scale": 5.332052313908934,
+            "drift": 0.0010094122299924492
+          },
+          "approachDirections": []
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 0,
+          "circulation": 0,
+          "storms": 2,
+          "baked": true,
+          "blend": 0.015183549653213335,
+          "lod": 0.40246593593642427
+        },
+        "zone": {
+          "body": "preview/1233588132/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 28,
+          "layout": 43,
+          "objects": 27,
+          "purpose": {
+            "kind": "resources",
+            "name": "Exposed deposits",
+            "description": "A fractured field exposes contrasting ice and mineral layers.",
+            "objective": "Survey the exposed composition; no extraction equipment is required."
+          },
+          "structure": null,
+          "phenomenon": {
+            "recipe": 1,
+            "name": "Резонанс · орбитальный",
+            "particles": 120
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "editor": {
+          "recipe": {
+            "version": 1,
+            "seed": "survey-seed-77",
+            "preset": "rock",
+            "geography": 4,
+            "activity": 0.6
+          },
+          "pinned": false,
+          "comparing": false,
+          "a": null,
+          "b": "51.3.gas-3-coated.27.43.1.2886859063:climate1:7"
+        },
+        "generation": {
+          "mode": "worker",
+          "entries": 1,
+          "queued": 0,
+          "active": 0,
+          "ready": 1,
+          "estimatedBytes": 174762.66666666666,
+          "budgetBytes": 2097152,
+          "jobs": 1,
+          "cancelled": 0,
+          "cacheHits": 0,
+          "lastJobMs": 51.099999994039536,
+          "maxPumpMs": 0,
+          "failures": 0
+        },
+        "model": {
+          "version": 1,
+          "provenance": "illustrative-game-model",
+          "flux": 0.4259765790532264,
+          "temperatureK": 233,
+          "climate": "cold",
+          "composition": "rock",
+          "activity": 0.6,
+          "moisture": 0.8213678509928286,
+          "polarIce": 0,
+          "atmosphere": "none",
+          "regions": [
+            "Impact basins",
+            "Old highlands",
+            "Sediment plains"
+          ]
+        },
+        "fps": 0,
+        "drawCalls": 4,
+        "triangles": 5808,
+        "geometries": 3,
+        "textures": 3,
+        "fx": {
+          "budgetPerEffect": 260,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "LOW",
+      "preset": "ice",
+      "state": {
+        "world": 8,
+        "quality": "LOW",
+        "profile": {
+          "version": 1,
+          "seed": 2886859063,
+          "signature": "51.3.gas-3-coated.27.43.1.2886859063:climate1:31",
+          "surface": 31,
+          "variant": 3,
+          "material": 63,
+          "colors": [
+            "#294b62",
+            "#91b7c2",
+            "#e2e9dd",
+            "#8bcce0"
+          ],
+          "geography": 4,
+          "warp": 0.35,
+          "clouds": 23,
+          "atmosphere": 3,
+          "aurora": 7,
+          "ring": {
+            "recipe": 26,
+            "inner": 1.8983458410063758,
+            "outer": 3.322935081119649,
+            "tilt": [
+              1.9312687990722692,
+              0.05029662372544408,
+              0.6893315348774195
+            ],
+            "density": 0.3099014343181625,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 43,
+          "structure": null,
+          "phenomenon": 1,
+          "moonStyle": 4,
+          "moonOrbit": 11,
+          "moonCount": 5,
+          "zones": 6,
+          "backdrop": {
+            "shape": 4,
+            "warm": "#aa725c",
+            "cool": "#8b989f",
+            "density": 0.5180135572515427,
+            "scale": 5.332052313908934,
+            "drift": 0.0010094122299924492
+          },
+          "approachDirections": []
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 6,
+          "circulation": 0,
+          "storms": 2,
+          "baked": true,
+          "blend": 0.015183549653214112,
+          "lod": 0.4023617228201376
+        },
+        "zone": {
+          "body": "preview/1233588132/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 28,
+          "layout": 43,
+          "objects": 27,
+          "purpose": {
+            "kind": "resources",
+            "name": "Exposed deposits",
+            "description": "A fractured field exposes contrasting ice and mineral layers.",
+            "objective": "Survey the exposed composition; no extraction equipment is required."
+          },
+          "structure": null,
+          "phenomenon": {
+            "recipe": 1,
+            "name": "Резонанс · орбитальный",
+            "particles": 120
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "editor": {
+          "recipe": {
+            "version": 1,
+            "seed": "survey-seed-77",
+            "preset": "ice",
+            "geography": 4,
+            "activity": 0.6
+          },
+          "pinned": false,
+          "comparing": false,
+          "a": null,
+          "b": "51.3.gas-3-coated.27.43.1.2886859063:climate1:31"
+        },
+        "generation": {
+          "mode": "worker",
+          "entries": 1,
+          "queued": 0,
+          "active": 0,
+          "ready": 1,
+          "estimatedBytes": 174762.66666666666,
+          "budgetBytes": 2097152,
+          "jobs": 1,
+          "cancelled": 0,
+          "cacheHits": 0,
+          "lastJobMs": 51.599999994039536,
+          "maxPumpMs": 0,
+          "failures": 0
+        },
+        "model": {
+          "version": 1,
+          "provenance": "illustrative-game-model",
+          "flux": 0.4259765790532264,
+          "temperatureK": 110,
+          "climate": "frozen",
+          "composition": "ice",
+          "activity": 0.6,
+          "moisture": 0.8213678509928286,
+          "polarIce": 1,
+          "atmosphere": "thin",
+          "regions": [
+            "Fractured ice",
+            "Frost plains",
+            "Buried ridges"
+          ]
+        },
+        "fps": 0,
+        "drawCalls": 7,
+        "triangles": 12288,
+        "geometries": 3,
+        "textures": 3,
+        "fx": {
+          "budgetPerEffect": 260,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "LOW",
+      "preset": "ocean",
+      "state": {
+        "world": 8,
+        "quality": "LOW",
+        "profile": {
+          "version": 1,
+          "seed": 2886859063,
+          "signature": "51.3.gas-3-coated.27.43.1.2886859063:climate1:39",
+          "surface": 39,
+          "variant": 3,
+          "material": 79,
+          "colors": [
+            "#0d354e",
+            "#486954",
+            "#bbba83",
+            "#83bfe0"
+          ],
+          "geography": 4,
+          "warp": 0.35,
+          "clouds": 23,
+          "atmosphere": 7,
+          "aurora": 7,
+          "ring": {
+            "recipe": 26,
+            "inner": 1.8983458410063758,
+            "outer": 3.322935081119649,
+            "tilt": [
+              1.9312687990722692,
+              0.05029662372544408,
+              0.6893315348774195
+            ],
+            "density": 0.3099014343181625,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 43,
+          "structure": null,
+          "phenomenon": 1,
+          "moonStyle": 4,
+          "moonOrbit": 11,
+          "moonCount": 5,
+          "zones": 6,
+          "backdrop": {
+            "shape": 4,
+            "warm": "#aa725c",
+            "cool": "#8b989f",
+            "density": 0.5180135572515427,
+            "scale": 5.332052313908934,
+            "drift": 0.0010094122299924492
+          },
+          "approachDirections": []
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 8,
+          "circulation": 0,
+          "storms": 2,
+          "baked": true,
+          "blend": 0.014888060396937353,
+          "lod": 0.3916728095795606
+        },
+        "zone": {
+          "body": "preview/1233588132/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 28,
+          "layout": 43,
+          "objects": 27,
+          "purpose": {
+            "kind": "resources",
+            "name": "Exposed deposits",
+            "description": "A fractured field exposes contrasting ice and mineral layers.",
+            "objective": "Survey the exposed composition; no extraction equipment is required."
+          },
+          "structure": null,
+          "phenomenon": {
+            "recipe": 1,
+            "name": "Резонанс · орбитальный",
+            "particles": 120
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "editor": {
+          "recipe": {
+            "version": 1,
+            "seed": "survey-seed-77",
+            "preset": "ocean",
+            "geography": 4,
+            "activity": 0.6
+          },
+          "pinned": false,
+          "comparing": false,
+          "a": null,
+          "b": "51.3.gas-3-coated.27.43.1.2886859063:climate1:39"
+        },
+        "generation": {
+          "mode": "worker",
+          "entries": 1,
+          "queued": 0,
+          "active": 0,
+          "ready": 1,
+          "estimatedBytes": 174762.66666666666,
+          "budgetBytes": 2097152,
+          "jobs": 1,
+          "cancelled": 0,
+          "cacheHits": 0,
+          "lastJobMs": 51.79999999701977,
+          "maxPumpMs": 0,
+          "failures": 0
+        },
+        "model": {
+          "version": 1,
+          "provenance": "illustrative-game-model",
+          "flux": 0.4259765790532264,
+          "temperatureK": 285,
+          "climate": "temperate",
+          "composition": "ocean",
+          "activity": 0.6,
+          "moisture": 0.8,
+          "polarIce": 0,
+          "atmosphere": "dense",
+          "regions": [
+            "Coastal shelves",
+            "Continental uplands",
+            "Polar caps"
+          ]
+        },
+        "fps": 0,
+        "drawCalls": 7,
+        "triangles": 12288,
+        "geometries": 3,
+        "textures": 3,
+        "fx": {
+          "budgetPerEffect": 260,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "LOW",
+      "preset": "mineral",
+      "state": {
+        "world": 8,
+        "quality": "LOW",
+        "profile": {
+          "version": 1,
+          "seed": 2886859063,
+          "signature": "51.3.gas-3-coated.27.43.1.2886859063:climate1:47",
+          "surface": 47,
+          "variant": 3,
+          "material": 95,
+          "colors": [
+            "#26343a",
+            "#917c68",
+            "#dfc78a",
+            "#c5c9a2"
+          ],
+          "geography": 4,
+          "warp": 0.35,
+          "clouds": null,
+          "atmosphere": null,
+          "aurora": null,
+          "ring": {
+            "recipe": 26,
+            "inner": 1.8983458410063758,
+            "outer": 3.322935081119649,
+            "tilt": [
+              1.9312687990722692,
+              0.05029662372544408,
+              0.6893315348774195
+            ],
+            "density": 0.3099014343181625,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 43,
+          "structure": null,
+          "phenomenon": 1,
+          "moonStyle": 4,
+          "moonOrbit": 11,
+          "moonCount": 5,
+          "zones": 6,
+          "backdrop": {
+            "shape": 4,
+            "warm": "#aa725c",
+            "cool": "#8b989f",
+            "density": 0.5180135572515427,
+            "scale": 5.332052313908934,
+            "drift": 0.0010094122299924492
+          },
+          "approachDirections": []
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 4,
+          "circulation": 0,
+          "storms": 2,
+          "baked": true,
+          "blend": 0.014888060396937353,
+          "lod": 0.3970840684283562
+        },
+        "zone": {
+          "body": "preview/1233588132/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 28,
+          "layout": 43,
+          "objects": 27,
+          "purpose": {
+            "kind": "resources",
+            "name": "Exposed deposits",
+            "description": "A fractured field exposes contrasting ice and mineral layers.",
+            "objective": "Survey the exposed composition; no extraction equipment is required."
+          },
+          "structure": null,
+          "phenomenon": {
+            "recipe": 1,
+            "name": "Резонанс · орбитальный",
+            "particles": 120
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "editor": {
+          "recipe": {
+            "version": 1,
+            "seed": "survey-seed-77",
+            "preset": "mineral",
+            "geography": 4,
+            "activity": 0.6
+          },
+          "pinned": false,
+          "comparing": false,
+          "a": null,
+          "b": "51.3.gas-3-coated.27.43.1.2886859063:climate1:47"
+        },
+        "generation": {
+          "mode": "worker",
+          "entries": 1,
+          "queued": 0,
+          "active": 0,
+          "ready": 1,
+          "estimatedBytes": 174762.66666666666,
+          "budgetBytes": 2097152,
+          "jobs": 1,
+          "cancelled": 0,
+          "cacheHits": 0,
+          "lastJobMs": 50.6000000089407,
+          "maxPumpMs": 0.09999999403953552,
+          "failures": 0
+        },
+        "model": {
+          "version": 1,
+          "provenance": "illustrative-game-model",
+          "flux": 0.4259765790532264,
+          "temperatureK": 233,
+          "climate": "cold",
+          "composition": "mineral",
+          "activity": 0.6,
+          "moisture": 0.8213678509928286,
+          "polarIce": 0,
+          "atmosphere": "none",
+          "regions": [
+            "Exposed veins",
+            "Layered basins",
+            "Crystal ridges"
+          ]
+        },
+        "fps": 0,
+        "drawCalls": 4,
+        "triangles": 5808,
+        "geometries": 3,
+        "textures": 2,
+        "fx": {
+          "budgetPerEffect": 260,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "LOW",
+      "preset": "lava",
+      "state": {
+        "world": 8,
+        "quality": "LOW",
+        "profile": {
+          "version": 1,
+          "seed": 2886859063,
+          "signature": "51.3.gas-3-coated.27.43.1.2886859063:climate1:23",
+          "surface": 23,
+          "variant": 3,
+          "material": 47,
+          "colors": [
+            "#171921",
+            "#653c35",
+            "#ce8254",
+            "#d78160"
+          ],
+          "geography": 4,
+          "warp": 0.35,
+          "clouds": null,
+          "atmosphere": null,
+          "aurora": null,
+          "ring": {
+            "recipe": 26,
+            "inner": 1.8983458410063758,
+            "outer": 3.322935081119649,
+            "tilt": [
+              1.9312687990722692,
+              0.05029662372544408,
+              0.6893315348774195
+            ],
+            "density": 0.3099014343181625,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 43,
+          "structure": null,
+          "phenomenon": 1,
+          "moonStyle": 4,
+          "moonOrbit": 11,
+          "moonCount": 5,
+          "zones": 6,
+          "backdrop": {
+            "shape": 4,
+            "warm": "#aa725c",
+            "cool": "#8b989f",
+            "density": 0.5180135572515427,
+            "scale": 5.332052313908934,
+            "drift": 0.0010094122299924492
+          },
+          "approachDirections": []
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 10,
+          "circulation": 0,
+          "storms": 2,
+          "baked": true,
+          "blend": 0.014888060396937353,
+          "lod": 0.3916728095795605
+        },
+        "zone": {
+          "body": "preview/1233588132/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 28,
+          "layout": 43,
+          "objects": 27,
+          "purpose": {
+            "kind": "resources",
+            "name": "Exposed deposits",
+            "description": "A fractured field exposes contrasting ice and mineral layers.",
+            "objective": "Survey the exposed composition; no extraction equipment is required."
+          },
+          "structure": null,
+          "phenomenon": {
+            "recipe": 1,
+            "name": "Резонанс · орбитальный",
+            "particles": 120
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "editor": {
+          "recipe": {
+            "version": 1,
+            "seed": "survey-seed-77",
+            "preset": "lava",
+            "geography": 4,
+            "activity": 0.6
+          },
+          "pinned": false,
+          "comparing": false,
+          "a": null,
+          "b": "51.3.gas-3-coated.27.43.1.2886859063:climate1:23"
+        },
+        "generation": {
+          "mode": "worker",
+          "entries": 1,
+          "queued": 0,
+          "active": 0,
+          "ready": 1,
+          "estimatedBytes": 174762.66666666666,
+          "budgetBytes": 2097152,
+          "jobs": 1,
+          "cancelled": 0,
+          "cacheHits": 0,
+          "lastJobMs": 52.900000005960464,
+          "maxPumpMs": 0.09999999403953552,
+          "failures": 0
+        },
+        "model": {
+          "version": 1,
+          "provenance": "illustrative-game-model",
+          "flux": 0.4259765790532264,
+          "temperatureK": 1100,
+          "climate": "molten",
+          "composition": "lava",
+          "activity": 0.6,
+          "moisture": 0.8213678509928286,
+          "polarIce": 0,
+          "atmosphere": "none",
+          "regions": [
+            "Melt channels",
+            "Cooling crust",
+            "Volcanic ridges"
+          ]
+        },
+        "fps": 0,
+        "drawCalls": 4,
+        "triangles": 5808,
+        "geometries": 3,
+        "textures": 2,
+        "fx": {
+          "budgetPerEffect": 260,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "LOW",
+      "preset": "gas",
+      "state": {
+        "world": 8,
+        "quality": "LOW",
+        "profile": {
+          "version": 1,
+          "seed": 2886859063,
+          "signature": "51.3.gas-3-coated.27.43.1.2886859063:climate1:55",
+          "surface": 55,
+          "variant": 3,
+          "material": 111,
+          "colors": [
+            "#393a55",
+            "#9b907e",
+            "#d7cbb2",
+            "#adc7dc"
+          ],
+          "geography": 4,
+          "warp": 0.35,
+          "clouds": null,
+          "atmosphere": 11,
+          "aurora": 7,
+          "ring": {
+            "recipe": 26,
+            "inner": 1.8983458410063758,
+            "outer": 3.322935081119649,
+            "tilt": [
+              1.9312687990722692,
+              0.05029662372544408,
+              0.6893315348774195
+            ],
+            "density": 0.3099014343181625,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 43,
+          "structure": null,
+          "phenomenon": 1,
+          "moonStyle": 4,
+          "moonOrbit": 11,
+          "moonCount": 5,
+          "zones": 6,
+          "backdrop": {
+            "shape": 4,
+            "warm": "#aa725c",
+            "cool": "#8b989f",
+            "density": 0.5180135572515427,
+            "scale": 5.332052313908934,
+            "drift": 0.0010094122299924492
+          },
+          "approachDirections": []
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 0,
+          "circulation": 0,
+          "storms": 2,
+          "baked": true,
+          "blend": 0.014888060396937353,
+          "lod": 0.3970840684283563
+        },
+        "zone": {
+          "body": "preview/1233588132/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 28,
+          "layout": 43,
+          "objects": 27,
+          "purpose": {
+            "kind": "resources",
+            "name": "Exposed deposits",
+            "description": "A fractured field exposes contrasting ice and mineral layers.",
+            "objective": "Survey the exposed composition; no extraction equipment is required."
+          },
+          "structure": null,
+          "phenomenon": {
+            "recipe": 1,
+            "name": "Резонанс · орбитальный",
+            "particles": 120
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "editor": {
+          "recipe": {
+            "version": 1,
+            "seed": "survey-seed-77",
+            "preset": "gas",
+            "geography": 4,
+            "activity": 0.6
+          },
+          "pinned": false,
+          "comparing": false,
+          "a": null,
+          "b": "51.3.gas-3-coated.27.43.1.2886859063:climate1:55"
+        },
+        "generation": {
+          "mode": "worker",
+          "entries": 1,
+          "queued": 0,
+          "active": 0,
+          "ready": 1,
+          "estimatedBytes": 174762.66666666666,
+          "budgetBytes": 2097152,
+          "jobs": 1,
+          "cancelled": 0,
+          "cacheHits": 0,
+          "lastJobMs": 56.69999998807907,
+          "maxPumpMs": 0.09999999403953552,
+          "failures": 0
+        },
+        "model": {
+          "version": 1,
+          "provenance": "illustrative-game-model",
+          "flux": 0.4259765790532264,
+          "temperatureK": 233,
+          "climate": "cold",
+          "composition": "gas",
+          "activity": 0.6,
+          "moisture": 0.8213678509928286,
+          "polarIce": 0,
+          "atmosphere": "giant",
+          "regions": [
+            "Equatorial jets",
+            "Storm bands",
+            "Polar vortices"
+          ]
+        },
+        "fps": 0,
+        "drawCalls": 6,
+        "triangles": 10128,
+        "geometries": 3,
+        "textures": 3,
+        "fx": {
+          "budgetPerEffect": 260,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "LOW",
+      "comparison": {
+        "recipe": {
+          "version": 1,
+          "seed": "survey-seed-88",
+          "preset": "ocean",
+          "geography": 4,
+          "activity": 0.6
+        },
+        "pinned": true,
+        "comparing": true,
+        "a": "51.3.gas-3-coated.27.43.1.2886859063:climate1:55",
+        "b": "49.5.gas-1-exposed.29.27.17.567361462:climate1:38"
+      },
+      "resources": [
+        {
+          "textures": 3,
+          "geometries": 3
+        },
+        {
+          "textures": 3,
+          "geometries": 3
+        },
+        {
+          "textures": 3,
+          "geometries": 3
+        }
+      ],
+      "imported": {
+        "version": 1,
+        "seed": "imported-97",
+        "preset": "ice",
+        "geography": 3.5,
+        "activity": 0.4
+      }
+    },
+    {
+      "fallback": {
+        "mode": "incremental-fallback",
+        "entries": 1,
+        "queued": 0,
+        "active": 0,
+        "ready": 1,
+        "estimatedBytes": 174762.66666666666,
+        "budgetBytes": 2097152,
+        "jobs": 1,
+        "cancelled": 0,
+        "cacheHits": 0,
+        "lastJobMs": 0,
+        "maxPumpMs": 1.5,
+        "failures": 1
+      }
+    }
+  ],
+  "errors": []
+}

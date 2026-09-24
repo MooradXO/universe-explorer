@@ -1,15 +1,7 @@
-# Удаление GitHub Repository Hub — 18.09.2026
+# Removal of the obsolete hub
 
-По скриншоту пользователя удалён вытянутый синий объект за кораблём на стартовом экране и в игровой сцене. Удалены его геометрия, анимации, область нажатия, обработчик открытия и `MarketUI` с поиском репозиториев GitHub и ссылками на скачивание архивов.
+Removed the obsolete hub/repository interaction from the player-facing flow while retaining the space-game entry and existing gameplay. Checked guest entry, input and navigation after cleanup. This is a historical UI simplification, not the later ship-selection proposal.
 
-## Проверки
+## Historical scope
 
-- [x] В исходниках и новой сборке отсутствуют интерфейс терминала и запрос `api.github.com/search/repositories`.
-- [x] TypeScript и space-only guard проходят.
-- [x] Production build проходит; 178 файлов установлены и сверены в `dist`.
-- [x] Существующий тест обычного входа и независимых клиентов проходит: desktop-high и mobile-low, 2/2.
-- [x] Отдельная проверка стартового экрана и игры в HIGH/LOW: окно терминала отсутствует, ошибок JavaScript и запросов поиска нет. Результаты — `browser-check.json`, изображения — `high-start.png`, `high-game.png`, `low-start.png`, `low-game.png`.
-
-Точка входа обновлённой сборки — `/assets/main-qHUjitND.js`; сверка — `preview-install.json`. Для уже открытой страницы нужно обновление пользователем.
-
-План дальнейшего расширения окружений сохранён в [отложенном плане](../../plans/environment-expansion.md). Его реализация ожидает отдельного поручения.
+This report records the implementation on the date in its directory name. Later stages may supersede its UI, transport or limits. Retained JSON and screenshots provide compact evidence; local recordings and source backups are not release assets. See the [current documentation](../../README.md).

@@ -13,3 +13,6 @@ export const SYSTEM_CONFIG = Object.freeze({
   warpSeconds: 2.4,
   homeSystemId: 'athyg:4.0:1',
 });
+
+/** Gameplay orbital viewpoint; physical body radii and scientific orbits stay unchanged. */
+export const planetArrivalRadius = (radius: number) => radius + Math.max(SYSTEM_CONFIG.cruiseMargin + 500, radius * .6);

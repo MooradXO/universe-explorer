@@ -1,0 +1,682 @@
+[
+  {
+    "mode": "desktop-high",
+    "issues": [],
+    "initial": {
+      "systemId": "athyg:4.0:1",
+      "atHome": true,
+      "selected": "base",
+      "cruising": false,
+      "cruiseSpeed": 0,
+      "warping": null,
+      "visited": [],
+      "status": "Earth Base. Choose a destination or open the star map.",
+      "address": {
+        "version": 1,
+        "anchor": {
+          "catalogId": "athyg:4.0:1",
+          "title": "Sol",
+          "positionParsecs": [
+            4.85E-06,
+            0,
+            0
+          ],
+          "frame": "equatorial",
+          "equinox": "J2000.0",
+          "distanceSource": "OTHER",
+          "qualityFlags": [
+            "source-solar-reference-preserved"
+          ]
+        },
+        "local": {
+          "sector": [
+            -53,
+            115,
+            -265
+          ],
+          "offset": [
+            -444.16153112147003,
+            5659.9284833977,
+            -17135.42143371515
+          ]
+        }
+      }
+    },
+    "mars": {
+      "systemId": "athyg:4.0:1",
+      "atHome": true,
+      "selected": "sol/mars",
+      "cruising": false,
+      "cruiseSpeed": 0,
+      "warping": null,
+      "visited": [
+        "sol/mars"
+      ],
+      "status": "Orbital point recorded: Mars. JPL orbit at J2000; illustrative surface.",
+      "address": {
+        "version": 1,
+        "anchor": {
+          "catalogId": "athyg:4.0:1",
+          "title": "Sol",
+          "positionParsecs": [
+            4.85E-06,
+            0,
+            0
+          ],
+          "frame": "equatorial",
+          "equinox": "J2000.0",
+          "distanceSource": "OTHER",
+          "qualityFlags": [
+            "source-solar-reference-preserved"
+          ]
+        },
+        "local": {
+          "sector": [
+            416,
+            -11,
+            0
+          ],
+          "offset": [
+            4093.390379689634,
+            -2678.0665653910255,
+            -14253.47434397593
+          ]
+        }
+      }
+    },
+    "arrival": {
+      "systemId": "athyg:4.0:1440825",
+      "atHome": false,
+      "selected": "athyg:4.0:1440825/generated-1",
+      "cruising": false,
+      "cruiseSpeed": 0,
+      "warping": null,
+      "visited": [
+        "sol/mars"
+      ],
+      "status": "Arrival: Proxima Centauri. Normal flight.",
+      "address": {
+        "version": 1,
+        "anchor": {
+          "catalogId": "athyg:4.0:1440825",
+          "title": "Proxima Centauri",
+          "positionParsecs": [
+            -0.4745,
+            -0.3633,
+            -1.1567
+          ],
+          "frame": "equatorial",
+          "equinox": "J2000.0",
+          "distanceSource": "G_R3",
+          "qualityFlags": []
+        },
+        "local": {
+          "sector": [
+            -89,
+            16,
+            -31
+          ],
+          "offset": [
+            -23630.0753249377,
+            -17457.3202797384,
+            8979.051362028113
+          ]
+        }
+      }
+    },
+    "returned": {
+      "systemId": "athyg:4.0:1",
+      "atHome": true,
+      "selected": "base",
+      "cruising": false,
+      "cruiseSpeed": 0,
+      "warping": null,
+      "visited": [
+        "sol/mars",
+        "athyg:4.0:1440825/generated-1"
+      ],
+      "status": "Arrival: Sol. Normal flight.",
+      "address": {
+        "version": 1,
+        "anchor": {
+          "catalogId": "athyg:4.0:1",
+          "title": "Sol",
+          "positionParsecs": [
+            4.85E-06,
+            0,
+            0
+          ],
+          "frame": "equatorial",
+          "equinox": "J2000.0",
+          "distanceSource": "OTHER",
+          "qualityFlags": [
+            "source-solar-reference-preserved"
+          ]
+        },
+        "local": {
+          "sector": [
+            -53,
+            115,
+            -265
+          ],
+          "offset": [
+            -444.16153112147003,
+            5659.928483398631,
+            -17135.42143371515
+          ]
+        }
+      }
+    },
+    "repeatIssues": [],
+    "repeat": [
+      {
+        "renderer": {
+          "calls": 76,
+          "triangles": 104416,
+          "points": 12753,
+          "lines": 900,
+          "geometries": 49,
+          "textures": 17,
+          "programs": 33,
+          "pixelRatio": 1,
+          "width": 1440,
+          "height": 810
+        },
+        "travel": {
+          "systemId": "athyg:4.0:1",
+          "atHome": true,
+          "selected": "base",
+          "cruising": false,
+          "cruiseSpeed": 0,
+          "warping": null,
+          "visited": [],
+          "status": "Arrival: Sol. Normal flight.",
+          "address": {
+            "version": 1,
+            "anchor": {
+              "catalogId": "athyg:4.0:1",
+              "title": "Sol",
+              "positionParsecs": [
+                4.85E-06,
+                0,
+                0
+              ],
+              "frame": "equatorial",
+              "equinox": "J2000.0",
+              "distanceSource": "OTHER",
+              "qualityFlags": [
+                "source-solar-reference-preserved"
+              ]
+            },
+            "local": {
+              "sector": [
+                -53,
+                115,
+                -265
+              ],
+              "offset": [
+                -444.16153112147003,
+                5659.928483398631,
+                -17135.42143371515
+              ]
+            }
+          }
+        },
+        "projectiles": 0,
+        "inputBlocked": false
+      },
+      {
+        "renderer": {
+          "calls": 76,
+          "triangles": 104416,
+          "points": 12753,
+          "lines": 900,
+          "geometries": 49,
+          "textures": 17,
+          "programs": 33,
+          "pixelRatio": 1,
+          "width": 1440,
+          "height": 810
+        },
+        "travel": {
+          "systemId": "athyg:4.0:1",
+          "atHome": true,
+          "selected": "base",
+          "cruising": false,
+          "cruiseSpeed": 0,
+          "warping": null,
+          "visited": [],
+          "status": "Arrival: Sol. Normal flight.",
+          "address": {
+            "version": 1,
+            "anchor": {
+              "catalogId": "athyg:4.0:1",
+              "title": "Sol",
+              "positionParsecs": [
+                4.85E-06,
+                0,
+                0
+              ],
+              "frame": "equatorial",
+              "equinox": "J2000.0",
+              "distanceSource": "OTHER",
+              "qualityFlags": [
+                "source-solar-reference-preserved"
+              ]
+            },
+            "local": {
+              "sector": [
+                -53,
+                115,
+                -265
+              ],
+              "offset": [
+                -444.16153112147003,
+                5659.928483398631,
+                -17135.42143371515
+              ]
+            }
+          }
+        },
+        "projectiles": 0,
+        "inputBlocked": false
+      },
+      {
+        "renderer": {
+          "calls": 76,
+          "triangles": 104416,
+          "points": 12753,
+          "lines": 900,
+          "geometries": 49,
+          "textures": 17,
+          "programs": 33,
+          "pixelRatio": 1,
+          "width": 1440,
+          "height": 810
+        },
+        "travel": {
+          "systemId": "athyg:4.0:1",
+          "atHome": true,
+          "selected": "base",
+          "cruising": false,
+          "cruiseSpeed": 0,
+          "warping": null,
+          "visited": [],
+          "status": "Arrival: Sol. Normal flight.",
+          "address": {
+            "version": 1,
+            "anchor": {
+              "catalogId": "athyg:4.0:1",
+              "title": "Sol",
+              "positionParsecs": [
+                4.85E-06,
+                0,
+                0
+              ],
+              "frame": "equatorial",
+              "equinox": "J2000.0",
+              "distanceSource": "OTHER",
+              "qualityFlags": [
+                "source-solar-reference-preserved"
+              ]
+            },
+            "local": {
+              "sector": [
+                -53,
+                115,
+                -265
+              ],
+              "offset": [
+                -444.16153112147003,
+                5659.928483398631,
+                -17135.42143371515
+              ]
+            }
+          }
+        },
+        "projectiles": 0,
+        "inputBlocked": false
+      }
+    ]
+  },
+  {
+    "mode": "mobile-low",
+    "issues": [],
+    "initial": {
+      "systemId": "athyg:4.0:1",
+      "atHome": true,
+      "selected": "base",
+      "cruising": false,
+      "cruiseSpeed": 0,
+      "warping": null,
+      "visited": [],
+      "status": "Earth Base. Choose a destination or open the star map.",
+      "address": {
+        "version": 1,
+        "anchor": {
+          "catalogId": "athyg:4.0:1",
+          "title": "Sol",
+          "positionParsecs": [
+            4.85E-06,
+            0,
+            0
+          ],
+          "frame": "equatorial",
+          "equinox": "J2000.0",
+          "distanceSource": "OTHER",
+          "qualityFlags": [
+            "source-solar-reference-preserved"
+          ]
+        },
+        "local": {
+          "sector": [
+            -53,
+            115,
+            -265
+          ],
+          "offset": [
+            -444.16153112147003,
+            5659.9284833977,
+            -17135.42143371515
+          ]
+        }
+      }
+    },
+    "mars": {
+      "systemId": "athyg:4.0:1",
+      "atHome": true,
+      "selected": "sol/mars",
+      "cruising": false,
+      "cruiseSpeed": 0,
+      "warping": null,
+      "visited": [
+        "sol/mars"
+      ],
+      "status": "Orbital point recorded: Mars. JPL orbit at J2000; illustrative surface.",
+      "address": {
+        "version": 1,
+        "anchor": {
+          "catalogId": "athyg:4.0:1",
+          "title": "Sol",
+          "positionParsecs": [
+            4.85E-06,
+            0,
+            0
+          ],
+          "frame": "equatorial",
+          "equinox": "J2000.0",
+          "distanceSource": "OTHER",
+          "qualityFlags": [
+            "source-solar-reference-preserved"
+          ]
+        },
+        "local": {
+          "sector": [
+            416,
+            -11,
+            0
+          ],
+          "offset": [
+            4093.390379689634,
+            -2678.0665653910255,
+            -14253.47434397593
+          ]
+        }
+      }
+    },
+    "arrival": {
+      "systemId": "athyg:4.0:1440825",
+      "atHome": false,
+      "selected": "athyg:4.0:1440825/generated-1",
+      "cruising": false,
+      "cruiseSpeed": 0,
+      "warping": null,
+      "visited": [
+        "sol/mars"
+      ],
+      "status": "Arrival: Proxima Centauri. Normal flight.",
+      "address": {
+        "version": 1,
+        "anchor": {
+          "catalogId": "athyg:4.0:1440825",
+          "title": "Proxima Centauri",
+          "positionParsecs": [
+            -0.4745,
+            -0.3633,
+            -1.1567
+          ],
+          "frame": "equatorial",
+          "equinox": "J2000.0",
+          "distanceSource": "G_R3",
+          "qualityFlags": []
+        },
+        "local": {
+          "sector": [
+            -89,
+            16,
+            -31
+          ],
+          "offset": [
+            -23630.0753249377,
+            -17457.3202797384,
+            8979.051362028113
+          ]
+        }
+      }
+    },
+    "returned": {
+      "systemId": "athyg:4.0:1",
+      "atHome": true,
+      "selected": "base",
+      "cruising": false,
+      "cruiseSpeed": 0,
+      "warping": null,
+      "visited": [
+        "sol/mars",
+        "athyg:4.0:1440825/generated-1"
+      ],
+      "status": "Arrival: Sol. Normal flight.",
+      "address": {
+        "version": 1,
+        "anchor": {
+          "catalogId": "athyg:4.0:1",
+          "title": "Sol",
+          "positionParsecs": [
+            4.85E-06,
+            0,
+            0
+          ],
+          "frame": "equatorial",
+          "equinox": "J2000.0",
+          "distanceSource": "OTHER",
+          "qualityFlags": [
+            "source-solar-reference-preserved"
+          ]
+        },
+        "local": {
+          "sector": [
+            -53,
+            115,
+            -265
+          ],
+          "offset": [
+            -444.16153112147003,
+            5659.928483398631,
+            -17135.42143371515
+          ]
+        }
+      }
+    },
+    "repeatIssues": [],
+    "repeat": [
+      {
+        "renderer": {
+          "calls": 63,
+          "triangles": 77048,
+          "points": 7538,
+          "lines": 420,
+          "geometries": 40,
+          "textures": 15,
+          "programs": 31,
+          "pixelRatio": 0.75,
+          "width": 633,
+          "height": 292
+        },
+        "travel": {
+          "systemId": "athyg:4.0:1",
+          "atHome": true,
+          "selected": "base",
+          "cruising": false,
+          "cruiseSpeed": 0,
+          "warping": null,
+          "visited": [],
+          "status": "Arrival: Sol. Normal flight.",
+          "address": {
+            "version": 1,
+            "anchor": {
+              "catalogId": "athyg:4.0:1",
+              "title": "Sol",
+              "positionParsecs": [
+                4.85E-06,
+                0,
+                0
+              ],
+              "frame": "equatorial",
+              "equinox": "J2000.0",
+              "distanceSource": "OTHER",
+              "qualityFlags": [
+                "source-solar-reference-preserved"
+              ]
+            },
+            "local": {
+              "sector": [
+                -53,
+                115,
+                -265
+              ],
+              "offset": [
+                -444.16153112147003,
+                5659.928483398631,
+                -17135.42143371515
+              ]
+            }
+          }
+        },
+        "projectiles": 0,
+        "inputBlocked": false
+      },
+      {
+        "renderer": {
+          "calls": 63,
+          "triangles": 77048,
+          "points": 7538,
+          "lines": 420,
+          "geometries": 40,
+          "textures": 15,
+          "programs": 31,
+          "pixelRatio": 0.75,
+          "width": 633,
+          "height": 292
+        },
+        "travel": {
+          "systemId": "athyg:4.0:1",
+          "atHome": true,
+          "selected": "base",
+          "cruising": false,
+          "cruiseSpeed": 0,
+          "warping": null,
+          "visited": [],
+          "status": "Arrival: Sol. Normal flight.",
+          "address": {
+            "version": 1,
+            "anchor": {
+              "catalogId": "athyg:4.0:1",
+              "title": "Sol",
+              "positionParsecs": [
+                4.85E-06,
+                0,
+                0
+              ],
+              "frame": "equatorial",
+              "equinox": "J2000.0",
+              "distanceSource": "OTHER",
+              "qualityFlags": [
+                "source-solar-reference-preserved"
+              ]
+            },
+            "local": {
+              "sector": [
+                -53,
+                115,
+                -265
+              ],
+              "offset": [
+                -444.16153112147003,
+                5659.928483398631,
+                -17135.42143371515
+              ]
+            }
+          }
+        },
+        "projectiles": 0,
+        "inputBlocked": false
+      },
+      {
+        "renderer": {
+          "calls": 63,
+          "triangles": 77048,
+          "points": 7538,
+          "lines": 420,
+          "geometries": 40,
+          "textures": 15,
+          "programs": 31,
+          "pixelRatio": 0.75,
+          "width": 633,
+          "height": 292
+        },
+        "travel": {
+          "systemId": "athyg:4.0:1",
+          "atHome": true,
+          "selected": "base",
+          "cruising": false,
+          "cruiseSpeed": 0,
+          "warping": null,
+          "visited": [],
+          "status": "Arrival: Sol. Normal flight.",
+          "address": {
+            "version": 1,
+            "anchor": {
+              "catalogId": "athyg:4.0:1",
+              "title": "Sol",
+              "positionParsecs": [
+                4.85E-06,
+                0,
+                0
+              ],
+              "frame": "equatorial",
+              "equinox": "J2000.0",
+              "distanceSource": "OTHER",
+              "qualityFlags": [
+                "source-solar-reference-preserved"
+              ]
+            },
+            "local": {
+              "sector": [
+                -53,
+                115,
+                -265
+              ],
+              "offset": [
+                -444.16153112147003,
+                5659.928483398631,
+                -17135.42143371515
+              ]
+            }
+          }
+        },
+        "projectiles": 0,
+        "inputBlocked": false
+      }
+    ]
+  }
+]

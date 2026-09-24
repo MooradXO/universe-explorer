@@ -76,7 +76,7 @@ body.titan-ui .radar-shell { top:auto!important; bottom:28px; left:26px!importan
 body.titan-ui .radar-shell::before, body.titan-ui .radar-shell__heading { display:none; }
 body.titan-ui .radar-shell::after { display:block; inset:0; width:auto!important; height:auto!important; border:0; border-radius:0; box-shadow:none; background:url('/assets/ui/titan-v1/radar-rim.png') center/contain no-repeat; }
 body.titan-ui .radar-display { width:100%!important; height:100%!important; border:0; box-shadow:none!important; background:radial-gradient(circle,#07232195,#02080bc9 70%); }
-body.titan-ui #hud-stats-container { top:auto!important; bottom:49px!important; left:265px!important; width:296px!important; padding:0!important; border:0!important; background:none!important; box-shadow:none!important; clip-path:none!important; gap:8px; }
+body.titan-ui #hud-stats-container { top:auto!important; bottom:49px!important; left:265px!important; width:296px!important; padding:0!important; border:0!important; background:linear-gradient(90deg,#03090ed9,#03090e80 75%,transparent)!important; box-shadow:none!important; clip-path:none!important; gap:8px; }
 body.titan-ui .flight-status::before { display:none; }
 body.titan-ui .flight-status__primary { width:100%; padding:0; border:0; }
 body.titan-ui .flight-status__bar { display:grid; grid-template-columns:29px 57px minmax(0,1fr) 45px; gap:9px; align-items:center; padding:8px 0; border-top:1px solid #9c805e60; margin:0!important; }
@@ -101,6 +101,9 @@ body.titan-ui .navigation-symbol .hud-icon { width:42px; height:42px; }
 body.titan-ui .is-home-system .navigation-symbol { background:radial-gradient(circle at 30% 30%,transparent 25%,#02070bc9 76%),url('/assets/environments/low/earth.webp') 43% center/auto 100%; border:1px solid #56737c; box-shadow:inset -6px -3px 8px #000,0 0 5px #84c1d02a; }
 body.titan-ui .is-home-system .navigation-symbol .hud-icon { visibility:hidden; }
 body.titan-ui .navigation-destination { min-width:0; flex:1; }
+body.titan-ui .system-navigation .navigation-progress { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding:1px 0 0; color:#b9b8ad; font:500 11px 'Rajdhani',sans-serif; letter-spacing:.4px; }
+body.titan-ui .navigation-progress[data-state=cruising] { color:#90d6dc; }
+body.titan-ui .navigation-progress[data-state=blocked] { color:#f2bc79; }
 body.titan-ui .system-navigation__heading { display:flex; align-items:center; gap:5px; }
 body.titan-ui .system-navigation__heading strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font:600 11px 'Rajdhani',sans-serif; letter-spacing:1.5px; color:#d7b787; }
 body.titan-ui .system-navigation button { width:auto; border:0; color:#ece6d9; background:transparent; margin:0; font:600 15px 'Rajdhani',sans-serif; letter-spacing:1.2px; cursor:pointer; }

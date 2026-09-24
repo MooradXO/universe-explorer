@@ -1,0 +1,1239 @@
+{
+  "results": [
+    {
+      "quality": "HIGH",
+      "category": "surface",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "surface",
+      "recipe": 16,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 10,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "surface",
+      "recipe": 24,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 6,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "surface",
+      "recipe": 32,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 8,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "surface",
+      "recipe": 40,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 4,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "surface",
+      "recipe": 50,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "geology",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "geology",
+      "recipe": 1,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 1,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "geology",
+      "recipe": 2,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 2,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "geology",
+      "recipe": 3,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 3,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "geology",
+      "recipe": 4,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 4,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "geology",
+      "recipe": 5,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 5,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "geology",
+      "recipe": 6,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 6,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "geology",
+      "recipe": 7,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 7,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "geology",
+      "recipe": 8,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 8,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "geology",
+      "recipe": 9,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 9,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "geology",
+      "recipe": 10,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 10,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "geology",
+      "recipe": 11,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 11,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "circulation",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 0,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "circulation",
+      "recipe": 1,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 1,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "circulation",
+      "recipe": 2,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 2,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "circulation",
+      "recipe": 3,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "circulation",
+      "recipe": 4,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 4,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "circulation",
+      "recipe": 5,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 5,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "circulation",
+      "recipe": 6,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 6,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "circulation",
+      "recipe": 7,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 7,
+        "storms": 3
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "HIGH",
+      "category": "clouds",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 7,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "clouds",
+      "recipe": 9,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 8,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "clouds",
+      "recipe": 19,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 8,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "clouds",
+      "recipe": 31,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 8,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "atmosphere",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "atmosphere",
+      "recipe": 8,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "atmosphere",
+      "recipe": 15,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "atmosphere",
+      "recipe": 23,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "aurora",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 7,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "aurora",
+      "recipe": 5,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 7,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "aurora",
+      "recipe": 9,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 7,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "aurora",
+      "recipe": 15,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 7,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "ring",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "ring",
+      "recipe": 10,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "ring",
+      "recipe": 17,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "category": "ring",
+      "recipe": 31,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 3
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "surface",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "surface",
+      "recipe": 16,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 10,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "surface",
+      "recipe": 24,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 6,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 0
+    },
+    {
+      "quality": "LOW",
+      "category": "surface",
+      "recipe": 32,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 8,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "surface",
+      "recipe": 40,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 4,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "surface",
+      "recipe": 50,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "geology",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "geology",
+      "recipe": 1,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 1,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "geology",
+      "recipe": 2,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 2,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "geology",
+      "recipe": 3,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 3,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "geology",
+      "recipe": 4,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 4,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 0
+    },
+    {
+      "quality": "LOW",
+      "category": "geology",
+      "recipe": 5,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 5,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "geology",
+      "recipe": 6,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 6,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "geology",
+      "recipe": 7,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 7,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "geology",
+      "recipe": 8,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 8,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "geology",
+      "recipe": 9,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 9,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "geology",
+      "recipe": 10,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 10,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "geology",
+      "recipe": 11,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 11,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "circulation",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 0,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "circulation",
+      "recipe": 1,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 1,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "circulation",
+      "recipe": 2,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 2,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "circulation",
+      "recipe": 3,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "circulation",
+      "recipe": 4,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 4,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "circulation",
+      "recipe": 5,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 5,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "circulation",
+      "recipe": 6,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 6,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 0
+    },
+    {
+      "quality": "LOW",
+      "category": "circulation",
+      "recipe": 7,
+      "surface": {
+        "version": 2,
+        "texture": "procedural",
+        "geology": 0,
+        "circulation": 7,
+        "storms": 2
+      },
+      "calls": 3,
+      "textures": 1
+    },
+    {
+      "quality": "LOW",
+      "category": "clouds",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 7,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "clouds",
+      "recipe": 9,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 7,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "clouds",
+      "recipe": 19,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 7,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "clouds",
+      "recipe": 31,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 7,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "atmosphere",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "atmosphere",
+      "recipe": 8,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "atmosphere",
+      "recipe": 15,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "atmosphere",
+      "recipe": 23,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "aurora",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 7,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "aurora",
+      "recipe": 5,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 7,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "aurora",
+      "recipe": 9,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 7,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "aurora",
+      "recipe": 15,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 7,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "ring",
+      "recipe": 0,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "ring",
+      "recipe": 10,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "ring",
+      "recipe": 17,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "category": "ring",
+      "recipe": 31,
+      "surface": {
+        "version": 2,
+        "texture": "ready",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      },
+      "calls": 6,
+      "textures": 4
+    },
+    {
+      "failure": false,
+      "surface": {
+        "version": 2,
+        "texture": "fallback-loading",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      }
+    },
+    {
+      "failure": true,
+      "surface": {
+        "version": 2,
+        "texture": "fallback-error",
+        "geology": 0,
+        "circulation": 3,
+        "storms": 2
+      }
+    }
+  ],
+  "resources": [
+    {
+      "quality": "HIGH",
+      "cycle": 0,
+      "geometries": 3,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "cycle": 1,
+      "geometries": 3,
+      "textures": 4
+    },
+    {
+      "quality": "HIGH",
+      "cycle": 2,
+      "geometries": 3,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "cycle": 0,
+      "geometries": 3,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "cycle": 1,
+      "geometries": 3,
+      "textures": 4
+    },
+    {
+      "quality": "LOW",
+      "cycle": 2,
+      "geometries": 3,
+      "textures": 4
+    }
+  ],
+  "errors": []
+}

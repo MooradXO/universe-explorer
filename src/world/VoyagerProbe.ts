@@ -10,7 +10,7 @@ export class VoyagerProbe {
   private startPosition = new THREE.Vector3(8000, 4000, -8000);
   private elapsed = 0;
 
-  constructor(scene: THREE.Scene) {
+  constructor(scene: THREE.Scene,preview=false) {
     this.scene = scene;
     this.mesh = new THREE.Group();
     this.mesh.userData = { isVoyager: true, name: 'Voyager-1', type: 'Deep Space Probe' };
@@ -25,7 +25,7 @@ export class VoyagerProbe {
     // Initial telemetry update
     this.updateTelemetry();
     // Update telemetry text every second
-    setInterval(() => this.updateTelemetry(), 1000);
+    if(!preview)setInterval(() => this.updateTelemetry(), 1000);
   }
 
   public update(dt: number, cameraPosition: THREE.Vector3) {

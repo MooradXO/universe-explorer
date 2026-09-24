@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "checks": [
+    "real WebSocket join",
+    "same universe visibility",
+    "50Hz wall-clock",
+    "reverse-proxy prefix",
+    "private metrics",
+    "no public room creation",
+    "origin allowlist",
+    "guest ownership",
+    "message flood closes promptly without a frozen socket",
+    "input acknowledgement",
+    "180ms simulated RTT",
+    "forged hits/positions rejected",
+    "chat",
+    "nearby voice signalling",
+    "automatic reconnect",
+    "50 clients and 51st rejection"
+  ],
+  "metrics": {
+    "players": 50,
+    "maxPlayers": 50,
+    "systems": 1,
+    "bots": 0,
+    "tick": 125,
+    "tickMs": {
+      "p50": 0.10120000000006257,
+      "p95": 0.7667000000001281,
+      "p99": 1.0848000000000866,
+      "max": 1.0884000000000924
+    },
+    "activeShots": 0,
+    "fired": 0,
+    "hits": 0,
+    "rejected": 152,
+    "rejectedByReason": {
+      "action": 152
+    },
+    "socketBytesWritten": 340245,
+    "elapsed": 2.504,
+    "cpuMicroseconds": 361000,
+    "rssBytes": 133795840
+  }
+}

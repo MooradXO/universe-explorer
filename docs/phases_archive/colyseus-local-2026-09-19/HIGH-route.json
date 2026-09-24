@@ -1,0 +1,113 @@
+{
+  "mode": "HIGH",
+  "errors": [],
+  "initial": {
+    "transport": "colyseus",
+    "state": "connected",
+    "subscribed": true,
+    "configured": true,
+    "received": 16,
+    "sendAttempts": 31,
+    "id": "guest_1368d7dd-da1f-4a5c-966d-f8ba98e85b61",
+    "systemId": "athyg:4.0:1",
+    "pendingInputs": 3,
+    "correctionDistance": 0,
+    "hp": 1000,
+    "shield": 1000,
+    "epoch": 1,
+    "ack": 63,
+    "dead": false
+  },
+  "otherPlayer": {
+    "transport": "colyseus",
+    "state": "connected",
+    "subscribed": true,
+    "configured": true,
+    "received": 3,
+    "sendAttempts": 4,
+    "id": "guest_0ebfcf26-af1e-43b2-aca7-7f6db6611aa7",
+    "systemId": "athyg:4.0:1",
+    "pendingInputs": 5,
+    "correctionDistance": 0,
+    "hp": 1000,
+    "shield": 1000,
+    "epoch": 1,
+    "ack": 3,
+    "dead": false
+  },
+  "afterFlight": {
+    "transport": "colyseus",
+    "state": "connected",
+    "subscribed": true,
+    "configured": true,
+    "received": 36,
+    "sendAttempts": 84,
+    "id": "guest_0ebfcf26-af1e-43b2-aca7-7f6db6611aa7",
+    "systemId": "athyg:4.0:1",
+    "pendingInputs": 6,
+    "correctionDistance": 0,
+    "hp": 1000,
+    "shield": 1000,
+    "epoch": 1,
+    "ack": 166,
+    "dead": false
+  },
+  "finalRealtime": {
+    "transport": "colyseus",
+    "state": "connected",
+    "subscribed": true,
+    "configured": true,
+    "received": 267,
+    "sendAttempts": 624,
+    "id": "guest_1368d7dd-da1f-4a5c-966d-f8ba98e85b61",
+    "systemId": "athyg:4.0:1",
+    "pendingInputs": 7,
+    "correctionDistance": 1.0629248602458032,
+    "hp": 1000,
+    "shield": 1000,
+    "epoch": 5,
+    "ack": 1179,
+    "dead": false
+  },
+  "finalTravel": {
+    "systemId": "athyg:4.0:1",
+    "atHome": true,
+    "selected": "sol/mars",
+    "cruising": false,
+    "cruiseSpeed": 0,
+    "warping": null,
+    "visited": [],
+    "status": "Destination reached. Normal flight.",
+    "address": {
+      "version": 1,
+      "anchor": {
+        "catalogId": "athyg:4.0:1",
+        "title": "Sol",
+        "positionParsecs": [
+          4.85E-06,
+          0,
+          0
+        ],
+        "frame": "equatorial",
+        "equinox": "J2000.0",
+        "distanceSource": "OTHER",
+        "qualityFlags": [
+          "source-solar-reference-preserved"
+        ]
+      },
+      "local": {
+        "sector": [
+          416,
+          -11,
+          0
+        ],
+        "offset": [
+          4093.000925272703,
+          -2677.961817637086,
+          -14253.694403462528
+        ]
+      }
+    }
+  },
+  "inputBlocked": false
+}

@@ -1,0 +1,765 @@
+{
+  "frames": [
+    {
+      "t": 0,
+      "travel": {
+        "systemId": "athyg:4.0:1",
+        "atHome": true,
+        "selected": "sol/mercury",
+        "cruising": false,
+        "cruiseSpeed": 0,
+        "warping": null,
+        "visited": [],
+        "status": "Obstacle ahead. Move clear in manual flight, then retry cruise.",
+        "address": {
+          "version": 1,
+          "anchor": {
+            "catalogId": "athyg:4.0:1",
+            "title": "Sol",
+            "positionParsecs": [
+              0.00000485,
+              0,
+              0
+            ],
+            "frame": "equatorial",
+            "equinox": "J2000.0",
+            "distanceSource": "OTHER",
+            "qualityFlags": [
+              "source-solar-reference-preserved"
+            ]
+          },
+          "local": {
+            "sector": [
+              -53,
+              115,
+              -265
+            ],
+            "offset": [
+              -444.16153112147003,
+              5559.9284833977,
+              -22909.62311371416
+            ]
+          }
+        }
+      },
+      "ship": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          -0.0038633455943493907,
+          -0.9772164690264453,
+          -0.21145753309063126,
+          0.017853820978422516
+        ],
+        "worldPosition": {
+          "sector": [
+            -53,
+            115,
+            -265
+          ],
+          "offset": [
+            -444.16153112147003,
+            5559.9284833977,
+            -22909.62311371416
+          ]
+        },
+        "cameraOffset": [
+          -10.086019873571287,
+          262.6480032728827,
+          -275.9335039096877
+        ],
+        "cameraFov": 75,
+        "cruiseIntensity": 0,
+        "engine": {
+          "plumeLength": 22.19684316465249,
+          "opacity": 0.20622716321788737
+        },
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      },
+      "fields": {
+        "cell": "-295,639,-1475",
+        "cached": 125,
+        "detailed": 5,
+        "maxDetails": 8,
+        "created": 5,
+        "disposed": 0,
+        "farObjects": 1548,
+        "generationMs": 2.9000000059604645,
+        "maxGenerationMs": 2.9000000059604645,
+        "fields": [
+          {
+            "id": "athyg:4.0:1/space/-294,639,-1475",
+            "center": [
+              -2641114.9447183125,
+              5755465.306423092,
+              -13272081.960650906
+            ],
+            "bound": 2084.068409446627,
+            "objects": 26,
+            "layout": 0,
+            "rocks": 43,
+            "structure": null,
+            "phenomenon": 29,
+            "signature": "space.26653163.26.0"
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,639,-1474",
+            "center": [
+              -2652460.572563298,
+              5753394.721017312,
+              -13263310.900794156
+            ],
+            "bound": 1286.300814570859,
+            "objects": 28,
+            "layout": 13,
+            "rocks": 32,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.1557219407.28.13"
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,640,-1475",
+            "center": [
+              -2648290.4475673568,
+              5764578.667561384,
+              -13268515.121617774
+            ],
+            "bound": 1260.2751570520923,
+            "objects": 20,
+            "layout": 4,
+            "rocks": 38,
+            "structure": null,
+            "phenomenon": 26,
+            "signature": "space.2377771716.20.4"
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,638,-1475",
+            "center": [
+              -2652431.0353178065,
+              5745731.463964145,
+              -13270449.538147124
+            ],
+            "bound": 1851.7286277143285,
+            "objects": 3,
+            "layout": 28,
+            "rocks": 62,
+            "structure": 16,
+            "phenomenon": null,
+            "signature": "space.1417059123.3.28"
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,640,-1476",
+            "center": [
+              -2651229.6206539962,
+              5764324.577207537,
+              -13279433.371419786
+            ],
+            "bound": 1144.9201094917953,
+            "objects": 16,
+            "layout": 44,
+            "rocks": 45,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.2428104573.16.44"
+          },
+          {
+            "id": "athyg:4.0:1/space/-296,640,-1475",
+            "center": [
+              -2659043.783310894,
+              5762432.240426308,
+              -13272339.731147233
+            ],
+            "bound": 1604.2434320086613,
+            "objects": 18,
+            "layout": 31,
+            "rocks": 40,
+            "structure": null,
+            "phenomenon": 20,
+            "signature": "space.2638147425.18.31"
+          },
+          {
+            "id": "athyg:4.0:1/space/-294,638,-1475",
+            "center": [
+              -2641574.9963531736,
+              5748731.363533158,
+              -13271723.032989772
+            ],
+            "bound": 1915.4392534634098,
+            "objects": 3,
+            "layout": 28,
+            "rocks": 31,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.4163014100.3.28"
+          },
+          {
+            "id": "athyg:4.0:1/space/-296,639,-1476",
+            "center": [
+              -2659873.8778289873,
+              5756130.132980738,
+              -13280149.089472415
+            ],
+            "bound": 1254.3807820184156,
+            "objects": 8,
+            "layout": 33,
+            "rocks": 37,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.2326504244.8.33"
+          },
+          {
+            "id": "athyg:4.0:1/space/-294,640,-1475",
+            "center": [
+              -2644091.9410508126,
+              5765425.226255413,
+              -13269073.783002421
+            ],
+            "bound": 1801.3305786531419,
+            "objects": 18,
+            "layout": 3,
+            "rocks": 24,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.2643948099.18.3"
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,638,-1476",
+            "center": [
+              -2648169.2672525067,
+              5745606.216715509,
+              -13280003.221477149
+            ],
+            "bound": 2046.0331368260086,
+            "objects": 25,
+            "layout": 29,
+            "rocks": 33,
+            "structure": 16,
+            "phenomenon": null,
+            "signature": "space.1433836742.25.29"
+          },
+          {
+            "id": "athyg:4.0:1/space/-296,639,-1475",
+            "center": [
+              -2662004.6870569233,
+              5757632.02707111,
+              -13268172.970104078
+            ],
+            "bound": 1206.4774018712342,
+            "objects": 30,
+            "layout": 45,
+            "rocks": 35,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.2376837101.30.45"
+          },
+          {
+            "id": "athyg:4.0:1/space/-294,639,-1474",
+            "center": [
+              -2641498.269571597,
+              5754862.031586003,
+              -13263820.888035
+            ],
+            "bound": 1929.7551817260683,
+            "objects": 4,
+            "layout": 42,
+            "rocks": 48,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.9875544.4.42"
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,640,-1474",
+            "center": [
+              -2651966.5579651482,
+              5765074.000427127,
+              -13263046.743795555
+            ],
+            "bound": 1685.0523154484108,
+            "objects": 4,
+            "layout": 19,
+            "rocks": 27,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.2394549335.4.19"
+          },
+          {
+            "id": "athyg:4.0:1/space/-294,640,-1476",
+            "center": [
+              -2641862.1155662932,
+              5764847.412960464,
+              -13278589.936075592
+            ],
+            "bound": 1178.883441281505,
+            "objects": 8,
+            "layout": 20,
+            "rocks": 46,
+            "structure": 4,
+            "phenomenon": null,
+            "signature": "space.2660725718.8.20"
+          },
+          {
+            "id": "athyg:4.0:1/space/-296,639,-1474",
+            "center": [
+              -2659794.1064526793,
+              5754869.633522491,
+              -13262357.878849888
+            ],
+            "bound": 1196.5528484201059,
+            "objects": 8,
+            "layout": 46,
+            "rocks": 32,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.2360059482.8.46"
+          },
+          {
+            "id": "athyg:4.0:1/space/-294,639,-1476",
+            "center": [
+              -2639316.0619388334,
+              5753943.612138368,
+              -13281902.407554863
+            ],
+            "bound": 1842.513811448589,
+            "objects": 16,
+            "layout": 24,
+            "rocks": 37,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.43430782.16.24"
+          },
+          {
+            "id": "athyg:4.0:1/space/-296,640,-1476",
+            "center": [
+              -2658790.193769057,
+              5765305.67278876,
+              -13279619.189979136
+            ],
+            "bound": 1474.544251151383,
+            "objects": 28,
+            "layout": 27,
+            "rocks": 24,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.2587814568.28.27"
+          },
+          {
+            "id": "athyg:4.0:1/space/-296,638,-1476",
+            "center": [
+              -2660227.7816124726,
+              5749155.077872658,
+              -13281559.364816872
+            ],
+            "bound": 1335.7756636105478,
+            "objects": 15,
+            "layout": 9,
+            "rocks": 42,
+            "structure": null,
+            "phenomenon": 22,
+            "signature": "space.3091841243.15.9"
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,639,-1477",
+            "center": [
+              -2651155.182818463,
+              5752987.266738481,
+              -13288973.466868373
+            ],
+            "bound": 1189.3010038882494,
+            "objects": 24,
+            "layout": 36,
+            "rocks": 45,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.1573997026.24.36"
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,641,-1476",
+            "center": [
+              -2650587.0240841527,
+              5771158.349542413,
+              -13277779.355431488
+            ],
+            "bound": 2118.654308328405,
+            "objects": 1,
+            "layout": 29,
+            "rocks": 56,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.2424338542.1.29"
+          },
+          {
+            "id": "athyg:4.0:1/space/-294,640,-1474",
+            "center": [
+              -2643154.821509728,
+              5762661.802854204,
+              -13259565.96596078
+            ],
+            "bound": 1131.491708708927,
+            "objects": 28,
+            "layout": 21,
+            "rocks": 58,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.2627170480.28.21"
+          },
+          {
+            "id": "athyg:4.0:1/space/-297,639,-1475",
+            "center": [
+              -2666981.7454974637,
+              5757426.199040982,
+              -13270476.785834273
+            ],
+            "bound": 1597.92284918949,
+            "objects": 24,
+            "layout": 25,
+            "rocks": 26,
+            "structure": null,
+            "phenomenon": 3,
+            "signature": "space.3576585830.24.25"
+          },
+          {
+            "id": "athyg:4.0:1/space/-294,638,-1476",
+            "center": [
+              -2639079.1240744293,
+              5745582.386217128,
+              -13280484.749706695
+            ],
+            "bound": 2100.904086045921,
+            "objects": 31,
+            "layout": 0,
+            "rocks": 45,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.4213346957.31.0"
+          },
+          {
+            "id": "athyg:4.0:1/space/-294,638,-1474",
+            "center": [
+              -2644192.3214835115,
+              5745911.7981889285,
+              -13259344.352720305
+            ],
+            "bound": 2137.566049816087,
+            "objects": 19,
+            "layout": 23,
+            "rocks": 26,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.4179791719.19.23"
+          },
+          {
+            "id": "athyg:4.0:1/space/-293,638,-1475",
+            "center": [
+              -2634420.384480385,
+              5748017.704296811,
+              -13270433.707338804
+            ],
+            "bound": 2017.7149898838252,
+            "objects": 31,
+            "layout": 3,
+            "rocks": 27,
+            "structure": null,
+            "phenomenon": 3,
+            "signature": "space.790512721.31.3"
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,640,-1477",
+            "center": [
+              -2651800.898102531,
+              5764173.29344377,
+              -13288569.633545307
+            ],
+            "bound": 1967.1967384638265,
+            "objects": 0,
+            "layout": 39,
+            "rocks": 27,
+            "structure": 7,
+            "phenomenon": null,
+            "signature": "space.2411326954.0.39"
+          },
+          {
+            "id": "athyg:4.0:1/space/-296,641,-1476",
+            "center": [
+              -2658106.2318482436,
+              5771078.644793434,
+              -13277731.142691337
+            ],
+            "bound": 1520.195425231941,
+            "objects": 3,
+            "layout": 5,
+            "rocks": 26,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.1695319375.3.5"
+          },
+          {
+            "id": "athyg:4.0:1/space/-297,639,-1476",
+            "center": [
+              -2666581.523831282,
+              5754823.019627016,
+              -13280915.636322973
+            ],
+            "bound": 1493.9393163425848,
+            "objects": 8,
+            "layout": 23,
+            "rocks": 28,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.3559808211.8.23"
+          },
+          {
+            "id": "athyg:4.0:1/space/-296,640,-1474",
+            "center": [
+              -2656909.8909159657,
+              5766335.533592803,
+              -13259779.452261329
+            ],
+            "bound": 1611.2217291723937,
+            "objects": 28,
+            "layout": 21,
+            "rocks": 54,
+            "structure": 22,
+            "phenomenon": null,
+            "signature": "space.2621369806.28.21"
+          },
+          {
+            "id": "athyg:4.0:1/space/-296,639,-1477",
+            "center": [
+              -2657400.404258212,
+              5757564.53810907,
+              -13289719.913742458
+            ],
+            "bound": 1694.1065788967535,
+            "objects": 30,
+            "layout": 39,
+            "rocks": 36,
+            "structure": null,
+            "phenomenon": 25,
+            "signature": "space.2343281863.30.39"
+          },
+          {
+            "id": "athyg:4.0:1/space/-293,639,-1475",
+            "center": [
+              -2632642.4745528493,
+              5752942.215499235,
+              -13268468.139820453
+            ],
+            "bound": 2062.453305046074,
+            "objects": 0,
+            "layout": 0,
+            "rocks": 38,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.3097278034.0.0"
+          },
+          {
+            "id": "athyg:4.0:1/space/-293,640,-1476",
+            "center": [
+              -2635190.0754687376,
+              5762263.255355414,
+              -13281779.02346123
+            ],
+            "bound": 1066.7178030824289,
+            "objects": 28,
+            "layout": 21,
+            "rocks": 56,
+            "structure": null,
+            "phenomenon": 29,
+            "signature": "space.1454523595.28.21"
+          },
+          {
+            "id": "athyg:4.0:1/space/-294,639,-1477",
+            "center": [
+              -2640425.9429724426,
+              5757225.512901088,
+              -13288878.314879956
+            ],
+            "bound": 1268.4527650475502,
+            "objects": 6,
+            "layout": 32,
+            "rocks": 44,
+            "structure": null,
+            "phenomenon": 20,
+            "signature": "space.60208401.6.32"
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,641,-1474",
+            "center": [
+              -2652300.360601628,
+              5772534.535321222,
+              -13263209.154003952
+            ],
+            "bound": 1202.2733939578757,
+            "objects": 21,
+            "layout": 6,
+            "rocks": 35,
+            "structure": 14,
+            "phenomenon": null,
+            "signature": "space.2390783304.21.6"
+          },
+          {
+            "id": "athyg:4.0:1/space/-296,641,-1475",
+            "center": [
+              -2658418.8962092157,
+              5773647.847437859,
+              -13270327.22274363
+            ],
+            "bound": 2022.853943449445,
+            "objects": 19,
+            "layout": 8,
+            "rocks": 40,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.1712096994.19.8"
+          },
+          {
+            "id": "athyg:4.0:1/space/-294,637,-1474",
+            "center": [
+              -2644078.768658219,
+              5738418.107163069,
+              -13264078.361354303
+            ],
+            "bound": 2067.9214884294197,
+            "objects": 30,
+            "layout": 41,
+            "rocks": 54,
+            "structure": 16,
+            "phenomenon": null,
+            "signature": "space.2435779570.30.41"
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,637,-1475",
+            "center": [
+              -2651910.7193912845,
+              5735217.978458572,
+              -13272875.66397884
+            ],
+            "bound": 1885.9686399111524,
+            "objects": 14,
+            "layout": 27,
+            "rocks": 28,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.743156318.14.27"
+          },
+          {
+            "id": "athyg:4.0:1/space/-297,638,-1475",
+            "center": [
+              -2669654.7301176935,
+              5748124.965527281,
+              -13271108.886848995
+            ],
+            "bound": 1921.1188062094152,
+            "objects": 23,
+            "layout": 22,
+            "rocks": 56,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.1273767941.23.22"
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,640,-1473",
+            "center": [
+              -2652045.6726449076,
+              5763617.66631268,
+              -13253908.740698032
+            ],
+            "bound": 2059.474782529287,
+            "objects": 8,
+            "layout": 31,
+            "rocks": 42,
+            "structure": null,
+            "phenomenon": null,
+            "signature": "space.2344216478.8.31"
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,639,-1473",
+            "center": [
+              -2652206.847766461,
+              5754482.570255316,
+              -13251927.984067239
+            ],
+            "bound": 2148.426713212393,
+            "objects": 0,
+            "layout": 11,
+            "rocks": 25,
+            "structure": null,
+            "phenomenon": 16,
+            "signature": "space.1506886550.0.11"
+          }
+        ],
+        "active": [
+          {
+            "id": "athyg:4.0:1/space/-294,639,-1475",
+            "opacity": 1,
+            "body": "athyg:4.0:1/space/-294,639,-1475",
+            "origin": "procedural-gameplay",
+            "instances": 43,
+            "layout": 0,
+            "objects": 26,
+            "structure": null,
+            "phenomenon": {
+              "recipe": 29,
+              "name": "Криовыброс · орбитальный",
+              "particles": 320
+            }
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,639,-1474",
+            "opacity": 1,
+            "body": "athyg:4.0:1/space/-295,639,-1474",
+            "origin": "procedural-gameplay",
+            "instances": 32,
+            "layout": 13,
+            "objects": 28,
+            "structure": null,
+            "phenomenon": null
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,640,-1475",
+            "opacity": 1,
+            "body": "athyg:4.0:1/space/-295,640,-1475",
+            "origin": "procedural-gameplay",
+            "instances": 38,
+            "layout": 4,
+            "objects": 20,
+            "structure": null,
+            "phenomenon": {
+              "recipe": 26,
+              "name": "Линза · бегущая волна",
+              "particles": 320
+            }
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,638,-1475",
+            "opacity": 1,
+            "body": "athyg:4.0:1/space/-295,638,-1475",
+            "origin": "procedural-gameplay",
+            "instances": 62,
+            "layout": 28,
+            "objects": 3,
+            "structure": 16,
+            "phenomenon": null
+          },
+          {
+            "id": "athyg:4.0:1/space/-295,640,-1476",
+            "opacity": 1,
+            "body": "athyg:4.0:1/space/-295,640,-1476",
+            "origin": "procedural-gameplay",
+            "instances": 45,
+            "layout": 44,
+            "objects": 16,
+            "structure": null,
+            "phenomenon": null
+          }
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

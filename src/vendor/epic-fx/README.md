@@ -1,9 +1,11 @@
-# EpicToonFX — локальные кандидаты для просмотра
+# EpicToonFX integration
 
-Исходник: предоставленная пользователем библиотека `EpicToonFX-ThreeJS`, приобретённая и адаптированная им для Three.js. Original VFX: Archanor VFX. Пользователь прямо разрешил использовать подходящие эффекты в Universe Explorer. Этот материал не является MIT/CC0; лицензия основного кода проекта не переопределяет права на эффекты.
+The owner supplied a purchased Three.js adaptation of EpicToonFX and authorized suitable effects in this game. Original VFX: Archanor VFX. These materials are not MIT/CC0; the code license does not override their rights.
 
-В `public/assets/fx-preview/` включены только ScanExplosion, SpinPortalBlue, Plexus и зависимости: 7 текстур. Аудиофайлы и остальная библиотека не копируются. Определения эффектов сохранены без изменений. Runtime подключается лениво только из `visual-lab.html`, с `sound:false`, `groundY:null`, явными бюджетами HIGH/LOW.
+The initial preview uses ScanExplosion, SpinPortalBlue and Plexus with seven textures under public/assets/fx-preview/. The environment subset adds 66 presets and 19 shared textures under public/assets/fx-environments/. Totals include colour variants.
 
-В `epic-fx.js` одна интеграционная правка: конструктор требует явный URL ресурсов, вместо исходного относительного default. Остальные JS-файлы скопированы без изменений. Типы в `epic-fx.d.ts` добавлены локально. `provenance.json` содержит SHA256 оригинальных и локальных файлов. Повторная подготовка: `node scripts/prepare-fx-preview.mjs <путь-к-библиотеке>`.
+Definitions are preserved. Audio is disabled, groundY is null, loading is lazy and the adapter enforces HIGH/LOW particle and simulation-scale budgets. The game and workshop share that adapter.
 
-Подготовлены варианты для согласования пользователем; назначения и художественное направление ещё не утверждены. Страница является локальным прототипом, не полноценным варпом/сканированием и не научной реконструкцией мира.
+The integration changes epic-fx.js to require an explicit asset URL. Local declarations are in epic-fx.d.ts; provenance.json records original/local SHA256 values. Preparation: node scripts/prepare-fx-preview.mjs <library-path>.
+
+The supplied source library remains untouched. Inclusion does not grant an independent redistribution/reuse license for the original library. See THIRD_PARTY_NOTICES.md.

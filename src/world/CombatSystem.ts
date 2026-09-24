@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import { impactMaterial } from './visuals/ImpactVisuals';
+import { ProjectileVisuals } from './visuals/ProjectileVisuals';
 import gsap from 'gsap';
 import { Engine } from '../core/Engine';
 import { SoundManager } from '../core/SoundManager';
@@ -7,16 +9,18 @@ import { MultiplayerManager } from '../network/MultiplayerManager';
 import { Settings } from '../core/Settings';
 import { OrbitObject } from './PlanetBuilder';
 import { PLAYER_SHIP_VISUAL } from './ShipVisualConfig';
+import type { WorldSnapshot } from '../network/shared/Protocol';
+import type { WeaponSound } from '../core/WeaponAudio';
 
 const PROJECTILE_AXIS = new THREE.Vector3(0, 1, 0);
 const SHIP_FORWARD_AXIS = new THREE.Vector3(0, 0, -1);
 const PLAYER_MUZZLE_FALLBACK = new THREE.Vector3(0, 0, -64);
 const PLAYER_PROJECTILE_SAFE_OFFSET = 72;
 const PLAYER_PROJECTILE_VISUAL_OFFSET = 72;
-const FIRST_PERSON_PROJECTILE_VISUAL_OFFSET = 650;
 const PROJECTILE_SPEED_MARGIN = 600;
 
 export interface LaserInstance {
+  networkId?: number;
   mesh: THREE.Object3D;
   velocity: THREE.Vector3;
   life: number;
@@ -36,7 +40,7 @@ interface PreparedPlayerProjectile {
   lastPosition: THREE.Vector3;
 }
 
-export class CombatSystem {
+export class CombatSystem extends ProjectileVisuals {
   private engine: Engine;
   private soundManager: SoundManager;
   private ui: UIManager;
@@ -44,17 +48,16 @@ export class CombatSystem {
   private bgDot: THREE.Texture;
 
   // Shared Geometries
-  private sharedCylinderGeo!: THREE.CylinderGeometry;
-  private sharedSphere8Geo!: THREE.SphereGeometry;
+
+
   private sharedSphere16Geo!: THREE.SphereGeometry;
   private sharedSphere32Geo!: THREE.SphereGeometry;
 
   // Material Cache
-  private materialCache: Map<string, THREE.Material> = new Map();
+
 
   // Object Pools
-  private laserPool: THREE.Group[] = [];
-  private muzzleFlashPool: THREE.Mesh[] = [];
+
   private explosionPool: THREE.Mesh[] = [];
   private shieldFlarePool: THREE.Mesh[] = [];
   private sparksPool: THREE.Points[] = [];
@@ -81,6 +84,48 @@ export class CombatSystem {
     this.lasers.length = 0; this.botHP.clear();
   }
 
+  public snapshot() {
+    return { shots: this.lasers.slice(0, 24).map(shot => ({ id: shot.networkId ?? null, head: shot.mesh.position.toArray(),
+      velocity: shot.velocity.toArray(), tailLength: shot.mesh.userData.isLaserBolt ? Math.min(shot.mesh.userData.boltLength, shot.mesh.userData.boltTravel) : 0,
+      laser: !!shot.mesh.userData.isLaserBolt, life: shot.life })) };
+  }
+
+  public applyNetworkProjectiles(data: WorldSnapshot) {
+    const gone = new Set(data.shotGone);
+    const heard = new Set<string>();
+    for (let i = this.lasers.length - 1; i >= 0; i--) if (gone.has(this.lasers[i].networkId!)) {
+      this.returnLaserToPool(this.lasers[i].mesh as THREE.Group); this.lasers.splice(i, 1);
+    }
+    for (const shot of data.shots) {
+      let laser = this.lasers.find(item => item.networkId === shot.id);
+      const velocity = new THREE.Vector3().fromArray(shot.v), position = new THREE.Vector3(...this.multiplayer.toLocal(shot.p));
+      if (!laser) {
+        const local = shot.owner === data.self.id;
+        const color = shot.weapon === 'missile' ? 0xffaa00 : ({ red: 0xff2222, blue: 0x2288ff, green: 0x55ff88, purple: 0xaa22ff, yellow: 0xffdd44 }[shot.color] ?? 0xff2222);
+        const mesh = shot.weapon === 'missile' ? this.createMissileOrTorpedo(false) : this.createVolumetricLaser(color, local ? (shot.weapon === 'shotgun' ? 260 : 420) : 120, local);
+        if (shot.color === 'purple') mesh.scale.set(3, 1, 3);
+        this.engine.scene.add(mesh);
+        laser = { mesh, networkId: shot.id, velocity, life: shot.life, ownerId: shot.owner }; this.lasers.push(laser);
+        const soundKey = `${shot.owner}/${shot.weapon}`;
+        if (!local && !heard.has(soundKey) && this.multiplayer.localPlayerPosition && position.distanceTo(this.multiplayer.localPlayerPosition) < 8000) {
+          const source = this.multiplayer.players.get(shot.owner)?.position ?? position;
+          this.playWeaponAt(shot.weapon, shot.color === 'blue' ? 'blue' : 'red', .4, source); heard.add(soundKey);
+        }
+      }
+      laser.mesh.position.copy(position); laser.velocity.copy(velocity); laser.life = shot.life;
+      if (laser.mesh.userData.isLaserBolt) {
+        const duration = shot.weapon === 'shotgun' ? 1.5 : 2;
+        laser.mesh.userData.boltTravel = Math.max(0, duration - shot.life) * velocity.length();
+        this.updateBoltTail(laser.mesh, 0);
+      }
+      laser.mesh.quaternion.setFromUnitVectors(PROJECTILE_AXIS, velocity.clone().normalize());
+    }
+  }
+
+  public playWeaponAt(kind: WeaponSound, color: 'red' | 'blue', volume: number, position: THREE.Vector3) {
+    this.soundManager.playWeapon(kind, color, volume, position);
+  }
+
   constructor(
     engine: Engine,
     soundManager: SoundManager,
@@ -88,6 +133,7 @@ export class CombatSystem {
     multiplayer: MultiplayerManager,
     bgDot: THREE.Texture
   ) {
+    super();
     this.engine = engine;
     this.soundManager = soundManager;
     this.ui = ui;
@@ -98,76 +144,10 @@ export class CombatSystem {
 
   private initPools() {
     // Geometries (all normalized to radius/height 1 for scale-based reuse)
-    this.sharedCylinderGeo = new THREE.CylinderGeometry(1, 1, 1, 8, 1, true);
-    this.sharedSphere8Geo = new THREE.SphereGeometry(1, 8, 8);
+
+
     this.sharedSphere16Geo = new THREE.SphereGeometry(1, 16, 16);
     this.sharedSphere32Geo = new THREE.SphereGeometry(1, 32, 32);
-  }
-
-  private getOrCreateMaterial(key: string, createFn: () => THREE.Material): THREE.Material {
-    let mat = this.materialCache.get(key);
-    if (!mat) {
-      mat = createFn();
-      this.materialCache.set(key, mat);
-    }
-    return mat;
-  }
-
-  public createVolumetricLaser(colorHex: number, height: number, isPlayer: boolean): THREE.Group {
-    let group = this.laserPool.pop();
-    if (!group) {
-      group = new THREE.Group();
-      // Core mesh
-      const coreMesh = new THREE.Mesh(this.sharedCylinderGeo);
-      group.add(coreMesh);
-      // Glow mesh
-      const glowMesh = new THREE.Mesh(this.sharedCylinderGeo);
-      group.add(glowMesh);
-      // Soft outer bloom shell
-      const auraMesh = new THREE.Mesh(this.sharedCylinderGeo);
-      group.add(auraMesh);
-    } else if (group.children.length < 3) {
-      group.add(new THREE.Mesh(this.sharedCylinderGeo));
-    }
-
-    const coreMesh = group.children[0] as THREE.Mesh;
-    const glowMesh = group.children[1] as THREE.Mesh;
-    const auraMesh = group.children[2] as THREE.Mesh;
-
-    // Apply materials
-    coreMesh.material = this.getOrCreateMaterial('laser_core', () => new THREE.MeshBasicMaterial({
-      color: 0xffffff,
-      toneMapped: false
-    }));
-    glowMesh.material = this.getOrCreateMaterial(`laser_glow_${colorHex}`, () => new THREE.MeshBasicMaterial({
-      color: colorHex,
-      transparent: true,
-      opacity: 0.72,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-      toneMapped: false
-    }));
-    auraMesh.material = this.getOrCreateMaterial(`laser_aura_${colorHex}`, () => new THREE.MeshBasicMaterial({
-      color: colorHex,
-      transparent: true,
-      opacity: Settings.graphicsMode === 'LOW' ? 0.16 : 0.28,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-      toneMapped: false
-    }));
-
-    // Reset scales based on sizes
-    const coreRadius = isPlayer ? 0.55 : 1.25;
-    coreMesh.scale.set(coreRadius, height, coreRadius);
-
-    const glowRadius = isPlayer ? 1.8 : 4.4;
-    glowMesh.scale.set(glowRadius, height, glowRadius);
-    auraMesh.scale.set(glowRadius * 1.25, height * 0.96, glowRadius * 1.25);
-
-    // Reset parent scale
-    group.scale.set(1, 1, 1);
-    group.visible = true;
-    return group;
   }
 
   private getConfiguredForwardLocal() {
@@ -207,7 +187,7 @@ export class CombatSystem {
     visualLength: number,
     visualOffset = PLAYER_PROJECTILE_VISUAL_OFFSET
   ) {
-    projectile.position.copy(muzzleWorld).addScaledVector(direction, visualOffset + visualLength * 0.5);
+    projectile.position.copy(muzzleWorld).addScaledVector(direction, projectile.userData.isLaserBolt ? PLAYER_PROJECTILE_SAFE_OFFSET : visualOffset + visualLength * 0.5);
     projectile.quaternion.setFromUnitVectors(PROJECTILE_AXIS, direction);
   }
 
@@ -221,10 +201,7 @@ export class CombatSystem {
     safeOffset = PLAYER_PROJECTILE_SAFE_OFFSET
   ): PreparedPlayerProjectile {
     const direction = directionWorld.clone().normalize();
-    const visualOffset = this.engine.shipController.viewMode === 'first'
-      ? FIRST_PERSON_PROJECTILE_VISUAL_OFFSET
-      : PLAYER_PROJECTILE_VISUAL_OFFSET;
-    this.placeProjectileFromMuzzle(projectile, muzzleWorld, direction, visualLength, visualOffset);
+    this.placeProjectileFromMuzzle(projectile, muzzleWorld, direction, visualLength);
 
     const shipForwardSpeed = Math.max(0, shipVelocity.dot(direction));
     const projectileSpeed = Math.max(baseSpeed, shipForwardSpeed + PROJECTILE_SPEED_MARGIN);
@@ -243,128 +220,15 @@ export class CombatSystem {
     muzzleClearance: number
   ) {
     const muzzlePosition = origin.clone().addScaledVector(direction, muzzleClearance);
-    projectile.position.copy(muzzlePosition).addScaledVector(direction, visualLength * 0.5);
+    projectile.position.copy(muzzlePosition).addScaledVector(direction, projectile.userData.isLaserBolt ? 0 : visualLength * 0.5);
     projectile.quaternion.setFromUnitVectors(PROJECTILE_AXIS, direction);
     return muzzlePosition;
-  }
-
-  public createMissileOrTorpedo(isTorpedo: boolean, colorHex: number = 0xff5500): THREE.Group {
-    let group = this.laserPool.pop();
-    if (!group) {
-      group = new THREE.Group();
-      const coreMesh = new THREE.Mesh(this.sharedCylinderGeo);
-      group.add(coreMesh);
-      const glowMesh = new THREE.Mesh(this.sharedCylinderGeo);
-      group.add(glowMesh);
-    }
-
-    const coreMesh = group.children[0] as THREE.Mesh;
-    const glowMesh = group.children[1] as THREE.Mesh;
-
-    if (isTorpedo) {
-      coreMesh.material = this.getOrCreateMaterial('torpedo_core', () => new THREE.MeshBasicMaterial({ color: 0xffffff, toneMapped: false }));
-      glowMesh.material = this.getOrCreateMaterial(`torpedo_glow_${colorHex}`, () => new THREE.MeshBasicMaterial({
-        color: colorHex,
-        transparent: true,
-        opacity: 0.8,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false,
-        toneMapped: false
-      }));
-      coreMesh.scale.set(10, 80, 10);
-      glowMesh.scale.set(20, 80, 20);
-    } else {
-      coreMesh.material = this.getOrCreateMaterial('missile_core', () => new THREE.MeshBasicMaterial({ color: 0xffdd00, toneMapped: false }));
-      glowMesh.material = this.getOrCreateMaterial('missile_glow', () => new THREE.MeshBasicMaterial({
-        color: 0xff5500,
-        transparent: true,
-        opacity: 0.7,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false,
-        toneMapped: false
-      }));
-      coreMesh.scale.set(8, 80, 8);
-      glowMesh.scale.set(15, 80, 15);
-    }
-
-    group.scale.set(1, 1, 1);
-    group.visible = true;
-    return group;
   }
 
   private returnLaserToPool(group: THREE.Group) {
     group.visible = false;
     this.engine.scene.remove(group);
     this.laserPool.push(group);
-  }
-
-  public createMuzzleFlashAt(pos: THREE.Vector3, colorHex: number) {
-    let flash = this.muzzleFlashPool.pop();
-    if (!flash) {
-      flash = new THREE.Mesh(this.sharedSphere8Geo);
-    }
-
-    flash.material = this.getOrCreateMaterial(`flash_${colorHex}`, () => new THREE.MeshBasicMaterial({
-      color: colorHex,
-      transparent: true,
-      opacity: 0.5,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-      toneMapped: false
-    }));
-
-    (flash.material as THREE.MeshBasicMaterial).opacity = 0.5;
-    flash.position.copy(pos);
-    flash.scale.set(4, 4, 4);
-    flash.visible = true;
-    this.engine.scene.add(flash);
-
-    gsap.killTweensOf(flash.scale);
-    gsap.killTweensOf(flash.material);
-
-    gsap.to(flash.scale, {
-      x: 0.1,
-      y: 0.1,
-      z: 0.1,
-      duration: 0.05,
-      ease: 'power2.in',
-      onComplete: () => {
-        flash!.visible = false;
-        this.engine.scene.remove(flash!);
-        this.muzzleFlashPool.push(flash!);
-      }
-    });
-    gsap.to(flash.material, {
-      opacity: 0,
-      duration: 0.05,
-      ease: 'power2.in'
-    });
-  }
-
-  private createPlayerShotTracer(muzzleWorld: THREE.Vector3, direction: THREE.Vector3, colorHex: number) {
-    const end = muzzleWorld.clone().addScaledVector(direction, 620);
-    const geometry = new THREE.BufferGeometry().setFromPoints([muzzleWorld, end]);
-    const material = new THREE.LineBasicMaterial({
-      color: colorHex,
-      transparent: true,
-      opacity: 0.9,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-      toneMapped: false
-    });
-    const tracer = new THREE.Line(geometry, material);
-    this.engine.scene.add(tracer);
-
-    gsap.to(material, {
-      opacity: 0,
-      duration: 0.16,
-      ease: 'power2.out',
-      onComplete: () => {
-        this.engine.scene.remove(tracer);
-        geometry.dispose();
-        material.dispose();
-      }
-    });
   }
 
   public createSparksAt(pos: THREE.Vector3, colorHex: number = 0xffcc00, count: number = 15) {
@@ -409,17 +273,7 @@ export class CombatSystem {
     }
     posAttr.needsUpdate = true;
 
-    pSystem.material = this.getOrCreateMaterial(`sparks_${colorHex}`, () => new THREE.PointsMaterial({
-      color: colorHex,
-      size: 20,
-      map: this.bgDot,
-      transparent: true,
-      opacity: 1.0,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-      sizeAttenuation: true,
-      toneMapped: false
-    }));
+    pSystem.material = this.getOrCreateMaterial(`sparks_${colorHex}`, () => impactMaterial('sparks', colorHex, this.bgDot));
 
     (pSystem.material as THREE.PointsMaterial).opacity = 1.0;
 
@@ -467,12 +321,7 @@ export class CombatSystem {
       mesh = new THREE.Mesh(this.sharedSphere16Geo);
     }
 
-    mesh.material = this.getOrCreateMaterial(`explosion_${color}`, () => new THREE.MeshBasicMaterial({
-      color: color,
-      transparent: true,
-      opacity: 1.0,
-      toneMapped: false
-    }));
+    mesh.material = this.getOrCreateMaterial(`explosion_${color}`, () => impactMaterial('explosion', color));
 
     (mesh.material as THREE.MeshBasicMaterial).opacity = 1.0;
 
@@ -500,13 +349,7 @@ export class CombatSystem {
       bubble = new THREE.Mesh(this.sharedSphere32Geo);
     }
 
-    bubble.material = this.getOrCreateMaterial('shield_flare', () => new THREE.MeshBasicMaterial({
-      color: 0x00aaff,
-      transparent: true,
-      opacity: 0.7,
-      wireframe: true,
-      toneMapped: false
-    }));
+    bubble.material = this.getOrCreateMaterial('shield_flare', () => impactMaterial('shield', 0x00aaff));
 
     (bubble.material as THREE.MeshBasicMaterial).opacity = 0.7;
 
@@ -530,6 +373,15 @@ export class CombatSystem {
   public shootLaser(userShipGroup: THREE.Group | null, authProfileId: string | undefined, shipVelocity: THREE.Vector3) {
     if (!userShipGroup) return;
 
+    if (this.multiplayer.authoritative) {
+      const weapon = this.engine.shipController.activeWeapon, now = Date.now(), cooldown = weapon === 'laser' ? 200 : weapon === 'shotgun' ? 400 : 650;
+      if (this.engine.shipController.isDead || now - this.lastShootTime < cooldown) return;
+      if (!this.multiplayer.action('fire', { weapon, color: this.laserColor })) return;
+      this.lastShootTime = now;
+
+      this.soundManager.playWeapon(weapon, this.laserColor, weapon === 'missile' ? .4 : .3); return;
+    }
+
     const now = Date.now();
     
     // Subsystem Weapons Check: Misfires
@@ -551,7 +403,7 @@ export class CombatSystem {
 
     if (activeWeapon === 'shotgun') {
       // PLASMA SHOTGUN: 3 spreading lasers
-      this.soundManager.playLaser(this.laserColor, 0.45);
+      this.soundManager.playWeapon('shotgun', this.laserColor, .34);
       const laserColorHex = this.laserColor === 'red' ? 0xff2222 : 0x2288ff;
       const shotSource = this.getPlayerShotSource(userShipGroup);
       const forwardVec = shotSource.forwardWorld;
@@ -573,8 +425,6 @@ export class CombatSystem {
         );
 
         this.engine.scene.add(laser);
-        this.createMuzzleFlashAt(shotSource.muzzleWorld, laserColorHex);
-        this.createPlayerShotTracer(shotSource.muzzleWorld, dir, laserColorHex);
 
         this.lasers.push({
           mesh: laser,
@@ -588,8 +438,8 @@ export class CombatSystem {
 
     } else if (activeWeapon === 'missile') {
       // HOMING MISSILE: Heavy rocket tracking nearest bot
-      this.soundManager.playLaser(this.laserColor === 'red' ? 'blue' : 'red', 1.0);
-      const laserColorHex = 0xffaa00;
+      this.soundManager.playWeapon('missile', this.laserColor, .4);
+
 
       const group = this.createMissileOrTorpedo(false);
       const shotSource = this.getPlayerShotSource(userShipGroup);
@@ -605,8 +455,6 @@ export class CombatSystem {
       );
 
       this.engine.scene.add(group);
-      this.createMuzzleFlashAt(shotSource.muzzleWorld, laserColorHex);
-      this.createPlayerShotTracer(shotSource.muzzleWorld, forwardVec, laserColorHex);
 
       this.multiplayer.broadcastShoot(forwardVec, 'red', 'missile');
       this.lasers.push({
@@ -638,8 +486,6 @@ export class CombatSystem {
       );
 
       this.engine.scene.add(laser);
-      this.createMuzzleFlashAt(shotSource.muzzleWorld, laserColorHex);
-      this.createPlayerShotTracer(shotSource.muzzleWorld, forwardVec, laserColorHex);
 
       this.multiplayer.broadcastShoot(forwardVec, this.laserColor, 'laser');
       this.lasers.push({
@@ -653,6 +499,14 @@ export class CombatSystem {
   }
 
   public update(dt: number, authProfileId: string | undefined, starMeshes: THREE.Mesh[], orbitObjects: OrbitObject[], userShipGroup: THREE.Group | null) {
+    if (this.multiplayer.authoritative) {
+      for (let i = this.lasers.length - 1; i >= 0; i--) {
+        const shot = this.lasers[i]; shot.mesh.position.addScaledVector(shot.velocity, dt); shot.life -= dt;
+        this.updateBoltTail(shot.mesh, shot.velocity.length() * dt);
+        if (shot.life <= 0) { this.returnLaserToPool(shot.mesh as THREE.Group); this.lasers.splice(i, 1); }
+      }
+      return;
+    }
     // Lasers and Real-time Projectile Hit Detection
     for (let i = this.lasers.length - 1; i >= 0; i--) {
       const l = this.lasers[i];
@@ -677,13 +531,13 @@ export class CombatSystem {
           l.velocity.copy(currentDir).multiplyScalar(2800);
           
           l.mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), currentDir);
-          l.mesh.rotateX(Math.PI / 2);
         }
       }
 
       const prevPos = l.lastPosition ? l.lastPosition.clone() : l.mesh.position.clone();
       
       l.mesh.position.addScaledVector(l.velocity, dt);
+      this.updateBoltTail(l.mesh, l.velocity.length() * dt);
       if (!l.lastPosition) {
         l.lastPosition = new THREE.Vector3();
       }
@@ -741,7 +595,7 @@ export class CombatSystem {
                     const randomColor = colors[Math.floor(Math.random() * colors.length)];
                     this.createExplosionAt(explodePos, randomColor, 25 + Math.random() * 20);
                     this.createSparksAt(explodePos, randomColor, 35);
-                    this.soundManager.playLaser('red', 1.0); // Roaring explosion sound
+                    this.soundManager.playWeapon('impact', 'red', .45, explodePos);
                   });
                 }
                 

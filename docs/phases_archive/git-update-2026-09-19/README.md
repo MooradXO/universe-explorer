@@ -1,34 +1,7 @@
-# Обновление игры для GitHub — 19 сентября 2026
+# GitHub source update
 
-## Результат
+Updated MooradXO/universe-explorer main to 09534465b66ca15e6922fef75831765d61f62243 and independently verified the remote SHA. Included current environment generation, guest entry, Titan & Copper HUD and game resources. At the owner's request, removed all 88 constellation illustrations, labels and their runtime rather than restoring old lines. Verification passed: 68 unit tests, six HUD browser scenarios, HIGH/LOW Proxima travel/return and installed smoke. Databases, local environment files, temporary builds and cancelled art stayed outside publication. Later catalogue/deployment commits and Colyseus work are separate stages.
 
-Подготовлена актуальная версия игры для `MooradXO/universe-explorer`, ветка `main`. В удалённом репозитории до этого находился только `99f34cb` (Initial public version).
+## Historical scope
 
-В обновление входят изменения локальной разработки: секторный космос и каталожные системы, генератор окружений около планет и между ними, гостевой вход, удаление GitHub Hub/OAuth, стартовое меню и HUD Titan & Copper. Генератор окружений и существующие механики сохранены.
-
-По последнему поручению пользователя перед публикацией удалены все 88 изображений созвездий (237 MB вместе с manifest), их подписи, renderer, выбор территории и загрузчик текстур. Удалён обслуживавший только этот слой CosmosGenerator и устаревшие проверки иллюстраций. Старые линии созвездий не возвращены. Звёздный фон и каталог карты работают отдельно и сохранены.
-
-## Установленная клиентская сборка
-
-- Entry: `main-FYL2DVD-.js`.
-- SHA256: `94fc2c05e33ca5d1ce6a7af674945e2bbcbce96269f83607be35aa9e68a20f36`.
-- Основной JS: 210.40 kB / 62.28 kB gzip, ранее 245.83 kB / 76.03 kB gzip.
-- Обновлён основной `dist/`, изображения созвездий из него удалены. Новая версия доступна после обновления страницы `http://127.0.0.1:3001/`.
-- Прежние hashed JS/CSS сохранены для открытых вкладок. Сам `dist/` в Git не включён: сборка создаётся из исходников.
-
-## Проверки
-
-- TypeScript `--noEmit`: PASS.
-- Space-only guard, включая отсутствие слоя/ресурсов созвездий: PASS.
-- Production Vite build: PASS.
-- Vitest: 68 tests / 18 files PASS. Десять проверок удалённого слоя созвездий удалены вместе с ним.
-- Playwright HUD: 6 scenarios PASS, desktop HIGH и mobile LOW; окна, управление фокусом и отсутствие наложений.
-- HIGH/LOW: стартовое меню → гостевой полёт → Proxima Centauri через карту → возврат на базу. Ошибок JavaScript и запросов изображений созвездий нет; `no-constellations-smoke.json`.
-- Установленная основная игра на 3001: новый entry, гостевой вход и отсутствие созвездий PASS; `installed-smoke.json`.
-- `npm audit --omit=dev`: 0 vulnerabilities.
-
-## Состав репозитория и следующий этап
-
-В Git идут исходники, необходимые игровые ресурсы, конфигурация, тесты и документация. `.gitignore` исключает временные проверочные сборки, локальные настройки, SQLite и отменённые материалы созвездий. Старые отчёты в архиве описывают прежнее состояние, а не текущие возможности.
-
-Полная база AT-HYG, блоки карты и кеши научных API находятся вне game repository. Для сервера потребуется отдельно подключить каталог и API; текущий `/__catalog/` работает через локальный middleware. В этом обновлении сервер не развёртывается.
+This report records the implementation on the date in its directory name. Later stages may supersede its UI, transport or limits. Retained JSON and screenshots provide compact evidence; local recordings and source backups are not release assets. See the [current documentation](../../README.md).

@@ -1,0 +1,188 @@
+{
+  "results": [
+    {
+      "scenario": "audition",
+      "voices": {
+        "active": 4,
+        "spatial": 0,
+        "buffers": 4,
+        "played": {
+          "laser": 2,
+          "shotgun": 1,
+          "missile": 1,
+          "impact": 0
+        },
+        "dropped": 0
+      },
+      "peak": 0.48484721779823303,
+      "rms": [
+        0.04157104423350609,
+        0.04157104423350609
+      ]
+    },
+    {
+      "scenario": "burst",
+      "voices": {
+        "active": 15,
+        "spatial": 0,
+        "buffers": 3,
+        "played": {
+          "laser": 15,
+          "shotgun": 0,
+          "missile": 0,
+          "impact": 0
+        },
+        "dropped": 0
+      },
+      "peak": 0.3256695568561554,
+      "rms": [
+        0.06465571476267329,
+        0.06465571476267329
+      ]
+    },
+    {
+      "scenario": "stress",
+      "voices": {
+        "active": 16,
+        "spatial": 12,
+        "buffers": 9,
+        "played": {
+          "laser": 6,
+          "shotgun": 4,
+          "missile": 6,
+          "impact": 0
+        },
+        "dropped": 88
+      },
+      "peak": 0.9079949855804443,
+      "rms": [
+        0.1390505635782958,
+        0.05775643428214853
+      ]
+    },
+    {
+      "scenario": "left",
+      "voices": {
+        "active": 1,
+        "spatial": 1,
+        "buffers": 1,
+        "played": {
+          "laser": 1,
+          "shotgun": 0,
+          "missile": 0,
+          "impact": 0
+        },
+        "dropped": 0
+      },
+      "peak": 0.07091229408979416,
+      "rms": [
+        0.007419029827628373,
+        0.0017513951237788845
+      ]
+    },
+    {
+      "scenario": "right",
+      "voices": {
+        "active": 1,
+        "spatial": 1,
+        "buffers": 1,
+        "played": {
+          "laser": 1,
+          "shotgun": 0,
+          "missile": 0,
+          "impact": 0
+        },
+        "dropped": 0
+      },
+      "peak": 0.07091228663921356,
+      "rms": [
+        0.0017513947763952641,
+        0.007419029913581769
+      ]
+    },
+    {
+      "scenario": "far",
+      "voices": {
+        "active": 1,
+        "spatial": 1,
+        "buffers": 1,
+        "played": {
+          "laser": 1,
+          "shotgun": 0,
+          "missile": 0,
+          "impact": 0
+        },
+        "dropped": 0
+      },
+      "peak": 0.012224774807691574,
+      "rms": [
+        0.00005319948276694798,
+        0.0012789916663640216
+      ]
+    },
+    {
+      "scenario": "rotated",
+      "voices": {
+        "active": 1,
+        "spatial": 1,
+        "buffers": 1,
+        "played": {
+          "laser": 1,
+          "shotgun": 0,
+          "missile": 0,
+          "impact": 0
+        },
+        "dropped": 0
+      },
+      "peak": 0.07091229408979416,
+      "rms": [
+        0.007419029827628373,
+        0.0017513951237788845
+      ]
+    },
+    {
+      "scenario": "shifted",
+      "voices": {
+        "active": 1,
+        "spatial": 1,
+        "buffers": 1,
+        "played": {
+          "laser": 1,
+          "shotgun": 0,
+          "missile": 0,
+          "impact": 0
+        },
+        "dropped": 0
+      },
+      "peak": 0.07091228663921356,
+      "rms": [
+        0.0017513947763952641,
+        0.007419029913581769
+      ]
+    }
+  ],
+  "livePeak": {
+    "active": 12,
+    "spatial": 12,
+    "buffers": 3,
+    "played": {
+      "laser": 12,
+      "shotgun": 0,
+      "missile": 0,
+      "impact": 0
+    },
+    "dropped": 88
+  },
+  "ended": {
+    "active": 0,
+    "spatial": 0,
+    "buffers": 3,
+    "played": {
+      "laser": 12,
+      "shotgun": 0,
+      "missile": 0,
+      "impact": 0
+    },
+    "dropped": 88
+  }
+}

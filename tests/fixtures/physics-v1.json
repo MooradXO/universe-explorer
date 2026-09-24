@@ -1,0 +1,37 @@
+[
+  {
+    "id": "athyg:4.0:1",
+    "hash": "063b7d5734b6b8d924619be638dbe268a294d6c8ee1c6e6b9fc5818d1f17d574",
+    "legacySnapshotHash": "a1dc6fe194a0956d09dc2b294d7f5c9ae7ea916482b5c67ec092ebc9a78a4187"
+  },
+  {
+    "id": "athyg:4.0:1440825",
+    "hash": "337557fd39678aaf0e9b1739fe685ed5b21e9ed1da5d799ce118c2c55859f25e",
+    "legacySnapshotHash": "bc0a3276215cc6552be6dea14a8511756617789996e562f79c732b9859543a9b"
+  },
+  {
+    "id": "athyg:4.0:586693",
+    "hash": "f20e8d45871dc73250645e69db06587400dc5316467aa37142a272e6dd0d7996",
+    "legacySnapshotHash": "58cb21d51c910c7c9b61eac52b643d262776089c37a760388c5c4c313d77d83c"
+  },
+  {
+    "id": "athyg:4.0:1897139",
+    "hash": "6c54d498c2eb1b6083b46a46243264f56b2a59c174dd5b6a5e6fa89ee4fc0c9e",
+    "legacySnapshotHash": "fed0a2698b9dae5a305013cc3a98dc0da33574ecd1e2f717759b5987cfb75979"
+  },
+  {
+    "id": "athyg:4.0:464934",
+    "hash": "b1a87d4e8b103f60132a1562ded8f867050fb6aae5c14dde20a748c6a944ef5a",
+    "legacySnapshotHash": "e75179bb0875c56ed0d1b50f12ca44c9653392886457a141c927e090aef4f01c"
+  },
+  {
+    "id": "athyg:4.0:2095118",
+    "hash": "72465053f4aedaec46223822ef67bcd4aa0cd9994a41cef2f642736c58196f91",
+    "legacySnapshotHash": "8abc76f939b353c7ef4d9235a273ae10fdf0f5781492e8e80f2bcdf5efbac641"
+  },
+  {
+    "id": "athyg:4.0:390195",
+    "hash": "36c110950e93d82b8852d81f474aa6bda0a443333d394afbe67504c586a629e1",
+    "legacySnapshotHash": "a427f7bbd86ac62c4faa98d7a3dda817036d66230e7712a19ec3787d431f2e9e"
+  }
+]

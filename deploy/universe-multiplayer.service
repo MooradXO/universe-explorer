@@ -1,0 +1,38 @@
+# Installed 2026-09-19 with explicit user approval. Keep capacity at 50 for CPU headroom.
+[Unit]
+Description=Universe authoritative multiplayer (Colyseus)
+After=network.target
+
+[Service]
+Type=simple
+User=universe-explorer
+Group=universe-explorer
+WorkingDirectory=/var/www/universe-multiplayer/current
+ExecStart=/opt/universe-explorer/runtime/node-v24.19.0-linux-x64/bin/node --import tsx server/index.ts
+Environment=NODE_ENV=production
+Environment=MULTIPLAYER_HOST=127.0.0.1
+Environment=MULTIPLAYER_PORT=2567
+Environment=MULTIPLAYER_ORIGINS=https://universe.projectai.biz
+Environment=MULTIPLAYER_CATALOG=/var/lib/universe-explorer/map-v1
+Environment=MULTIPLAYER_SAVE=/var/lib/universe-multiplayer/guests.json
+Environment=MULTIPLAYER_BOTS=true
+Environment=MULTIPLAYER_MAX_PLAYERS=50
+StateDirectory=universe-multiplayer
+StateDirectoryMode=0700
+UMask=0077
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=30
+MemoryMax=1536M
+CPUQuota=150%
+TasksMax=128
+LimitNOFILE=8192
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/var/lib/universe-multiplayer
+
+[Install]
+WantedBy=multi-user.target

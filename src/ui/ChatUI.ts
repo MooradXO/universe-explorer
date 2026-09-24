@@ -16,7 +16,7 @@ export class ChatUI {
     this.messages = document.createElement('div'); this.messages.className = 'chat-messages';
     this.messages.setAttribute('role', 'log'); this.messages.setAttribute('aria-live', 'polite');
     const form = document.createElement('form'); form.className = 'chat-compose';
-    this.input = document.createElement('input'); this.input.type = 'text'; this.input.maxLength = 1000;
+    this.input = document.createElement('input'); this.input.type = 'text'; this.input.maxLength = import.meta.env.VITE_MULTIPLAYER_URL ? 280 : 1000;
     this.input.placeholder = 'Type a message…'; this.input.setAttribute('aria-label', 'Message');
     const send = document.createElement('button'); send.type = 'submit'; send.textContent = 'SEND';
     form.append(this.input, send); this.chatContainer.append(this.messages, form); layer.append(this.chatContainer);

@@ -1,0 +1,142 @@
+{
+  "acceptedScenarios": 10,
+  "initialRun": {
+    "startTime": "2026-09-19T16:55:51.718Z",
+    "duration": 203608.53999999998,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "targetedRun": {
+    "startTime": "2026-09-19T17:02:01.266Z",
+    "duration": 24511.049000000003,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "testMaintenance": "Desktop FIRE selector replaced with mouse shooting and cursor release; only the affected scenario was rerun. Game build unchanged.",
+  "cases": [
+    {
+      "title": "cruise yields to firing, unknown distances block warp, repeated systems release resources",
+      "project": "desktop-high",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 23327,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "generated artwork loads, header aligns and flight HUD remains uncluttered",
+      "project": "desktop-high",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2013,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "opening another window cancels a map that is still loading",
+      "project": "desktop-high",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3072,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "Solar base, Mars cruise, real catalogue warp, exploration, return and offline save",
+      "project": "desktop-high",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 32585,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "windows replace one another, remain in bounds and return input to flight",
+      "project": "desktop-high",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2041,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "cruise yields to firing, unknown distances block warp, repeated systems release resources",
+      "project": "mobile-low",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 22475,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "generated artwork loads, header aligns and flight HUD remains uncluttered",
+      "project": "mobile-low",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1847,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "opening another window cancels a map that is still loading",
+      "project": "mobile-low",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2852,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "Solar base, Mars cruise, real catalogue warp, exploration, return and offline save",
+      "project": "mobile-low",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 32174,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "windows replace one another, remain in bounds and return input to flight",
+      "project": "mobile-low",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2016,
+          "errors": []
+        }
+      ]
+    }
+  ]
+}

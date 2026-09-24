@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "file": "assets/main-Da-fLuKO.js",
+      "sha256": "324908d100a45c5af876b9db63b48be24162a0c1c7065b3c469e2ccd4b9615a2",
+      "bytes": 232126
+    },
+    {
+      "file": "assets/StarMapUI-CPFW5tcS.js",
+      "sha256": "8836e2c744b5331998298317278f76d896265c4fad19b716bbfe5b7f0aee355f",
+      "bytes": 22763
+    }
+  ],
+  "archiveSHA256": "ab5647c6c68ce3d3ee15fcff8fb89689144fdebce31be3c05fa4bebf5a9a614e",
+  "archiveBytes": 75681
+}

@@ -1,0 +1,810 @@
+{
+  "mode": "LOW",
+  "averageFPS": 194.32376312881166,
+  "maxP95FrameMs": 9,
+  "maxRemotePlayers": 99,
+  "maxProjectiles": 1164,
+  "server": {
+    "players": 100,
+    "systems": 1,
+    "bots": 0,
+    "tick": 6763,
+    "tickMs": {
+      "p50": 0.26829999999608845,
+      "p95": 6.2942999999795575,
+      "p99": 7.589200000002165,
+      "max": 17.582099999999627
+    },
+    "activeShots": 818,
+    "fired": 27616,
+    "hits": 2122,
+    "rejected": 76,
+    "socketBytesWritten": 227204864,
+    "elapsed": 135.342,
+    "cpuMicroseconds": 15735000,
+    "rssBytes": 282353664
+  },
+  "errors": [],
+  "samples": [
+    {
+      "timestampMs": 6958.5,
+      "fps": 196.8073474723818,
+      "p95FrameTimeMs": 6.100000008940697,
+      "renderer": {
+        "calls": 1136,
+        "triangles": 343574,
+        "points": 7538,
+        "lines": 274212,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 48387196,
+        "jsHeapAllocatedBytes": 96714524,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 839,
+      "voice": {
+        "peers": 68,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 58,
+        "sendAttempts": 190,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 4,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 265,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 7980.29999999702,
+      "fps": 184.5775225589109,
+      "p95FrameTimeMs": 8.399999991059303,
+      "renderer": {
+        "calls": 1479,
+        "triangles": 349062,
+        "points": 7538,
+        "lines": 274212,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 51579207,
+        "jsHeapAllocatedBytes": 97595491,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 1164,
+      "voice": {
+        "peers": 68,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 68,
+        "sendAttempts": 227,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 5,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 315,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 8994.79999999702,
+      "fps": 184.69115534691244,
+      "p95FrameTimeMs": 7.199999988079071,
+      "renderer": {
+        "calls": 1256,
+        "triangles": 285864,
+        "points": 7538,
+        "lines": 303972,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 50012557,
+        "jsHeapAllocatedBytes": 99008145,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 854,
+      "voice": {
+        "peers": 68,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 78,
+        "sendAttempts": 264,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 6,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 365,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 10017.29999999702,
+      "fps": 168.6656671659458,
+      "p95FrameTimeMs": 9,
+      "renderer": {
+        "calls": 1307,
+        "triangles": 268799,
+        "points": 7538,
+        "lines": 309924,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 42731368,
+        "jsHeapAllocatedBytes": 99294572,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 799,
+      "voice": {
+        "peers": 68,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 88,
+        "sendAttempts": 302,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 7,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 415,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 11037.59999999404,
+      "fps": 190.33520143748837,
+      "p95FrameTimeMs": 7.0999999940395355,
+      "renderer": {
+        "calls": 808,
+        "triangles": 248585,
+        "points": 7538,
+        "lines": 428964,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 37759406,
+        "jsHeapAllocatedBytes": 106580350,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 1065,
+      "voice": {
+        "peers": 68,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 98,
+        "sendAttempts": 338,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 8,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 465,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 12056,
+      "fps": 197.8021978021978,
+      "p95FrameTimeMs": 5.200000002980232,
+      "renderer": {
+        "calls": 137,
+        "triangles": 214013,
+        "points": 7538,
+        "lines": 434916,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 59469943,
+        "jsHeapAllocatedBytes": 106653595,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 819,
+      "voice": {
+        "peers": 68,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 109,
+        "sendAttempts": 376,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 4,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 520,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 13073.09999999404,
+      "fps": 198.87305269939446,
+      "p95FrameTimeMs": 5.200000002980232,
+      "renderer": {
+        "calls": 136,
+        "triangles": 77048,
+        "points": 7538,
+        "lines": 434916,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 36090750,
+        "jsHeapAllocatedBytes": 102323878,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 1119,
+      "voice": {
+        "peers": 49,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 119,
+        "sendAttempts": 413,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 5,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 570,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 14096.79999999702,
+      "fps": 198.8950276243094,
+      "p95FrameTimeMs": 5.100000008940697,
+      "renderer": {
+        "calls": 241,
+        "triangles": 78728,
+        "points": 7538,
+        "lines": 434916,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 51335907,
+        "jsHeapAllocatedBytes": 102395587,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 791,
+      "voice": {
+        "peers": 43,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 129,
+        "sendAttempts": 451,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 6,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 620,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 15126.09999999404,
+      "fps": 198.87305269939446,
+      "p95FrameTimeMs": 5.100000008940697,
+      "renderer": {
+        "calls": 214,
+        "triangles": 78296,
+        "points": 7538,
+        "lines": 434916,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 35313253,
+        "jsHeapAllocatedBytes": 102715441,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 769,
+      "voice": {
+        "peers": 29,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 139,
+        "sendAttempts": 488,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 7,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 670,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 16137.79999999702,
+      "fps": 199.97778024796352,
+      "p95FrameTimeMs": 5.100000008940697,
+      "renderer": {
+        "calls": 181,
+        "triangles": 77768,
+        "points": 7538,
+        "lines": 434916,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 38880532,
+        "jsHeapAllocatedBytes": 102783088,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 1018,
+      "voice": {
+        "peers": 19,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 150,
+        "sendAttempts": 525,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 3,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 725,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 17147.89999999106,
+      "fps": 198.91700740609843,
+      "p95FrameTimeMs": 5.100000008940697,
+      "renderer": {
+        "calls": 435,
+        "triangles": 81832,
+        "points": 7538,
+        "lines": 434916,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 45674612,
+        "jsHeapAllocatedBytes": 102854228,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 787,
+      "voice": {
+        "peers": 15,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 160,
+        "sendAttempts": 563,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 3,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 775,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 18168,
+      "fps": 196.4636542265248,
+      "p95FrameTimeMs": 5.5999999940395355,
+      "renderer": {
+        "calls": 643,
+        "triangles": 85160,
+        "points": 7538,
+        "lines": 434916,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 45759773,
+        "jsHeapAllocatedBytes": 98919241,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 1140,
+      "voice": {
+        "peers": 14,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 170,
+        "sendAttempts": 600,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 4,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 825,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 19196.20000000298,
+      "fps": 199.97778024465288,
+      "p95FrameTimeMs": 5.100000008940697,
+      "renderer": {
+        "calls": 136,
+        "triangles": 77048,
+        "points": 7538,
+        "lines": 434916,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 56758553,
+        "jsHeapAllocatedBytes": 102136861,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 860,
+      "voice": {
+        "peers": 4,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 180,
+        "sendAttempts": 638,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 6,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 875,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 20212,
+      "fps": 200,
+      "p95FrameTimeMs": 5.100000008940697,
+      "renderer": {
+        "calls": 136,
+        "triangles": 77048,
+        "points": 7538,
+        "lines": 434916,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 44248817,
+        "jsHeapAllocatedBytes": 102194149,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 786,
+      "voice": {
+        "peers": 0,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 190,
+        "sendAttempts": 675,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 7,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 925,
+        "dead": false
+      }
+    },
+    {
+      "timestampMs": 21247.59999999404,
+      "fps": 200,
+      "p95FrameTimeMs": 5.100000008940697,
+      "renderer": {
+        "calls": 244,
+        "triangles": 78776,
+        "points": 7538,
+        "lines": 434916,
+        "geometries": 39,
+        "textures": 13,
+        "programs": 27,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      },
+      "memory": {
+        "jsHeapUsedBytes": 40513174,
+        "jsHeapAllocatedBytes": 102280094,
+        "gpuBytes": null
+      },
+      "players": {
+        "local": 1,
+        "remote": 99,
+        "bots": 0
+      },
+      "projectiles": 1073,
+      "voice": {
+        "peers": 0,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "realtime": {
+        "transport": "colyseus",
+        "state": "connected",
+        "subscribed": true,
+        "configured": true,
+        "received": 201,
+        "sendAttempts": 714,
+        "id": "guest_5cf0317f-b1b9-4b34-922b-9cfc424ab1ec",
+        "systemId": "athyg:4.0:1",
+        "pendingInputs": 3,
+        "correctionDistance": 0,
+        "hp": 1000,
+        "shield": 1000,
+        "epoch": 1,
+        "ack": 980,
+        "dead": false
+      }
+    }
+  ]
+}

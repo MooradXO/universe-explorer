@@ -1,72 +1,7 @@
-# Sector streaming и floating origin — 15 сентября 2026
+# Sector streaming and floating origin
 
-Рабочая копия: `E:\UNIVERSE\UNIVERSE2\project\universeproject (2)`, репозиторий `MooradXO/universe-explorer`. Продолжение space-only спринта; инженерная основа Step 3. Полная художественная переработка окружения ещё продолжается.
+Replaced the finite star field with a camera-centred background and deterministic 50,000-unit sectors. World positions combine integer sector and offset in [-25000,25000). At a 10,000-unit local distance, origin shifts move cameras, ships, projectiles, bots, trails, stations and respawn points consistently. Worker/cache bounds and stale-result cancellation control streaming. Eighteen unit tests covered negative boundaries, precision at very large sectors, relative geometry, cache/worker errors, network-coordinate conversion, swept collision and respawn. Build/types/guard and browser regressions passed; a 5% comparative rendering budget passed on the test machine. Network validation at this stage was a transport mock, not live Supabase load.
 
-## Результат
+## Historical scope
 
-- Конечное звёздное поле заменено сферическим фоном вокруг камеры и детерминированными секторами по 50 000 units.
-- Позиция мира — целочисленный `sector` и `offset` в интервале `[-25000,25000)`. При удалении корабля на 10 000 units переносится локальный центр, включая камеру, снаряды, ботов, следы, станции и позиции возрождения.
-- Отдельный module worker генерирует manifests. Не более 2 запросов одновременно, 125 manifests в cache, 27 navigation groups. Устаревшие ответы после перемещения отбрасываются.
-- Каждый видимый сектор — один Points buffer для звёзд и дальних изображений планет. Полные планеты создаются по близости: максимум 16 HIGH / 8 LOW, радиус 15 000 / 8 000. Не более одного создания navigation buffer или planet visual за кадр.
-- При выгрузке освобождаются материалы, текстуры и секторные buffers. Геометрия сфер, спутников и колец переиспользуется.
-- Домашний каталог из 80 планет сохранён побитно по descriptors v1. В каждом новом секторе — 32 звезды и 6 планет. Seed: `universe-explorer:world:v1`, версия sector manifest: 1.
-- Созвездия, merchant, ISS, Voyager и чёрная дыра остаются в домашней области. Их локальные анимации не зависят от переноса центра.
-- Сохранение позиции теперь использует положение корабля в глобальных координатах. Существующие x/y/z сетевые поля и schema сохранены; преобразование в локальные координаты выполняется на границе MultiplayerManager.
-
-## Границы модулей
-
-| Модуль | Ответственность |
-| --- | --- |
-| `world/space/WorldPosition`, `FloatingOrigin` | Чистая математика координат |
-| `SectorManifest`, `SectorWorker`, `SectorWorkerClient` | Версионированное содержимое, генерация без Three.js в worker |
-| `SectorStream` | Очередь, bounded cache, отбрасывание устаревших результатов |
-| `SectorNavigation`, `DeepSpaceBackground` | Дальние объекты и фон |
-| `SpaceWorld` | Управление небесными слоями, budgets и статистика |
-| `PlanetBuilder`, `celestial/PlanetVisual` | Выбор близких планет, создание и освобождение ресурсов |
-| `WorldBuilder`, `shiftSceneOrigin` | Согласование переноса центра с игровыми системами |
-| `ShipController`, `CombatSystem`, `BotAI` | Полёт/возрождение, снаряды, поведение ботов |
-
-## Проверки
-
-- Production build и space-only guard — PASS.
-- 18 unit tests: предыдущий seed/telemetry contract, отрицательные границы, сохранение дробной точности в секторах порядка `10¹²`, относительная геометрия после переноса, stale worker results, лимит cache, возврат в прежний сектор, ошибки worker, сетевые координаты двух клиентов с разными центрами, swept collision и возрождение.
-- 10 browser tests на Edge: desktop HIGH 1440×810 и mobile LOW 844×390. Обычный guest/start/back, два независимых каталога, near-base и planet-showcase, камера/оружие/тяга, пересечение отрицательной границы с 100 ботами и удержанием огня, ReturnToBase, фиксированный дальний маршрут и повторные возвращения.
-- Маршрут включает сектор `[1000000,-1000000,1000000]` с offset `[0.125,100.25,9800.5]`; координаты сохранены точно. Число cache/groups/full planets ограничено. После повторного возвращения geometry/texture counts не растут.
-- Console/page errors в сценариях — 0. TypeScript и `git diff --check` — PASS.
-
-Evidence: `after/*.json` и `after/*.png` для прежних named states; `*-boundary.json/png` и `*-tour.json`, `*-frontier.png` для дальнего полёта. Все fixtures требуют обычный guest entry; debug API остаётся read-only.
-
-## Производительность
-
-Сравнение с сохранённым **после первого спринта** baseline на том же компьютере и с теми же render profiles:
-
-| Сцена | Draw calls до → после | Triangles до → после |
-| --- | ---: | ---: |
-| HIGH near-base | 140 → 104 | 114 848 → 61 848 |
-| HIGH planet-showcase | ~151 → ~121 | 82 795 → 36 053 |
-| LOW near-base | 97 → 85 | 87 264 → 58 416 |
-| LOW planet-showcase | 89 → 77 | 42 495 → 14 655 |
-
-Относительный budget FPS/frame time/calls/triangles с допуском 5% — PASS; полный вывод — [performance-comparison.txt](performance-comparison.txt). В итоговом headless-прогоне средний frame time около 5 ms, FPS около 200; это особенность тестового окружения, а не обещание FPS на реальном телефоне. Предварительный прогон содержал отдельные длинные паузы; итоговый прогон и исходный baseline сравниваются без параллельных браузерных тестов. Heap зависит от GC; GPU bytes не выдаются за измеренные.
-
-Основной app chunk: **223.35 KB / 66.14 KB gzip**, worker отдельно **4.19 KB**; после первого спринта app был 212.96 KB / 62.77 KB gzip. Дополнительный код заменяет постоянно загруженную геометрию ограниченным набором ресурсов. Сравнение FPS относится к установившимся named scenes; отдельный жёсткий time budget на переходы пока не вводился. Длительность создания CPU-ресурсов видна в `world.space.jobs`; эта метрика не включает GPU upload.
-
-Воспроизведение:
-
-```powershell
-./scripts/run.ps1 build
-./scripts/run.ps1 test
-./scripts/run.ps1 test:smoke
-node scripts/compare-space-smoke.mjs docs/phases_archive/space-only-sprint-2026-09-15/after docs/phases_archive/sector-streaming-2026-09-15/after
-```
-
-## Что ещё предстоит
-
-- Художественная плотность frontier: более выразительные туманности, астероидные поля с instancing, аномалии и локальные VFX. Прежние конечные decorative nebula volumes/comets/asteroid cloud заменены новым фоном; локальные туманности с gameplay jamming ещё нужно перенести в sector manifest. Сейчас nebula-jamming не активируется.
-- Дальние изображения планет пока простые круговые impostors; звёзды нового navigation layer пока не имеют отдельных карточек/сканирования. Это основа будущего исследовательского содержания.
-- Полные planet LOD выбираются по расстоянию и количественному лимиту. Плавные переходы по экранному размеру и художественная калибровка остаются отдельной визуальной работой.
-- Настоящая секторная сеть, режимы Explorer/Combat и проверка правил PvP входят в следующий сетевой этап. Сейчас общий Realtime channel прежний; проверка преобразования payloads выполнена локальным transport mock, production multiplayer load test не заявляется.
-- Числовые x/y/z в прежней базе/сети ограничивают точность сверхдальних онлайн-координат. Локальная математика хранит sector+offset раздельно; для такого же свойства persistence/network потребуется отдельная версионированная миграция.
-- `EpicToonFX-ThreeJS` пользователя разрешена к использованию. В этом этапе библиотека ещё не включена; выбранные пресеты следует подключать отдельным адаптером после проверки Three r160/r185, без ground plane и с HIGH/LOW budgets.
-
-Рабочие файлы, зависимости, preview и evidence находятся на **E**. Коммит/push не выполнялись.
+This report records the implementation on the date in its directory name. Later stages may supersede its UI, transport or limits. Retained JSON and screenshots provide compact evidence; local recordings and source backups are not release assets. See the [current documentation](../../README.md).

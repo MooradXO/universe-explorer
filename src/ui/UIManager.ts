@@ -10,11 +10,9 @@ import { DeathScreenUI } from './DeathScreenUI';
 import './styles/hud-theme.css';
 import './styles/crosshair.css';
 
-import './styles/object-panel.css';
 
 export class UIManager {
   private layer: HTMLElement;
-  private hudPanel!: HTMLDivElement;
   
   private nebulaOverlay!: HTMLDivElement;
   private flightStatusUI!: FlightStatusUI;
@@ -82,32 +80,6 @@ export class UIManager {
   }
 
   private initUI() {
-    // HUD Panel (shown when clicking a star)
-    this.hudPanel = document.createElement('div');
-    this.hudPanel.className = 'hud-window hud-window--right object-window';
-    this.hudPanel.setAttribute('aria-label', 'Object information');
-
-    const title = document.createElement('h2');
-    title.id = 'hud-title';
-    title.textContent = 'Object Name';
-
-    const type = document.createElement('p');
-    type.id = 'hud-type';
-    type.textContent = 'Object Type';
-
-    const returnBtn = document.createElement('button');
-    returnBtn.className = 'btn-primary';
-    returnBtn.textContent = '[ CLOSE ]';
-    returnBtn.onclick = () => {
-      this.hideHUD();
-    };
-
-    this.hudPanel.appendChild(title);
-    this.hudPanel.appendChild(type);
-    this.hudPanel.appendChild(returnBtn);
-    this.layer.appendChild(this.hudPanel);
-    hudPanels.register('object', { element: this.hudPanel });
-
     // Crosshair - Premium Reticle
     const crosshair = document.createElement('div');
     crosshair.id = 'hud-crosshair';
@@ -131,18 +103,6 @@ export class UIManager {
 
   public addKillFeed(killer: string, killed: string) {
     this.flightStatusUI.addKillFeed(killer, killed);
-  }
-
-  public showHUD(name: string, type: string) {
-    const title = this.hudPanel.querySelector('#hud-title');
-    const typeEl = this.hudPanel.querySelector('#hud-type');
-    if (title) title.textContent = name;
-    if (typeEl) typeEl.textContent = 'Type: ' + type;
-    hudPanels.open('object');
-  }
-
-  public hideHUD() {
-    hudPanels.close('object');
   }
 
   public showDeathScreen(seconds: number) {
@@ -223,6 +183,7 @@ export class UIManager {
     const btnRepairHull = this.hangarPanel.querySelector('#btn-repair-hull') as HTMLButtonElement;
     if (btnRepairHull && needsHullRepair && bounty >= 80) {
       btnRepairHull.onclick = () => {
+        if (sc.networkAction) { sc.networkAction('repair', { item: 'hull' }); setTimeout(() => this.renderHangarPanel(), 250); return; }
         (window as any).localPlayerBounty -= 80;
         sc.currentHP = sc.maxHP;
         this.updateHP(sc.currentHP, sc.maxHP);
@@ -233,6 +194,7 @@ export class UIManager {
     const btnRepairSystems = this.hangarPanel.querySelector('#btn-repair-systems') as HTMLButtonElement;
     if (btnRepairSystems && needsSysRepair && bounty >= 50) {
       btnRepairSystems.onclick = () => {
+        if (sc.networkAction) { sc.networkAction('repair', { item: 'systems' }); setTimeout(() => this.renderHangarPanel(), 250); return; }
         (window as any).localPlayerBounty -= 50;
         sc.subsystems.engines = 100;
         sc.subsystems.weapons = 100;

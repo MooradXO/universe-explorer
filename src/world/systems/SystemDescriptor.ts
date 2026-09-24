@@ -1,3 +1,4 @@
+import { starModel, planetModel, coherentAppearance, type PlanetModel, type StarModel } from '../generation/WorldModel';
 import type { MapObject } from '../../catalog/StarMapData';
 import { anchorFromCatalog, type StellarAnchor } from '../space/StellarAddress';
 import type { Triple } from '../space/WorldPosition';
@@ -6,16 +7,17 @@ import { createPlanetCatalog } from '../celestial/PlanetCatalog';
 import { createPlanetPalette } from '../celestial/PlanetPalette';
 import { createSeededRandom, hashString } from '../celestial/WorldSeed';
 import { keplerPosition, type KeplerElements } from './KeplerOrbit';
-import { SYSTEM_CONFIG } from './SystemConfig';
+import { SYSTEM_CONFIG, planetArrivalRadius } from './SystemConfig';
 import { SOLAR_PLANETS, SOLAR_SOURCES } from './SolarSystemData';
 import { systemEnvironmentProfiles, type EnvironmentProfile } from '../environments/EnvironmentProfile';
+import { GENERATOR, type GeneratorVersions } from '../generation/GeneratorContract';
 
 export interface SystemBody {
   id: string; name: string; position: Triple; radius: number; origin: 'catalogue' | 'procedural';
-  source: string | null; note: string; orbit: KeplerElements; visual: PlanetDescriptor; environment: EnvironmentProfile;
+  source: string | null; note: string; orbit: KeplerElements; visual: PlanetDescriptor; environment: EnvironmentProfile; appearance: EnvironmentProfile; model: PlanetModel;
 }
 export interface SystemDescriptor {
-  version: 1; anchor: StellarAnchor; spectrum: string | null; starColor: number; starRadius: number;
+  version: 1; generator: GeneratorVersions; model: StarModel; anchor: StellarAnchor; spectrum: string | null; starColor: number; starRadius: number;
   starRadiusIsIllustrative: boolean; bodies: readonly SystemBody[];
 }
 export const SOLAR_CATALOG_OBJECT: MapObject = {
@@ -29,7 +31,7 @@ const auPosition = (orbit: KeplerElements) => keplerPosition(orbit).map(value =>
 export function buildSystem(object: MapObject): SystemDescriptor {
   const anchor = anchorFromCatalog(object), solar = object.id === SYSTEM_CONFIG.homeSystemId;
   const templates = createPlanetCatalog(50000, `catalogue-systems:v1:${anchor.catalogId}`, solar ? 8 : 4);
-  let bodies: Omit<SystemBody, 'environment'>[];
+  let bodies: Omit<SystemBody, 'environment' | 'appearance' | 'model'>[];
   if (solar) bodies = SOLAR_PLANETS.map((body, index) => {
     const id = `sol/${body.id}`, radius = body.radiusKm / SYSTEM_CONFIG.kilometersPerUnit, position = auPosition(body.orbit);
     const seed = hashString(id), palette = createPlanetPalette(body.biome, seed);
@@ -52,16 +54,21 @@ export function buildSystem(object: MapObject): SystemDescriptor {
     });
   }
   const spectral = /^\s*([OBAFGKM])/i.exec(object.spectrum ?? '')?.[1].toUpperCase() ?? 'G';
-  const profiles = systemEnvironmentProfiles(anchor.catalogId, bodies);
+  const profiles = systemEnvironmentProfiles(anchor.catalogId, bodies), model = starModel(object.spectrum);
   // Unknown stellar radii use an explicitly illustrative proxy, not an inferred measurement.
-  return { version: 1, anchor, spectrum: object.spectrum, starColor: spectralColors[spectral], starRadius: solar ? 69570 : (spectral === 'M' ? 15000 : 70000),
-    starRadiusIsIllustrative: !solar, bodies: bodies.map((body, i) => ({ ...body, environment: profiles[i] })) };
+  return { version: 1, generator: GENERATOR, model, anchor, spectrum: object.spectrum, starColor: spectralColors[spectral], starRadius: solar ? 69570 : (spectral === 'M' ? 15000 : 70000),
+    starRadiusIsIllustrative: !solar, bodies: bodies.map((body, i) => { const climate = planetModel(body.id,body.radius,body.orbit.semiMajorAu,model); return { ...body, environment: profiles[i], model: climate, appearance: coherentAppearance(profiles[i],climate) }; }) };
 }
 
 export function bodyArrival(body: SystemBody): Triple {
-  return [body.position[0], body.position[1], body.position[2] + body.radius * 3 + SYSTEM_CONFIG.arrivalMargin];
+  return [body.position[0], body.position[1], body.position[2] + planetArrivalRadius(body.radius)];
 }
 export function systemArrival(system: SystemDescriptor): Triple {
-  return bodyArrival(system.bodies[system.anchor.catalogId === SYSTEM_CONFIG.homeSystemId ? 2 : 0]);
+  if (system.anchor.catalogId === SYSTEM_CONFIG.homeSystemId) {
+    // Preserve the existing Earth base and saved home approach, independently of planet cruise viewpoints.
+    const earth = system.bodies[2];
+    return [earth.position[0], earth.position[1], earth.position[2] + earth.radius * 3 + SYSTEM_CONFIG.arrivalMargin];
+  }
+  return bodyArrival(system.bodies[0]);
 }
 export const SOLAR_SYSTEM = buildSystem(SOLAR_CATALOG_OBJECT);

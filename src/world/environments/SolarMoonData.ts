@@ -6,7 +6,7 @@ export const SOLAR_MOONS = [
   {
     "parent": "sol/earth",
     "id": "301",
-    "name": "Луна",
+    "name": "Moon",
     "radius": 173.74,
     "position": [
       -29160.83841877129,
@@ -18,7 +18,7 @@ export const SOLAR_MOONS = [
   {
     "parent": "sol/mars",
     "id": "401",
-    "name": "Фобос",
+    "name": "Phobos",
     "radius": 1.108,
     "position": [
       -198.8977928515696,
@@ -30,7 +30,7 @@ export const SOLAR_MOONS = [
   {
     "parent": "sol/mars",
     "id": "402",
-    "name": "Деймос",
+    "name": "Deimos",
     "radius": 0.62,
     "position": [
       1036.6440288573829,
@@ -42,7 +42,7 @@ export const SOLAR_MOONS = [
   {
     "parent": "sol/jupiter",
     "id": "501",
-    "name": "Ио",
+    "name": "Io",
     "radius": 182.149,
     "position": [
       39971.423632957296,
@@ -54,7 +54,7 @@ export const SOLAR_MOONS = [
   {
     "parent": "sol/jupiter",
     "id": "502",
-    "name": "Европа",
+    "name": "Europa",
     "radius": 156.07999999999998,
     "position": [
       -56124.44737473305,
@@ -66,7 +66,7 @@ export const SOLAR_MOONS = [
   {
     "parent": "sol/jupiter",
     "id": "503",
-    "name": "Ганимед",
+    "name": "Ganymede",
     "radius": 263.12,
     "position": [
       -82134.50948603006,
@@ -78,7 +78,7 @@ export const SOLAR_MOONS = [
   {
     "parent": "sol/jupiter",
     "id": "504",
-    "name": "Каллисто",
+    "name": "Callisto",
     "radius": 241.03000000000003,
     "position": [
       32507.973063313588,
@@ -90,7 +90,7 @@ export const SOLAR_MOONS = [
   {
     "parent": "sol/saturn",
     "id": "602",
-    "name": "Энцелад",
+    "name": "Enceladus",
     "radius": 25.21,
     "position": [
       16171.0097341096,
@@ -102,7 +102,7 @@ export const SOLAR_MOONS = [
   {
     "parent": "sol/saturn",
     "id": "606",
-    "name": "Титан",
+    "name": "Titan",
     "radius": 257.476,
     "position": [
       -94680.29384488796,
@@ -114,7 +114,7 @@ export const SOLAR_MOONS = [
   {
     "parent": "sol/uranus",
     "id": "703",
-    "name": "Титания",
+    "name": "Titania",
     "radius": 78.89,
     "position": [
       -6310.70017574001,
@@ -126,7 +126,7 @@ export const SOLAR_MOONS = [
   {
     "parent": "sol/neptune",
     "id": "801",
-    "name": "Тритон",
+    "name": "Triton",
     "radius": 135.26,
     "position": [
       -20569.64744679369,

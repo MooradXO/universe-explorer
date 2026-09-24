@@ -1,0 +1,254 @@
+[
+  {
+    "mode": "HIGH",
+    "body": "sol/earth",
+    "angle": 0,
+    "callsBefore": 58,
+    "callsAfter": 60,
+    "trianglesBefore": 53999,
+    "trianglesAfter": 63747,
+    "textureDelta": 1,
+    "panorama": {
+      "body": "sol/earth",
+      "instances": 420,
+      "span": 29529.042016,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200,
+    "p95Before": 5.100000001490116,
+    "p95After": 5.100000001490116
+  },
+  {
+    "mode": "HIGH",
+    "body": "sol/earth",
+    "angle": 0.32,
+    "callsBefore": 58,
+    "callsAfter": 60,
+    "trianglesBefore": 53999,
+    "trianglesAfter": 63747,
+    "textureDelta": 1,
+    "panorama": {
+      "body": "sol/earth",
+      "instances": 420,
+      "span": 29529.042016,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200,
+    "p95Before": 5.100000001490116,
+    "p95After": 5.100000001490116
+  },
+  {
+    "mode": "HIGH",
+    "body": "sol/jupiter",
+    "angle": 0,
+    "callsBefore": 58,
+    "callsAfter": 59,
+    "trianglesBefore": 45731,
+    "trianglesAfter": 55711,
+    "textureDelta": 1,
+    "panorama": {
+      "body": "sol/jupiter",
+      "instances": 420,
+      "span": 44778.64,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200.02222469196363,
+    "fpsAfter": 199.97778024630819,
+    "p95Before": 5.100000001490116,
+    "p95After": 5.100000001490116
+  },
+  {
+    "mode": "HIGH",
+    "body": "sol/jupiter",
+    "angle": 0.32,
+    "callsBefore": 58,
+    "callsAfter": 59,
+    "trianglesBefore": 45731,
+    "trianglesAfter": 55711,
+    "textureDelta": 1,
+    "panorama": {
+      "body": "sol/jupiter",
+      "instances": 420,
+      "span": 44778.64,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200.0222246911356,
+    "p95Before": 5.100000001490116,
+    "p95After": 5.099999997764826
+  },
+  {
+    "mode": "HIGH",
+    "body": "athyg:4.0:1440825/generated-1",
+    "angle": 0,
+    "callsBefore": 58,
+    "callsAfter": 58,
+    "trianglesBefore": 59867,
+    "trianglesAfter": 67787,
+    "textureDelta": 1,
+    "panorama": {
+      "body": "athyg:4.0:1440825/generated-1",
+      "instances": 420,
+      "span": 43874.81079399586,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200.04445432301728,
+    "p95Before": 5.099999997764826,
+    "p95After": 5.100000001490116
+  },
+  {
+    "mode": "HIGH",
+    "body": "athyg:4.0:1440825/generated-1",
+    "angle": 0.32,
+    "callsBefore": 58,
+    "callsAfter": 58,
+    "trianglesBefore": 59867,
+    "trianglesAfter": 67787,
+    "textureDelta": 1,
+    "panorama": {
+      "body": "athyg:4.0:1440825/generated-1",
+      "instances": 420,
+      "span": 43874.81079399586,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200,
+    "p95Before": 5.100000001490116,
+    "p95After": 5.100000001490116
+  },
+  {
+    "mode": "LOW",
+    "body": "sol/earth",
+    "angle": 0,
+    "callsBefore": 53,
+    "callsAfter": 55,
+    "trianglesBefore": 35559,
+    "trianglesAfter": 40507,
+    "textureDelta": 1,
+    "panorama": {
+      "body": "sol/earth",
+      "instances": 180,
+      "span": 29529.042016,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200,
+    "p95Before": 5.100000001490116,
+    "p95After": 5.100000001490116
+  },
+  {
+    "mode": "LOW",
+    "body": "sol/earth",
+    "angle": 0.32,
+    "callsBefore": 53,
+    "callsAfter": 55,
+    "trianglesBefore": 35559,
+    "trianglesAfter": 40507,
+    "textureDelta": 1,
+    "panorama": {
+      "body": "sol/earth",
+      "instances": 180,
+      "span": 29529.042016,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200,
+    "p95Before": 5.100000001490116,
+    "p95After": 5.100000001490116
+  },
+  {
+    "mode": "LOW",
+    "body": "sol/jupiter",
+    "angle": 0,
+    "callsBefore": 53,
+    "callsAfter": 55,
+    "trianglesBefore": 31131,
+    "trianglesAfter": 36311,
+    "textureDelta": 1,
+    "panorama": {
+      "body": "sol/jupiter",
+      "instances": 180,
+      "span": 44778.64,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200,
+    "p95Before": 5.099999997764826,
+    "p95After": 5.100000001490116
+  },
+  {
+    "mode": "LOW",
+    "body": "sol/jupiter",
+    "angle": 0.32,
+    "callsBefore": 53,
+    "callsAfter": 55,
+    "trianglesBefore": 31131,
+    "trianglesAfter": 36311,
+    "textureDelta": 1,
+    "panorama": {
+      "body": "sol/jupiter",
+      "instances": 180,
+      "span": 44778.64,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 199.95556542924248,
+    "p95Before": 5.099999997764826,
+    "p95After": 5.100000001490116
+  },
+  {
+    "mode": "LOW",
+    "body": "athyg:4.0:1440825/generated-1",
+    "angle": 0,
+    "callsBefore": 54,
+    "callsAfter": 54,
+    "trianglesBefore": 36051,
+    "trianglesAfter": 39171,
+    "textureDelta": 1,
+    "panorama": {
+      "body": "athyg:4.0:1440825/generated-1",
+      "instances": 180,
+      "span": 43874.81079399586,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200.02222469196363,
+    "p95Before": 5.100000001490116,
+    "p95After": 5.100000001490116
+  },
+  {
+    "mode": "LOW",
+    "body": "athyg:4.0:1440825/generated-1",
+    "angle": 0.32,
+    "callsBefore": 54,
+    "callsAfter": 54,
+    "trianglesBefore": 36051,
+    "trianglesAfter": 39171,
+    "textureDelta": 1,
+    "panorama": {
+      "body": "athyg:4.0:1440825/generated-1",
+      "instances": 180,
+      "span": 43874.81079399586,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200.02222469196363,
+    "fpsAfter": 199.93335554798517,
+    "p95Before": 5.100000001490116,
+    "p95After": 5.100000001490116
+  }
+]

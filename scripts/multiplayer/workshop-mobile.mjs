@@ -1,0 +1,16 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {chromium} from '@playwright/test';
+const out=process.env.WORKSHOP_EVIDENCE||'docs/phases_archive/scene-workshop-2026-09-24',base=process.env.PREVIEW_URL||'http://127.0.0.1:3020';
+const browser=await chromium.launch({channel:'msedge',headless:true}),results=[];
+try{for(const viewport of [{width:390,height:844},{width:844,height:390}]){const context=await browser.newContext({viewport,isMobile:true,hasTouch:true,deviceScaleFactor:1}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(String(e)));
+try{await page.goto(`${base}/environments.html?world=5&quality=LOW`);await page.waitForFunction(()=>!!window.__UNIVERSE_ENVIRONMENTS__);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
+await page.locator('button[data-panel="inspector"]').click();await page.getByRole('button',{name:"Rings",exact:true}).click();await page.locator('#field-ringDensity').fill('.8');await page.locator('#field-ringDensity').press('Tab');assert.equal(await page.evaluate(()=>window.__UNIVERSE_ENVIRONMENTS__.snapshot().document.entities[0].params.ringDensity),.8);await page.screenshot({path:`${out}/mobile-${viewport.width}-inspector.png`});
+await page.locator('button[data-panel="library"]').click();await page.locator('[data-kind="field"]').click();await page.screenshot({path:`${out}/mobile-${viewport.width}-field.png`});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
+if(viewport.width>viewport.height){const popupEvent=page.waitForEvent('popup');await page.locator('#play').click();const flight=await popupEvent;await flight.waitForFunction(()=>window.__UNIVERSE_WORKSHOP_FLIGHT__?.snapshot().ready,null,{timeout:30000});const joystick=flight.locator('.mobile-joystick'),fire=flight.locator('.mobile-action--fire'),rect=await joystick.boundingBox(),fr=await fire.boundingBox();
+const cd=await context.newCDPSession(flight);const points=[{id:1,x:rect.x+rect.width*.8,y:rect.y+rect.height*.3},{id:2,x:fr.x+fr.width/2,y:fr.y+fr.height/2}];const before=await flight.evaluate(()=>window.__UNIVERSE_WORKSHOP_FLIGHT__.snapshot());
+await cd.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:points});await flight.waitForTimeout(700);const during=await flight.evaluate(()=>window.__UNIVERSE_WORKSHOP_FLIGHT__.snapshot());assert(during.shotsFired>0);assert(during.speed>0);assert(during.rotation.some((v,i)=>Math.abs(v-before.rotation[i])>.01));await cd.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[points[0]]});await flight.waitForTimeout(400);const after=await flight.evaluate(()=>window.__UNIVERSE_WORKSHOP_FLIGHT__.snapshot());assert(after.shotsFired>during.shotsFired);await cd.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await flight.screenshot({path:`${out}/mobile-flight.png`});await flight.close();results.push({viewport,twoThumbs:true,shots:during.shotsFired,rotation:during.rotation,speed:during.speed});}
+else results.push({viewport,editor:true});assert.deepEqual(errors,[]);
+}finally{await context.close();await fs.writeFile(`${out}/mobile.json`,JSON.stringify(results,null,2));}}
+}finally{await browser.close();}
+console.log(JSON.stringify(results));

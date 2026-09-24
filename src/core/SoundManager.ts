@@ -1,5 +1,12 @@
+import { Vector3, type Camera } from 'three';
+import { createEffectsBus, WeaponAudio, type SoundPoint, type WeaponSound } from './WeaponAudio';
+
 export class SoundManager {
   private ctx: AudioContext | null = null;
+  private effectsBus: GainNode | null = null;
+  private weapons: WeaponAudio | null = null;
+  private readonly audioForward = new Vector3();
+  private readonly audioUp = new Vector3();
   private bgMusicStarted = false;
   private ambientStarting = false;
   private ambientStream: HTMLAudioElement | null = null;
@@ -9,6 +16,8 @@ export class SoundManager {
   private init(): AudioContext {
     if (!this.ctx) {
       this.ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      this.effectsBus = createEffectsBus(this.ctx!);
+      this.weapons = new WeaponAudio(this.ctx!, this.effectsBus);
     }
     if (this.ctx.state === 'suspended') {
       void this.ctx.resume().catch(() => undefined);
@@ -71,7 +80,7 @@ export class SoundManager {
     const master = ctx.createGain();
     master.gain.setValueAtTime(0.0001, ctx.currentTime);
     master.gain.exponentialRampToValueAtTime(0.035, ctx.currentTime + 2.4);
-    master.connect(ctx.destination);
+    master.connect(this.effectsBus!);
 
     const filter = ctx.createBiquadFilter();
     filter.type = 'lowpass';
@@ -130,37 +139,31 @@ export class SoundManager {
     this.bgMusicStarted = false;
   }
 
-  public playLaser(color: 'red' | 'blue', volume: number = 0.3) {
+  public playWeapon(kind: WeaponSound, color: 'red' | 'blue' = 'red', volume = .3, position?: SoundPoint) {
     const ctx = this.init();
-    if (ctx.state !== 'running') return;
-
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-
-    // Pew pew sound envelope
-    const now = ctx.currentTime;
-    
-    if (color === 'red') {
-      // Red laser: Lower pitch, harsh
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(800, now);
-      osc.frequency.exponentialRampToValueAtTime(100, now + 0.2);
-    } else {
-      // Blue laser: High pitch, clean zap
-      osc.type = 'square';
-      osc.frequency.setValueAtTime(1200, now);
-      osc.frequency.exponentialRampToValueAtTime(200, now + 0.15);
-    }
-
-    gain.gain.setValueAtTime(volume, now);
-    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
-
-    osc.start(now);
-    osc.stop(now + 0.2);
+    if (ctx.state === 'running') this.weapons!.play(kind, color, volume, position);
   }
+
+  public playLaser(color: 'red' | 'blue', volume = .3, position?: SoundPoint) { this.playWeapon('laser', color, volume, position); }
+
+  public updateListener(camera: Camera) {
+    if (!this.ctx) return;
+    const listener = this.ctx.listener;
+    this.audioForward.set(0, 0, -1).applyQuaternion(camera.quaternion);
+    this.audioUp.set(0, 1, 0).applyQuaternion(camera.quaternion);
+    // Coordinates share the same floating origin as visual projectiles and the camera.
+    if (listener.positionX) {
+      listener.positionX.value = camera.position.x; listener.positionY.value = camera.position.y; listener.positionZ.value = camera.position.z;
+      listener.forwardX.value = this.audioForward.x; listener.forwardY.value = this.audioForward.y; listener.forwardZ.value = this.audioForward.z;
+      listener.upX.value = this.audioUp.x; listener.upY.value = this.audioUp.y; listener.upZ.value = this.audioUp.z;
+    } else {
+      listener.setPosition(camera.position.x, camera.position.y, camera.position.z);
+      listener.setOrientation(this.audioForward.x, this.audioForward.y, this.audioForward.z, this.audioUp.x, this.audioUp.y, this.audioUp.z);
+    }
+  }
+  public shiftOrigin(delta: SoundPoint) { this.weapons?.shiftOrigin(delta); }
+  public stopWeapons() { this.weapons?.stop(); }
+  public snapshot() { return { state: this.ctx?.state ?? 'idle', weapons: this.weapons?.snapshot() ?? null }; }
 
   public playEngineStart() {
     const ctx = this.init();
@@ -170,7 +173,7 @@ export class SoundManager {
     const gain = ctx.createGain();
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(this.effectsBus!);
 
     const now = ctx.currentTime;
     osc.type = 'sawtooth';

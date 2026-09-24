@@ -1,0 +1,45 @@
+/* A clear centre view and two independent thumb zones. Desktop stays unchanged. */
+body.titan-ui.mobile-flight-ui { --flight-left:max(16px,env(safe-area-inset-left)); --flight-right:max(16px,env(safe-area-inset-right)); --flight-bottom:env(safe-area-inset-bottom,0px); -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+body.titan-ui.mobile-flight-ui .top-command-bar { top:max(6px,env(safe-area-inset-top)); gap:2px; }
+body.titan-ui.mobile-flight-ui .command-button { width:clamp(54px,9vw,76px); height:36px; gap:4px; padding:4px; font-size:10px; letter-spacing:.3px; }
+body.titan-ui.mobile-flight-ui .command-button .hud-icon { width:19px; height:19px; }
+body.titan-ui.mobile-flight-ui .system-navigation { top:calc(48px + env(safe-area-inset-top)); right:var(--flight-right); width:246px; padding:7px 10px; gap:7px; }
+body.titan-ui.mobile-flight-ui .navigation-symbol { width:25px; height:25px; }
+body.titan-ui.mobile-flight-ui .system-navigation .navigation-cruise { flex-basis:58px; font-size:10px; padding:6px; }
+body.titan-ui.mobile-flight-ui .system-navigation__heading strong { font-size:8px; }
+body.titan-ui.mobile-flight-ui .system-object-picker [role=combobox] { min-height:23px; font-size:12px; }
+body.titan-ui.mobile-flight-ui .system-navigation .navigation-progress { font-size:10px; letter-spacing:0; }
+body.titan-ui.mobile-flight-ui .system-object-picker [role=listbox] { right:-71px; width:226px; max-height:calc(100dvh - 134px); }
+body.titan-ui.mobile-flight-ui .radar-shell { left:calc(var(--flight-left) + 8px)!important; bottom:calc(130px + var(--flight-bottom))!important; width:80px!important; height:80px!important; padding:3px!important; }
+body.titan-ui.mobile-flight-ui #hud-stats-container { left:50%!important; bottom:calc(12px + var(--flight-bottom))!important; width:min(246px,calc(100vw - 280px))!important; padding:6px 8px!important; transform:translateX(-50%)!important; transform-origin:center!important; background:#071117cf!important; border-radius:4px; }
+body.titan-ui.mobile-flight-ui .flight-status__primary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; }
+body.titan-ui.mobile-flight-ui .flight-status__bar { grid-template-columns:14px minmax(0,1fr); gap:3px 4px; padding:0; border:0; }
+body.titan-ui.mobile-flight-ui .flight-status__bar .hud-icon { width:14px; height:14px; grid-column:1; grid-row:1; }
+body.titan-ui.mobile-flight-ui .flight-status__bar-header > :first-child { display:none; }
+body.titan-ui.mobile-flight-ui .flight-status__bar-value { grid-column:2; grid-row:1; font-size:0; line-height:14px; }
+body.titan-ui.mobile-flight-ui .flight-status__bar-value::after { content:attr(data-mobile-value); font:10px 'Share Tech Mono',monospace; }
+body.titan-ui.mobile-flight-ui .flight-status__bar-track { grid-column:1/-1; grid-row:2; height:4px; border-radius:2px; overflow:hidden; }
+body.titan-ui.mobile-flight-ui .flight-status__systems.has-damage { left:0; width:100%; bottom:calc(100% + 5px); box-sizing:border-box; }
+body.titan-ui.mobile-flight-ui .mobile-joystick { left:var(--flight-left); bottom:calc(16px + var(--flight-bottom)); width:100px; height:100px; box-sizing:border-box; background:radial-gradient(circle,#222b2a70,#030b1190); }
+body.titan-ui.mobile-flight-ui .mobile-joystick__knob { width:44px; height:44px; }
+body.titan-ui.mobile-flight-ui .mobile-joystick__label { position:absolute; left:50%; bottom:13px; transform:translateX(-50%); white-space:nowrap; color:#d4c09c; font:7px 'Share Tech Mono',monospace; pointer-events:none; opacity:.85; }
+body.titan-ui.mobile-flight-ui .mobile-joystick.is-pressed { border-color:#eac088; }
+body.titan-ui.mobile-flight-ui .mobile-look-zone { top:125px; }
+body.titan-ui.mobile-flight-ui .mobile-weapon-rail { right:var(--flight-right); bottom:calc(146px + var(--flight-bottom)); padding:3px; gap:3px; grid-template-columns:repeat(3,45px) 34px; border:0; border-radius:3px; background:#071117a8; }
+body.titan-ui.mobile-flight-ui .mobile-weapon, body.titan-ui.mobile-flight-ui .mobile-color-button { height:40px; padding:2px; }
+body.titan-ui.mobile-flight-ui .mobile-weapon .hud-icon { width:20px; height:20px; }
+body.titan-ui.mobile-flight-ui .mobile-weapon span { font-size:7px; letter-spacing:0; }
+body.titan-ui.mobile-flight-ui .mobile-color-button { font-size:7px; }
+body.titan-ui.mobile-flight-ui .mobile-color-button i { width:16px; height:5px; }
+body.titan-ui.mobile-flight-ui .mobile-utility-rail { position:absolute; right:var(--flight-right); bottom:calc(100px + var(--flight-bottom)); display:flex; gap:4px; z-index:4; pointer-events:auto; }
+body.titan-ui.mobile-flight-ui .mobile-utility-rail .mobile-action { width:40px; height:40px; border-radius:7px; }
+body.titan-ui.mobile-flight-ui .mobile-action .hud-icon, body.titan-ui.mobile-flight-ui .mobile-action svg { width:19px; height:19px; }
+body.titan-ui.mobile-flight-ui .mobile-action-cluster { right:var(--flight-right); bottom:calc(16px + var(--flight-bottom)); display:grid; grid-template-columns:46px 76px; gap:8px; align-items:end; }
+body.titan-ui.mobile-flight-ui .mobile-action--fire { grid-column:2; grid-row:1; width:76px; height:76px; font-size:11px; background:radial-gradient(circle,#59291d60,#15100ddb); }
+body.titan-ui.mobile-flight-ui .mobile-action--fire .hud-icon { width:29px; height:29px; }
+body.titan-ui.mobile-flight-ui .mobile-action--boost { grid-column:1; grid-row:1; width:46px; height:46px; font-size:8px; }
+body.titan-ui.mobile-flight-ui .flight-kill-feed { top:120px; right:var(--flight-right); max-width:210px; }
+@media (max-width:660px) {
+  body.titan-ui.mobile-flight-ui .command-button .hud-icon { display:none; }
+  body.titan-ui.mobile-flight-ui .command-button { font-size:9px; }
+}

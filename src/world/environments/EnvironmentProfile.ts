@@ -1,8 +1,11 @@
 import { createSeededRandom, hashString } from '../celestial/WorldSeed';
 import type { Triple } from '../space/WorldPosition';
 import { SURFACES, ENVIRONMENT_VERSION, MATERIALS } from './EnvironmentLibrary';
+import { planetArrivalRadius } from '../systems/SystemConfig';
 
 export interface EnvironmentProfile {
+  /** Optional authored appearance. Absent in generated physical profiles. */
+  editor?: { solarTexture:string;geology:number;circulation:number;relief:number;roughness:number;ocean:number;detail:number;storms:number;wind:number;contrast:number;frost:number;cloudCoverage:number;cloudAltitude:number;cloudSpeed:number;cloudShadow:number;atmosphereThickness:number;atmosphereDensity:number;spin:number;moonSize:number;moonDistance:number };
   version: number; seed: number; signature: string; surface: number; variant: number; material: number;
   colors: readonly string[]; geography: number; warp: number; clouds: number | null; atmosphere: number | null;
   aurora: number | null; ring: { recipe: number; inner: number; outer: number; tilt: Triple; density: number; tint: string } | null;
@@ -58,7 +61,7 @@ export function systemEnvironmentProfiles(systemId: string, bodies: readonly Bod
       structure: rng() < .72 ? Math.floor(rng() * 24) : null, phenomenon, moonStyle: Math.floor(rng() * 24), moonOrbit: Math.floor(rng() * 12),
       moonCount: solar ? 0 : Math.floor(rng() * (recipe.kind === 'gas' ? 7 : 4)), zones: 2 + Math.floor(rng() * 5), backdrop,
       approachDirections:bodies.filter(other=>other.id!==body.id).map(other=>{
-        const v=other.position.map((x,i)=>x-body.position[i]+(i===2?(other.radius-body.radius)*3:0));
+        const v=other.position.map((x,i)=>x-body.position[i]+(i===2?planetArrivalRadius(other.radius)-planetArrivalRadius(body.radius):0));
         const length=Math.hypot(...v);return v.map(x=>Math.round(x/length*1e12)/1e12) as unknown as Triple;
       }) };
     profile.signature = `${surface}.${variant}.${MATERIALS[material].id}.${objects}.${layout}.${phenomenon}.${seed}`;

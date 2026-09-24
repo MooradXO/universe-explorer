@@ -392,7 +392,6 @@ export class BotAI {
         laser.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir); // Perfect alignment along direction (no rotateX)
 
         this.scene.add(laser);
-        this.combatSystem.createMuzzleFlashAt(laser.position, laserColorHex);
 
         const velocity = dir.clone().multiplyScalar(2200).add(state.velocity);
         this.combatSystem.lasers.push({
@@ -402,7 +401,7 @@ export class BotAI {
           ownerId: state.id,
           lastPosition: laser.position.clone()
         });
-        (this.combatSystem as any).soundManager.playLaser('blue', soundVolume);
+        this.combatSystem.playWeaponAt('laser', 'blue', soundVolume, p.position);
 
       } else if (choice < 0.90) {
         // 2. PLASMIC SPREAD FLURRY (3 fanned out bolts)
@@ -418,7 +417,6 @@ export class BotAI {
           laser.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), spreadDir);
 
           this.scene.add(laser);
-          this.combatSystem.createMuzzleFlashAt(laser.position, laserColorHex);
 
           const velocity = spreadDir.clone().multiplyScalar(2000).add(state.velocity);
           this.combatSystem.lasers.push({
@@ -429,7 +427,7 @@ export class BotAI {
             lastPosition: laser.position.clone()
           });
         }
-        (this.combatSystem as any).soundManager.playLaser('red', soundVolume);
+        this.combatSystem.playWeaponAt('shotgun', 'red', soundVolume, p.position);
 
       } else {
         // 3. ANOMALOUS HOMING TORPEDO (Pulsing Purple Missiles)
@@ -451,7 +449,6 @@ export class BotAI {
         group.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
 
         this.scene.add(group);
-        this.combatSystem.createMuzzleFlashAt(group.position, laserColorHex);
 
         const velocity = dir.clone().multiplyScalar(1700).add(state.velocity);
         this.combatSystem.lasers.push({
@@ -462,7 +459,7 @@ export class BotAI {
           lastPosition: group.position.clone(),
           isHoming: true
         });
-        (this.combatSystem as any).soundManager.playLaser('blue', soundVolume * 1.3);
+        this.combatSystem.playWeaponAt('missile', 'blue', soundVolume, p.position);
       }
     } else {
       // ═══════════════════════════════════════════════════
@@ -481,7 +478,6 @@ export class BotAI {
       laser.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir); // Point Y-axis directly along dir (aligned!)
 
       this.scene.add(laser);
-      this.combatSystem.createMuzzleFlashAt(laser.position, laserColorHex);
 
       const laserSpeed = state.class === 'Interceptor' ? 3200 : 2200;
       const velocity = dir.clone().multiplyScalar(laserSpeed).add(state.velocity);
@@ -497,9 +493,7 @@ export class BotAI {
       // Play procedural audio if close enough (5000^2 = 25000000)
       const distSq = p.position.distanceToSquared(playerPos);
       if (distSq < 25000000) {
-        const dist = Math.sqrt(distSq);
-        const volume = Math.max(0, 1 - dist / 5000) * 0.45;
-        (this.combatSystem as any).soundManager.playLaser(state.class === 'Interceptor' ? 'red' : 'blue', volume);
+        this.combatSystem.playWeaponAt('laser', state.class === 'Interceptor' ? 'red' : 'blue', .45, p.position);
       }
     }
   }

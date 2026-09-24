@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "legacy": true,
+      "versions": {
+        "physics": 1,
+        "appearance": 3,
+        "survey": 1
+      },
+      "site": "sol/earth/zone-0/survey-v1",
+      "status": "Destination reached. Normal flight.",
+      "fingerprint": "f6aeee3e",
+      "rttMs": 240
+    },
+    {
+      "legacy": false,
+      "versions": {
+        "physics": 1,
+        "appearance": 3,
+        "survey": 1
+      },
+      "site": "sol/earth/zone-0/survey-v1",
+      "status": "Destination reached. Normal flight.",
+      "fingerprint": "f6aeee3e",
+      "rttMs": 240
+    },
+    {
+      "incompatiblePhysicsRejected": true
+    }
+  ]
+}

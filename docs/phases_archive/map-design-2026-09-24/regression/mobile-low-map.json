@@ -1,0 +1,1655 @@
+{
+  "before": {
+    "timestampMs": 3217,
+    "fps": 200,
+    "frameTimeMs": 5,
+    "p95FrameTimeMs": 5.100000001490116,
+    "sampleFrames": 180,
+    "graphicsMode": "LOW",
+    "starMap": {
+      "open": false
+    },
+    "flightInputBlocked": false,
+    "renderer": {
+      "calls": 78,
+      "triangles": 52170,
+      "points": 13302,
+      "lines": 420,
+      "geometries": 52,
+      "textures": 9,
+      "programs": 20,
+      "pixelRatio": 0.75,
+      "width": 633,
+      "height": 292
+    },
+    "memory": {
+      "jsHeapUsedBytes": 15902987,
+      "jsHeapAllocatedBytes": 23207255,
+      "gpuBytes": null
+    },
+    "world": {
+      "scene": "near-base",
+      "worldSeed": "universe-explorer:world:v1",
+      "space": {
+        "origin": {
+          "origin": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "shifts": 1
+        },
+        "system": null,
+        "stream": {
+          "sector": "0,0,0",
+          "cached": 125,
+          "pending": 0,
+          "queued": 0,
+          "failed": 0,
+          "completed": 124,
+          "discarded": 0
+        },
+        "navigation": {
+          "groups": 27,
+          "points": 1100
+        },
+        "planets": {
+          "active": 1,
+          "queued": 0,
+          "created": 3,
+          "disposed": 2
+        },
+        "jobs": {
+          "total": 30,
+          "lastMs": 0.5999999977648258,
+          "maxMs": 1
+        }
+      },
+      "travel": null,
+      "flightDust": {
+        "kind": "illustrative-local-dust",
+        "count": 420,
+        "speed": 0,
+        "displacement": [
+          0,
+          0,
+          0
+        ],
+        "sample": [
+          -94.94050598144531,
+          54.99604797363281,
+          -188.4995574951172,
+          -442.6173095703125,
+          362.1107177734375,
+          -409.5864562988281,
+          422.2568054199219,
+          -481.7000732421875,
+          96.14598846435547,
+          -247.38172912597656,
+          137.92025756835938,
+          -375.2585144042969
+        ],
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "visualDisplacement": [
+          0,
+          0,
+          0
+        ],
+        "visible": true,
+        "opacity": 0.9999999624465282,
+        "resets": 1,
+        "originShifts": 1,
+        "maxOffset": 619.6695556640625
+      },
+      "flightFX": null,
+      "tour": null,
+      "projectiles": 0,
+      "planetCount": 80,
+      "visibleFullPlanets": 0,
+      "visiblePlanets": 58,
+      "players": {
+        "local": 1,
+        "remote": 0,
+        "bots": 0
+      },
+      "voice": {
+        "peers": 0,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "ship": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "worldPosition": {
+          "sector": [
+            0,
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            100,
+            9800
+          ]
+        },
+        "cameraOffset": [
+          0,
+          125,
+          360
+        ],
+        "cameraFov": 75,
+        "cruiseIntensity": 0,
+        "engine": {
+          "plumeLength": 25.134954370006255,
+          "opacity": 0.22450374868957168
+        },
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      }
+    },
+    "realtime": {
+      "configured": false,
+      "subscribed": false,
+      "systemId": null,
+      "sendAttempts": 0,
+      "received": 0,
+      "byEvent": {
+        "position": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "shoot": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "hit": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "die": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "chat": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "sonar": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "voice-signal": {
+          "sendAttempts": 0,
+          "received": 0
+        }
+      }
+    }
+  },
+  "initial": {
+    "timestampMs": 3877.7999999970198,
+    "fps": 192.5133689839572,
+    "frameTimeMs": 5.194444444444445,
+    "p95FrameTimeMs": 5.100000001490116,
+    "sampleFrames": 180,
+    "graphicsMode": "LOW",
+    "starMap": {
+      "open": true,
+      "selectedId": "athyg:4.0:1",
+      "tiles": 20,
+      "cachedTiles": 21,
+      "pending": 0,
+      "errors": 0,
+      "points": 9271,
+      "fadingTiles": 0,
+      "renderedPoints": 9271,
+      "maxTiles": 20,
+      "maxPoints": 45000,
+      "activeTileKeys": [
+        "r3",
+        "r4",
+        "r6",
+        "r7",
+        "r522",
+        "r527",
+        "r5261",
+        "r5262",
+        "r52600",
+        "r52603",
+        "r52606",
+        "r526022",
+        "r526026",
+        "r526027",
+        "r5260242",
+        "r5260243",
+        "r5260246",
+        "r5260247",
+        "r5260252",
+        "r5260256"
+      ],
+      "radiusParsecs": 31.288975694323934,
+      "parsecsPer100Pixels": 8.352825534348455,
+      "camera": [
+        15,
+        -22.999999999999908,
+        14.999999999999936
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        0,
+        0,
+        0
+      ]
+    },
+    "flightInputBlocked": true,
+    "renderer": {
+      "calls": 20,
+      "triangles": 0,
+      "points": 9271,
+      "lines": 0,
+      "geometries": 73,
+      "textures": 9,
+      "programs": 21,
+      "pixelRatio": 0.75,
+      "width": 633,
+      "height": 292
+    },
+    "memory": {
+      "jsHeapUsedBytes": 16169708,
+      "jsHeapAllocatedBytes": 27670896,
+      "gpuBytes": null
+    },
+    "world": {
+      "scene": "near-base",
+      "worldSeed": "universe-explorer:world:v1",
+      "space": {
+        "origin": {
+          "origin": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "shifts": 1
+        },
+        "system": null,
+        "stream": {
+          "sector": "0,0,0",
+          "cached": 125,
+          "pending": 0,
+          "queued": 0,
+          "failed": 0,
+          "completed": 124,
+          "discarded": 0
+        },
+        "navigation": {
+          "groups": 27,
+          "points": 1100
+        },
+        "planets": {
+          "active": 1,
+          "queued": 0,
+          "created": 3,
+          "disposed": 2
+        },
+        "jobs": {
+          "total": 30,
+          "lastMs": 0.5999999977648258,
+          "maxMs": 1
+        }
+      },
+      "travel": null,
+      "flightDust": {
+        "kind": "illustrative-local-dust",
+        "count": 420,
+        "speed": 0,
+        "displacement": [
+          0,
+          0,
+          0
+        ],
+        "sample": [
+          -94.94050598144531,
+          54.99604797363281,
+          -188.4995574951172,
+          -442.6173095703125,
+          362.1107177734375,
+          -409.5864562988281,
+          422.2568054199219,
+          -481.7000732421875,
+          96.14598846435547,
+          -247.38172912597656,
+          137.92025756835938,
+          -375.2585144042969
+        ],
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "visualDisplacement": [
+          0,
+          0,
+          0
+        ],
+        "visible": true,
+        "opacity": 0.9999999996299934,
+        "resets": 1,
+        "originShifts": 1,
+        "maxOffset": 619.6695556640625
+      },
+      "flightFX": null,
+      "tour": null,
+      "projectiles": 0,
+      "planetCount": 80,
+      "visibleFullPlanets": 0,
+      "visiblePlanets": 58,
+      "players": {
+        "local": 1,
+        "remote": 0,
+        "bots": 0
+      },
+      "voice": {
+        "peers": 0,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "ship": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "worldPosition": {
+          "sector": [
+            0,
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            100,
+            9800
+          ]
+        },
+        "cameraOffset": [
+          0,
+          125,
+          360
+        ],
+        "cameraFov": 75,
+        "cruiseIntensity": 0,
+        "engine": {
+          "plumeLength": 20.616607614582072,
+          "opacity": 0.18676897214067895
+        },
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      }
+    },
+    "realtime": {
+      "configured": false,
+      "subscribed": false,
+      "systemId": null,
+      "sendAttempts": 0,
+      "received": 0,
+      "byEvent": {
+        "position": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "shoot": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "hit": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "die": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "chat": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "sonar": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "voice-signal": {
+          "sendAttempts": 0,
+          "received": 0
+        }
+      }
+    }
+  },
+  "focused": {
+    "timestampMs": 4726.29999999702,
+    "fps": 200,
+    "frameTimeMs": 5,
+    "p95FrameTimeMs": 5.100000001490116,
+    "sampleFrames": 180,
+    "graphicsMode": "LOW",
+    "starMap": {
+      "open": true,
+      "selectedId": "athyg:4.0:586693",
+      "tiles": 20,
+      "cachedTiles": 22,
+      "pending": 0,
+      "errors": 0,
+      "points": 9169,
+      "fadingTiles": 0,
+      "renderedPoints": 9169,
+      "maxTiles": 20,
+      "maxPoints": 45000,
+      "activeTileKeys": [
+        "r3",
+        "r4",
+        "r6",
+        "r7",
+        "r522",
+        "r527",
+        "r5261",
+        "r5262",
+        "r52600",
+        "r52603",
+        "r52606",
+        "r526022",
+        "r526026",
+        "r526027",
+        "r5260242",
+        "r5260243",
+        "r5260246",
+        "r5260247",
+        "r5260252",
+        "r52602562"
+      ],
+      "radiusParsecs": 11.999999999999645,
+      "parsecsPer100Pixels": 3.203489541856805,
+      "camera": [
+        5.73595935051543,
+        -8.842937332044293,
+        5.735959350515259
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "origin": [
+        -0.4944,
+        2.4768,
+        -0.7584
+      ]
+    },
+    "flightInputBlocked": true,
+    "renderer": {
+      "calls": 20,
+      "triangles": 0,
+      "points": 9169,
+      "lines": 0,
+      "geometries": 74,
+      "textures": 9,
+      "programs": 21,
+      "pixelRatio": 0.75,
+      "width": 633,
+      "height": 292
+    },
+    "memory": {
+      "jsHeapUsedBytes": 18662814,
+      "jsHeapAllocatedBytes": 31856886,
+      "gpuBytes": null
+    },
+    "world": {
+      "scene": "near-base",
+      "worldSeed": "universe-explorer:world:v1",
+      "space": {
+        "origin": {
+          "origin": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "shifts": 1
+        },
+        "system": null,
+        "stream": {
+          "sector": "0,0,0",
+          "cached": 125,
+          "pending": 0,
+          "queued": 0,
+          "failed": 0,
+          "completed": 124,
+          "discarded": 0
+        },
+        "navigation": {
+          "groups": 27,
+          "points": 1100
+        },
+        "planets": {
+          "active": 1,
+          "queued": 0,
+          "created": 3,
+          "disposed": 2
+        },
+        "jobs": {
+          "total": 30,
+          "lastMs": 0.5999999977648258,
+          "maxMs": 1
+        }
+      },
+      "travel": null,
+      "flightDust": {
+        "kind": "illustrative-local-dust",
+        "count": 420,
+        "speed": 0,
+        "displacement": [
+          0,
+          0,
+          0
+        ],
+        "sample": [
+          -94.94050598144531,
+          54.99604797363281,
+          -188.4995574951172,
+          -442.6173095703125,
+          362.1107177734375,
+          -409.5864562988281,
+          422.2568054199219,
+          -481.7000732421875,
+          96.14598846435547,
+          -247.38172912597656,
+          137.92025756835938,
+          -375.2585144042969
+        ],
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "visualDisplacement": [
+          0,
+          0,
+          0
+        ],
+        "visible": true,
+        "opacity": 0.999999999999036,
+        "resets": 1,
+        "originShifts": 1,
+        "maxOffset": 619.6695556640625
+      },
+      "flightFX": null,
+      "tour": null,
+      "projectiles": 0,
+      "planetCount": 80,
+      "visibleFullPlanets": 0,
+      "visiblePlanets": 58,
+      "players": {
+        "local": 1,
+        "remote": 0,
+        "bots": 0
+      },
+      "voice": {
+        "peers": 0,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "ship": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "worldPosition": {
+          "sector": [
+            0,
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            100,
+            9800
+          ]
+        },
+        "cameraOffset": [
+          0,
+          125,
+          360
+        ],
+        "cameraFov": 75,
+        "cruiseIntensity": 0,
+        "engine": {
+          "plumeLength": 20.775382637661654,
+          "opacity": 0.18874925826448435
+        },
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      }
+    },
+    "realtime": {
+      "configured": false,
+      "subscribed": false,
+      "systemId": null,
+      "sendAttempts": 0,
+      "received": 0,
+      "byEvent": {
+        "position": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "shoot": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "hit": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "die": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "chat": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "sonar": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "voice-signal": {
+          "sendAttempts": 0,
+          "received": 0
+        }
+      }
+    }
+  },
+  "loaded": {
+    "timestampMs": 5742.5,
+    "fps": 200.04445432384549,
+    "frameTimeMs": 4.998888888872332,
+    "p95FrameTimeMs": 5.100000001490116,
+    "sampleFrames": 180,
+    "graphicsMode": "LOW",
+    "starMap": {
+      "open": true,
+      "selectedId": "athyg:4.0:586693",
+      "tiles": 20,
+      "cachedTiles": 28,
+      "pending": 0,
+      "errors": 0,
+      "points": 5672,
+      "fadingTiles": 0,
+      "renderedPoints": 5672,
+      "maxTiles": 20,
+      "maxPoints": 45000,
+      "activeTileKeys": [
+        "r4",
+        "r6",
+        "r7",
+        "r522",
+        "r523",
+        "r527",
+        "r5261",
+        "r5262",
+        "r5263",
+        "r52600",
+        "r52603",
+        "r52606",
+        "r52607",
+        "r526025",
+        "r526026",
+        "r526027",
+        "r5260245",
+        "r5260246",
+        "r5260247",
+        "r52602437"
+      ],
+      "radiusParsecs": 2.5730404260069415,
+      "parsecsPer100Pixels": 0.6868923412906883,
+      "camera": [
+        -1.8087664078763264,
+        -2.026432353726249,
+        0.0387241435173944
+      ],
+      "target": [
+        -0.12507187343094117,
+        -0.0811277016849381,
+        8.275570980634427e-18
+      ],
+      "origin": [
+        -0.4944,
+        2.4768,
+        -0.7584
+      ]
+    },
+    "flightInputBlocked": true,
+    "renderer": {
+      "calls": 20,
+      "triangles": 0,
+      "points": 5672,
+      "lines": 0,
+      "geometries": 80,
+      "textures": 9,
+      "programs": 21,
+      "pixelRatio": 0.75,
+      "width": 633,
+      "height": 292
+    },
+    "memory": {
+      "jsHeapUsedBytes": 17056228,
+      "jsHeapAllocatedBytes": 32187528,
+      "gpuBytes": null
+    },
+    "world": {
+      "scene": "near-base",
+      "worldSeed": "universe-explorer:world:v1",
+      "space": {
+        "origin": {
+          "origin": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "shifts": 1
+        },
+        "system": null,
+        "stream": {
+          "sector": "0,0,0",
+          "cached": 125,
+          "pending": 0,
+          "queued": 0,
+          "failed": 0,
+          "completed": 124,
+          "discarded": 0
+        },
+        "navigation": {
+          "groups": 27,
+          "points": 1100
+        },
+        "planets": {
+          "active": 1,
+          "queued": 0,
+          "created": 3,
+          "disposed": 2
+        },
+        "jobs": {
+          "total": 30,
+          "lastMs": 0.5999999977648258,
+          "maxMs": 1
+        }
+      },
+      "travel": null,
+      "flightDust": {
+        "kind": "illustrative-local-dust",
+        "count": 420,
+        "speed": 0,
+        "displacement": [
+          0,
+          0,
+          0
+        ],
+        "sample": [
+          -94.94050598144531,
+          54.99604797363281,
+          -188.4995574951172,
+          -442.6173095703125,
+          362.1107177734375,
+          -409.5864562988281,
+          422.2568054199219,
+          -481.7000732421875,
+          96.14598846435547,
+          -247.38172912597656,
+          137.92025756835938,
+          -375.2585144042969
+        ],
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "visualDisplacement": [
+          0,
+          0,
+          0
+        ],
+        "visible": true,
+        "opacity": 0.9999999999999984,
+        "resets": 1,
+        "originShifts": 1,
+        "maxOffset": 619.6695556640625
+      },
+      "flightFX": null,
+      "tour": null,
+      "projectiles": 0,
+      "planetCount": 80,
+      "visibleFullPlanets": 0,
+      "visiblePlanets": 58,
+      "players": {
+        "local": 1,
+        "remote": 0,
+        "bots": 0
+      },
+      "voice": {
+        "peers": 0,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "ship": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "worldPosition": {
+          "sector": [
+            0,
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            100,
+            9800
+          ]
+        },
+        "cameraOffset": [
+          0,
+          125,
+          360
+        ],
+        "cameraFov": 75,
+        "cruiseIntensity": 0,
+        "engine": {
+          "plumeLength": 25.299387229926296,
+          "opacity": 0.226835638559233
+        },
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      }
+    },
+    "realtime": {
+      "configured": false,
+      "subscribed": false,
+      "systemId": null,
+      "sendAttempts": 0,
+      "received": 0,
+      "byEvent": {
+        "position": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "shoot": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "hit": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "die": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "chat": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "sonar": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "voice-signal": {
+          "sendAttempts": 0,
+          "received": 0
+        }
+      }
+    }
+  },
+  "overview": {
+    "timestampMs": 6500.699999999255,
+    "fps": 200,
+    "frameTimeMs": 5,
+    "p95FrameTimeMs": 5.100000001490116,
+    "sampleFrames": 180,
+    "graphicsMode": "LOW",
+    "starMap": {
+      "open": true,
+      "selectedId": "athyg:4.0:196378",
+      "tiles": 12,
+      "cachedTiles": 36,
+      "pending": 0,
+      "errors": 0,
+      "points": 1191,
+      "fadingTiles": 0,
+      "renderedPoints": 1191,
+      "maxTiles": 20,
+      "maxPoints": 45000,
+      "activeTileKeys": [
+        "r0",
+        "r1",
+        "r3",
+        "r4",
+        "r6",
+        "r7",
+        "r50",
+        "r52",
+        "r54",
+        "r55",
+        "r56",
+        "r57"
+      ],
+      "radiusParsecs": 2349238.5023715054,
+      "parsecsPer100Pixels": 627146.7478062236,
+      "camera": [
+        1122928.0461890786,
+        -1731180.7378747957,
+        1122928.0461890555
+      ],
+      "target": [
+        -1.5065631418251507e-18,
+        -9.772301460487846e-19,
+        9.968404466145366e-35
+      ],
+      "origin": [
+        -5025.510050000012,
+        69105.82784999997,
+        -210062.86465
+      ]
+    },
+    "flightInputBlocked": true,
+    "renderer": {
+      "calls": 12,
+      "triangles": 0,
+      "points": 1191,
+      "lines": 0,
+      "geometries": 88,
+      "textures": 9,
+      "programs": 21,
+      "pixelRatio": 0.75,
+      "width": 633,
+      "height": 292
+    },
+    "memory": {
+      "jsHeapUsedBytes": 20975526,
+      "jsHeapAllocatedBytes": 32219790,
+      "gpuBytes": null
+    },
+    "world": {
+      "scene": "near-base",
+      "worldSeed": "universe-explorer:world:v1",
+      "space": {
+        "origin": {
+          "origin": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "shifts": 1
+        },
+        "system": null,
+        "stream": {
+          "sector": "0,0,0",
+          "cached": 125,
+          "pending": 0,
+          "queued": 0,
+          "failed": 0,
+          "completed": 124,
+          "discarded": 0
+        },
+        "navigation": {
+          "groups": 27,
+          "points": 1100
+        },
+        "planets": {
+          "active": 1,
+          "queued": 0,
+          "created": 3,
+          "disposed": 2
+        },
+        "jobs": {
+          "total": 30,
+          "lastMs": 0.5999999977648258,
+          "maxMs": 1
+        }
+      },
+      "travel": null,
+      "flightDust": {
+        "kind": "illustrative-local-dust",
+        "count": 420,
+        "speed": 0,
+        "displacement": [
+          0,
+          0,
+          0
+        ],
+        "sample": [
+          -94.94050598144531,
+          54.99604797363281,
+          -188.4995574951172,
+          -442.6173095703125,
+          362.1107177734375,
+          -409.5864562988281,
+          422.2568054199219,
+          -481.7000732421875,
+          96.14598846435547,
+          -247.38172912597656,
+          137.92025756835938,
+          -375.2585144042969
+        ],
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "visualDisplacement": [
+          0,
+          0,
+          0
+        ],
+        "visible": true,
+        "opacity": 0.9999999999999986,
+        "resets": 1,
+        "originShifts": 1,
+        "maxOffset": 619.6695556640625
+      },
+      "flightFX": null,
+      "tour": null,
+      "projectiles": 0,
+      "planetCount": 80,
+      "visibleFullPlanets": 0,
+      "visiblePlanets": 58,
+      "players": {
+        "local": 1,
+        "remote": 0,
+        "bots": 0
+      },
+      "voice": {
+        "peers": 0,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "ship": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "worldPosition": {
+          "sector": [
+            0,
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            100,
+            9800
+          ]
+        },
+        "cameraOffset": [
+          0,
+          125,
+          360
+        ],
+        "cameraFov": 75,
+        "cruiseIntensity": 0,
+        "engine": {
+          "plumeLength": 23.63601184054161,
+          "opacity": 0.209731725513412
+        },
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      }
+    },
+    "realtime": {
+      "configured": false,
+      "subscribed": false,
+      "systemId": null,
+      "sendAttempts": 0,
+      "received": 0,
+      "byEvent": {
+        "position": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "shoot": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "hit": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "die": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "chat": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "sonar": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "voice-signal": {
+          "sendAttempts": 0,
+          "received": 0
+        }
+      }
+    }
+  },
+  "closed": {
+    "timestampMs": 8341.099999997765,
+    "fps": 200.02222469196363,
+    "frameTimeMs": 4.999444444436166,
+    "p95FrameTimeMs": 5.100000001490116,
+    "sampleFrames": 180,
+    "graphicsMode": "LOW",
+    "starMap": {
+      "open": false
+    },
+    "flightInputBlocked": false,
+    "renderer": {
+      "calls": 78,
+      "triangles": 52170,
+      "points": 13302,
+      "lines": 420,
+      "geometries": 52,
+      "textures": 9,
+      "programs": 20,
+      "pixelRatio": 0.75,
+      "width": 633,
+      "height": 292
+    },
+    "memory": {
+      "jsHeapUsedBytes": 18721065,
+      "jsHeapAllocatedBytes": 33270621,
+      "gpuBytes": null
+    },
+    "world": {
+      "scene": "near-base",
+      "worldSeed": "universe-explorer:world:v1",
+      "space": {
+        "origin": {
+          "origin": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "shifts": 1
+        },
+        "system": null,
+        "stream": {
+          "sector": "0,0,0",
+          "cached": 125,
+          "pending": 0,
+          "queued": 0,
+          "failed": 0,
+          "completed": 124,
+          "discarded": 0
+        },
+        "navigation": {
+          "groups": 27,
+          "points": 1100
+        },
+        "planets": {
+          "active": 1,
+          "queued": 0,
+          "created": 3,
+          "disposed": 2
+        },
+        "jobs": {
+          "total": 30,
+          "lastMs": 0.5999999977648258,
+          "maxMs": 1
+        }
+      },
+      "travel": null,
+      "flightDust": {
+        "kind": "illustrative-local-dust",
+        "count": 420,
+        "speed": 0,
+        "displacement": [
+          0,
+          0,
+          0
+        ],
+        "sample": [
+          -94.94050598144531,
+          54.99604797363281,
+          -188.4995574951172,
+          -442.6173095703125,
+          362.1107177734375,
+          -409.5864562988281,
+          422.2568054199219,
+          -481.7000732421875,
+          96.14598846435547,
+          -247.38172912597656,
+          137.92025756835938,
+          -375.2585144042969
+        ],
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "visualDisplacement": [
+          0,
+          0,
+          0
+        ],
+        "visible": true,
+        "opacity": 0.9999999999999989,
+        "resets": 1,
+        "originShifts": 1,
+        "maxOffset": 619.6695556640625
+      },
+      "flightFX": null,
+      "tour": null,
+      "projectiles": 0,
+      "planetCount": 80,
+      "visibleFullPlanets": 0,
+      "visiblePlanets": 58,
+      "players": {
+        "local": 1,
+        "remote": 0,
+        "bots": 0
+      },
+      "voice": {
+        "peers": 0,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "ship": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "worldPosition": {
+          "sector": [
+            0,
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            100,
+            9800
+          ]
+        },
+        "cameraOffset": [
+          0,
+          125,
+          360
+        ],
+        "cameraFov": 75,
+        "cruiseIntensity": 0,
+        "engine": {
+          "plumeLength": 25.571177810560506,
+          "opacity": 0.23917241921556376
+        },
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      }
+    },
+    "realtime": {
+      "configured": false,
+      "subscribed": false,
+      "systemId": null,
+      "sendAttempts": 0,
+      "received": 0,
+      "byEvent": {
+        "position": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "shoot": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "hit": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "die": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "chat": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "sonar": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "voice-signal": {
+          "sendAttempts": 0,
+          "received": 0
+        }
+      }
+    }
+  },
+  "reopened": {
+    "timestampMs": 10106.599999997765,
+    "fps": 199.97778024713585,
+    "frameTimeMs": 5.000555555543138,
+    "p95FrameTimeMs": 5.100000001490116,
+    "sampleFrames": 180,
+    "graphicsMode": "LOW",
+    "starMap": {
+      "open": false
+    },
+    "flightInputBlocked": false,
+    "renderer": {
+      "calls": 78,
+      "triangles": 52170,
+      "points": 13302,
+      "lines": 420,
+      "geometries": 52,
+      "textures": 9,
+      "programs": 20,
+      "pixelRatio": 0.75,
+      "width": 633,
+      "height": 292
+    },
+    "memory": {
+      "jsHeapUsedBytes": 21811429,
+      "jsHeapAllocatedBytes": 31671361,
+      "gpuBytes": null
+    },
+    "world": {
+      "scene": "near-base",
+      "worldSeed": "universe-explorer:world:v1",
+      "space": {
+        "origin": {
+          "origin": {
+            "sector": [
+              0,
+              0,
+              0
+            ],
+            "offset": [
+              0,
+              100,
+              9800
+            ]
+          },
+          "shifts": 1
+        },
+        "system": null,
+        "stream": {
+          "sector": "0,0,0",
+          "cached": 125,
+          "pending": 0,
+          "queued": 0,
+          "failed": 0,
+          "completed": 124,
+          "discarded": 0
+        },
+        "navigation": {
+          "groups": 27,
+          "points": 1100
+        },
+        "planets": {
+          "active": 1,
+          "queued": 0,
+          "created": 3,
+          "disposed": 2
+        },
+        "jobs": {
+          "total": 30,
+          "lastMs": 0.5999999977648258,
+          "maxMs": 1
+        }
+      },
+      "travel": null,
+      "flightDust": {
+        "kind": "illustrative-local-dust",
+        "count": 420,
+        "speed": 0,
+        "displacement": [
+          0,
+          0,
+          0
+        ],
+        "sample": [
+          -94.94050598144531,
+          54.99604797363281,
+          -188.4995574951172,
+          -442.6173095703125,
+          362.1107177734375,
+          -409.5864562988281,
+          422.2568054199219,
+          -481.7000732421875,
+          96.14598846435547,
+          -247.38172912597656,
+          137.92025756835938,
+          -375.2585144042969
+        ],
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "visualDisplacement": [
+          0,
+          0,
+          0
+        ],
+        "visible": true,
+        "opacity": 0.9999999999999989,
+        "resets": 1,
+        "originShifts": 1,
+        "maxOffset": 619.6695556640625
+      },
+      "flightFX": null,
+      "tour": null,
+      "projectiles": 0,
+      "planetCount": 80,
+      "visibleFullPlanets": 0,
+      "visiblePlanets": 58,
+      "players": {
+        "local": 1,
+        "remote": 0,
+        "bots": 0
+      },
+      "voice": {
+        "peers": 0,
+        "connected": 0,
+        "receiving": 0,
+        "microphone": false,
+        "muted": true
+      },
+      "ship": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "worldPosition": {
+          "sector": [
+            0,
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            100,
+            9800
+          ]
+        },
+        "cameraOffset": [
+          0,
+          125,
+          360
+        ],
+        "cameraFov": 75,
+        "cruiseIntensity": 0,
+        "engine": {
+          "plumeLength": 24.944115505929673,
+          "opacity": 0.23939777055278832
+        },
+        "speed": 0,
+        "viewMode": "third",
+        "hp": 1000
+      }
+    },
+    "realtime": {
+      "configured": false,
+      "subscribed": false,
+      "systemId": null,
+      "sendAttempts": 0,
+      "received": 0,
+      "byEvent": {
+        "position": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "shoot": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "hit": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "die": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "chat": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "sonar": {
+          "sendAttempts": 0,
+          "received": 0
+        },
+        "voice-signal": {
+          "sendAttempts": 0,
+          "received": 0
+        }
+      }
+    }
+  },
+  "catalogueRequests": 70,
+  "issues": []
+}

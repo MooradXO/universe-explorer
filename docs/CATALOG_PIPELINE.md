@@ -1,138 +1,99 @@
-# Подготовка звёздного каталога
+# Star catalogue pipeline
 
-Первый адаптер — полный AT-HYG 4.0. Локальные подготовка данных, поиск и 3D-карта реализованы; SQLite не загружается в браузер. Gaia DR3, SIMBAD и NASA NED подключаются позднее отдельными адаптерами.
+AT-HYG 4.0 supplies local search and the streamed 3D star map. Gaia DR3, SIMBAD and NASA/IPAC NED add observations only on explicit request. SQLite is never downloaded into the browser.
 
-## Запуск
+## Preparation
 
-Нужен Node.js 24.19+ со встроенным `node:sqlite` и поддержкой запуска TypeScript. Новых npm-зависимостей нет. В текущем workspace Node уже доступен, portable npm расположен на E.
+Use Node.js 24.19+ with built-in SQLite, TypeScript execution and system certificates.
 
-Из папки игры:
-
-```powershell
-./scripts/run.ps1 catalog:download
-./scripts/run.ps1 catalog:import
-./scripts/run.ps1 catalog:verify
-./scripts/run.ps1 test
-```
-
-Альтернатива без npm:
-
-```powershell
-node --use-system-ca scripts/catalog/download-athyg.mjs
-node scripts/catalog/import-athyg.mjs
-node scripts/catalog/verify-athyg.mjs
-```
-
-Для повторного полного импорта нужен новый каталог, старый результат не перезаписывается:
-
-```powershell
-node scripts/catalog/import-athyg.mjs --output '../.catalog-research/athyg-4.0/prepared-v1-repeat'
-node scripts/catalog/verify-athyg.mjs '../.catalog-research/athyg-4.0/prepared-v1-repeat'
-```
-
-## Файлы и границы модулей
-
-Пути ниже отсчитываются от workspace `E:/UNIVERSE/UNIVERSE2`.
-
-| Путь | Содержимое |
-| --- | --- |
-| `project/.catalog-research/athyg-4.0/athyg_40.csv.gz` | Полный исходник, принимается только после проверки размера и SHA256 |
-| `project/.catalog-research/athyg-4.0/prepared-v1/catalog.sqlite` | Нормализованные записи, исходные поля и отклонённые строки |
-| `prepared-v1/source-manifest.json` | Автор, pinned revision, источники документации, единицы, условия данных |
-| `prepared-v1/report.json` | Учёт всех строк, координаты, ошибки, коллизии ID, размеры и контрольные суммы |
-| `prepared-v1/manifest.json` | Признак полного успешного импорта и ссылки на артефакты |
-| `prepared-v1/verification.json` | Результат независимого чтения и проверки подготовленной базы |
-
-`src/catalog/CatalogTypes.ts` — контракт данных без Three.js. `src/catalog/adapters/AthygRecord.ts` — чистая нормализация строки. `scripts/catalog/` — загрузка, CSV, SQLite, отчёт и CLI. `tests/unit/catalog.test.ts` — синтетические fixtures, integrity и повторяемость.
-
-Исходники и подготовленная база лежат вне game repo и `public/`. На E записываются также SQLite journal и тестовые файлы. Временные структуры SQLite создаются в памяти. Игра, игровые координаты, Supabase и сохранения этим импортом не меняются.
-
-## Контроль целостности и восстановление
-
-- Зафиксированы upstream commit `eebe42b3552ae04e67d27ae085a8aad997b42bc0`, размер `199688001` bytes и SHA256 `69ad04dd33d7c7bb4f5e1b4682798075811547ea9fb8d0e802e5b319c46818a6`.
-- Загрузчик получает ссылку через Git LFS, использует до трёх соединений и части максимум 8 MiB. Подписанные ссылки и заголовки не сохраняются.
-- При обрыве остаются `.partial` и части в `download-chunks/`. Повторная команда продолжает загрузку. Полный файл получает окончательное имя только после совпадения SHA256.
-- У сервера наблюдался некорректный знаменатель Content-Range (длина остатка). Загрузчик проверяет начало/конец диапазона и длину, а окончательно доверяет закреплённой полной SHA256.
-- Импорт до обработки также проверяет полный исходник. CSV читается потоком, проверяется gzip CRC; неполная загрузка не принимается.
-- В незавершённом результате остаётся `INCOMPLETE`; при ошибке обработки добавляется `failure.json`. Такой каталог нельзя использовать. Для новой попытки указать другой output; существующие файлы автоматически не удаляются.
-
-## Координаты и идентификаторы
-
-- Собственный ID имеет вид `athyg:4.0:<id>`, устойчив внутри закреплённой версии. Перенос на новую версию требует явного сопоставления.
-- Gaia ID хранится строкой с релизом DR3. Поля `dist_src`, `pos_src`, `rv_src` и `pm_src` независимы от релиза идентификатора. Это подтверждено авторским [STEPS_V4.txt](https://codeberg.org/astronexus/athyg/src/commit/eebe42b3552ae04e67d27ae085a8aad997b42bc0/STEPS_V4.txt).
-- Координаты экваториальные, равноденствие J2000.0 по [описанию колонок автора](https://codeberg.org/astronexus/brahe/src/commit/50348755083917388f6a0a8e3275011d1bdc3740/consts.go). Эпоха отдельного измерения в CSV не записана: `epochJulianYear: null`. Равноденствие не подменяет эпоху.
-- Положения сохраняются в парсеках, скорости XYZ — в km/s, собственные движения — mas/year. Игровой масштаб ещё не применяется. Солнечная исходная запись не переносится насильно в ноль.
-- Отсутствующие или некорректные координаты дают `cartesianParsecs: null`, но сама запись сохраняется с причиной. В SQLite у неё также нет XYZ. Ошибочный обязательный ID, другая длина строки и повтор первичного ID попадают в `rejected_rows` вместе с исходными полями.
-- Проверка длины XYZ использует допуск `max(0.001 pc, distance × 1e-6)` только для численного округления. Статус `available` не означает высокую астрономическую точность; индивидуальных погрешностей в этом CSV нет.
-- Совпадение Gaia/Tycho ID у разных записей попадает в отчёт. Такие звёзды сохраняются раздельно до проверки; слепого слияния нет.
-- Некоторые расстояния вторичных компонентов перенесены автором от главной звезды. Скорость XYZ иногда рассчитана при неизвестной лучевой скорости; это отмечается флагом. Фотометрические полосы зависят от исходного каталога.
-
-## Проверки результата
-
-Verifier проверяет SHA256 всей SQLite-базы, её целостность, учёт принятых/отклонённых строк, разделение отсутствующих XYZ и полное совпадение Gaia ID с исходными строками. SHA256 последовательности нормализованных записей пересчитывается для всего каталога. На первых 100 и каждой 10000-й строке отдельно проверяется преобразование RA/Dec в XYZ, чтобы выявить ошибку осей или единиц.
-
-`datasetSha256` и `rejectedRowsSha256` предназначены для сравнения повторных импортов. Время, потребление памяти и служебное устройство SQLite не участвуют в канонической контрольной сумме данных.
-
-Проверки не заменяют научную оценку достоверности расстояний. Пользователь выбрал реальные пропорции карты и поиск/карточки без 3D-точек для неизвестных расстояний. Масштаб полёта и перемещение базы остаются отдельными решениями.
-
-## Локальная 3D-карта
-
-```powershell
-./scripts/run.ps1 catalog:map
+```sh
+npm run catalog:download
+npm run catalog:import
+npm run catalog:verify
+npm run catalog:map
 node scripts/catalog/verify-map.mjs
-./scripts/run.ps1 build
-./scripts/run.ps1 preview
 ```
 
-`catalog:map` читает проверенный `prepared-v1` и создаёт новый `map-v1` рядом с ним, вне git/public/dist. Повторный экспорт в существующий output запрещён; у `exportMap(input, output)` можно указать новый каталог. До полного завершения существует `INCOMPLETE`. После изменения Vite middleware уже запущенный preview нужно перезапустить. Для localhost:3000: `node node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 3000 --strictPort`.
+Without npm, run the corresponding scripts/catalog/*.mjs files with Node; downloading uses --use-system-ca. Never disable TLS verification.
 
-- `map-v1/search.sqlite`: 2 558 654 карточки, строковые внешние ID, индексы ID и FTS имён. Размер 1 486 831 616 bytes; в браузер база не передаётся.
-- `map-v1/manifest.json`: 2 622 узла адаптивного octree, 442 711 bytes. Координаты/радиус каждого блока — в парсеках. Родитель содержит детерминированную выборку до 512 точек; конечные блоки — все 2 533 349 доступных позиций без повторов.
-- `tiles/*.bin.gz`: суммарно 57 310 346 bytes. Заголовок 16 bytes: magic UXST, версия 1, число записей, stride 24. Запись: XYZ Float32 относительно центра блока, magnitude Float32, colorIndex Float32, внутренний AT-HYG ID Uint32. Gaia ID сюда не переводятся; карточка сохраняет строки и исходные координаты Number/Float64.
-- Проверка всех блоков сверяет ID/XYZ с исходной базой и ограничивает отклонение точностью Float32. Максимальное измеренное округление оси в конечных блоках — 0.0149000000674 pc у далёких объектов; это численная погрешность отображения, не научная погрешность измерения. Точный исходный XYZ доступен в карточке/API и используется при центрировании.
-- `verify-map.mjs` сохраняет `verification.json`, включая SHA256 manifest и search DB. `export-report.json` содержит объёмы и полное число записей.
+Default data is outside the repository at ../.catalog-research/athyg-4.0/.
 
-Vite dev/preview предоставляет только локальные read-only endpoints `/__catalog/manifest`, `/__catalog/tiles/<key>`, `/__catalog/search?q=...`, `/__catalog/objects/<internal-id>`. Научные API не вызываются во время игры. Ответ поиска ограничен 20 записями. Поддержаны имена/их префиксы и точные ID с префиксами AT-HYG, Gaia DR3, TYC, HIP, HD, HR, GJ; числа Gaia остаются строками. Один ID Gaia может вернуть несколько компонентов. Неподготовленный каталог возвращает 503 с возможностью повтора в UI.
+| Artifact | Contents |
+| --- | --- |
+| athyg_40.csv.gz | Verified source |
+| prepared-v1/catalog.sqlite | Normalized records, raw fields and rejected rows |
+| prepared-v1/source-manifest.json | Pinned provenance, units and terms |
+| prepared-v1/report.json | Accounting, errors, ID collisions, sizes and hashes |
+| prepared-v1/manifest.json | Completion marker and artifact references |
+| prepared-v1/verification.json | Independent verification |
+| map-v1/search.sqlite | Searchable object cards |
+| map-v1/manifest.json and tiles/ | Adaptive octree and compressed blocks |
 
-В игре: `КАРТА` в верхней панели. Перетаскивание вращает, колесо/двухпальцевый жест приближает; две кнопки ± также доступны с клавиатуры. Поиск центрирует выбранную звезду, нажатие на точку открывает карточку, `Солнце` и `Весь каталог` меняют обзор, Escape возвращает в полёт. Расстояния линейные. Общий обзор включает редкие далёкие записи, поэтому основная масса звёзд выглядит компактно; это не изображение всей Вселенной. Размер/цвет точек условные.
+Repeated imports/exports require a fresh destination. Existing outputs are not silently overwritten.
 
-Модули: `src/catalog/` — данные, сеть, LOD и ограниченный cache; `src/world/star-map/` — Three.js сцена и выбор точек; `src/ui/star-map/` — интерфейс. Engine рисует карту своим существующим WebGLRenderer. Подгрузка максимум 2 запроса одновременно; HIGH/LOW — до 32/20 активных блоков, 90 000/45 000 точек, 80/48 блоков в кеше. Старый набор остаётся до полной готовности нового. Закрытие отменяет запросы и освобождает геометрию/material/listeners. Симуляция мира продолжается, ввод корабля блокируется отдельной причиной `star-map`.
-
-Реальная карта пока служит выбору и исследованию звёзд. Варп, подробные системы и связь домашней базы с реальными координатами — следующий отдельный этап. Gaia/SIMBAD/NED подключены по запросу, как описано ниже.
-
-## Gaia, SIMBAD и NED без больших выгрузок
-
-Пользователь выбрал компактную основу мира и дополнительные сведения через интернет по мере исследования. Полные научные архивы больше не планируются. На этапе разработки сохраняется подготовленный AT-HYG: около 13 GB рабочих файлов на E, включая повторную проверочную базу; это не загрузка для игрока. В браузер поступают только необходимые блоки карты. Сокращение старых рабочих файлов и упаковка основы для публичной версии остаются отдельной задачей.
-
-В карточке звезды нажать **«Изучить: Gaia и SIMBAD»**. В поиске раскрыть **«Gaia · SIMBAD · NED»**, выбрать источник и нажать **«Искать в источнике»**. Примеры: Gaia DR3 `5853498713190525696`, SIMBAD `Sirius` или `NGC 7000`, NED `M31`. Произвольные названия на русском сервисами могут не распознаваться. Запросы не выполняются автоматически при вводе, смене точек или в render loop.
-
-```powershell
-node --use-system-ca node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 3001 --strictPort
-node scripts/catalog/probe-online.mjs http://127.0.0.1:3001
+```sh
+node scripts/catalog/import-athyg.mjs --output ../.catalog-research/athyg-4.0/prepared-v1-repeat
+node scripts/catalog/verify-athyg.mjs ../.catalog-research/athyg-4.0/prepared-v1-repeat
 ```
 
-Текущий обновлённый preview работает на 3001; прежний процесс на 3000 был запущен до подключения научных сервисов. Нужен Node 24.19+ с системными сертификатами; отключать проверку TLS нельзя. `npm run dev/preview` уже включает `--use-system-ca`.
+## Integrity and recovery
 
-Модульная структура:
+Pinned upstream commit: eebe42b3552ae04e67d27ae085a8aad997b42bc0. Source: 199,688,001 bytes; SHA256 69ad04dd33d7c7bb4f5e1b4682798075811547ea9fb8d0e802e5b319c46818a6.
 
-- `src/catalog/ExternalObservation.ts`, `adapters/*Observation.ts`: отдельные наблюдения и чистая нормализация без Three.js, расчёта XYZ и слияния источников.
-- `scripts/catalog/remote-snapshot.mjs`, `votable.mjs`: ограниченный HTTPS, CSV и XML. Длинные ID остаются строками. Ошибки VOTable, OVERFLOW, неполные строки и DTD отклоняются.
-- `scripts/catalog/observation-cache.mjs`: общий дисковый кеш в `../.catalog-research/online-cache-v1`, максимум **33 554 432 bytes (32 MiB)** вместе с временной записью; вытеснение давно не использовавшихся ответов.
-- `scripts/catalog/online-catalog.mjs`: только точечные запросы Gaia DR3, SIMBAD basic/ident и нового NED OverviewOfObject. SIMBAD выдаёт до 256 альтернативных имён; ограничение и недоступность имён отмечаются явно.
-- `src/catalog/OnlineCatalogClient.ts` и `src/ui/star-map/OnlineCatalogPanel.ts`: получение и показ сведений, ссылки, повтор, отмена устаревшего отображения.
+The Git LFS downloader uses up to three connections and chunks at most 8 MiB. Signed URLs/headers are not retained. Partial chunks allow resumption; final naming requires the full pinned checksum. Range endpoints and lengths are checked despite a previously observed incorrect upstream Content-Range denominator.
 
-Бюджеты: максимум 512 KiB на ответ, один удалённый запрос одновременно, очередь до восьми разных URL, одинаковые запросы объединяются. Между ответом NED и следующим обращением к NED минимум 1,1 с. Тайм-аут ответа 35 с. Нет автоматического обхода всего каталога и бесконечных повторов. При закрытии интерфейса ответ больше не отображается; уже начатый серверный запрос может завершиться и сохранить небольшой снимок.
+Import verifies the source and gzip CRC, streams CSV and accounts for every row. INCOMPLETE and failure.json identify unfinished output; retry into another directory. The verifier checks SQLite integrity, file SHA256, accepted/rejected rows, absent XYZ, original Gaia IDs and canonical record hashes. It independently recomputes RA/Dec-to-XYZ on the first 100 and each 10,000th row. Canonical hashes exclude timestamps, memory and SQLite layout.
 
-Кеш используется 30 дней. Если обновить старый снимок не получилось, показывается его исходная дата и отметка сохранённых данных. При отсутствии снимка сервис сообщает недоступность; основная карта и полёт продолжают работать. Кеш хранит URL, UTC-время, SHA256 и исходный ответ; ссылки на снимки дополнительных имён хранятся отдельно. Повторные измерения и Gaia DR2/DR3 не смешиваются.
+## Coordinates and identifiers
 
-По Gaia DR3 ID выдаются связанные записи AT-HYG, включая несколько компонентов. Для AT-HYG без Gaia используется точный HIP/TYC/HD в SIMBAD; при отсутствии ID связь не выдумывается. SIMBAD сохраняет опубликованные имена, типы и библиографию. Gaia хранит параллакс с ошибкой и параметры качества; отрицательный параллакс не превращается в расстояние. NED хранит красное смещение, отдельно оценки расстояний, их ошибки и параметры модели сервиса. Новые 3D-точки по этим сведениям пока не создаются.
+- Internal IDs: athyg:4.0:<id>, stable within this release. Future versions require mapping.
+- Gaia IDs remain strings with a DR3 identifier release. Distance/position/velocity source fields are independent.
+- Equinox: J2000.0. Individual measurement epoch is unavailable and stays null.
+- Positions: parsecs; XYZ velocities: km/s; proper motions: mas/year. Import does not apply flight scale or force the source Sun to zero.
+- Missing/invalid XYZ remains null with a reason; the record stays searchable. Invalid required IDs, row lengths and duplicate primary IDs go to rejected_rows.
+- Numeric length tolerance is max(0.001 pc, distance × 1e-6), not an astronomical accuracy estimate.
+- Gaia/Tycho collisions remain separate. Inherited component distances and velocities inferred without radial velocity are flagged. Different photometric bands are preserved.
+- Unknown distances never receive invented 3D locations.
 
-Endpoints `GET /__catalog/online?source=gaia|simbad|ned&q=...` и `/__catalog/enrich/<AT-HYG id>` работают только через локальный Vite dev/preview bridge. Статический `dist` не содержит научных баз или самого сервера; для публичного приложения потребуется отдельно размещённый API с общими лимитами и согласованными условиями источников.
+References: [processing notes](https://codeberg.org/astronexus/athyg/src/commit/eebe42b3552ae04e67d27ae085a8aad997b42bc0/STEPS_V4.txt), [column definitions](https://codeberg.org/astronexus/brahe/src/commit/50348755083917388f6a0a8e3275011d1bdc3740/consts.go).
 
-[Отчёт и проверки подключения](phases_archive/online-catalog-2026-09-15/README.md).
+## Map data and budgets
 
-## Источники и использование
+The prepared snapshot has 2,558,654 cards and 2,533,349 positions. Search DB: 1,486,831,616 bytes; 2,622-node manifest: 442,711 bytes; compressed tiles: 57,310,346 bytes.
 
-AT-HYG составлен David Nash / Astronomy Nexus из Tycho-2, Gaia, Hipparcos, Yale Bright Star Catalog, Gliese-Jahreiss и звёздных имён IAU; [авторские acknowledgments](https://codeberg.org/astronexus/athyg/src/commit/eebe42b3552ae04e67d27ae085a8aad997b42bc0/ACKNOWLEDGMENTS.md) перечисляют ссылки и цитирование.
+Parents contain deterministic samples of up to 512 points; leaves contain all positions without duplication. Tile header: 16 bytes, UXST magic, version 1, count and stride 24. Records: centre-relative Float32 XYZ, magnitude, colour index and Uint32 AT-HYG ID. Gaia IDs are never converted to numbers.
 
-Пользователь согласовал полный AT-HYG для локальной разработки и отложил запрос ESA. Объявленная лицензия сборника — CC BY-SA 4.0; проверенные условия Gaia — CC BY-NC 3.0 IGO. Разрешение на коммерческий сценарий не получено. Исходные условия и неотправленный черновик запроса: [исследование](research/real-map-options-2026-09-15.md). Эти файлы не являются автоматически разрешённым коммерческим пакетом для публикации.
+Tile verification compares IDs/XYZ against the source. Maximum measured leaf-axis rounding was approximately 0.0149 pc for distant objects: display precision, not scientific uncertainty. Cards/centring use original higher-precision XYZ.
+
+The browser allows two concurrent requests. HIGH/LOW: 32/20 active blocks, 90,000/45,000 points, 80/48 cached blocks. Existing data stays until replacements are ready; close cancels requests and releases render resources/listeners. Map input blocks the ship while world simulation continues. Distances are linear, while point size/colour are illustrative.
+
+## Endpoints and hosting
+
+Vite supplies the local read-only bridge. Production uses scripts/server/catalog-server.mjs behind Nginx. Static dist alone does not supply the API.
+
+- GET /__catalog/manifest
+- GET /__catalog/tiles/<key>
+- GET /__catalog/search?q=...
+- GET /__catalog/objects/<internal-id>
+- GET /__catalog/online?source=gaia|simbad|ned&q=...
+- GET /__catalog/enrich/<AT-HYG-id>
+
+Search returns up to 20 cards and supports names/prefixes plus AT-HYG, Gaia DR3, TYC, HIP, HD, HR and GJ IDs. A Gaia ID may return several components. Unavailable map data yields 503 with UI retry. Current game travel supports catalogue stars with known positions; remote observations do not create new spatial destinations.
+
+## Explicit remote lookups
+
+Examples: Gaia DR3 5853498713190525696, SIMBAD Sirius/NGC 7000, NED M31. Typing, selection changes and the render loop do not automatically contact scientific services.
+
+Cache: 32 MiB including temporary writes; response: 512 KiB; one outgoing request; queue of eight distinct URLs; identical requests coalesced. NED spacing: at least 1.1 seconds after the prior response. Timeout: 35 seconds. No bulk harvesting or unbounded retries.
+
+Snapshots last 30 days. Failed refresh can display dated cached data; otherwise the source is marked unavailable while local map/flight continue. Provenance retains query URL, UTC time, SHA256, raw response, units and bibliography. DTD, VOTable error/overflow and malformed rows are rejected.
+
+Gaia parallax/error and quality stay separate; negative parallax is not inverted. SIMBAD preserves names/types/bibliography with an explicit 256-name limit. NED preserves redshift, distance estimates/errors and model parameters. Different sources and Gaia releases are not merged into unattributed values.
+
+## Modules and terms
+
+src/catalog/CatalogTypes.ts and adapters normalize independently of Three.js. scripts/catalog provides download/SQLite/parsing/cache. OnlineCatalogClient and star-map UI display observations.
+
+AT-HYG: David Nash / Astronomy Nexus; [acknowledgments](https://codeberg.org/astronexus/athyg/src/commit/eebe42b3552ae04e67d27ae085a8aad997b42bc0/ACKNOWLEDGMENTS.md). Data terms differ from the MIT code license. [Third-party notices](../THIRD_PARTY_NOTICES.md) retain attribution and the outstanding commercial-use question.
+
+[Deployment](DEPLOYMENT.md) · [Import report](phases_archive/catalog-import-2026-09-15/README.md)

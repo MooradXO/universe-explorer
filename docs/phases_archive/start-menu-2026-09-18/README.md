@@ -1,23 +1,7 @@
-# Стартовое меню — 18.09.2026
+# Start-screen presentation
 
-По поручению пользователя встроенным imagegen созданы и подключены два самостоятельных прозрачных PNG: объёмный логотип Universe Explorer и медно-графитовая рамка кнопки. Все исходные промпты и пути сохранены в [image-prompts.md](image-prompts.md). Встроенный инструмент не предоставляет выбор версии с названием «2.5».
+Added original project branding and start-button artwork while keeping live accessible controls. Tested 1920×945 HIGH, 1366×768 HIGH, 844×390 LOW and real viewport rotation from two portrait sizes to landscape. The portrait rotate-device overlay remained active; an initial attempt to click through it failed, and final tests correctly rotated rather than bypassing the restriction. The later guest-entry simplification is recorded separately.
 
-## Изменения
+## Historical scope
 
-- Логотип заменяет плоскую надпись на металлической табличке; сохранён живой 3D фон.
-- Кнопки запуска, гостевого входа и GitHub-профиля используют сгенерированную графику. Текст и иконки остаются отдельными доступными элементами HTML/SVG.
-- Переработаны панели, типографика, подсветка при наведении, указатели клавиатурного фокуса, disabled/loading состояния, размещение на небольших экранах.
-- Существующие события и логика входа сохранены. Игровой HUD не изменён.
-- PNG с настоящим alpha сохранены в `public/assets/ui/start-menu/`: логотип 1942×809, 1 202 914 байт; кнопка 2172×724, 1 552 643 байта.
-- Созвездия пока не изменялись: варианты предложены отдельно в [плане оформления](../../plans/constellation-art-direction.md).
-
-## Проверки
-
-- [x] TypeScript, space-only guard и production build.
-- [x] Существующий browser smoke обычного входа/возврата и независимых клиентов: desktop-high и mobile-low, 2/2.
-- [x] Финальная проверка пяти сценариев: 1920×945 HIGH, 1366×768 HIGH, 844×390 LOW, поворот 390×844 → 844×390 LOW, поворот 320×568 → 568×320 LOW.
-- [x] Нет переполнения меню и наложения логотипа на панель; изображения загружаются, кнопки работают, фокус возвращается, гостевой вход завершается, ошибок JavaScript и HTTP ресурсов нет.
-- [x] Скриншоты стартового экрана, выбора профиля и наведения просмотрены. Сводка размеров и результатов — `browser-check.json`.
-- [x] Основная сборка обновлена без принудительной перезагрузки пользовательской страницы: `main-DMk9O6VZ.js`; сверка — `preview-install.json`.
-
-Вертикальное положение на телефоне по-прежнему показывает существующую просьбу повернуть устройство. Первоначальная попытка нажать кнопку под этим экраном остановилась на проверке Playwright; финальная проверка выполняет настоящий поворот и проходит без обхода блокировки.
+This report records the implementation on the date in its directory name. Later stages may supersede its UI, transport or limits. Retained JSON and screenshots provide compact evidence; local recordings and source backups are not release assets. See the [current documentation](../../README.md).

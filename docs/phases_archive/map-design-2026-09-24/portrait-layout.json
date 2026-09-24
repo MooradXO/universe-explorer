@@ -1,0 +1,38 @@
+{
+  "boxes": [
+    {
+      "selector": ".star-map__header",
+      "x": 8,
+      "y": 6,
+      "right": 382,
+      "bottom": 76
+    },
+    {
+      "selector": ".star-map__search",
+      "x": 8,
+      "y": 88,
+      "right": 382,
+      "bottom": 268
+    },
+    {
+      "selector": ".star-map__card",
+      "x": 8,
+      "y": 476,
+      "right": 382,
+      "bottom": 716
+    },
+    {
+      "selector": ".star-map__tools",
+      "x": 80.1015625,
+      "y": 739,
+      "right": 309.8984375,
+      "bottom": 787
+    }
+  ],
+  "viewport": {
+    "width": 517,
+    "height": 1119,
+    "scale": 0.7543520331382751
+  },
+  "horizontalOverflow": false
+}

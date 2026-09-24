@@ -68,6 +68,29 @@ it('tile loads are bounded, cuts change atomically, stale completions and closed
   expect(cache.entries.size).toBe(0); expect(cache.pending).toBe(0);
 });
 
+it('LOD hysteresis holds detail across small zoom changes but releases it after zooming out', () => {
+  const node = (key: string, children: string[] = []): StarTileNode => ({ key, center: [0, 0, 0], radius: 1, count: 30, points: 10, children, bytes: 10 });
+  const nodes = new Map([node('r', ['a', 'b']), node('a'), node('b')].map(n => [n.key, n]));
+  expect(selectStarTiles('r', nodes, () => 1.05, () => true, 3, 30, ['r'])).toEqual(['r']);
+  expect(selectStarTiles('r', nodes, () => 0.95, () => true, 3, 30, ['a', 'b'])).toEqual(['a', 'b']);
+  expect(selectStarTiles('r', nodes, () => 0.8, () => true, 3, 30, ['a', 'b'])).toEqual(['r']);
+});
+
+it('crossfades retain the old cut, defer a third cut and release all resources on close', async () => {
+  const disposed: string[] = [];
+  const cache = new StarTileCache<string>(4, async key => key, value => disposed.push(value), true);
+  cache.setDesired(['r']); await vi.waitFor(() => expect(cache.active).toEqual(['r']));
+  cache.setDesired(['a', 'b']); await vi.waitFor(() => expect(cache.active).toEqual(['a', 'b']));
+  expect(cache.previous).toEqual(['r']);
+  cache.setDesired(['c', 'd']);
+  expect(cache.active).toEqual(['a', 'b']); expect(cache.pending).toBe(0);
+  expect(cache.entries.has('r')).toBe(true);
+  cache.finishTransition(); await vi.waitFor(() => expect(cache.active).toEqual(['c', 'd']));
+  expect(cache.previous).toEqual(['a', 'b']); expect(cache.entries.size).toBeLessThanOrEqual(4);
+  cache.finishTransition(); cache.close();
+  expect(cache.previous).toEqual([]); expect(disposed.sort()).toEqual(['a', 'b', 'c', 'd', 'r']);
+});
+
 it('search keeps long Gaia IDs and ambiguous components, exposes missing distances and rejects query injection', async () => {
   const location = join(directory, 'service'); await mkdir(location);
   await writeFile(join(location, 'manifest.json'), JSON.stringify({ version: 1, unit: 'parsec', nodes: [] }));

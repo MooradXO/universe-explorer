@@ -1,4 +1,7 @@
 import * as THREE from 'three';
+import { idleInput, type PilotInput, type SelfSnapshot } from '../network/shared/Protocol';
+import { levelFlightDirection } from '../world/systems/FlightOrientation';
+import { mobileFlightInput } from './MobileFlightInput';
 
 declare global {
   interface Window {
@@ -10,6 +13,30 @@ window.localPlayerBounty = 50000;
 type WeaponType = 'laser' | 'shotgun' | 'missile';
 
 export class ShipController {
+  public networkDrive?: (dt: number) => void;
+  private networkTranslation = new THREE.Vector3();
+  private wasNetworkCruising = false;
+  public cruiseSpeed = 0;
+  public warpIntensity = 0;
+  private cruiseIntensity = 0;
+  get cruiseEffectIntensity() { return this.cruiseIntensity; }
+  public networkAction?: (type: string, data?: Record<string, unknown>) => void;
+  public readPilotInput(seq: number, dt: number): PilotInput {
+    if (this.inputBlocked || this.isTyping || this.isDead || document.hidden) return idleInput(seq);
+    const input: PilotInput = { seq,
+      x: this.keys.KeyA ? -1 : this.keys.KeyD ? 1 : this.touchMoveX,
+      y: this.keys.Space ? 1 : (this.keys.KeyX || this.keys.ControlLeft) ? -1 : 0,
+      z: this.keys.KeyW ? 1 : this.keys.KeyS ? -1 : this.touchFlight.thrust || this.touchMoveY,
+      yaw: THREE.MathUtils.clamp(this.mouseInput.x + this.touchFlight.yaw, -1, 1),
+      pitch: THREE.MathUtils.clamp(this.mouseInput.y + this.touchFlight.pitch, -1, 1), roll: (this.keys.KeyQ ? 1 : 0) - (this.keys.KeyE ? 1 : 0),
+      boost: !!(this.keys.ShiftLeft || this.keys.ShiftRight || this.touchBoost), stunt: this.isStunting ? this.stuntType : null };
+    this.mouseInput.multiplyScalar(Math.pow(.005, dt)); this.isStunting = false; this.stuntType = null;
+    return input;
+  }
+  public applyServerVitals(state: SelfSnapshot) {
+    this.currentHP = state.hp; this.maxHP = state.maxHP; this.currentShield = state.shield; this.maxShield = state.maxHP;
+    this.isDead = state.dead; this.subsystems = { ...state.subsystems }; window.localPlayerBounty = state.bounty;
+  }
   public onRespawn?: () => void;
   private shipGroup: THREE.Group | null = null;
   private camera: THREE.PerspectiveCamera;
@@ -47,6 +74,8 @@ export class ShipController {
   public touchMoveY = 0; // -1 to 1 (Forward/Back)
   public touchMoveX = 0; // -1 to 1 (Strafe horizontal)
   public touchBoost = false;
+  private touchFlight = mobileFlightInput(0, 0, false);
+  get mobileInput() { return { ...this.touchFlight, firing: this.isPrimaryFireHeld }; }
   private maxSpeed = 550;
   private acceleration = 1800;
   private strafeAcceleration = 1500; // Maneuvering thrusters lateral/vertical strength
@@ -72,11 +101,15 @@ export class ShipController {
   private inputBlocks = new Set<string>();
   public get inputBlocked() { return this.inputBlocks.size > 0; }
   public setInputBlocked(reason: string, blocked: boolean) {
+    const wasBlocked = this.inputBlocked;
     if (blocked) this.inputBlocks.add(reason); else this.inputBlocks.delete(reason);
     if (this.inputBlocked) {
       this.keys = {}; this.mouseInput.set(0, 0); this.touchMoveX = 0; this.touchMoveY = 0;
+      this.touchFlight = mobileFlightInput(0, 0, false);
       this.touchBoost = false; this.isBoosting = false; this.isFreeLooking = false;
       this.stopPrimaryFire();
+    } else if (wasBlocked) {
+      window.dispatchEvent(new CustomEvent('FlightInputResumed'));
     }
   }
   private spawnPosition = new THREE.Vector3();
@@ -135,12 +168,14 @@ export class ShipController {
   }
 
   public healShield(amount: number) {
+    if (this.networkDrive) return;
     if (this.isDead) return;
     this.currentShield = Math.min(this.maxShield, this.currentShield + amount);
     // Visual effect could be dispatched here later
   }
 
   public takeDamage(amount: number): boolean {
+    if (this.networkDrive) return this.isDead;
     if (this.isDead) return false;
 
     window.dispatchEvent(new CustomEvent('ShipDamaged', { detail: { amount } }));
@@ -210,6 +245,9 @@ export class ShipController {
   }
 
   public clearShip() {
+    this.resetTransitMotion();
+    this.wasNetworkCruising = false;
+    this.cruiseSpeed = 0; this.cruiseIntensity = 0;
     this.shipGroup = null;
     this.velocity.set(0, 0, 0);
     this.keys = {};
@@ -223,10 +261,12 @@ export class ShipController {
   }
 
   /** Travel changes motion without repairing the ship or resetting combat cooldowns. */
+  public levelTransitOrientation() { if (this.shipGroup) levelFlightDirection(this.shipGroup.quaternion); }
   public resetTransitMotion() {
     this.velocity.set(0, 0, 0); this.angularVelocity.set(0, 0, 0); this.targetAngularVelocity.set(0, 0, 0);
     this.isStunting = false; this.stuntType = null; this.keys = {}; this.mouseInput.set(0, 0);
     this.touchMoveX = 0; this.touchMoveY = 0; this.touchBoost = false; this.isBoosting = false;
+    this.touchFlight = mobileFlightInput(0, 0, false);
     this.stopPrimaryFire();
     if (this.shipGroup) this.targetQuaternion.copy(this.shipGroup.quaternion);
   }
@@ -297,6 +337,12 @@ export class ShipController {
     });
 
     // Mobile Virtual Joystick Hooks
+    window.addEventListener('TouchFlightInput', ((e: CustomEvent) => {
+      if (this.inputBlocked) return;
+      this.touchFlight = mobileFlightInput(e.detail.x, e.detail.y, e.detail.active);
+    }) as EventListener);
+    window.addEventListener('TouchFireStart', () => this.startPrimaryFire());
+    window.addEventListener('TouchFireEnd', () => this.stopPrimaryFire());
     window.addEventListener('DualJoystickMove', ((e: CustomEvent) => {
       if (this.inputBlocked) return;
       this.touchMoveX = e.detail.x;
@@ -328,6 +374,8 @@ export class ShipController {
       this.keys = {}; // Clear stuck keys when clicking away!
       this.touchMoveX = 0;
       this.touchMoveY = 0;
+      this.touchFlight = mobileFlightInput(0, 0, false);
+      this.touchBoost = false;
       this.isStunting = false;
       this.isBoosting = false;
       this.stopPrimaryFire();
@@ -434,6 +482,16 @@ export class ShipController {
   }
 
   public update(dt: number) {
+    if (this.shipGroup && this.networkDrive) {
+      const cruising = this.inputBlocks.has('stellar-cruise');
+      this.networkTranslation.copy(this.shipGroup.position);
+      this.networkDrive(dt);
+      // Cruise crosses millions of units per second. Transport the camera with the
+      // rendered displacement, including the final arrival, before its local spring.
+      if (cruising || this.wasNetworkCruising) this.camera.position.add(this.networkTranslation.subVectors(this.shipGroup.position, this.networkTranslation));
+      this.wasNetworkCruising = cruising;
+      this.updateCamera(dt); return;
+    }
     if (!this.shipGroup || this.isDead) return;
 
     const forward = new THREE.Vector3(0, 0, -1).applyQuaternion(this.shipGroup.quaternion);
@@ -488,8 +546,8 @@ export class ShipController {
     // ═══════════════════════════════════════════════════
     
     // Convert accumulated mouse input into target angular rates (yaw and pitch)
-    this.targetAngularVelocity.x = this.mouseInput.y * this.rotationSpeed;
-    this.targetAngularVelocity.y = this.mouseInput.x * this.rotationSpeed;
+    this.targetAngularVelocity.x = THREE.MathUtils.clamp(this.mouseInput.y + this.touchFlight.pitch, -1, 1) * this.rotationSpeed;
+    this.targetAngularVelocity.y = THREE.MathUtils.clamp(this.mouseInput.x + this.touchFlight.yaw, -1, 1) * this.rotationSpeed;
 
     // Manual roll using Q and E keys
     let rollInput = 0;
@@ -524,7 +582,8 @@ export class ShipController {
     // Add yaw-induced banking (leaning into the turn)
     targetLean += this.angularVelocity.y * 0.16;
 
-    if (!this.keys['KeyQ'] && !this.keys['KeyE']) {
+    // Transit owns the quaternion; manual auto-banking would undo its smooth turn.
+    if (!this.inputBlocks.has('stellar-cruise') && !this.inputBlocks.has('stellar-warp') && !this.keys['KeyQ'] && !this.keys['KeyE']) {
       euler.z = THREE.MathUtils.lerp(euler.z, targetLean, dt * 5.0);
       this.shipGroup.quaternion.setFromEuler(euler);
     }
@@ -567,8 +626,8 @@ export class ShipController {
     const localThrust = new THREE.Vector3();
 
     // W/S: Forward / Backward thrust
-    if (this.keys['KeyW'] || this.touchMoveY > 0.2) {
-      const val = this.touchMoveY > 0.2 ? this.touchMoveY : 1.0;
+    if (this.keys['KeyW'] || this.touchMoveY > 0.2 || this.touchFlight.thrust) {
+      const val = this.touchFlight.thrust || (this.touchMoveY > 0.2 ? this.touchMoveY : 1.0);
       localThrust.z -= accel * val; // -Z is forward
     }
     if (this.keys['KeyS'] || this.touchMoveY < -0.2) {
@@ -615,12 +674,16 @@ export class ShipController {
 
   private updateCamera(dt: number) {
     if (!this.shipGroup) return;
+    const cruiseTarget = this.cruiseSpeed > 0 ? Math.min(1, Math.log2(1 + this.cruiseSpeed / 2000) / 12) : 0;
+    this.cruiseIntensity = THREE.MathUtils.damp(this.cruiseIntensity, cruiseTarget, cruiseTarget > this.cruiseIntensity ? 3 : 5, dt);
+    let flightFov = 75;
 
     if (this.viewMode === 'third') {
       // Dynamic camera offset (pulls back based on velocity)
-      const speed = this.velocity.length();
+      const speed = Math.max(this.velocity.length(), this.cruiseSpeed);
       const speedRatio = Math.min(1.0, speed / this.maxSpeed);
-      const dynamicDistance = 360 + speedRatio * 80; // anchored chase camera: clear ship silhouette and weapon lane
+      const motionRatio = this.cruiseSpeed > 0 ? .35 + this.cruiseIntensity * .65 : speedRatio;
+      const dynamicDistance = 360 + motionRatio * 80 + this.cruiseIntensity * 45 + this.warpIntensity * 80;
       const offset = new THREE.Vector3(0, 125, dynamicDistance);
       
       // Decay free look if released
@@ -652,11 +715,7 @@ export class ShipController {
       this.camera.lookAt(currentLookAt);
 
       // Smooth Dynamic Space stretching FOV
-      const targetFov = this.isBoosting ? 100 : 75 + speedRatio * 15;
-      if (Math.abs(this.camera.fov - targetFov) > 0.1) {
-        this.camera.fov = THREE.MathUtils.lerp(this.camera.fov, targetFov, dt * 8.0);
-        this.camera.updateProjectionMatrix();
-      }
+      flightFov = this.isBoosting ? 100 : 75 + motionRatio * 15 + this.cruiseIntensity * 4;
 
     } else {
       // First person: At the nose of the ship
@@ -668,6 +727,11 @@ export class ShipController {
         new THREE.Vector3(0, 0, -100).applyQuaternion(this.shipGroup.quaternion)
       );
       this.camera.lookAt(lookTarget);
+    }
+
+    const targetFov = THREE.MathUtils.lerp(flightFov, 103, this.warpIntensity);
+    if (Math.abs(this.camera.fov - targetFov) > .05) {
+      this.camera.fov = THREE.MathUtils.damp(this.camera.fov, targetFov, 8, dt); this.camera.updateProjectionMatrix();
     }
 
     // Stage 4: Kinetic Camera Shake proportional to speed and active boost

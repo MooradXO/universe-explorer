@@ -1,0 +1,52 @@
+{
+  "note": "Local in-process simulation and MessagePack payloads; excludes sockets/TLS, browser and VPS effects.",
+  "samples": [
+    {
+      "legacy": true,
+      "players": 50,
+      "simulatedSeconds": 30,
+      "elapsedMs": 1228.3549000000003,
+      "millisecondsPerTick": 0.8189032666666668,
+      "cpuMilliseconds": 1266,
+      "snapshots": 15000,
+      "encodedPayloadBytes": 19987980,
+      "bytesPerSimulatedSecond": 666266
+    },
+    {
+      "legacy": false,
+      "players": 50,
+      "simulatedSeconds": 30,
+      "elapsedMs": 2094.9403,
+      "millisecondsPerTick": 1.3966268666666668,
+      "cpuMilliseconds": 2171,
+      "snapshots": 15000,
+      "encodedPayloadBytes": 19987980,
+      "bytesPerSimulatedSecond": 666266
+    },
+    {
+      "legacy": false,
+      "players": 50,
+      "simulatedSeconds": 30,
+      "elapsedMs": 2047.8895999999995,
+      "millisecondsPerTick": 1.365259733333333,
+      "cpuMilliseconds": 2032,
+      "snapshots": 15000,
+      "encodedPayloadBytes": 19987980,
+      "bytesPerSimulatedSecond": 666266
+    },
+    {
+      "legacy": true,
+      "players": 50,
+      "simulatedSeconds": 30,
+      "elapsedMs": 1158.759,
+      "millisecondsPerTick": 0.772506,
+      "cpuMilliseconds": 1140,
+      "snapshots": 15000,
+      "encodedPayloadBytes": 19987980,
+      "bytesPerSimulatedSecond": 666266
+    }
+  ],
+  "tickMsBefore": 0.7957046333333334,
+  "tickMsAfter": 1.3809432999999998,
+  "payloadRatio": 1
+}

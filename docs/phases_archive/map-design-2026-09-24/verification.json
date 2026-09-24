@@ -1,0 +1,88 @@
+[
+  {
+    "name": "HIGH",
+    "layout": {
+      "boxes": [
+        {
+          "selector": ".star-map__header",
+          "x": 20,
+          "y": 16,
+          "right": 1420,
+          "bottom": 120.5
+        },
+        {
+          "selector": ".star-map__search",
+          "x": 20,
+          "y": 130,
+          "right": 336,
+          "bottom": 378
+        },
+        {
+          "selector": ".star-map__card",
+          "x": 1104,
+          "y": 130,
+          "right": 1420,
+          "bottom": 731
+        },
+        {
+          "selector": ".star-map__tools",
+          "x": 586.8984375,
+          "y": 666,
+          "right": 853.1015625,
+          "bottom": 724
+        }
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 810,
+        "scale": 1
+      },
+      "horizontalOverflow": false
+    },
+    "errors": [],
+    "passed": true
+  },
+  {
+    "name": "LOW",
+    "layout": {
+      "boxes": [
+        {
+          "selector": ".star-map__header",
+          "x": 8,
+          "y": 6,
+          "right": 836,
+          "bottom": 76
+        },
+        {
+          "selector": ".star-map__search",
+          "x": 8,
+          "y": 88,
+          "right": 224,
+          "bottom": 302
+        },
+        {
+          "selector": ".star-map__card",
+          "x": 620,
+          "y": 88,
+          "right": 836,
+          "bottom": 343
+        },
+        {
+          "selector": ".star-map__tools",
+          "x": 304.78125,
+          "y": 285,
+          "right": 539.21875,
+          "bottom": 333
+        }
+      ],
+      "viewport": {
+        "width": 844,
+        "height": 390,
+        "scale": 1
+      },
+      "horizontalOverflow": false
+    },
+    "errors": [],
+    "passed": true
+  }
+]

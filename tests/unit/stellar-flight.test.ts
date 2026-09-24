@@ -31,6 +31,15 @@ it('generates stable gameplay planets by catalogue identity with explicit proven
   expect(buildSystem({ ...star, id: 'athyg:4.0:1440826' }).bodies[0].position).not.toEqual(first.bodies[0].position);
 });
 
+it('places cinematic arrivals outside the unchanged cruise safety radius', () => {
+  const generated = buildSystem({ ...SOLAR_CATALOG_OBJECT, id: 'athyg:4.0:1440825', title: 'Proxima Centauri', spectrum: 'M5 Ve' });
+  for (const body of [...SOLAR_SYSTEM.bodies, ...generated.bodies]) {
+    const radius = Math.hypot(...bodyArrival(body).map((v, axis) => v - body.position[axis]));
+    expect(radius).toBeGreaterThan(body.radius + config.cruiseMargin + 499);
+    expect(radius).toBeLessThan(body.radius * 3 + config.arrivalMargin);
+  }
+});
+
 it('cruises from Earth to Mars without skipping a safety sphere and stops at a bounded arrival', () => {
   const target = bodyArrival(SOLAR_SYSTEM.bodies[3]);
   let current: Triple = bodyArrival(SOLAR_SYSTEM.bodies[2]);

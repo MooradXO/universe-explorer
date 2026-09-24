@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "unit": 88,
+  "typesAndBuild": "PASS",
+  "cases": [
+    {
+      "quality": "HIGH",
+      "rttMs": 240,
+      "online": "PASS",
+      "offline": "PASS",
+      "video": "final-HIGH/flight.webm"
+    },
+    {
+      "quality": "LOW",
+      "rttMs": 240,
+      "online": "PASS",
+      "offline": "PASS",
+      "video": "final-LOW/flight.webm"
+    }
+  ],
+  "productionChanged": false,
+  "newDrawObjects": 0,
+  "newNetworkFields": 0
+}

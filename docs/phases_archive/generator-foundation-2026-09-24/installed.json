@@ -1,0 +1,73 @@
+{
+  "results": [
+    {
+      "mode": "HIGH",
+      "bundle": "/assets/main-Dw_zJwDQ.js",
+      "generation": {
+        "mode": "worker",
+        "entries": 1,
+        "queued": 0,
+        "active": 0,
+        "ready": 1,
+        "estimatedBytes": 699050.6666666666,
+        "budgetBytes": 8388608,
+        "jobs": 1,
+        "cancelled": 0,
+        "cacheHits": 1,
+        "lastJobMs": 152.5,
+        "maxPumpMs": 0.09999999403953552,
+        "failures": 0,
+        "maxSelectionMs": 2.4000000059604645
+      },
+      "renderer": {
+        "calls": 67,
+        "triangles": 106573,
+        "points": 25997,
+        "lines": 900,
+        "geometries": 36,
+        "textures": 14,
+        "programs": 26,
+        "pixelRatio": 1,
+        "width": 1440,
+        "height": 810
+      }
+    },
+    {
+      "mode": "LOW",
+      "bundle": "/assets/main-Dw_zJwDQ.js",
+      "generation": {
+        "mode": "worker",
+        "entries": 1,
+        "queued": 0,
+        "active": 0,
+        "ready": 1,
+        "estimatedBytes": 174762.66666666666,
+        "budgetBytes": 2097152,
+        "jobs": 1,
+        "cancelled": 0,
+        "cacheHits": 1,
+        "lastJobMs": 55,
+        "maxPumpMs": 0.09999999403953552,
+        "failures": 0,
+        "maxSelectionMs": 2.9000000059604645
+      },
+      "renderer": {
+        "calls": 62,
+        "triangles": 81263,
+        "points": 7538,
+        "lines": 420,
+        "geometries": 37,
+        "textures": 15,
+        "programs": 25,
+        "pixelRatio": 0.75,
+        "width": 633,
+        "height": 292
+      }
+    },
+    {
+      "editor": true,
+      "sevenPresets": true
+    }
+  ],
+  "errors": []
+}

@@ -1,45 +1,60 @@
-# Размещение Universe Explorer
+# Deployment
 
-Игра: `https://universe.projectai.biz/`. Развёртывание затрагивает только её virtual host и отдельную службу каталога.
+Public game: https://universe.projectai.biz/
 
-Обновление 19.09.2026 установлено и проверено в HIGH/LOW: [отчёт и ограничения](phases_archive/server-deploy-2026-09-19/README.md). Прежний Supabase endpoint сейчас недоступен через DNS; восстановление multiplayer — отдельная задача.
+Deploy only the Universe virtual host and its dedicated services. Keep catalogue data, guest saves and other hosted projects intact. Source publication and deployment are separate operations; the deployment report records which commit is actually installed.
 
-## Состав
+## Layout
 
-- `/var/www/universe-explorer/releases/<release>/public/` — Vite build.
-- `/var/www/universe-explorer/releases/<release>/server/` — `scripts/catalog`, `scripts/server`, `src/catalog`, runtime dependency `@xmldom/xmldom` и package metadata.
-- `/var/www/universe-explorer/current` — ссылка на активный release.
-- `/var/lib/universe-explorer/map-v1/` — `manifest.json`, `search.sqlite`, `tiles/`; данные не входят в Git и доступны службе только для чтения.
-- `/var/lib/universe-explorer/online-cache/` — ограниченный кеш Gaia/SIMBAD/NED (32 MiB).
-- `/opt/universe-explorer/runtime/node-v24.19.0-linux-x64/` — отдельный Node.js, без замены системного runtime.
-- `universe-catalog.service` — непривилегированный пользователь `universe-explorer`, только `127.0.0.1:4312`, память до 512 MiB, CPU до половины одного ядра.
+| Path / service | Purpose |
+| --- | --- |
+| `/var/www/universe-explorer/releases/<release>/public/` | Vite client build |
+| `/var/www/universe-explorer/releases/<release>/server/` | Catalogue service code and dependencies |
+| `/var/www/universe-explorer/current` | Active client/catalogue release link |
+| `/var/www/universe-multiplayer/releases/<release>/` | Colyseus code and Linux dependencies |
+| `/var/www/universe-multiplayer/current` | Active multiplayer release link |
+| `/var/lib/universe-explorer/map-v1/` | Manifest, search.sqlite and map tiles |
+| `/var/lib/universe-explorer/online-cache/` | Bounded 32 MiB scientific-response cache |
+| `/var/lib/universe-multiplayer/guests.json` | Persistent guest state; never publish |
+| `/opt/universe-explorer/runtime/node-v24.19.0-linux-x64/` | Dedicated runtime, separate from system Node |
+| `universe-catalog.service` | Catalogue API on loopback 4312 |
+| `universe-multiplayer.service` | Colyseus on loopback 2567 |
 
-Исходник службы: [`deploy/universe-catalog.service`](../deploy/universe-catalog.service). Служба запускает [`scripts/server/catalog-server.mjs`](../scripts/server/catalog-server.mjs); Vite не требуется на production-сервере. Неподготовленная карта не позволяет службе стартовать.
+The existing service user is `universe-explorer`. Catalogue limits are 512 MiB and half a CPU core. Multiplayer limits are 1536 MiB and 150% CPU; **MULTIPLAYER_MAX_PLAYERS=50**. These limits do not guarantee capacity.
 
-## Подготовка и замена
+Templates: [catalogue service](../deploy/universe-catalog.service), [multiplayer service](../deploy/universe-multiplayer.service), [multiplayer proxy](../deploy/multiplayer.nginx.conf.example). Inspect the installed configuration before applying templates.
 
-1. Проверить Git SHA, TypeScript, unit tests и сборку. Vite-переменные `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` задаются при сборке; сохранять существующий backend игры. Только публичный anon key; service-role credentials клиенту не передаются.
-2. Сохранить старую папку сайта и конфигурацию `/etc/nginx/sites-available/universe` в отдельном backup. Снять контрольные суммы остальных virtual hosts и статусы служб.
-3. Загрузить отдельный release и каталог; сравнить SHA256 архивов и файлов после распаковки. Разрешения: публичные файлы читаются Nginx, backend и данные — пользователем службы; запись только в её кеш.
-4. Запустить только `universe-catalog.service`. Проверить локальные `/healthz`, `/__catalog/manifest`, поиск Proxima, карточку и сжатый блок карты.
-5. В конфигурации только игры заменить `root` на `/var/www/universe-explorer/current/public`. Добавить proxy `/__catalog/` на `127.0.0.1:4312`, с upstream `Host` и без входящего `Origin`; исходный middleware сохраняет проверку локального адреса. Закрыть служебные файлы и вернуть 404 для отсутствующих assets. Для `index.html` отключить длительное кеширование.
-6. Ограничить обычные запросы каталога и более редкие внешние запросы отдельными Nginx rate-limit zones только этого virtual host. TLS-настройки и redirect сохранить.
-7. `nginx -t`, затем graceful reload. Если проверка не проходит, вернуть backup-конфигурацию; остальные sites не редактировать.
-8. Проверить HTTPS, нужный entry, HIGH/LOW гостевой полёт, карту, варп и возврат. Проверить остальные virtual hosts и прежние процессы. Пароли, JWT и окружение служб в отчёт не выводить.
+## Release procedure
 
-## Проверка
+1. Record the source commit. Run unit tests, both TypeScript checks, the space-only guard, production build and isolated browser/network checks.
+2. Build the client with `VITE_MULTIPLAYER_URL=wss://universe.projectai.biz/multiplayer` and `VITE_LEGACY_REALTIME=false`. Do not include environment secrets.
+3. Inspect current release links, service health, storage, CPU/memory and the Universe proxy. Record neighbouring virtual-host checksums and service/container identities.
+4. Back up both current release references, the Universe Nginx configuration and persistent guest state. Retain the previous releases.
+5. Upload new, separately named releases. Verify archive SHA256. Install production dependencies with `npm ci --omit=dev` on Linux; do not upload Windows node_modules.
+6. Reuse the existing verified catalogue data. If catalogue code has not changed, retain its running service and configuration.
+7. Validate the new backend on an isolated loopback port with separate guest state. Validate the candidate frontend in isolated browser contexts. Do not run combat, microphone or load tests against public players.
+8. Switch only the relevant current links and restart only the changed Universe service. Backend changes can briefly disconnect clients; verify reconnection compatibility before the switch.
+9. Run `nginx -t` if its configuration changed; use a graceful reload only when needed.
+10. Verify HTTPS entry/assets, catalogue endpoints and multiplayer health. Compare the installed build/source hashes, capacity setting and neighbouring services. Record the release, checks and rollback references.
+
+## Health checks
 
 ```sh
-systemctl is-active universe-catalog.service
+systemctl is-active universe-catalog.service universe-multiplayer.service
 curl --fail http://127.0.0.1:4312/healthz
+curl --fail http://127.0.0.1:2567/health
 curl --fail 'https://universe.projectai.biz/__catalog/search?q=Proxima'
 nginx -t
 ```
 
-## Откат первого обновления 19.09.2026
+Keep metrics restricted to loopback. Do not log WebSocket reconnect query tokens, service environments, passwords or guest files.
 
-Старая папка `/var/www/universe_game` сохранена. Backup: `/var/backups/universe-explorer/2026-09-19/`, в нём `previous-game.tar.gz`, `universe.nginx.conf` и исходные SHA конфигураций.
+## Rollback
 
-Для отката вернуть только `universe.nginx.conf` в `/etc/nginx/sites-available/universe`, выполнить `nginx -t` и reload. После успешного возврата старого сайта можно остановить только `universe-catalog.service`. Данные и releases автоматически не удалять. Не применять `pm2 restart all`, глобальный restart Docker, обновление системного Node.js или удаление общей `/var/www`.
+Restore the previous client and multiplayer release links atomically, then restart only the multiplayer service if its code changed. Restore the Universe Nginx backup only if the release changed that configuration; validate it before reload. Keep guest state unless a separately verified migration requires its backup. Never erase catalogue data or release directories as part of routine rollback.
 
-Условия научных данных и сторонних ресурсов остаются в [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md).
+The initial September 19 catalogue backup is under `/var/backups/universe-explorer/2026-09-19/`. The subsequent Colyseus backup is under `/var/backups/universe-explorer/colyseus-20260919/`. Later releases must record their own backup locations.
+
+No global PM2/Docker restart, system Node replacement or changes to unrelated virtual hosts are needed.
+
+See [MULTIPLAYER.md](MULTIPLAYER.md), [CATALOG_PIPELINE.md](CATALOG_PIPELINE.md) and [third-party notices](../THIRD_PARTY_NOTICES.md).

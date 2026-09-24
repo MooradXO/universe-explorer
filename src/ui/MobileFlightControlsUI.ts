@@ -1,6 +1,7 @@
 import { hudIcon } from './HudArt';
 import { usesMobileLayout } from './uiPlatform';
 import './styles/mobile-flight-controls.css';
+import './styles/mobile-compact.css';
 
 type WeaponType = 'laser' | 'shotgun' | 'missile';
 type LaserColor = 'red' | 'blue';
@@ -25,16 +26,23 @@ export class MobileControlsUI {
   private readonly weaponButtons = new Map<WeaponType, HTMLButtonElement>();
   private colorButton: HTMLButtonElement | null = null;
   private voiceButton: HTMLButtonElement | null = null;
+  private releases: Array<() => void> = [];
 
   constructor() {
     if (!usesMobileLayout()) return;
+    document.body.classList.add('mobile-flight-ui');
     this.initPortraitBlocker();
     this.initMobileControls();
+    window.addEventListener('blur', () => this.releaseControls());
+    document.addEventListener('visibilitychange', () => { if (document.hidden) this.releaseControls(); });
   }
 
   public setVisible(visible: boolean): void {
+    if (!visible) this.releaseControls();
     if (this.mobileLayer) this.mobileLayer.style.display = visible ? 'block' : 'none';
   }
+
+  private releaseControls() { for (const release of this.releases) release(); }
 
   private initPortraitBlocker(): void {
     this.portraitBlocker = document.createElement('div');
@@ -52,6 +60,7 @@ export class MobileControlsUI {
     document.body.appendChild(this.portraitBlocker);
 
     const checkOrientation = () => {
+      this.releaseControls();
       this.portraitBlocker.style.display = window.innerHeight > window.innerWidth ? 'flex' : 'none';
     };
     window.addEventListener('resize', checkOrientation);
@@ -67,7 +76,8 @@ export class MobileControlsUI {
     const leftZone = document.createElement('div');
     leftZone.className = 'mobile-joystick';
     leftZone.setAttribute('aria-label', 'Flight joystick');
-    leftZone.innerHTML = '<span class="mobile-joystick__north">▲</span><span class="mobile-joystick__east">▶</span><span class="mobile-joystick__south">▼</span><span class="mobile-joystick__west">◀</span>';
+    leftZone.setAttribute('title', 'Hold to fly; move your thumb to steer');
+    leftZone.innerHTML = '<span class="mobile-joystick__north">▲</span><span class="mobile-joystick__east">▶</span><span class="mobile-joystick__south">▼</span><span class="mobile-joystick__west">◀</span><span class="mobile-joystick__label">FLY · STEER</span>';
     const leftKnob = document.createElement('div');
     leftKnob.className = 'mobile-joystick__knob';
     leftZone.appendChild(leftKnob);
@@ -86,6 +96,7 @@ export class MobileControlsUI {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = `mobile-weapon mobile-weapon--${weapon.type}`;
+      button.setAttribute('aria-label', weapon.label);
       button.innerHTML = hudIcon(weapon.type) + `<span>${weapon.label}</span>`;
       this.bindTap(button, () => window.dispatchEvent(new CustomEvent<WeaponType>('SelectWeaponType', { detail: weapon.type })));
       this.weaponButtons.set(weapon.type, button);
@@ -103,28 +114,24 @@ export class MobileControlsUI {
     const actions = document.createElement('section');
     actions.className = 'mobile-action-cluster';
     actions.setAttribute('aria-label', 'Flight actions');
-    actions.append(
+    const utilities = document.createElement('section');
+    utilities.className = 'mobile-utility-rail';
+    utilities.setAttribute('aria-label', 'Camera and manoeuvres');
+    utilities.append(
       this.createActionButton('CAM', 'camera', () => window.dispatchEvent(new CustomEvent('ToggleCameraView'))),
       this.createActionButton('ROLL', 'roll', () => window.dispatchEvent(new CustomEvent('TouchStunt'))),
     );
     this.voiceButton = this.createActionButton('VOICE', 'voice', () => window.dispatchEvent(new CustomEvent('ToggleVoiceMute')));
-    actions.appendChild(this.voiceButton);
-    actions.appendChild(this.createActionButton('FIRE', 'fire', () => window.dispatchEvent(new CustomEvent('LeftClickShoot')), true));
+    utilities.appendChild(this.voiceButton);
+    this.mobileLayer.appendChild(utilities);
+    const fire = this.createActionButton('FIRE', 'fire', null, true);
+    this.bindHold(fire, () => window.dispatchEvent(new CustomEvent('TouchFireStart')),
+      () => window.dispatchEvent(new CustomEvent('TouchFireEnd')));
+    actions.appendChild(fire);
 
     const boost = this.createActionButton('BOOST', 'boost', null, true);
-    boost.addEventListener('pointerdown', (event) => {
-      event.preventDefault();
-      boost.setPointerCapture(event.pointerId);
-      boost.classList.add('is-pressed');
-      window.dispatchEvent(new CustomEvent('TouchBoostOn'));
-    });
-    const stopBoost = (event: PointerEvent) => {
-      event.preventDefault();
-      boost.classList.remove('is-pressed');
-      window.dispatchEvent(new CustomEvent('TouchBoostOff'));
-    };
-    boost.addEventListener('pointerup', stopBoost);
-    boost.addEventListener('pointercancel', stopBoost);
+    this.bindHold(boost, () => window.dispatchEvent(new CustomEvent('TouchBoostOn')),
+      () => window.dispatchEvent(new CustomEvent('TouchBoostOff')));
     actions.appendChild(boost);
     this.mobileLayer.appendChild(actions);
 
@@ -134,76 +141,100 @@ export class MobileControlsUI {
     this.setWeapon('laser');
     this.setLaserColor('red');
     this.setVoiceMuted(true);
-    window.addEventListener('HudPanelState', event => { this.mobileLayer.inert = !!(event as CustomEvent).detail.id; });
+    window.addEventListener('HudPanelState', event => {
+      const blocked = !!(event as CustomEvent).detail.id;
+      if (blocked) this.releaseControls();
+      this.mobileLayer.inert = blocked;
+    });
   }
 
   private bindJoystick(zone: HTMLDivElement, knob: HTMLDivElement): void {
-    let touchId: number | null = null;
-    const radius = 48;
-    const update = (touch: Touch) => {
+    let pointerId: number | null = null;
+    let heldX = 0, heldY = 0;
+    const sendHeldInput = () => {
+      if (pointerId !== null) window.dispatchEvent(new CustomEvent('TouchFlightInput', { detail: { x: heldX, y: heldY, active: true } }));
+    };
+    // Network cruise keeps input blocked until STOP is acknowledged. A stationary
+    // thumb still owns the stick when that happens; it need not move to resume.
+    window.addEventListener('FlightInputResumed', sendHeldInput);
+    const update = (event: PointerEvent) => {
       const rect = zone.getBoundingClientRect();
-      let x = touch.clientX - rect.left - rect.width / 2;
-      let y = touch.clientY - rect.top - rect.height / 2;
+      const radius = rect.width * .36;
+      let x = event.clientX - rect.left - rect.width / 2;
+      let y = event.clientY - rect.top - rect.height / 2;
       const distance = Math.hypot(x, y);
       if (distance > radius) {
         x = (x / distance) * radius;
         y = (y / distance) * radius;
       }
       knob.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
-      window.dispatchEvent(new CustomEvent('DualJoystickMove', { detail: { x: x / radius, y: -y / radius } }));
+      heldX = x / radius; heldY = y / radius; sendHeldInput();
     };
 
-    zone.addEventListener('touchstart', (event) => {
-      event.preventDefault();
-      touchId = event.changedTouches[0].identifier;
-      update(event.changedTouches[0]);
-    }, { passive: false });
-    zone.addEventListener('touchmove', (event) => {
-      event.preventDefault();
-      for (const touch of Array.from(event.changedTouches)) if (touch.identifier === touchId) update(touch);
-    }, { passive: false });
-    const release = (event: TouchEvent) => {
-      event.preventDefault();
-      for (const touch of Array.from(event.changedTouches)) {
-        if (touch.identifier !== touchId) continue;
-        touchId = null;
-        knob.style.transform = 'translate(-50%, -50%)';
-        window.dispatchEvent(new CustomEvent('DualJoystickMove', { detail: { x: 0, y: 0 } }));
-      }
+    zone.addEventListener('pointerdown', event => {
+      event.preventDefault(); event.stopPropagation();
+      if (pointerId !== null) return;
+      pointerId = event.pointerId; zone.setPointerCapture(pointerId); zone.classList.add('is-pressed'); update(event);
+    });
+    zone.addEventListener('pointermove', event => { if (event.pointerId === pointerId) { event.preventDefault(); update(event); } });
+    const release = () => {
+      if (pointerId === null) return;
+      const id = pointerId; pointerId = null;
+      if (zone.hasPointerCapture(id)) zone.releasePointerCapture(id);
+      zone.classList.remove('is-pressed'); knob.style.transform = 'translate(-50%, -50%)';
+      window.dispatchEvent(new CustomEvent('TouchFlightInput', { detail: { x: 0, y: 0, active: false } }));
     };
-    zone.addEventListener('touchend', release, { passive: false });
-    zone.addEventListener('touchcancel', release, { passive: false });
+    for (const type of ['pointerup', 'pointercancel', 'lostpointercapture']) zone.addEventListener(type, event => { if ((event as PointerEvent).pointerId === pointerId) release(); });
+    this.releases.push(release);
   }
 
   private bindLookZone(zone: HTMLDivElement): void {
-    let touchId: number | null = null;
+    let pointerId: number | null = null;
     let lastX = 0;
     let lastY = 0;
-    zone.addEventListener('touchstart', (event) => {
-      const touch = event.changedTouches[0];
-      touchId = touch.identifier;
-      lastX = touch.clientX;
-      lastY = touch.clientY;
+    zone.addEventListener('pointerdown', event => {
+      event.preventDefault();
+      if (pointerId !== null) return;
+      pointerId = event.pointerId; zone.setPointerCapture(pointerId);
+      lastX = event.clientX; lastY = event.clientY;
     });
-    zone.addEventListener('touchmove', (event) => {
-      for (const touch of Array.from(event.changedTouches)) {
-        if (touch.identifier !== touchId) continue;
-        window.dispatchEvent(new CustomEvent('DualJoystickLook', { detail: { dx: (touch.clientX - lastX) * 2.5, dy: (touch.clientY - lastY) * 2.5 } }));
-        lastX = touch.clientX;
-        lastY = touch.clientY;
-      }
+    zone.addEventListener('pointermove', event => {
+      if (event.pointerId !== pointerId) return;
+      window.dispatchEvent(new CustomEvent('DualJoystickLook', { detail: { dx: (event.clientX - lastX) * 2.5, dy: (event.clientY - lastY) * 2.5 } }));
+      lastX = event.clientX; lastY = event.clientY;
     });
-    const release = (event: TouchEvent) => {
-      for (const touch of Array.from(event.changedTouches)) if (touch.identifier === touchId) touchId = null;
+    const release = () => {
+      if (pointerId === null) return;
+      const id = pointerId; pointerId = null;
+      if (zone.hasPointerCapture(id)) zone.releasePointerCapture(id);
     };
-    zone.addEventListener('touchend', release);
-    zone.addEventListener('touchcancel', release);
+    for (const type of ['pointerup', 'pointercancel', 'lostpointercapture']) zone.addEventListener(type, event => { if ((event as PointerEvent).pointerId === pointerId) release(); });
+    this.releases.push(release);
+  }
+
+  private bindHold(button: HTMLButtonElement, start: () => void, end: () => void) {
+    let pointerId: number | null = null;
+    window.addEventListener('FlightInputResumed', () => { if (pointerId !== null) start(); });
+    const release = () => {
+      if (pointerId === null) return;
+      const id = pointerId; pointerId = null;
+      if (button.hasPointerCapture(id)) button.releasePointerCapture(id);
+      button.classList.remove('is-pressed'); end();
+    };
+    button.addEventListener('pointerdown', event => {
+      event.preventDefault(); event.stopPropagation();
+      if (pointerId !== null) return;
+      pointerId = event.pointerId; button.setPointerCapture(pointerId); button.classList.add('is-pressed'); start();
+    });
+    for (const type of ['pointerup', 'pointercancel', 'lostpointercapture']) button.addEventListener(type, event => { if ((event as PointerEvent).pointerId === pointerId) release(); });
+    this.releases.push(release);
   }
 
   private createActionButton(label: string, tone: string, action: (() => void) | null, large = false): HTMLButtonElement {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = `mobile-action mobile-action--${tone}${large ? ' mobile-action--large' : ''}`;
+    button.setAttribute('aria-label', label);
     const symbol = tone === 'fire' ? hudIcon('bounties') : tone === 'boost' ? hudIcon('boost') : `<svg viewBox="0 0 24 24" aria-hidden="true">${ACTION_ICONS[tone as keyof typeof ACTION_ICONS]}</svg>`;
     button.innerHTML = symbol + `<span>${label}</span>`;
     if (action) this.bindTap(button, action);

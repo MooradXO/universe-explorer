@@ -1,3 +1,4 @@
+import { siteIdentity } from '../generation/ExplorationSites';
 import * as THREE from 'three';
 import { orbitalSite, type OrbitalZone } from '../systems/OrbitalSite';
 import type { SystemBody } from '../systems/SystemDescriptor';
@@ -20,8 +21,9 @@ export class OrbitalDebris {
   constructor(body:SystemBody,low:boolean,private targets:THREE.Mesh[],zone=orbitalSite(body),streamed=false){
     this.site=zone;this.group.name='orbital-game-environment';
     this.textures=new EnvironmentTextures(low);
+    const purpose=siteIdentity(zone);
     const recipe=OBJECTS[zone.objects],texture=this.textures.acquire(['regolith','ice','mineral','ice','mineral','regolith','mineral','regolith'][recipe.shape]);
-    const material=new THREE.MeshStandardMaterial({map:texture,bumpMap:texture,bumpScale:.035,roughness:recipe.roughness,metalness:recipe.metalness,color:recipe.material,flatShading:recipe.shape!==1});
+    const material=new THREE.MeshStandardMaterial({map:texture,bumpMap:texture,bumpScale:.035,roughness:recipe.roughness,metalness:recipe.metalness,color:purpose.kind==='resources'?'#94a9a0':recipe.material,flatShading:recipe.shape!==1});
     this.materials.push(material);
     const proxyGeometry=new THREE.SphereGeometry(1,6,4),proxyMaterial=new THREE.MeshBasicMaterial({visible:false});this.geometries.push(proxyGeometry);this.materials.push(proxyMaterial);
     const object=new THREE.Object3D(),color=new THREE.Color();
@@ -38,13 +40,13 @@ export class OrbitalDebris {
       });field.instanceMatrix.needsUpdate=true;this.group.add(field);
     }
     if(zone.structure!==null){
-      const parts=landmarkGeometry(zone.structure,zone.profile.variant),metal=new THREE.MeshStandardMaterial({color:'#77818a',roughness:.62,metalness:.6});
+      const parts=landmarkGeometry(zone.structure,zone.profile.variant),metal=new THREE.MeshStandardMaterial({color:purpose.kind==='wreck'?'#8d7364':'#77818a',roughness:purpose.kind==='wreck'?.88:.62,metalness:.6});
       this.materials.push(metal);
       const shapeGeometries={box:new THREE.BoxGeometry(1,1,1),sphere:new THREE.SphereGeometry(1,low?12:20,low?8:12),ring:new THREE.TorusGeometry(1,.065,5,low?20:40)};
       for(const kind of ['box','sphere','ring'] as const){
         const geometry=shapeGeometries[kind];this.geometries.push(geometry);const list=parts.filter(p=>p.kind===kind);if(!list.length)continue;
         const mesh=new THREE.InstancedMesh(geometry,metal,list.length);
-        list.forEach((part,i)=>{object.position.fromArray(part.p);object.scale.fromArray(part.s);object.rotation.set(part.r[0],part.r[1],part.r[2]);object.updateMatrix();mesh.setMatrixAt(i,object.matrix);});this.group.add(mesh);
+        list.forEach((part,i)=>{object.position.fromArray(part.p);object.scale.fromArray(part.s);object.rotation.set(part.r[0],part.r[1],part.r[2]);if(purpose.kind==='wreck'){object.position.multiplyScalar(1.04);object.rotation.z+=(i%3-1)*.16;}object.updateMatrix();mesh.setMatrixAt(i,object.matrix);});this.group.add(mesh);
       }
       const beacon=new THREE.MeshBasicMaterial({color:zone.profile.backdrop.cool});this.materials.push(beacon);
       const lights=new THREE.InstancedMesh(shapeGeometries.box,beacon,6);
@@ -56,7 +58,7 @@ export class OrbitalDebris {
   }
   update(origin:FloatingOrigin,elapsed=0){this.group.position.set(...origin.toLocal(worldPosition(undefined,this.site.center)));this.phenomenon?.update(elapsed);}
   setOpacity(value:number){for(const material of this.materials){material.opacity=value;material.depthWrite=value>.98;}this.phenomenon?.setOpacity(value);}
-  snapshot(){return {body:this.site.id,origin:this.site.origin,instances:this.site.rocks.length,layout:this.site.layout,objects:this.site.objects,structure:this.site.structure,phenomenon:this.phenomenon?.snapshot()??null};}
+  snapshot(){return {body:this.site.id,origin:this.site.origin,instances:this.site.rocks.length,layout:this.site.layout,objects:this.site.objects,purpose:siteIdentity(this.site),structure:this.site.structure,phenomenon:this.phenomenon?.snapshot()??null};}
   dispose(){for(const proxy of this.proxies){const index=this.targets.indexOf(proxy);if(index>=0)this.targets.splice(index,1);}
     this.group.traverse(object=>{if(object instanceof THREE.InstancedMesh)object.dispose();});
     this.phenomenon?.dispose();this.geometries.forEach(g=>g.dispose());this.materials.forEach(m=>m.dispose());this.textures.dispose();this.group.removeFromParent();this.group.clear();}

@@ -1,0 +1,9 @@
+{
+  "Url": "http://127.0.0.1:3014/",
+  "Status": 200,
+  "Bundle": "/assets/main-DAtLxw1c.js",
+  "BundleStatus": 200,
+  "IndexSHA256": "69DD58CD17C176D5FCF4DAAA1D43BD9962E162EF0AA0C2EC99A4525724ECA9EB",
+  "ProtectedFilesUnchanged": true,
+  "UpdatedAt": "2026-09-24T13:53:09.4898943+04:00"
+}

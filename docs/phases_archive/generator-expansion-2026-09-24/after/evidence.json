@@ -1,0 +1,2273 @@
+{
+  "results": [
+    {
+      "quality": "HIGH",
+      "world": 4,
+      "state": {
+        "world": 4,
+        "quality": "HIGH",
+        "profile": {
+          "version": 1,
+          "seed": 2584468799,
+          "signature": "50.5.gas-2-coated.8.26.3.2584468799",
+          "surface": 50,
+          "variant": 5,
+          "material": 101,
+          "colors": [
+            "#393a55",
+            "#827194",
+            "#d7cbb2",
+            "#5697ac"
+          ],
+          "geography": 5.1880933959037066,
+          "warp": 0.5800000000000001,
+          "clouds": null,
+          "atmosphere": 8,
+          "aurora": null,
+          "ring": {
+            "recipe": 17,
+            "inner": 1.45,
+            "outer": 1.85,
+            "tilt": [
+              1.609170288707868,
+              0.29096323251724243,
+              0.5744604032486678
+            ],
+            "density": 0.12,
+            "tint": "#9b9186"
+          },
+          "objects": 8,
+          "layout": 26,
+          "structure": 11,
+          "phenomenon": 3,
+          "moonStyle": 7,
+          "moonOrbit": 6,
+          "moonCount": 0,
+          "zones": 6,
+          "backdrop": {
+            "shape": 7,
+            "warm": "#827194",
+            "cool": "#5697ac",
+            "density": 0.5152715092711151,
+            "scale": 4.502424254454672,
+            "drift": 0.004140256143175066
+          },
+          "approachDirections": [
+            [
+              -0.772521985111,
+              -0.239312714628,
+              0.588165969041
+            ],
+            [
+              -0.845289466474,
+              -0.188854475081,
+              0.499819672592
+            ],
+            [
+              -0.903503023159,
+              -0.150099340453,
+              0.401438009084
+            ],
+            [
+              -0.66110944246,
+              -0.282772400283,
+              0.694963362148
+            ],
+            [
+              0.556261186836,
+              0.273155306461,
+              -0.784830982169
+            ],
+            [
+              0.52999512672,
+              -0.343667202612,
+              0.77524062039
+            ],
+            [
+              0.41668291911,
+              -0.3547521737,
+              0.836974456108
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "ready",
+          "geology": 0,
+          "circulation": 3,
+          "storms": 3
+        },
+        "zone": {
+          "body": "sol/jupiter/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 26,
+          "layout": 26,
+          "objects": 8,
+          "structure": 11,
+          "phenomenon": {
+            "recipe": 3,
+            "name": "Резонанс · раздвоенный",
+            "particles": 320
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 187,
+        "drawCalls": 6,
+        "triangles": 29328,
+        "geometries": 3,
+        "textures": 4,
+        "fx": {
+          "budgetPerEffect": 700,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "HIGH",
+      "world": 5,
+      "state": {
+        "world": 5,
+        "quality": "HIGH",
+        "profile": {
+          "version": 1,
+          "seed": 830707045,
+          "signature": "48.1.gas-0-exposed.16.17.19.830707045",
+          "surface": 48,
+          "variant": 1,
+          "material": 96,
+          "colors": [
+            "#393a55",
+            "#bc9061",
+            "#d7cbb2",
+            "#6c728d"
+          ],
+          "geography": 2.1238119070068935,
+          "warp": 0.12,
+          "clouds": null,
+          "atmosphere": 8,
+          "aurora": 12,
+          "ring": {
+            "recipe": 10,
+            "inner": 1.23,
+            "outer": 2.32,
+            "tilt": [
+              1.1,
+              0,
+              0.1
+            ],
+            "density": 0.7,
+            "tint": "#d4c3a3"
+          },
+          "objects": 16,
+          "layout": 17,
+          "structure": 8,
+          "phenomenon": 19,
+          "moonStyle": 8,
+          "moonOrbit": 6,
+          "moonCount": 0,
+          "zones": 2,
+          "backdrop": {
+            "shape": 8,
+            "warm": "#bc9061",
+            "cool": "#6c728d",
+            "density": 0.35686936985701323,
+            "scale": 5.745722447568551,
+            "drift": 0.0021164123453199864
+          },
+          "approachDirections": [
+            [
+              -0.682904621131,
+              -0.257257279013,
+              0.683710443706
+            ],
+            [
+              -0.734473902806,
+              -0.230688175688,
+              0.638224922496
+            ],
+            [
+              -0.762671637592,
+              -0.217545080401,
+              0.609102709899
+            ],
+            [
+              -0.607610592404,
+              -0.278398007391,
+              0.743844014213
+            ],
+            [
+              -0.556261186836,
+              -0.273155306461,
+              0.784830982169
+            ],
+            [
+              0.367326130012,
+              -0.364449179123,
+              0.855715086958
+            ],
+            [
+              0.312863974649,
+              -0.364045085249,
+              0.877261254857
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "ready",
+          "geology": 1,
+          "circulation": 2,
+          "storms": 3
+        },
+        "zone": {
+          "body": "sol/saturn/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 27,
+          "layout": 17,
+          "objects": 16,
+          "structure": 8,
+          "phenomenon": {
+            "recipe": 19,
+            "name": "Магнитные нити · раздвоенный",
+            "particles": 320
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 175,
+        "drawCalls": 7,
+        "triangles": 36096,
+        "geometries": 3,
+        "textures": 4,
+        "fx": {
+          "budgetPerEffect": 700,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "HIGH",
+      "world": 2,
+      "state": {
+        "world": 2,
+        "quality": "HIGH",
+        "profile": {
+          "version": 1,
+          "seed": 1310247180,
+          "signature": "32.4.ocean-0-exposed.4.44.14.1310247180",
+          "surface": 32,
+          "variant": 4,
+          "material": 64,
+          "colors": [
+            "#284a5a",
+            "#56726f",
+            "#b9b988",
+            "#9bbbbe"
+          ],
+          "geography": 2.088052252389025,
+          "warp": 0.12,
+          "clouds": 0,
+          "atmosphere": 1,
+          "aurora": 6,
+          "ring": null,
+          "objects": 4,
+          "layout": 44,
+          "structure": 5,
+          "phenomenon": 14,
+          "moonStyle": 12,
+          "moonOrbit": 1,
+          "moonCount": 0,
+          "zones": 6,
+          "backdrop": {
+            "shape": 1,
+            "warm": "#ad6256",
+            "cool": "#31768c",
+            "density": 0.48,
+            "scale": 5,
+            "drift": 0
+          },
+          "approachDirections": [
+            [
+              0.033262658426,
+              -0.413447719207,
+              0.909920094864
+            ],
+            [
+              -0.475648817545,
+              -0.316528645671,
+              0.82071177574
+            ],
+            [
+              0.847683832891,
+              -0.22798963103,
+              0.479012366854
+            ],
+            [
+              0.903503023159,
+              0.150099340453,
+              -0.401438009084
+            ],
+            [
+              0.762671637592,
+              0.217545080401,
+              -0.609102709899
+            ],
+            [
+              0.7045868758,
+              -0.292767910902,
+              0.646408759839
+            ],
+            [
+              0.54742683499,
+              -0.329107568274,
+              0.76942320529
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "ready",
+          "geology": 9,
+          "circulation": 3,
+          "storms": 3
+        },
+        "zone": {
+          "body": "sol/earth/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 31,
+          "layout": 44,
+          "objects": 4,
+          "structure": 5,
+          "phenomenon": {
+            "recipe": 14,
+            "name": "Радиоэхо · бегущая волна",
+            "particles": 320
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 200,
+        "drawCalls": 5,
+        "triangles": 27792,
+        "geometries": 2,
+        "textures": 3,
+        "fx": {
+          "budgetPerEffect": 700,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "HIGH",
+      "world": 8,
+      "state": {
+        "world": 8,
+        "quality": "HIGH",
+        "profile": {
+          "version": 1,
+          "seed": 4245954069,
+          "signature": "55.0.gas-7-exposed.5.33.2.4245954069",
+          "surface": 55,
+          "variant": 0,
+          "material": 110,
+          "colors": [
+            "#393a55",
+            "#bc9061",
+            "#d7cbb2",
+            "#6c728d"
+          ],
+          "geography": 6.809929025843739,
+          "warp": 0.35,
+          "clouds": null,
+          "atmosphere": 11,
+          "aurora": 6,
+          "ring": {
+            "recipe": 29,
+            "inner": 1.2473131720721722,
+            "outer": 2.3847089240886272,
+            "tilt": [
+              1.2490225602522362,
+              0.15190085908398032,
+              0.6146158361807466
+            ],
+            "density": 0.7728042518440634,
+            "tint": "#d7cbb2"
+          },
+          "objects": 5,
+          "layout": 33,
+          "structure": 9,
+          "phenomenon": 2,
+          "moonStyle": 15,
+          "moonOrbit": 7,
+          "moonCount": 3,
+          "zones": 6,
+          "backdrop": {
+            "shape": 2,
+            "warm": "#bc9061",
+            "cool": "#6c728d",
+            "density": 0.24489349100738764,
+            "scale": 3.910334529727697,
+            "drift": 0.004203381682746112
+          },
+          "approachDirections": [
+            [
+              0.999752425041,
+              -0.021876520397,
+              -0.004062816858
+            ],
+            [
+              0.738307717331,
+              -0.269062833349,
+              0.618471427181
+            ],
+            [
+              0.727134199535,
+              -0.268109146566,
+              0.631975744308
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 0,
+          "circulation": 7,
+          "storms": 3
+        },
+        "zone": {
+          "body": "athyg:4.0:1440825/generated-1/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 51,
+          "layout": 33,
+          "objects": 5,
+          "structure": 9,
+          "phenomenon": {
+            "recipe": 2,
+            "name": "Резонанс · бегущая волна",
+            "particles": 320
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 173,
+        "drawCalls": 7,
+        "triangles": 36096,
+        "geometries": 3,
+        "textures": 3,
+        "fx": {
+          "budgetPerEffect": 700,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "HIGH",
+      "world": 9,
+      "state": {
+        "world": 9,
+        "quality": "HIGH",
+        "profile": {
+          "version": 1,
+          "seed": 1530803714,
+          "signature": "46.1.mineral-6-coated.17.47.9.1530803714",
+          "surface": 46,
+          "variant": 1,
+          "material": 93,
+          "colors": [
+            "#313e47",
+            "#a08365",
+            "#c8b68b",
+            "#999e98"
+          ],
+          "geography": 5.751386666868347,
+          "warp": 0.12,
+          "clouds": 20,
+          "atmosphere": 12,
+          "aurora": 11,
+          "ring": {
+            "recipe": 8,
+            "inner": 1.8469931732444091,
+            "outer": 2.7801188464602453,
+            "tilt": [
+              0.7995603677192469,
+              0.26905279443599284,
+              0.008044382371008397
+            ],
+            "density": 0.7631471925135702,
+            "tint": "#c8b68b"
+          },
+          "objects": 17,
+          "layout": 47,
+          "structure": 0,
+          "phenomenon": 9,
+          "moonStyle": 1,
+          "moonOrbit": 6,
+          "moonCount": 0,
+          "zones": 3,
+          "backdrop": {
+            "shape": 3,
+            "warm": "#bc9061",
+            "cool": "#6c728d",
+            "density": 0.37173774784430863,
+            "scale": 5.70380523558706,
+            "drift": 0.003983142584562302
+          },
+          "approachDirections": [
+            [
+              -0.999752425041,
+              0.021876520397,
+              0.004062816858
+            ],
+            [
+              0.458989863447,
+              -0.344129148721,
+              0.819086951583
+            ],
+            [
+              0.653625210654,
+              -0.29259525504,
+              0.697969985548
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 5,
+          "circulation": 0,
+          "storms": 3
+        },
+        "zone": {
+          "body": "athyg:4.0:1440825/generated-2/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 44,
+          "layout": 47,
+          "objects": 17,
+          "structure": 0,
+          "phenomenon": {
+            "recipe": 9,
+            "name": "Вихрь частиц · орбитальный",
+            "particles": 320
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 200,
+        "drawCalls": 6,
+        "triangles": 29328,
+        "geometries": 3,
+        "textures": 2,
+        "fx": {
+          "budgetPerEffect": 700,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "HIGH",
+      "world": 10,
+      "state": {
+        "world": 10,
+        "quality": "HIGH",
+        "profile": {
+          "version": 1,
+          "seed": 1617130775,
+          "signature": "63.1.gas-15-exposed.15.24.19.1617130775",
+          "surface": 63,
+          "variant": 1,
+          "material": 126,
+          "colors": [
+            "#393a55",
+            "#7a8696",
+            "#d7cbb2",
+            "#bba095"
+          ],
+          "geography": 7.596652656923979,
+          "warp": 0.12,
+          "clouds": null,
+          "atmosphere": 9,
+          "aurora": null,
+          "ring": {
+            "recipe": 30,
+            "inner": 1.374973598360084,
+            "outer": 2.611930072270334,
+            "tilt": [
+              1.8400403787909538,
+              0.03242706600576639,
+              0.020956254191696645
+            ],
+            "density": 0.4158520673820749,
+            "tint": "#d7cbb2"
+          },
+          "objects": 15,
+          "layout": 24,
+          "structure": 17,
+          "phenomenon": 19,
+          "moonStyle": 4,
+          "moonOrbit": 7,
+          "moonCount": 1,
+          "zones": 2,
+          "backdrop": {
+            "shape": 10,
+            "warm": "#7a8696",
+            "cool": "#bba095",
+            "density": 0.1935556605644524,
+            "scale": 2.6797104694880542,
+            "drift": 0.0043308222983032465
+          },
+          "approachDirections": [
+            [
+              -0.738307717331,
+              0.269062833349,
+              -0.618471427181
+            ],
+            [
+              -0.458989863447,
+              0.344129148721,
+              -0.819086951583
+            ],
+            [
+              0.721162604814,
+              -0.267573951755,
+              0.639006007609
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 1,
+          "circulation": 2,
+          "storms": 3
+        },
+        "zone": {
+          "body": "athyg:4.0:1440825/generated-3/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 44,
+          "layout": 24,
+          "objects": 15,
+          "structure": 17,
+          "phenomenon": {
+            "recipe": 19,
+            "name": "Магнитные нити · раздвоенный",
+            "particles": 320
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 185,
+        "drawCalls": 5,
+        "triangles": 22560,
+        "geometries": 3,
+        "textures": 2,
+        "fx": {
+          "budgetPerEffect": 700,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "HIGH",
+      "world": 11,
+      "state": {
+        "world": 11,
+        "quality": "HIGH",
+        "profile": {
+          "version": 1,
+          "seed": 3411205884,
+          "signature": "49.5.gas-1-coated.27.31.12.3411205884",
+          "surface": 49,
+          "variant": 5,
+          "material": 99,
+          "colors": [
+            "#393a55",
+            "#698785",
+            "#d7cbb2",
+            "#a0829a"
+          ],
+          "geography": 3.367335168509744,
+          "warp": 0.35,
+          "clouds": null,
+          "atmosphere": 9,
+          "aurora": null,
+          "ring": {
+            "recipe": 2,
+            "inner": 1.404681924805045,
+            "outer": 2.624154002950527,
+            "tilt": [
+              1.6859238814145145,
+              0.41534279042389244,
+              0.5075873700901866
+            ],
+            "density": 0.4413903408870101,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 31,
+          "structure": 7,
+          "phenomenon": 12,
+          "moonStyle": 4,
+          "moonOrbit": 5,
+          "moonCount": 0,
+          "zones": 5,
+          "backdrop": {
+            "shape": 3,
+            "warm": "#698785",
+            "cool": "#a0829a",
+            "density": 0.5354996781051159,
+            "scale": 5.728121373057365,
+            "drift": 0.0018847031155601144
+          },
+          "approachDirections": [
+            [
+              -0.727134199535,
+              0.268109146566,
+              -0.631975744308
+            ],
+            [
+              -0.653625210654,
+              0.29259525504,
+              -0.697969985548
+            ],
+            [
+              -0.721162604814,
+              0.267573951755,
+              -0.639006007609
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 1,
+          "circulation": 5,
+          "storms": 3
+        },
+        "zone": {
+          "body": "athyg:4.0:1440825/generated-4/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 14,
+          "layout": 31,
+          "objects": 27,
+          "structure": 7,
+          "phenomenon": {
+            "recipe": 12,
+            "name": "Радиоэхо · пульсирующий",
+            "particles": 320
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 200,
+        "drawCalls": 4,
+        "triangles": 15792,
+        "geometries": 3,
+        "textures": 1,
+        "fx": {
+          "budgetPerEffect": 700,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "LOW",
+      "world": 4,
+      "state": {
+        "world": 4,
+        "quality": "LOW",
+        "profile": {
+          "version": 1,
+          "seed": 2584468799,
+          "signature": "50.5.gas-2-coated.8.26.3.2584468799",
+          "surface": 50,
+          "variant": 5,
+          "material": 101,
+          "colors": [
+            "#393a55",
+            "#827194",
+            "#d7cbb2",
+            "#5697ac"
+          ],
+          "geography": 5.1880933959037066,
+          "warp": 0.5800000000000001,
+          "clouds": null,
+          "atmosphere": 8,
+          "aurora": null,
+          "ring": {
+            "recipe": 17,
+            "inner": 1.45,
+            "outer": 1.85,
+            "tilt": [
+              1.609170288707868,
+              0.29096323251724243,
+              0.5744604032486678
+            ],
+            "density": 0.12,
+            "tint": "#9b9186"
+          },
+          "objects": 8,
+          "layout": 26,
+          "structure": 11,
+          "phenomenon": 3,
+          "moonStyle": 7,
+          "moonOrbit": 6,
+          "moonCount": 0,
+          "zones": 6,
+          "backdrop": {
+            "shape": 7,
+            "warm": "#827194",
+            "cool": "#5697ac",
+            "density": 0.5152715092711151,
+            "scale": 4.502424254454672,
+            "drift": 0.004140256143175066
+          },
+          "approachDirections": [
+            [
+              -0.772521985111,
+              -0.239312714628,
+              0.588165969041
+            ],
+            [
+              -0.845289466474,
+              -0.188854475081,
+              0.499819672592
+            ],
+            [
+              -0.903503023159,
+              -0.150099340453,
+              0.401438009084
+            ],
+            [
+              -0.66110944246,
+              -0.282772400283,
+              0.694963362148
+            ],
+            [
+              0.556261186836,
+              0.273155306461,
+              -0.784830982169
+            ],
+            [
+              0.52999512672,
+              -0.343667202612,
+              0.77524062039
+            ],
+            [
+              0.41668291911,
+              -0.3547521737,
+              0.836974456108
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "ready",
+          "geology": 0,
+          "circulation": 3,
+          "storms": 2
+        },
+        "zone": {
+          "body": "sol/jupiter/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 26,
+          "layout": 26,
+          "objects": 8,
+          "structure": 11,
+          "phenomenon": {
+            "recipe": 3,
+            "name": "Резонанс · раздвоенный",
+            "particles": 120
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 196,
+        "drawCalls": 6,
+        "triangles": 10128,
+        "geometries": 3,
+        "textures": 4,
+        "fx": {
+          "budgetPerEffect": 260,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "LOW",
+      "world": 5,
+      "state": {
+        "world": 5,
+        "quality": "LOW",
+        "profile": {
+          "version": 1,
+          "seed": 830707045,
+          "signature": "48.1.gas-0-exposed.16.17.19.830707045",
+          "surface": 48,
+          "variant": 1,
+          "material": 96,
+          "colors": [
+            "#393a55",
+            "#bc9061",
+            "#d7cbb2",
+            "#6c728d"
+          ],
+          "geography": 2.1238119070068935,
+          "warp": 0.12,
+          "clouds": null,
+          "atmosphere": 8,
+          "aurora": 12,
+          "ring": {
+            "recipe": 10,
+            "inner": 1.23,
+            "outer": 2.32,
+            "tilt": [
+              1.1,
+              0,
+              0.1
+            ],
+            "density": 0.7,
+            "tint": "#d4c3a3"
+          },
+          "objects": 16,
+          "layout": 17,
+          "structure": 8,
+          "phenomenon": 19,
+          "moonStyle": 8,
+          "moonOrbit": 6,
+          "moonCount": 0,
+          "zones": 2,
+          "backdrop": {
+            "shape": 8,
+            "warm": "#bc9061",
+            "cool": "#6c728d",
+            "density": 0.35686936985701323,
+            "scale": 5.745722447568551,
+            "drift": 0.0021164123453199864
+          },
+          "approachDirections": [
+            [
+              -0.682904621131,
+              -0.257257279013,
+              0.683710443706
+            ],
+            [
+              -0.734473902806,
+              -0.230688175688,
+              0.638224922496
+            ],
+            [
+              -0.762671637592,
+              -0.217545080401,
+              0.609102709899
+            ],
+            [
+              -0.607610592404,
+              -0.278398007391,
+              0.743844014213
+            ],
+            [
+              -0.556261186836,
+              -0.273155306461,
+              0.784830982169
+            ],
+            [
+              0.367326130012,
+              -0.364449179123,
+              0.855715086958
+            ],
+            [
+              0.312863974649,
+              -0.364045085249,
+              0.877261254857
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "ready",
+          "geology": 1,
+          "circulation": 2,
+          "storms": 2
+        },
+        "zone": {
+          "body": "sol/saturn/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 27,
+          "layout": 17,
+          "objects": 16,
+          "structure": 8,
+          "phenomenon": {
+            "recipe": 19,
+            "name": "Магнитные нити · раздвоенный",
+            "particles": 120
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 185,
+        "drawCalls": 7,
+        "triangles": 12288,
+        "geometries": 3,
+        "textures": 4,
+        "fx": {
+          "budgetPerEffect": 260,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "LOW",
+      "world": 2,
+      "state": {
+        "world": 2,
+        "quality": "LOW",
+        "profile": {
+          "version": 1,
+          "seed": 1310247180,
+          "signature": "32.4.ocean-0-exposed.4.44.14.1310247180",
+          "surface": 32,
+          "variant": 4,
+          "material": 64,
+          "colors": [
+            "#284a5a",
+            "#56726f",
+            "#b9b988",
+            "#9bbbbe"
+          ],
+          "geography": 2.088052252389025,
+          "warp": 0.12,
+          "clouds": 0,
+          "atmosphere": 1,
+          "aurora": 6,
+          "ring": null,
+          "objects": 4,
+          "layout": 44,
+          "structure": 5,
+          "phenomenon": 14,
+          "moonStyle": 12,
+          "moonOrbit": 1,
+          "moonCount": 0,
+          "zones": 6,
+          "backdrop": {
+            "shape": 1,
+            "warm": "#ad6256",
+            "cool": "#31768c",
+            "density": 0.48,
+            "scale": 5,
+            "drift": 0
+          },
+          "approachDirections": [
+            [
+              0.033262658426,
+              -0.413447719207,
+              0.909920094864
+            ],
+            [
+              -0.475648817545,
+              -0.316528645671,
+              0.82071177574
+            ],
+            [
+              0.847683832891,
+              -0.22798963103,
+              0.479012366854
+            ],
+            [
+              0.903503023159,
+              0.150099340453,
+              -0.401438009084
+            ],
+            [
+              0.762671637592,
+              0.217545080401,
+              -0.609102709899
+            ],
+            [
+              0.7045868758,
+              -0.292767910902,
+              0.646408759839
+            ],
+            [
+              0.54742683499,
+              -0.329107568274,
+              0.76942320529
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "ready",
+          "geology": 9,
+          "circulation": 3,
+          "storms": 2
+        },
+        "zone": {
+          "body": "sol/earth/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 31,
+          "layout": 44,
+          "objects": 4,
+          "structure": 5,
+          "phenomenon": {
+            "recipe": 14,
+            "name": "Радиоэхо · бегущая волна",
+            "particles": 120
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 191,
+        "drawCalls": 5,
+        "triangles": 9360,
+        "geometries": 2,
+        "textures": 3,
+        "fx": {
+          "budgetPerEffect": 260,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "LOW",
+      "world": 8,
+      "state": {
+        "world": 8,
+        "quality": "LOW",
+        "profile": {
+          "version": 1,
+          "seed": 4245954069,
+          "signature": "55.0.gas-7-exposed.5.33.2.4245954069",
+          "surface": 55,
+          "variant": 0,
+          "material": 110,
+          "colors": [
+            "#393a55",
+            "#bc9061",
+            "#d7cbb2",
+            "#6c728d"
+          ],
+          "geography": 6.809929025843739,
+          "warp": 0.35,
+          "clouds": null,
+          "atmosphere": 11,
+          "aurora": 6,
+          "ring": {
+            "recipe": 29,
+            "inner": 1.2473131720721722,
+            "outer": 2.3847089240886272,
+            "tilt": [
+              1.2490225602522362,
+              0.15190085908398032,
+              0.6146158361807466
+            ],
+            "density": 0.7728042518440634,
+            "tint": "#d7cbb2"
+          },
+          "objects": 5,
+          "layout": 33,
+          "structure": 9,
+          "phenomenon": 2,
+          "moonStyle": 15,
+          "moonOrbit": 7,
+          "moonCount": 3,
+          "zones": 6,
+          "backdrop": {
+            "shape": 2,
+            "warm": "#bc9061",
+            "cool": "#6c728d",
+            "density": 0.24489349100738764,
+            "scale": 3.910334529727697,
+            "drift": 0.004203381682746112
+          },
+          "approachDirections": [
+            [
+              0.999752425041,
+              -0.021876520397,
+              -0.004062816858
+            ],
+            [
+              0.738307717331,
+              -0.269062833349,
+              0.618471427181
+            ],
+            [
+              0.727134199535,
+              -0.268109146566,
+              0.631975744308
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 0,
+          "circulation": 7,
+          "storms": 2
+        },
+        "zone": {
+          "body": "athyg:4.0:1440825/generated-1/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 51,
+          "layout": 33,
+          "objects": 5,
+          "structure": 9,
+          "phenomenon": {
+            "recipe": 2,
+            "name": "Резонанс · бегущая волна",
+            "particles": 120
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 182,
+        "drawCalls": 7,
+        "triangles": 12288,
+        "geometries": 3,
+        "textures": 3,
+        "fx": {
+          "budgetPerEffect": 260,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "LOW",
+      "world": 9,
+      "state": {
+        "world": 9,
+        "quality": "LOW",
+        "profile": {
+          "version": 1,
+          "seed": 1530803714,
+          "signature": "46.1.mineral-6-coated.17.47.9.1530803714",
+          "surface": 46,
+          "variant": 1,
+          "material": 93,
+          "colors": [
+            "#313e47",
+            "#a08365",
+            "#c8b68b",
+            "#999e98"
+          ],
+          "geography": 5.751386666868347,
+          "warp": 0.12,
+          "clouds": 20,
+          "atmosphere": 12,
+          "aurora": 11,
+          "ring": {
+            "recipe": 8,
+            "inner": 1.8469931732444091,
+            "outer": 2.7801188464602453,
+            "tilt": [
+              0.7995603677192469,
+              0.26905279443599284,
+              0.008044382371008397
+            ],
+            "density": 0.7631471925135702,
+            "tint": "#c8b68b"
+          },
+          "objects": 17,
+          "layout": 47,
+          "structure": 0,
+          "phenomenon": 9,
+          "moonStyle": 1,
+          "moonOrbit": 6,
+          "moonCount": 0,
+          "zones": 3,
+          "backdrop": {
+            "shape": 3,
+            "warm": "#bc9061",
+            "cool": "#6c728d",
+            "density": 0.37173774784430863,
+            "scale": 5.70380523558706,
+            "drift": 0.003983142584562302
+          },
+          "approachDirections": [
+            [
+              -0.999752425041,
+              0.021876520397,
+              0.004062816858
+            ],
+            [
+              0.458989863447,
+              -0.344129148721,
+              0.819086951583
+            ],
+            [
+              0.653625210654,
+              -0.29259525504,
+              0.697969985548
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 5,
+          "circulation": 0,
+          "storms": 2
+        },
+        "zone": {
+          "body": "athyg:4.0:1440825/generated-2/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 44,
+          "layout": 47,
+          "objects": 17,
+          "structure": 0,
+          "phenomenon": {
+            "recipe": 9,
+            "name": "Вихрь частиц · орбитальный",
+            "particles": 120
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 200,
+        "drawCalls": 6,
+        "triangles": 10128,
+        "geometries": 3,
+        "textures": 2,
+        "fx": {
+          "budgetPerEffect": 260,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "LOW",
+      "world": 10,
+      "state": {
+        "world": 10,
+        "quality": "LOW",
+        "profile": {
+          "version": 1,
+          "seed": 1617130775,
+          "signature": "63.1.gas-15-exposed.15.24.19.1617130775",
+          "surface": 63,
+          "variant": 1,
+          "material": 126,
+          "colors": [
+            "#393a55",
+            "#7a8696",
+            "#d7cbb2",
+            "#bba095"
+          ],
+          "geography": 7.596652656923979,
+          "warp": 0.12,
+          "clouds": null,
+          "atmosphere": 9,
+          "aurora": null,
+          "ring": {
+            "recipe": 30,
+            "inner": 1.374973598360084,
+            "outer": 2.611930072270334,
+            "tilt": [
+              1.8400403787909538,
+              0.03242706600576639,
+              0.020956254191696645
+            ],
+            "density": 0.4158520673820749,
+            "tint": "#d7cbb2"
+          },
+          "objects": 15,
+          "layout": 24,
+          "structure": 17,
+          "phenomenon": 19,
+          "moonStyle": 4,
+          "moonOrbit": 7,
+          "moonCount": 1,
+          "zones": 2,
+          "backdrop": {
+            "shape": 10,
+            "warm": "#7a8696",
+            "cool": "#bba095",
+            "density": 0.1935556605644524,
+            "scale": 2.6797104694880542,
+            "drift": 0.0043308222983032465
+          },
+          "approachDirections": [
+            [
+              -0.738307717331,
+              0.269062833349,
+              -0.618471427181
+            ],
+            [
+              -0.458989863447,
+              0.344129148721,
+              -0.819086951583
+            ],
+            [
+              0.721162604814,
+              -0.267573951755,
+              0.639006007609
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 1,
+          "circulation": 2,
+          "storms": 2
+        },
+        "zone": {
+          "body": "athyg:4.0:1440825/generated-3/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 44,
+          "layout": 24,
+          "objects": 15,
+          "structure": 17,
+          "phenomenon": {
+            "recipe": 19,
+            "name": "Магнитные нити · раздвоенный",
+            "particles": 120
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 185,
+        "drawCalls": 5,
+        "triangles": 7968,
+        "geometries": 3,
+        "textures": 2,
+        "fx": {
+          "budgetPerEffect": 260,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    },
+    {
+      "quality": "LOW",
+      "world": 11,
+      "state": {
+        "world": 11,
+        "quality": "LOW",
+        "profile": {
+          "version": 1,
+          "seed": 3411205884,
+          "signature": "49.5.gas-1-coated.27.31.12.3411205884",
+          "surface": 49,
+          "variant": 5,
+          "material": 99,
+          "colors": [
+            "#393a55",
+            "#698785",
+            "#d7cbb2",
+            "#a0829a"
+          ],
+          "geography": 3.367335168509744,
+          "warp": 0.35,
+          "clouds": null,
+          "atmosphere": 9,
+          "aurora": null,
+          "ring": {
+            "recipe": 2,
+            "inner": 1.404681924805045,
+            "outer": 2.624154002950527,
+            "tilt": [
+              1.6859238814145145,
+              0.41534279042389244,
+              0.5075873700901866
+            ],
+            "density": 0.4413903408870101,
+            "tint": "#d7cbb2"
+          },
+          "objects": 27,
+          "layout": 31,
+          "structure": 7,
+          "phenomenon": 12,
+          "moonStyle": 4,
+          "moonOrbit": 5,
+          "moonCount": 0,
+          "zones": 5,
+          "backdrop": {
+            "shape": 3,
+            "warm": "#698785",
+            "cool": "#a0829a",
+            "density": 0.5354996781051159,
+            "scale": 5.728121373057365,
+            "drift": 0.0018847031155601144
+          },
+          "approachDirections": [
+            [
+              -0.727134199535,
+              0.268109146566,
+              -0.631975744308
+            ],
+            [
+              -0.653625210654,
+              0.29259525504,
+              -0.697969985548
+            ],
+            [
+              -0.721162604814,
+              0.267573951755,
+              -0.639006007609
+            ]
+          ]
+        },
+        "surface": {
+          "version": 2,
+          "texture": "procedural",
+          "geology": 1,
+          "circulation": 5,
+          "storms": 2
+        },
+        "zone": {
+          "body": "athyg:4.0:1440825/generated-4/zone-0",
+          "origin": "procedural-gameplay",
+          "instances": 14,
+          "layout": 31,
+          "objects": 27,
+          "structure": 7,
+          "phenomenon": {
+            "recipe": 12,
+            "name": "Радиоэхо · пульсирующий",
+            "particles": 120
+          }
+        },
+        "counts": {
+          "surfaces": 64,
+          "materials": 128,
+          "clouds": 32,
+          "atmospheres": 24,
+          "auroras": 16,
+          "rings": 32,
+          "objects": 32,
+          "objectForms": 192,
+          "layouts": 48,
+          "structures": 24,
+          "structureVariants": 192,
+          "phenomena": 32,
+          "moons": 24,
+          "moonOrbits": 12,
+          "backdrops": 12,
+          "geologyLayers": 12,
+          "circulationLayers": 8
+        },
+        "fps": 200,
+        "drawCalls": 4,
+        "triangles": 5808,
+        "geometries": 3,
+        "textures": 1,
+        "fx": {
+          "budgetPerEffect": 260,
+          "maxActive": 2,
+          "effects": {
+            "scan": {
+              "preset": "d773d301d86b3254180a6887af308eef",
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.008
+            },
+            "anomaly": {
+              "preset": null,
+              "requested": false,
+              "ready": false,
+              "failed": false,
+              "particles": 0,
+              "position": null,
+              "simulationUnitsPerFlightUnit": 0.0038461538461538464
+            },
+            "warp": {
+              "preset": "original-procedural-transit",
+              "requested": false,
+              "ready": true,
+              "failed": false,
+              "phase": "idle",
+              "elapsed": 0,
+              "intensity": 0,
+              "particles": 0,
+              "streaks": 0,
+              "drawCalls": 0,
+              "visible": false
+            }
+          }
+        },
+        "soloFX": null,
+        "override": null
+      }
+    }
+  ],
+  "errors": []
+}

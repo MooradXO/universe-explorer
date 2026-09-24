@@ -1,0 +1,37 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "F5C41C6C868F4F43A21FC21152048F7AFF056CC7E40B148E17DC8A17E475F641",
+    "Path": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\src\\world\\systems\\CruiseNavigator.ts"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "A5B2F5BC78040FF814FE3FF7CD78683F77AAA27DD5889D3B8D3842BC376339BD",
+    "Path": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\src\\world\\systems\\StellarTravel.ts"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "CF8C3D3CC06A3CEC874B33D84F36F1A22E1585CE671388AA5350E51BAE56E37A",
+    "Path": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\src\\world\\WorldBuilder.ts"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "FC3E9DC94333B61A2C1B4DE8CAA7639EDB76C694B0C6C328D61C3030AD5F80AC",
+    "Path": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\src\\ui\\SystemNavigationUI.ts"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "EF018640F8114C859E3368E7F53F30E75249F61D72A393593EC3E3670C411901",
+    "Path": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\src\\ui\\styles\\titan-hud.css"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "9671329ACFA4955FB36239BFDD3CF1E003A0790101AF775A3F821F3F932BDF7F",
+    "Path": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\server\\Simulation.ts"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "4BDDAC47AB2DF4D0425879AE8908BD559FB7495FA5559847F029A3E47A24818A",
+    "Path": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\.colyseus-dist\\index.html"
+  }
+]

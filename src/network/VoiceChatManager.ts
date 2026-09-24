@@ -8,6 +8,7 @@ export class VoiceChatManager {
   private positionalAudios: Map<string, THREE.PositionalAudio> = new Map();
   private listener: THREE.AudioListener;
   private iceCandidatesQueue: Map<string, RTCIceCandidateInit[]> = new Map();
+  private readonly events = new AbortController();
   
   public isMuted = true;
   private isInitializingMicrophone = false;
@@ -33,9 +34,9 @@ export class VoiceChatManager {
         });
       }
     };
-    window.addEventListener('click', resumeContext);
-    window.addEventListener('touchstart', resumeContext);
-    window.addEventListener('keydown', resumeContext);
+    window.addEventListener('click', resumeContext, { signal: this.events.signal });
+    window.addEventListener('touchstart', resumeContext, { signal: this.events.signal });
+    window.addEventListener('keydown', resumeContext, { signal: this.events.signal });
 
     // Bind WebRTC signaling from MultiplayerManager
     this.multiplayer.onVoiceSignalCallback = (data) => {
@@ -219,7 +220,9 @@ export class VoiceChatManager {
 
     pc.ontrack = (event) => {
       console.log(`WebRTC: Received track from peer ${targetId}`, event);
-      const remoteStream = event.streams[0];
+      if (!this.peers.has(targetId)) return;
+      // A transceiver created before microphone permission produces a streamless track.
+      const remoteStream = event.streams[0] ?? new MediaStream([event.track]);
       
       // iOS / Mobile Safari / Chrome Autoplay hack
       let hiddenAudio = document.getElementById(`audio-hack-${targetId}`) as HTMLAudioElement;
@@ -387,7 +390,8 @@ export class VoiceChatManager {
           if (!this.iceCandidatesQueue.has(senderId)) {
             this.iceCandidatesQueue.set(senderId, []);
           }
-          this.iceCandidatesQueue.get(senderId)!.push(signal.candidate);
+          const queue = this.iceCandidatesQueue.get(senderId)!;
+          if (queue.length < 64) queue.push(signal.candidate);
         }
       }
     }
@@ -422,6 +426,8 @@ export class VoiceChatManager {
    * Destroys all connections (e.g. on player death or game exit)
    */
   public destroy() {
+    this.events.abort(); this.camera.remove(this.listener);
+    this.multiplayer.onVoiceSignalCallback = undefined;
     for (const [targetId, pc] of this.peers.entries()) {
       pc.close();
       const hiddenAudio = document.getElementById(`audio-hack-${targetId}`);
@@ -447,4 +453,7 @@ export class VoiceChatManager {
       this.localStream = null;
     }
   }
+
+  public getDebugState() { return { peers: this.peers.size, connected: [...this.peers.values()].filter(p => p.connectionState === 'connected').length,
+    receiving: this.positionalAudios.size, microphone: !!this.localStream, muted: this.isMuted }; }
 }

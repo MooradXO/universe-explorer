@@ -3,7 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { PerspectiveCamera, Vector3 } from 'three';
 import { decodeStarTile, type StarMapManifest } from '../../src/catalog/StarMapData';
-const evidence = join('docs', 'phases_archive', 'star-map-2026-09-15');
+const evidence = process.env.MAP_EVIDENCE_DIR || join('docs', 'phases_archive', 'star-map-2026-09-15');
 const snapshot = (page: Page) => page.evaluate(() => JSON.parse(JSON.stringify(window.__UNIVERSE_DEBUG__.snapshot())));
 async function enter(page: Page, mobile: boolean) {
   await page.addInitScript(mode => localStorage.setItem('universe_gfx_mode', mode), mobile ? 'LOW' : 'HIGH');

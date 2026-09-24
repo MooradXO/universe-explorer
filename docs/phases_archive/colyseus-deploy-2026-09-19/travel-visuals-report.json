@@ -1,0 +1,177 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\pc\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      "playwright.multiplayer.config.ts",
+      "travel-visuals",
+      "--reporter=line,json"
+    ],
+    "configFile": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\playwright.multiplayer.config.ts",
+    "rootDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/tests/multiplayer-browser",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/.multiplayer-evidence/browser-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "HIGH",
+        "name": "HIGH",
+        "testDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/tests/multiplayer-browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 150000
+      },
+      {
+        "outputDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/.multiplayer-evidence/browser-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "LOW",
+        "name": "LOW",
+        "testDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/tests/multiplayer-browser",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 150000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "travel-visuals.spec.ts",
+      "file": "travel-visuals.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "online warp portal and cruise camera stay coherent with delayed snapshots",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "HIGH",
+              "projectName": "HIGH",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 33062,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "📶️❗ Colyseus latency simulation enabled → 240ms latency for round trip.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-09-19T18:04:11.647Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b5537c0ae19ca33c61fc-dcebeb00f52e4e55d362",
+          "file": "travel-visuals.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "online warp portal and cruise camera stay coherent with delayed snapshots",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "LOW",
+              "projectName": "LOW",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 32906,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "📶️❗ Colyseus latency simulation enabled → 240ms latency for round trip.\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-09-19T18:04:45.469Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b5537c0ae19ca33c61fc-bb8bdd1c858f0361b97a",
+          "file": "travel-visuals.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-19T18:04:10.685Z",
+    "duration": 68025.81599999999,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

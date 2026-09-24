@@ -1,0 +1,64 @@
+{
+  "date": "2026-09-19T17:26:38.242Z",
+  "host": {
+    "platform": "linux",
+    "cpu": "QEMU Virtual CPU version 2.5+",
+    "logicalCPUs": 4,
+    "ramGiB": 5.786327362060547,
+    "node": "v24.19.0"
+  },
+  "seconds": 30,
+  "results": [
+    {
+      "mode": "clustered",
+      "count": 10,
+      "elapsed": 30.000815624999994,
+      "server": {
+        "players": 10,
+        "systems": 1,
+        "bots": 0,
+        "tick": 1711,
+        "tickMs": {
+          "p50": 1.1646360000013374,
+          "p95": 1.8301519999995435,
+          "p99": 2.640491000000111,
+          "max": 4.97925000000032
+        },
+        "activeShots": 86,
+        "fired": 2340,
+        "hits": 34,
+        "rejected": 0,
+        "socketBytesWritten": 3323677,
+        "elapsed": 34.247,
+        "cpuMicroseconds": 4717208,
+        "rssBytes": 160006144
+      },
+      "measurement": {
+        "observedTickHz": 49.99864066195701,
+        "serverCPUPercentOfOneCore": 12.684108484133924,
+        "serverRSSMiB": 152.59375,
+        "outboundMbps": 0.7935080265005298,
+        "shotsFired": 2130,
+        "hits": 34,
+        "rejected": 0,
+        "snapshotGapMs": {
+          "p50": 101.42418299999918,
+          "p95": 103.28967200000079,
+          "p99": 104.85321699999986,
+          "max": 110.73202599999968
+        },
+        "minSnapshotsPerSecond": 9.999728132391402,
+        "disconnects": 0,
+        "systems": 1,
+        "bots": 0,
+        "maxPendingInputs": 6,
+        "visiblePeersAtEnd": {
+          "min": 9,
+          "max": 9
+        },
+        "maxDistanceFromFirstAtEnd": 1381.907430354336
+      },
+      "stderr": ""
+    }
+  ]
+}

@@ -54,7 +54,7 @@ async function main() {
       const { StarMapUI } = await import('./ui/star-map/StarMapUI');
       if (!cancelled && uiLayer.style.display !== 'none' && !engine.shipController.isDead) {
         starMap = new StarMapUI(engine, uiLayer, () => { starMap = null; hudPanels.releaseExternal('star-map'); }, world.currentSystemId ?
-          { currentSystemId: world.currentSystemId, warp: object => world.warpTo(object) } : undefined);
+          { currentSystemId: world.currentSystemId, warp: object => world.warpTo(object), selectDestination: id => world.selectDestination(id) } : undefined);
       }
     } finally {
       mapLoading = false;

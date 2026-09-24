@@ -1,0 +1,51 @@
+[
+  {
+    "dir": "before-HIGH",
+    "samples": 26,
+    "medianDrawCalls": 82,
+    "maxDrawCalls": 82,
+    "medianFrameMs": 5.0011111111069715,
+    "medianP95Ms": 5.299999997019768,
+    "maxCameraOffset": 381.0839802458246,
+    "maxFov": 75,
+    "scenarios": [
+      "Proxima Centauri"
+    ],
+    "errors": []
+  },
+  {
+    "dir": "final-HIGH",
+    "samples": 9,
+    "medianDrawCalls": 82,
+    "maxDrawCalls": 82,
+    "medianFrameMs": 5,
+    "medianP95Ms": 5.200000002980232,
+    "maxCameraOffset": 457.3823635018272,
+    "maxFov": 102.95182476496076,
+    "scenarios": [
+      "Proxima Centauri",
+      "Sirius",
+      "rejected",
+      "cancelled"
+    ],
+    "errors": []
+  },
+  {
+    "dir": "accepted-LOW",
+    "samples": 11,
+    "medianDrawCalls": 62,
+    "maxDrawCalls": 62,
+    "medianFrameMs": 5,
+    "medianP95Ms": 5.200000002980232,
+    "maxCameraOffset": 457.39365407561354,
+    "maxFov": 102.95191798569573,
+    "scenarios": [
+      "Proxima Centauri",
+      "Sirius",
+      "rejected",
+      "cancelled",
+      "disconnected"
+    ],
+    "errors": []
+  }
+]

@@ -1,0 +1,40 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import { chromium } from '@playwright/test';
+const base=process.env.PREVIEW_URL||'http://127.0.0.1:3020',out=process.env.WORKSHOP_EVIDENCE||'docs/phases_archive/scene-workshop-2026-09-24';
+await fs.mkdir(out,{recursive:true});const browser=await chromium.launch({channel:'msedge',headless:true}),results=[];
+try{for(const quality of ['HIGH','LOW']){
+  const context=await browser.newContext({viewport:{width:1536,height:960},acceptDownloads:true}),page=await context.newPage(),errors=[];
+  page.on('pageerror',e=>errors.push(String(e)));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  try{
+    await page.goto(`${base}/environments.html?world=8&quality=${quality}`);await page.waitForFunction(()=>!!window.__UNIVERSE_ENVIRONMENTS__);
+    const snap=()=>page.evaluate(()=>window.__UNIVERSE_ENVIRONMENTS__.snapshot());
+    const open=async id=>page.locator(id).evaluate(el=>{for(let p=el.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;});
+    const number=async(id,v)=>{await open(id);await page.locator(id).fill(String(v));await page.locator(id).press('Tab');};
+    const choose=async(id,v)=>{await open(id);await page.locator(id).selectOption(String(v));};
+    await choose('#field-texture','');await choose('#field-surface',33);await choose('#field-ring',10);await number('#field-ringOuter',3.1);await number('#field-ringTilt',48.5);await number('#field-ringDensity',.87);await number('#field-moons',3);await choose('#field-moonStyle',4);await choose('#field-clouds',9);await choose('#field-atmosphere',9);await choose('#field-aurora',5);
+    await page.waitForFunction(()=>window.__UNIVERSE_ENVIRONMENTS__.snapshot().entities[0].satellites.length===3);
+    let s=await snap();assert.equal(s.document.entities[0].params.ringOuter,3.1);assert.equal(s.document.entities[0].params.clouds,9);assert.equal(s.document.entities[0].params.aurora,5);assert.equal(s.errors.length,0);
+    await page.locator('#focus').click();await page.locator('#transform').selectOption('none');await page.locator('#pause').click();await page.waitForTimeout(600);await page.screenshot({path:`${out}/${quality}-planet-layers.png`});
+    await page.locator('#pin').click();await number('#field-ringDensity',.3);await page.locator('#compare').click();assert.equal((await snap()).comparing,true);await page.screenshot({path:`${out}/${quality}-comparison.png`});await page.locator('#compare').click();await page.locator('#undo').click();assert.equal((await snap()).document.entities[0].params.ringDensity,.87);await page.locator('#redo').click();assert.equal((await snap()).document.entities[0].params.ringDensity,.3);
+    for(const kind of ['field','structure','phenomenon','model','fx','star','asteroid','ring','moon','blackhole','probe','projectile','engine','light','impact','group']){await page.locator(`[data-kind="${kind}"]`).click();if(kind==='field')await number('#field-count',140);if(kind==='model')await choose('#field-model',2);if(kind==='fx')await choose('#field-preset',66);}
+    await page.waitForFunction(()=>window.__UNIVERSE_ENVIRONMENTS__.snapshot().entities.every(e=>e.status==='ready'||e.status==='error'),null,{timeout:30000});s=await snap();assert.equal(s.document.entities.length,17);assert(s.entities.every(e=>e.status==='ready'));assert.equal(s.errors.length,0);
+    const group=s.selected,child=s.document.entities.find(e=>e.kind==='asteroid').id;await page.locator(`[data-id="${child}"] .entity-select`).click();await choose('#entity-parent',group);await number('#entity-position-0',300);assert.equal((await snap()).document.entities.find(e=>e.id===child).parent,group);
+    await page.locator('#frame-all').click();await page.locator('#pause').click();await page.waitForTimeout(900);await page.screenshot({path:`${out}/${quality}-composition.png`});
+    const downloadEvent=page.waitForEvent('download');await page.locator('#export').click();const download=await downloadEvent;await download.saveAs(`${out}/${quality}-scene.json`);const expected=(await snap()).document;assert.deepEqual(JSON.parse(await fs.readFile(`${out}/${quality}-scene.json`,'utf8')),expected);
+    await page.locator('#save').click();await page.locator('#new').click();assert.equal((await snap()).document.entities.length,0);await page.locator('#file').setInputFiles(`${out}/${quality}-scene.json`);await page.waitForFunction(()=>window.__UNIVERSE_ENVIRONMENTS__.snapshot().document.entities.length===17);assert.deepEqual((await snap()).document,expected);
+    await page.locator('#file').setInputFiles({name:'broken.json',mimeType:'application/json',buffer:Buffer.from('{"format":"universe-scene","version":999}')});await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('rejected'));assert.deepEqual((await snap()).document,expected);
+    await page.goto(`${base}/environments.html?quality=${quality}`);await page.waitForFunction(()=>!!window.__UNIVERSE_ENVIRONMENTS__);assert.deepEqual((await snap()).document,expected);
+    await page.locator('#new').click();await page.locator('#projects').click();await page.locator('#project-list button').filter({hasText:"Open"}).first().click();assert.deepEqual((await snap()).document,expected);
+    // Editing a parent must preserve the child renderer; removal recursively deletes and undo restores it.
+    await page.locator(`[data-id="${group}"] .entity-select`).click();await number('#entity-scale',1.2);await page.locator('#remove').click();assert.equal((await snap()).document.entities.some(e=>e.id===child),false);await page.locator('#undo').click();assert.equal((await snap()).document.entities.some(e=>e.id===child),true);
+    // Repeat replacement without growing owned GPU resources.
+    await page.locator('#new').click();await page.locator('#world').selectOption('8');await page.locator('#load-world').click();await page.waitForFunction(()=>window.__UNIVERSE_ENVIRONMENTS__.snapshot().entities[0].surface.baked);await page.waitForTimeout(300);const memory=[];
+    for(let i=0;i<4;i++){await page.locator('[data-kind="field"]').click();await page.locator('#remove').click();await page.waitForTimeout(150);memory.push((await snap()).render);}
+    assert(memory.at(-1).geometries<=memory[0].geometries+1);assert(memory.at(-1).textures<=memory[0].textures+1);
+    // Same document and same ship controls in a separate local flight tab.
+    const popupEvent=page.waitForEvent('popup');await page.locator('#play').click();const flight=await popupEvent;flight.on('pageerror',e=>errors.push(String(e)));await flight.waitForFunction(()=>window.__UNIVERSE_WORKSHOP_FLIGHT__?.snapshot().ready,null,{timeout:30000});const before=await flight.evaluate(()=>window.__UNIVERSE_WORKSHOP_FLIGHT__.snapshot());await flight.keyboard.down('w');await flight.waitForTimeout(900);await flight.keyboard.up('w');await flight.keyboard.press('3');await flight.mouse.move(650,420);await flight.mouse.down();await flight.waitForTimeout(900);await flight.mouse.up();const after=await flight.evaluate(()=>window.__UNIVERSE_WORKSHOP_FLIGHT__.snapshot());assert(after.position.some((v,i)=>Math.abs(v-before.position[i])>10));assert(after.shotsFired>0);assert.equal(after.weapon,'missile');await flight.keyboard.press('v');await flight.waitForTimeout(100);assert.equal((await flight.evaluate(()=>window.__UNIVERSE_WORKSHOP_FLIGHT__.snapshot())).view,'first');await flight.screenshot({path:`${out}/${quality}-flight.png`});await flight.close();
+    assert.deepEqual(errors,[]);results.push({quality,pass:true,memory,flight:{before:before.position,after:after.position,shots:after.shotsFired},types:s.document.entities.map(e=>e.kind),snapshot:await snap()});
+  }catch(error){await page.screenshot({path:`${out}/${quality}-failure.png`}).catch(()=>{});results.push({quality,pass:false,error:String(error),errors});throw error;}finally{await context.close();await fs.writeFile(`${out}/browser.json`,JSON.stringify(results,null,2));}
+}}finally{await browser.close();}
+console.log(JSON.stringify(results.map(({quality,pass,memory,flight})=>({quality,pass,memory,flight})),null,2));

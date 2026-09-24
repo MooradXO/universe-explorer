@@ -1,0 +1,81 @@
+{
+  "stats": {
+    "startTime": "2026-09-19T16:52:14.875Z",
+    "duration": 205563.32499999998,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "errors": [],
+  "cases": [
+    {
+      "title": "one browser receives and renders a 100-player moving battle",
+      "ok": true,
+      "projects": [
+        {
+          "project": "HIGH",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 42442,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "one browser receives and renders a 100-player moving battle",
+      "ok": true,
+      "projects": [
+        {
+          "project": "LOW",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 42186,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "two real browsers: flight, hit, chat, all weapons, warp, cruise, reconnect, persistent guest",
+      "ok": true,
+      "projects": [
+        {
+          "project": "HIGH",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 60083,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "two real browsers: flight, hit, chat, all weapons, warp, cruise, reconnect, persistent guest",
+      "ok": true,
+      "projects": [
+        {
+          "project": "LOW",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 59418,
+              "errors": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,56 +1,57 @@
 # Third-party notices
 
-## AT-HYG 4.0 — optional local star catalogue
+The MIT license applies to project code, not automatically to the data, models, textures and effects listed below.
 
-Автор сборника: David Nash / Astronomy Nexus. Источник: https://codeberg.org/astronexus/athyg
+## AT-HYG 4.0 — optional star catalogue
 
-Полный каталог и данные карты хранятся отдельно от repository/public/dist, в локальном `project/.catalog-research/athyg-4.0/`. В `src/world/environments/ReviewAnchors.json` включены шесть неизменённых записей из локального AT-HYG для воспроизводимого просмотра игровых окружений: Proxima Centauri, Sirius, Vega, Betelgeuse, Altair, Rigel. Эта выборка сохраняет лицензию данных CC BY-SA 4.0 и атрибуцию David Nash / Astronomy Nexus. Преобразования карты: нормализация полей, индекс поиска, разбиение XYZ по областям, выборки для дальнего обзора и Float32 координаты относительно центра блока. Исходные записи и идентификаторы сохранены отдельно.
+Compiler: David Nash / Astronomy Nexus. [Source](https://codeberg.org/astronexus/athyg).
 
-Заявленная автором лицензия сборника: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Условия исходных данных Gaia: [CC BY-NC 3.0 IGO / ESA](https://www.cosmos.esa.int/web/gaia-users/license); отдельное разрешение для коммерческого сценария пока не получено. Требования источников не заменяются лицензией кода MIT. Ссылки на первичные каталоги и научные цитирования: [AT-HYG acknowledgments](https://codeberg.org/astronexus/athyg/src/commit/eebe42b3552ae04e67d27ae085a8aad997b42bc0/ACKNOWLEDGMENTS.md).
+The full catalogue and map databases live outside repository/public/dist. Six unchanged review anchors (Proxima Centauri, Sirius, Vega, Betelgeuse, Altair and Rigel) are included in src/world/environments/ReviewAnchors.json for reproducible game-world previews. This sample retains CC BY-SA 4.0 and attribution to David Nash / Astronomy Nexus.
 
-## Gaia DR3, SIMBAD и NASA/IPAC NED — сведения по запросу
+Map transformations include field normalization, search indexing, spatial partitioning, distant-view sampling and block-relative Float32 display coordinates. Original records and identifiers are retained separately.
 
-Кеш ответов находится на E вне repository/public/dist. В каждом наблюдении сохранены URL запроса, время снимка, SHA256, единицы и доступные ссылки на публикации; сведения разных источников не сливаются в одну безымянную запись.
+The compilation declares [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Recorded Gaia source terms: [CC BY-NC 3.0 IGO / ESA](https://www.cosmos.esa.int/web/gaia-users/license). Separate commercial-use permission has not been obtained. The project's MIT license does not replace data-source terms. Primary catalogue citations: [AT-HYG acknowledgments](https://codeberg.org/astronexus/athyg/src/commit/eebe42b3552ae04e67d27ae085a8aad997b42bc0/ACKNOWLEDGMENTS.md).
 
-- Gaia: ESA / Gaia / DPAC, [Gaia DR3](https://www.cosmos.esa.int/web/gaia/dr3), [условия](https://www.cosmos.esa.int/web/gaia-users/license). Использование API не отменяет условия данных.
-- SIMBAD: база CDS, Strasbourg, France; [SIMBAD](https://simbad.cds.unistra.fr/simbad/), [правила CDS и условия конкретных наборов](https://cds.unistra.fr/legals/). Библиографические коды отдельных измерений сохраняются.
-- NED: NASA/IPAC Extragalactic Database, финансирование NASA, оператор California Institute of Technology; [About NED](https://ned.ipac.caltech.edu/Documents/Overview). Используются новый API и ссылки на первичные публикации.
+## Gaia DR3, SIMBAD and NASA/IPAC NED
 
-Право распространять произвольные снимки этих источников в коммерческой игре этим прототипом не подтверждается. Запрос ESA по поручению пользователя пока не отправлен. Научные данные не входят в лицензию исходного кода MIT.
+Responses are cached outside the repository. Observations retain query URL, snapshot time, SHA256, units and available publication links; sources remain separately attributed.
 
-## Солнечная система и вид из выбранной звезды
+- Gaia: ESA / Gaia / DPAC; [DR3](https://www.cosmos.esa.int/web/gaia/dr3), [data terms](https://www.cosmos.esa.int/web/gaia-users/license).
+- SIMBAD: CDS, Strasbourg, France; [service](https://simbad.cds.unistra.fr/simbad/), [CDS terms](https://cds.unistra.fr/legals/). Individual measurement bibliographic codes are preserved.
+- NED: NASA/IPAC Extragalactic Database, funded by NASA and operated by the California Institute of Technology; [About NED](https://ned.ipac.caltech.edu/Documents/Overview). The adapter uses the current overview API and links to primary publications.
 
-Орбитальные параметры восьми планет: [JPL Solar System Dynamics, Approximate Positions — Table 1](https://ssd.jpl.nasa.gov/planets/approx_pos.html). Реализован расчёт фиксированного состояния на J2000.0, без экстраполяции к сегодняшней дате. Строка Земли соответствует приближению барицентра Земля–Луна.
+API access does not waive data terms. The unsent ESA draft does not grant permission for commercial redistribution. Scientific data is not relicensed as MIT.
 
-Средние радиусы: [JPL Planetary Physical Parameters](https://ssd.jpl.nasa.gov/planets/phys_par.html); астрономическая единица: [JPL Astrodynamic Parameters](https://ssd.jpl.nasa.gov/astro_par.html). Номинальный радиус Солнца 695 700 км: [IAU 2015 Resolution B3](https://www.iau.org/common/Uploaded%20files/IAUGA2015-Resolution-B3-recommended-nominal-conversion.pdf). Это номинальная константа, не измерение изменяющейся поверхности.
+## Solar System coordinates and stellar views
 
-Поверхности всех планет иллюстративные. В остальных системах планеты и орбитальные точки исследования генерируются для игры и явно отмечены; они не объявляются подтверждёнными экзопланетами. Радиусы звёзд, кроме номинального солнечного, условные. Направления фоновых звёзд получены из ограниченной выборки AT-HYG относительно выбранной системы; цвет и яркость приблизительные. Политика и атрибуция AT-HYG выше применяются и к этому фону.
+Eight-planet orbital parameters: [JPL approximate positions, Table 1](https://ssd.jpl.nasa.gov/planets/approx_pos.html). The game uses a fixed J2000.0 state, not current ephemerides; the Earth row approximates the Earth–Moon barycentre.
 
-## EpicToonFX — локальный визуальный просмотр
+Mean radii: [JPL physical parameters](https://ssd.jpl.nasa.gov/planets/phys_par.html). Astronomical unit: [JPL astrodynamic parameters](https://ssd.jpl.nasa.gov/astro_par.html). Nominal solar radius, 695,700 km: [IAU 2015 Resolution B3](https://www.iau.org/common/Uploaded%20files/IAUGA2015-Resolution-B3-recommended-nominal-conversion.pdf), a nominal constant rather than a current surface measurement.
 
-Три пресета (SpinPortalBlue, ScanExplosion, Plexus) и семь текстур из приобретённой и адаптированной пользователем библиотеки EpicToonFX-ThreeJS. Original VFX: Archanor VFX. Пользователь разрешил применение подходящих эффектов в игре. Эти материалы не являются MIT/CC0; права на оригинальные эффекты сохраняются. Код адаптации и зависимости подключены в отдельный визуальный прототип. Источники, интеграционная правка и SHA256: `src/vendor/epic-fx/README.md`, `provenance.json`. Включение выбранных ресурсов в игру не предоставляет отдельной лицензии на повторное использование оригинальной библиотеки.
+Planet surfaces are illustrative. Generated extrasolar planets and survey locations are fictional game content, not confirmed exoplanets. Other stellar radii are illustrative. Background directions use a bounded AT-HYG sample relative to the selected system; its attribution/terms above still apply.
 
-## Генератор окружений — материалы и дополнительные эффекты
+## EpicToonFX
 
-Карты Меркурия, атмосферы Венеры, Земли, Марса, Юпитера, Сатурна, Урана, Нептуна и Луны: [Solar System Scope / Textures](https://www.solarsystemscope.com/textures/), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Автор: Solar System Scope. Изменения: размеры HIGH/LOW, кодирование WebP, использование с кинематографичным освещением. Это художественные составные карты; отдельные участки исходного набора восстановлены авторами. Точные файлы, ссылки и SHA256: `public/assets/environments/provenance.json`.
+Original VFX: Archanor VFX. The owner supplied a purchased Three.js adaptation and authorized suitable effects in Universe Explorer. These materials are not MIT/CC0; original rights remain with their owners.
 
-Четыре исходных материала (реголит, лёд, минералы, плотность облаков) сгенерированы для Universe Explorer через OpenAI image generation. Это исходники деталей, а крупная география строится отдельно для каждой игровой планеты. Prompts: `docs/research/generated-material-prompts.json`. Сохранены оригинальные PNG, для runtime подготовлены WebP.
+The initial subset contains SpinPortalBlue, ScanExplosion and Plexus with seven textures. The environment subset adds 66 presets and 19 shared textures. Counts include colour variants, not 66 independent structural families. Definitions are preserved, audio disabled and the adapter bounds particles and simulation scale. The supplied source library is unchanged.
 
-Дополнительно выбран компактный набор 66 EpicToonFX-пресетов с 19 общими текстурами: `public/assets/fx-environments/provenance.json`. Original VFX: Archanor VFX; пользователь предоставил купленную адаптированную библиотеку и разрешил использование подходящих эффектов в этой игре. Это пресеты, включая цветовые варианты, а не 66 различных структурных семейств. Оригинальные определения сохранены, звук выключен; адаптер ограничивает количество частиц и масштабирует локальную симуляцию. Исходная библиотека пользователя не изменена.
+Provenance and hashes: src/vendor/epic-fx/README.md, src/vendor/epic-fx/provenance.json, public/assets/fx-environments/provenance.json. Inclusion does not grant an independent license to reuse or redistribute the original library.
 
-Положения 11 основных спутников относительно родительских планет: [JPL Horizons API](https://ssd-api.jpl.nasa.gov/doc/horizons.html), фиксированное J2000.0 TDB, геометрические векторы ICRF, 10 км на игровую единицу. Средние радиусы: [JPL Satellite Physical Parameters](https://ssd.jpl.nasa.gov/sats/phys_par/sep.html). Ответы API сохранены в `docs/research/moon-source/`, преобразование в `scripts/prepare-moon-positions.py`. Абсолютная точность ограничена прежними приближёнными орбитами родительских планет; это не текущая эфемерида. Поверхности спутников, кроме карты Луны, иллюстративные. Кольца, сияния, газовый фон и объекты окружения — художественные.
+## Environment textures and moons
 
-## d3-celestial — constellation data (BSD-3-Clause)
+Mercury, Venus atmosphere, Earth, Mars, Jupiter, Saturn, Uranus, Neptune and Moon maps: [Solar System Scope](https://www.solarsystemscope.com/textures/), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Changes: HIGH/LOW resizing, WebP encoding and cinematic lighting. These are artistic composite maps; some source areas were reconstructed by their authors. File URLs and SHA256 are in public/assets/environments/provenance.json.
 
-Автор: Olaf Frohn. Upstream: https://github.com/ofrohn/d3-celestial
+Four detail-source materials (regolith, ice, minerals and cloud density) were generated for this project with OpenAI image generation. Large-scale geography is generated separately per world. Original PNG and runtime WebP files are retained; prompts are in docs/research/generated-material-prompts.json.
 
-Включённые данные, без изменений:
+Relative positions of eleven major Solar System moons use [JPL Horizons](https://ssd-api.jpl.nasa.gov/doc/horizons.html): fixed J2000.0 TDB geometric ICRF vectors at 10 km/game unit. Mean radii: [JPL satellite parameters](https://ssd.jpl.nasa.gov/sats/phys_par/sep.html). Responses: docs/research/moon-source/; conversion: scripts/prepare-moon-positions.py. Absolute accuracy is limited by the approximate parent-planet orbits. Other moon surfaces, rings, auroras, nebulae and environment objects are artistic.
 
-- `src/data/constellations.lines.json` — upstream `data/constellations.lines.json`.
-- `src/data/constellations.names.json` — upstream `data/constellations.json` (локально переименован файл).
+## d3-celestial — BSD-3-Clause data
 
-Источник лицензии: https://github.com/ofrohn/d3-celestial/blob/master/LICENSE
-Проверено 2026-09-15. Этот notice включается также в production dist.
+Author: Olaf Frohn. [Upstream](https://github.com/ofrohn/d3-celestial). Unchanged source data: src/data/constellations.lines.json from data/constellations.lines.json, and src/data/constellations.names.json from data/constellations.json (renamed locally).
+
+[License source](https://github.com/ofrohn/d3-celestial/blob/master/LICENSE), checked September 15, 2026. This notice is included in the client build. Retained data attribution does not imply that removed constellation artwork is displayed.
+
 
 ```text
 Copyright (c) 2015, Olaf Frohn
@@ -66,3 +67,29 @@ Redistribution and use in source and binary forms, with or without modification,
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
+
+## Colyseus multiplayer
+
+`@colyseus/core`, `@colyseus/sdk`, `@colyseus/schema`, `@colyseus/ws-transport`. Versions are pinned in package-lock.json. Source: https://github.com/colyseus/colyseus
+
+Copyright (c) 2015-2026 Endel Dreyer
+
+MIT License:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.

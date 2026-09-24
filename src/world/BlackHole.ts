@@ -1,8 +1,7 @@
 import * as THREE from 'three';
-import { Engine } from '../core/Engine';
 
 export class BlackHole {
-  private engine: Engine;
+  private engine: {scene:THREE.Scene};
   
   public group: THREE.Group;
   public eventHorizon!: THREE.Mesh;
@@ -18,7 +17,7 @@ export class BlackHole {
   private diskInnerRadius = 550;
   private diskOuterRadius = 1800;
 
-  constructor(engine: Engine) {
+  constructor(engine: {scene:THREE.Scene},private random:()=>number=Math.random) {
     this.engine = engine;
     this.group = new THREE.Group();
     this.group.position.set(0, 0, 0);
@@ -99,10 +98,10 @@ export class BlackHole {
 
     // Add high-frequency turbulence noise (plasma dust)
     for (let p = 0; p < 800; p++) {
-      const px = Math.random() * canvas.width;
-      const py = Math.random() * canvas.height;
-      const size = 1.0 + Math.random() * 2.5;
-      const colorIntensity = Math.random();
+      const px = this.random() * canvas.width;
+      const py = this.random() * canvas.height;
+      const size = 1.0 + this.random() * 2.5;
+      const colorIntensity = this.random();
       
       ctx.fillStyle = colorIntensity > 0.65 ? '#ffffff' : (colorIntensity > 0.3 ? '#ffaa00' : '#8a2be2');
       ctx.fillRect(px, py, size, size);

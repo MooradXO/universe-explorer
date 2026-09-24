@@ -1,0 +1,102 @@
+{
+  "date": "2026-09-24T00:36:36.3463332+04:00",
+  "status": "PASS",
+  "unitTests": 88,
+  "frontendTypeScript": "PASS",
+  "backendTypeScript": "PASS",
+  "buildAndGuard": "PASS",
+  "protectedArtifactsUnchanged": true,
+  "productionChanged": false,
+  "cases": [
+    {
+      "quality": "HIGH",
+      "rttMs": 240,
+      "result": "PASS",
+      "arrivalDistanceUnits": 3.6125930114916676E-06,
+      "serverArrivalDistance": 0,
+      "stoppedSpeed": 0,
+      "switchArrivalDistanceUnits": 0.0003698915199128662,
+      "commands": [
+        {
+          "at": 1790195660479,
+          "type": "cruise",
+          "target": "sol/mars",
+          "accepted": true
+        },
+        {
+          "at": 1790195689865,
+          "type": "cruise",
+          "target": "sol/earth",
+          "accepted": true
+        },
+        {
+          "at": 1790195692458,
+          "type": "stop",
+          "accepted": true
+        },
+        {
+          "at": 1790195694557,
+          "type": "cruise",
+          "target": "sol/earth",
+          "accepted": true
+        },
+        {
+          "at": 1790195695590,
+          "type": "stop",
+          "accepted": true
+        },
+        {
+          "at": 1790195696226,
+          "type": "cruise",
+          "target": "sol/mars",
+          "accepted": true
+        }
+      ]
+    },
+    {
+      "quality": "LOW",
+      "rttMs": 240,
+      "result": "PASS",
+      "arrivalDistanceUnits": 0.0005797173187449109,
+      "serverArrivalDistance": 0,
+      "stoppedSpeed": 0,
+      "switchArrivalDistanceUnits": 0.0005643140188837573,
+      "commands": [
+        {
+          "at": 1790195730052,
+          "type": "cruise",
+          "target": "sol/mars",
+          "accepted": true
+        },
+        {
+          "at": 1790195758957,
+          "type": "cruise",
+          "target": "sol/earth",
+          "accepted": true
+        },
+        {
+          "at": 1790195761525,
+          "type": "stop",
+          "accepted": true
+        },
+        {
+          "at": 1790195763609,
+          "type": "cruise",
+          "target": "sol/earth",
+          "accepted": true
+        },
+        {
+          "at": 1790195764647,
+          "type": "stop",
+          "accepted": true
+        },
+        {
+          "at": 1790195765282,
+          "type": "cruise",
+          "target": "sol/mars",
+          "accepted": true
+        }
+      ]
+    }
+  ]
+}

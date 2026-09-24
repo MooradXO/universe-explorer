@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { SURFACES, MATERIALS, CLOUDS, ATMOSPHERES, AURORAS, RINGS } from './EnvironmentLibrary';
 import type { EnvironmentProfile } from './EnvironmentProfile';
+import { planetDetail, PLANET_DETAIL_GLSL } from './PlanetDetail';
 
 export const ENV_NOISE = /* glsl */`
 float hash(vec3 p){return fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);}
@@ -21,8 +22,10 @@ export class EnvironmentTextures {
   constructor(readonly low: boolean) {}
   acquire(name: string) {
     const old = this.entries.get(name); if (old) { old.users++; return old.texture; }
-    const texture = new THREE.TextureLoader().load(`/assets/environments/${this.low ? 'low' : 'high'}/${name}.webp`);
-    texture.colorSpace = THREE.SRGBColorSpace; texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+    const texture = new THREE.TextureLoader().load(`/assets/environments/${this.low ? 'low' : 'high'}/${name}.webp`,
+      loaded => { loaded.userData.ready = true; }, undefined, () => { texture.userData.failed = true; });
+    texture.colorSpace = THREE.SRGBColorSpace; texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = ['regolith','ice','mineral','clouds'].includes(name) ? THREE.RepeatWrapping : THREE.ClampToEdgeWrapping;
     texture.anisotropy = this.low ? 1 : 4;
     this.entries.set(name, { texture, users: 1 }); return texture;
   }
@@ -30,20 +33,35 @@ export class EnvironmentTextures {
   dispose() { for (const { texture } of this.entries.values()) texture.dispose(); this.entries.clear(); }
 }
 
-export function surfaceMaterial(profile: EnvironmentProfile, direction: THREE.Vector3, light: number, detail: THREE.Texture, solar: THREE.Texture | null) {
+export function surfaceMaterial(profile: EnvironmentProfile, direction: THREE.Vector3, light: number, detail: THREE.Texture, solar: THREE.Texture | null,
+  options: { low?: boolean; solarName?: string; cloudTexture?: THREE.Texture; layers?: { geology?: number; circulation?: number } } = {}) {
   const recipe = SURFACES[profile.surface], material = MATERIALS[profile.material];
-  return new THREE.ShaderMaterial({ vertexShader: ENV_VERTEX, precision: 'highp', defines:{SURFACE_GROUP:recipe.group,SURFACE_SHAPE:recipe.shape}, uniforms: {
-    colors: { value: profile.colors.slice(0,3).map(c => new THREE.Color(c)) }, group: { value: recipe.group }, shape: { value: recipe.shape },
+  const art = planetDetail(profile, options.solarName);
+  const edit=profile.editor;
+  if(edit)Object.assign(art,{geology:edit.geology,circulation:edit.circulation,detail:edit.detail,stormStrength:edit.storms,wind:edit.wind,contrast:edit.contrast,frost:edit.frost,cloudShadow:edit.cloudShadow,palette:[...profile.colors.slice(0,3)]});
+  if (options.layers?.geology !== undefined) art.geology = options.layers.geology;
+  if (options.layers?.circulation !== undefined) art.circulation = options.layers.circulation;
+  const ringPlane = new THREE.Vector3(0, 0, 1).applyEuler(new THREE.Euler(...(profile.ring?.tilt ?? [0, 0, 0])));
+  return new THREE.ShaderMaterial({ vertexShader: ENV_VERTEX, precision: 'highp', defines:{SURFACE_GROUP:recipe.group,SURFACE_SHAPE:recipe.shape,STORM_COUNT:options.low?2:3}, uniforms: {
+    colors: { value: art.palette.map(c => new THREE.Color(c)) }, group: { value: recipe.group }, shape: { value: recipe.shape },
+    storms: { value: art.storms.map(s => new THREE.Vector4(...s)) }, geology: { value: art.geology }, circulation: { value: art.circulation },
+    detailStrength: { value: art.detail }, wind: { value: art.wind }, stormStrength: { value: art.stormStrength },
+    contrast: { value: art.contrast }, cloudShadow: { value: options.cloudTexture ? art.cloudShadow : 0 }, haze: { value: art.haze }, frost: { value: art.frost },
+    ringPlane: { value: ringPlane }, ringRadii: { value: new THREE.Vector2(profile.ring?.inner ?? 0, profile.ring?.outer ?? 0) }, ringDensity: { value: profile.ring?.density ?? 0 },
     geography: { value: profile.geography }, warp: { value: profile.warp }, seed: { value: profile.seed % 997 }, variant: { value: profile.variant },
-    grain: { value: material.grain }, coating: { value: material.coverage }, roughness: { value: material.roughness }, relief: { value: material.relief }, oceanLevel: { value: recipe.oceanLevel },
+    grain: { value: material.grain }, coating: { value: material.coverage }, roughness: { value: edit?.roughness??material.roughness }, relief: { value: edit?.relief??material.relief }, oceanLevel: { value: edit?.ocean??recipe.oceanLevel },
     lightDir: { value: direction }, lightColor: { value: new THREE.Color(light).lerp(new THREE.Color('white'), .8) },
-    detailMap: { value: detail }, solarMap: { value: solar ?? detail }, useSolar: { value: solar ? 1 : 0 }, time: { value: 0 },
+    detailMap: { value: detail }, cloudMap: { value: options.cloudTexture ?? detail }, solarMap: { value: solar }, useSolar: { value: solar?.userData.ready ? 1 : 0 }, time: { value: 0 },
+    bakedMap: { value: detail }, bakedBlend: { value: 0 }, detailLod: { value: 0 },
   }, fragmentShader: /* glsl */`
     ${ENV_NOISE}
     varying vec3 vLocal,vWorld,vNormal;varying vec2 vUv;
-    uniform vec3 colors[3],lightDir,lightColor;uniform sampler2D detailMap,solarMap;
+    uniform vec3 colors[3],lightDir,lightColor,ringPlane;uniform vec2 ringRadii;uniform float ringDensity;
+    uniform sampler2D detailMap,solarMap,cloudMap;
+    uniform sampler2D bakedMap;uniform float bakedBlend,detailLod;
     const float group=float(SURFACE_GROUP),shape=float(SURFACE_SHAPE);
     uniform float geography,warp,seed,variant,grain,coating,roughness,relief,oceanLevel,useSolar,time;
+    ${PLANET_DETAIL_GLSL}
     float morphology(vec3 q,vec3 p){
       float n=fbm(q),r=ridge(q*1.7),lat=abs(p.y),s=shape;
       if(group<.5){
@@ -125,29 +143,74 @@ export function surfaceMaterial(profile: EnvironmentProfile, direction: THREE.Ve
     vec3 triplanar(vec3 p){vec3 w=pow(abs(p),vec3(5.));w/=w.x+w.y+w.z;vec3 q=p*(2.1+variant*.17);return texture2D(detailMap,q.yz).rgb*w.x+texture2D(detailMap,q.zx).rgb*w.y+texture2D(detailMap,q.xy).rgb*w.z;}
     void main(){
       vec3 p=normalize(vLocal),n=normalize(vNormal),v=normalize(cameraPosition-vWorld);
+      float h=.5,grainField=.5,land=1.,intensity=.5,glow=0.,micro=.5,stormMask=0.;
+      vec3 albedo=colors[1];
+      if(useSolar<.5){
+      vec3 original=p;
+      if(group>4.5)p=circulationDomain(p,stormMask);
       vec3 q=p*geography+vec3(seed*.013,seed*.017,seed*.023);q+=warp*vec3(fbm(q*2.),fbm(q*2.+17.),fbm(q*2.+31.));
-      float h=morphology(q,p),grainField=fbm(p*grain+seed*.01),land=1.;
-      vec3 albedo=mix(colors[0],mix(colors[1],colors[2],smoothstep(.52,.78,h)),smoothstep(.18,.58,h));
-      vec3 detail=triplanar(p);float intensity=dot(detail,vec3(.21,.72,.07));
+      h=morphology(q,p);grainField=fbm(p*grain+seed*.01);
+      albedo=mix(colors[0],mix(colors[1],colors[2],smoothstep(.52,.78,h)),smoothstep(.18,.58,h));
+      vec3 detail=triplanar(p);intensity=dot(detail,vec3(.21,.72,.07));
+      micro=fineTerrain(p,h);h+=(micro-.5)*detailStrength*.07;
       albedo*=.72+intensity*.8;albedo*=.86+grainField*.28;
-      float glow=0.;
-      if(group>2.5&&group<3.5){land=smoothstep(oceanLevel-.016,oceanLevel+.016,h);albedo=mix(colors[0]*(.68+grainField*.3),mix(colors[2],colors[1],smoothstep(oceanLevel+.02,oceanLevel+.12,h)),land);albedo=mix(albedo,vec3(.73,.8,.82),smoothstep(.87,.98,abs(p.y)+grainField*.04));}
-      if(group>.5&&group<1.5){glow=(1.-smoothstep(.015,.06,abs(h-(.42+variant*.013))))*(.45+grainField*.55);albedo*=.45;}
-      if(group>4.5)albedo=mix(colors[0],mix(colors[1],colors[2],smoothstep(.48,.8,h)),smoothstep(.08,.64,h))*(.75+grainField*.2+intensity*.3);
-      if(useSolar>.5)albedo=texture2D(solarMap,vUv).rgb;
+      if(group<.5||group>3.5&&group<4.5){albedo*=.82+micro*.36;albedo=mix(albedo,colors[2],pow(max(0.,micro),6.)*.15);}
+      if(group>1.5&&group<2.5){float fissure=1.-smoothstep(.025,.09,abs(micro-.45));albedo=mix(albedo,colors[0]*.5,fissure*.55);albedo=mix(albedo,colors[2],smoothstep(.65,.94,abs(p.y)+h*.15)*frost);}
+      if(group>2.5&&group<3.5){
+        land=smoothstep(oceanLevel-.008,oceanLevel+.008,h);
+        float shelf=smoothstep(oceanLevel-.06,oceanLevel,h)*(1.-land);
+        albedo=mix(colors[0]*(.6+grainField*.23)+vec3(.025,.13,.12)*shelf,mix(colors[2],colors[1],smoothstep(oceanLevel+.015,oceanLevel+.11,h))*(.77+micro*.4),land);
+        float snow=smoothstep(oceanLevel+.2,oceanLevel+.32,h)*land+smoothstep(.84,.97,abs(p.y)+grainField*.07);
+        albedo=mix(albedo,vec3(.72,.81,.86),clamp(snow,0.,1.));
+      }
+      if(group>.5&&group<1.5){glow=(1.-smoothstep(.008,.045,abs(h-(.42+variant*.013))))*(.5+grainField*.5);glow*=.85+.15*sin(time*.4+micro*8.);albedo*=.38;}
+      if(group>4.5){
+        float filaments=noise3(p*vec3(90.,210.,90.)+q*7.);
+        h+=sin(p.y*(110.+circulation*8.)+fbm(q*2.)*7.)*.055;
+        albedo=mix(colors[0],mix(colors[1],colors[2],smoothstep(.4,.72,h)),smoothstep(.08,.58,h))*(.84+filaments*.24);
+        albedo=mix(albedo,colors[1]*(.7+filaments*.6),stormMask*.28);
+      }
+      p=original;
+      }else{
+        vec2 uv=vUv;if(group>4.5)uv.x+=sin(p.y*16.)*sin(time*.012)*.0008;
+        albedo=texture2D(solarMap,uv).rgb;
+        float luminance=dot(albedo,vec3(.2126,.7152,.0722));
+        albedo=max(vec3(0.),mix(vec3(luminance),albedo,contrast)*contrast+(1.-contrast)*.16);
+        if(group>4.5){
+          // The atlas supplies the familiar belts. Small spherical eddies remain
+          // detailed when a giant fills the screen, including on the mobile atlas.
+          float turbulence=fbm(p*31.+vec3(seed*.01,time*wind,0.));
+          float threads=fbm(p*vec3(75.,180.,75.)+vec3(turbulence*8.,turbulence*2.,time*.003));
+          float closeDetail=1.-smoothstep(.008,.025,max(length(dFdx(p)),length(dFdy(p))));
+          albedo*=1.+(threads-.45)*.6*stormStrength*closeDetail;
+        }
+        if(group>2.5&&group<3.5)land=smoothstep(.04,.12,albedo.r+albedo.g-albedo.b*.8);
+        intensity=luminance;
+      }
       // Surface-gradient shading uses the same geography and material as the albedo.
       // Normalized derivatives preserve the look across actual planet radii and floating origins.
-      float height=(h*.4+intensity*.18+grainField*.03)*relief*.25;
+      vec4 packedDetail=texture2D(bakedMap,vUv);
+      float localDetail=bakedBlend*detailLod;
+      float height=(h*.4+intensity*.18+grainField*.03+micro*.004)*relief*.25*(1.-useSolar);
+      height+=((packedDetail.r-.5)*.012+(packedDetail.g-.5)*.002)*localDetail*(group>4.5?.18:1.);
+      albedo*=1.+(packedDetail.g-.5)*localDetail*.09;
       vec3 dx=dFdx(vWorld),dy=dFdy(vWorld),tx=cross(dy,n),ty=cross(n,dx);
       float determinant=dot(dx,tx),worldScale=length(dx)/max(length(dFdx(p)),.000001);
       vec3 slope=(tx*dFdx(height)+ty*dFdy(height))*worldScale*sign(determinant)/max(abs(determinant),.00000001);
       slope*=min(1.,.45/max(length(slope),.000001));
       float detailFade=1.-smoothstep(.015,.065,max(length(dFdx(p)),length(dFdy(p))));
       float dry=group>2.5&&group<3.5?land:1.;
-      n=normalize(n-slope*dry*detailFade*(1.-useSolar));
-      float day=max(dot(n,lightDir),0.),spec=pow(max(dot(reflect(-lightDir,n),v),0.),mix(95.,10.,roughness))*(1.-roughness)*coating;
+      n=normalize(n-slope*dry*detailFade);
+      float surfaceRoughness=mix(roughness,packedDetail.b,localDetail*.4*(1.-useSolar));
+      float day=max(dot(n,lightDir),0.),spec=pow(max(dot(reflect(-lightDir,n),v),0.),mix(95.,10.,surfaceRoughness))*(1.-surfaceRoughness)*coating;
+      spec+=pow(max(dot(reflect(-lightDir,n),v),0.),65.)*packedDetail.a*localDetail*.12*(1.-useSolar);
       if(group>2.5&&group<3.5)spec+=pow(max(dot(reflect(-lightDir,n),v),0.),100.)*(1.-land)*.5;
-      vec3 color=albedo*(.075+day*1.6*lightColor)+spec*day*lightColor+glow*vec3(1.4,.19,.025);
+      float shadow=ringShade(normalize(vNormal),lightDir,ringPlane,ringRadii,ringDensity);
+      if(cloudShadow>.001){float cloud=texture2D(cloudMap,vUv+vec2(time*.0001+.006,.004)).r;shadow*=1.-smoothstep(.25,.7,cloud)*cloudShadow;}
+      float grazing=pow(1.-max(dot(n,v),0.),3.)*haze;
+      float daylight=group>4.5?1.3:1.6;
+      vec3 color=albedo*(.075+day*daylight*lightColor*shadow)+spec*day*lightColor*shadow+glow*vec3(1.4,.19,.025);
+      color+=mix(vec3(.12,.3,.5),lightColor,.45)*grazing*smoothstep(-.15,.4,dot(n,lightDir));
       gl_FragColor=vec4(color,1.);${output}
     }` });
 }
@@ -156,7 +219,7 @@ export function cloudMaterial(profile: EnvironmentProfile, direction: THREE.Vect
   const recipe = CLOUDS[profile.clouds!];
   return new THREE.ShaderMaterial({ vertexShader: ENV_VERTEX, transparent: true, depthWrite: false,
     uniforms: { time: { value: 0 }, lightDir: { value: direction }, shape: { value: recipe.shape }, stack: { value: recipe.stack },
-      coverage: { value: recipe.coverage }, scale: { value: recipe.scale }, layer: { value: layer }, seed: { value: profile.seed % 997 }, cloudMap: { value: texture } },
+      coverage: { value: profile.editor?.cloudCoverage??recipe.coverage }, scale: { value: recipe.scale }, layer: { value: layer }, seed: { value: profile.seed % 997 }, cloudMap: { value: texture } },
     fragmentShader: /* glsl */`${ENV_NOISE}
     varying vec3 vLocal,vWorld,vNormal;varying vec2 vUv;uniform vec3 lightDir;uniform float time,shape,stack,coverage,scale,layer,seed;uniform sampler2D cloudMap;
     void main(){vec3 p=normalize(vLocal),q=p*scale+vec3(seed*.01,time*.006*(layer<.5?1.:-1.),layer*7.);float n=fbm(q),f=n;
@@ -172,18 +235,24 @@ export function cloudMaterial(profile: EnvironmentProfile, direction: THREE.Vect
       if(stack>2.5)f*=.8+.2*sin(q.z*3.+time*.07);
       float photographic=texture2D(cloudMap,vUv+vec2(time*.0001,layer*.1)).r;
       float a=smoothstep(.57-coverage*.24,.72-coverage*.24,f+photographic*.11)*(.65-layer*.18);
-      vec3 color=vec3(.7,.76,.8)*(.12+max(dot(normalize(vNormal),lightDir),0.)*1.3);
+      float sun=dot(normalize(vNormal),lightDir),day=max(0.,sun);
+      float wisps=noise3(q*12.+n*4.);a*=.78+wisps*.28;
+      float depth=.72+smoothstep(.36,.7,f)*.32;
+      vec3 warm=mix(vec3(.85,.49,.28),vec3(.93,.96,1.),smoothstep(.02,.25,day));
+      vec3 color=vec3(.035,.05,.08)+warm*day*1.35*depth;
       gl_FragColor=vec4(color,a);${output}}` });
 }
 
-export function atmosphereMaterial(profile: EnvironmentProfile, direction: THREE.Vector3) {
+export function atmosphereMaterial(profile: EnvironmentProfile, direction: THREE.Vector3, tint = profile.colors[3]) {
   const a = ATMOSPHERES[profile.atmosphere!];
   return new THREE.ShaderMaterial({ vertexShader: ENV_VERTEX, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-    uniforms: { tint: { value: new THREE.Color(profile.colors[3]) }, lightDir: { value: direction }, type: { value: a.type }, layer: { value: a.layer }, strength: { value: a.density }, falloff: { value: a.falloff } },
+    uniforms: { tint: { value: new THREE.Color(profile.editor?profile.colors[3]:tint) }, lightDir: { value: direction }, type: { value: a.type }, layer: { value: a.layer }, strength: { value: profile.editor?.atmosphereDensity??a.density }, falloff: { value: a.falloff } },
     fragmentShader: /* glsl */`${ENV_NOISE} varying vec3 vLocal,vWorld,vNormal;uniform vec3 tint,lightDir;uniform float type,layer,strength,falloff;
     void main(){vec3 n=normalize(vNormal),v=normalize(cameraPosition-vWorld);float limb=1.-max(dot(n,v),0.);float ring=pow(limb,falloff),day=smoothstep(-.35,.65,dot(n,lightDir));
     if(type<.5)ring*=.8;else if(type<1.5)ring*=.7+fbm(vLocal*8.)*.5;else if(type<2.5)ring=pow(limb,falloff*.65);else if(type<3.5)ring*=.7+.3*abs(vLocal.y);else if(type<4.5)ring*=smoothstep(.55,.9,limb);else ring*=.7+.3*sin(limb*(30.+layer*12.));
-    gl_FragColor=vec4(tint,ring*day*strength*.75);${output}}` });
+    float sunset=exp(-pow(dot(n,lightDir)*7.,2.));
+    vec3 scatter=mix(tint,vec3(.72,.27,.10),sunset*.32);
+    gl_FragColor=vec4(scatter,ring*day*strength*.68);${output}}` });
 }
 
 export function auroraMaterial(profile: EnvironmentProfile, direction: THREE.Vector3) {
@@ -194,7 +263,8 @@ export function auroraMaterial(profile: EnvironmentProfile, direction: THREE.Vec
     void main(){vec3 p=normalize(vLocal);float lon=atan(p.z,p.x),lat=abs(p.y),t=time*.09;float center=.77+.015*sin(lon*5.+t),w=.03;
     if(shape<.5)w=.018;else if(shape<1.5){center+=sin(lon*14.+t)*.026;w=.055;}else if(shape<2.5)center+=sin(lon*29.)*.09;else if(shape<3.5)w*=smoothstep(-.4,.5,sin(lon*5.+t));else if(shape<4.5)center+=.045*sign(sin(lon*3.));else if(shape<5.5)center+=.11*sin(lon*2.+t);else if(shape<6.5)center+=lon*.025;else center+=.05*sin(lon*37.+t);
     float f=exp(-pow((lat-center)/max(.004,w),2.))*(.6+.4*sin(lon*(24.+mode*17.)+t*2.));float edge=pow(1.-max(dot(normalize(vNormal),normalize(cameraPosition-vWorld)),0.),.6);
-    gl_FragColor=vec4(mix(tint,vec3(.3,.7,.48),mode*.35),f*edge*(.55-.3*max(dot(normalize(vNormal),lightDir),0.)));${output}}` });
+    vec3 curtain=mix(vec3(.12,.72,.4),mix(tint,vec3(.43,.2,.8),.45),smoothstep(center-.025,center+.05,lat));
+    gl_FragColor=vec4(curtain,f*edge*(.55-.3*max(dot(normalize(vNormal),lightDir),0.)));${output}}` });
 }
 
 export function ringMaterial(profile: EnvironmentProfile, direction: THREE.Vector3) {
@@ -217,7 +287,9 @@ export function ringMaterial(profile: EnvironmentProfile, direction: THREE.Vecto
       float along=-dot(vLocal,ringLight),separation=length(vLocal+ringLight*max(0.,along));
       float shadow=along>0.?smoothstep(.85,1.03,separation):1.;
       float illumination=(.2+abs(dot(normalize(vNormal),lightDir))*.6)*(.16+.84*shadow);
-      float grain=.6+.4*noise3(vec3(a*240.,u*310.,9.));
-      gl_FragColor=vec4(tint*illumination,clamp(f*edge*density*grain*.68,0.,.64));${output}}` });
+      float grainFade=1.-smoothstep(.12,.8,max(fwidth(a)*240.,fwidth(u)*310.));
+      float grain=.84+(noise3(vec3(a*240.,u*310.,9.))-.5)*.22*grainFade;
+      vec3 strata=mix(tint*.64,tint*1.14,.5+.5*sin(u*29.+sin(u*67.)*.5));
+      gl_FragColor=vec4(strata*illumination,clamp(f*edge*density*grain*.8,0.,.72));${output}}` });
   material.forceSinglePass = true; return material;
 }

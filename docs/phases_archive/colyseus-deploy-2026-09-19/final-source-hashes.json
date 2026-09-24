@@ -1,0 +1,54 @@
+[
+  {
+    "file": "server/Simulation.ts",
+    "sha256": "62414933d38fb7c4afcbd75e093e5be0bd1bb0761d2b2e896fc9c87fa320835a"
+  },
+  {
+    "file": "server/UniverseRoom.ts",
+    "sha256": "a1106b5a9cd13bcf504be6043d5dd9c812f8a947a8b0b94ecc0d9e91c303ad52"
+  },
+  {
+    "file": "server/index.ts",
+    "sha256": "33a1f5459657fb7af744579d05a7422e8e8730ca1bfa68ecd120e4dcc0629db3"
+  },
+  {
+    "file": "scripts/multiplayer/load.ts",
+    "sha256": "382f1b905f08a1377eba0730a3ca5febcdb7abfbcfe22611afd6a30d44bdc168"
+  },
+  {
+    "file": "scripts/multiplayer/integration.ts",
+    "sha256": "7327a72e2467bf4013ebda1d72fb360cfcb38785e43e31650b2d40e04a259682"
+  },
+  {
+    "file": "deploy/universe-multiplayer.service",
+    "sha256": "63f37865719bb5f85586fbc3bb72ef5eeb5494b955ed7f20bc00c715c9fd72b2"
+  },
+  {
+    "file": "deploy/multiplayer.nginx.conf.example",
+    "sha256": "94738a814c3842996712f53bcacc37217a315f2e012c6ef53f4a5903bf7016ee"
+  },
+  {
+    "file": "src/ui/star-map/StarMapUI.ts",
+    "sha256": "c8f70f5c234c8bf93774fd3d3602a407eb545df1fc49cbc554cb6c1e42826199"
+  },
+  {
+    "file": "src/core/ShipController.ts",
+    "sha256": "8237d067386bdcf9d8d1eefd61cba54080a70e9b4dc545856386e556a0824226"
+  },
+  {
+    "file": "src/world/systems/StellarTravel.ts",
+    "sha256": "5ccaa3997478ed1a48352de8e4a6f72014d77571d9dad24a1c359873190e9c55"
+  },
+  {
+    "file": "tests/multiplayer-browser/travel-visuals.spec.ts",
+    "sha256": "646dd718681bbfad241004be09e3f11340e2c3484753d3b57e8aaca96fb35eb2"
+  },
+  {
+    "file": "tests/multiplayer-browser/map-race.spec.ts",
+    "sha256": "d32a62837a4ac8fcaa2b6d97d33ba06c14769aac08d2bba182a3eddb54aabf16"
+  },
+  {
+    "file": "tests/unit/stellar-travel.test.ts",
+    "sha256": "fb7648862d03dad1cbdd1235c16d22d909bfe8ff43802f421b74fdf3352c7265"
+  }
+]

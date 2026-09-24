@@ -1,10 +1,8 @@
-# Запрос в ESA — черновик, не отправлен
+# ESA permission request — unsent historical draft
 
-Назначение: уточнить условия использования данных Gaia из AT-HYG 4.0 в Universe Explorer. Пользователь выбрал AT-HYG с предварительной проверкой условий и подтвердил, что нужно сохранить возможность монетизации. Условия разработки будущей коммерческой игры также требуют уточнения; отсутствие публичного доступа само по себе не подтверждает разрешение.
+This draft was prepared during the September 15 research stage and has not been sent. Its description of integration/publication status is historical and must be updated to match the actual deployed game before any future use. No permission is implied.
 
-Адрес опубликован в [ESA Terms and Conditions](https://www.cosmos.esa.int/web/esdc/terms-and-conditions): `data.licences@esa.int`.
-
-## Текст письма
+Published contact: data.licences@esa.int, from [ESA terms](https://www.cosmos.esa.int/web/esdc/terms-and-conditions).
 
 **Subject:** Gaia DR3 data in AT-HYG 4.0 — permission and redistribution terms for Universe Explorer
 
@@ -36,6 +34,7 @@ This message requests clarification and permission; it does not assume that the 
 Thank you,
 Universe Explorer project / MooradXO
 
-## Перед отправкой
 
-Намерение сохранить монетизацию подтверждено. Для отправки остаются контакт отправителя и отдельное прямое поручение; агент письмо не отправлял. AT-HYG выбран для исследования; разрешение ESA не получено, коммерческое включение данных и условия разработки будущей коммерческой игры не подтверждены.
+## Before sending
+
+Confirm the sender contact and update factual project status. Sending requires a separate explicit instruction; this publication task does not send correspondence. The project wishes to preserve monetization options, but commercial-data permission remains unresolved.

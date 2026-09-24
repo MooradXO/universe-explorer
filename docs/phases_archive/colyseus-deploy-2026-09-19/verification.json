@@ -1,0 +1,16 @@
+{
+  "changedNginxConfigs": [
+    "universe"
+  ],
+  "neighborConfigsUnchanged": true,
+  "changedHTTPStatuses": [],
+  "pm2PIDsUnchanged": true,
+  "catalogUnchanged": true,
+  "dockerIDsUnchanged": true,
+  "activeRelease": "/var/www/universe-explorer/releases/20260919-colyseus-v3",
+  "entry": "/assets/main-Da-fLuKO.js",
+  "entrySHA256": "324908d100a45c5af876b9db63b48be24162a0c1c7065b3c469e2ccd4b9615a2",
+  "memoryAfter": "total        used        free      shared  buff/cache   available\nMem:            5925        1808         415         107        4106        4116\nSwap:              0           0           0",
+  "diskAfter": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda2       118G   90G   23G  80% /",
+  "finalStaticHIGHLOW": "2 passed; no room joined"
+}

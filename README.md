@@ -1,98 +1,128 @@
 # Universe Explorer
 
-`Universe Explorer` — браузерная 3D space game на `TypeScript`, `Vite` и `Three.js`.
+**Explore real star maps. Fly through procedural worlds. Build your own scenes.**
 
-[Открыть игру](https://universe.projectai.biz/) · [Отчёт об обновлении сервера](docs/phases_archive/server-deploy-2026-09-19/README.md).
+A browser space game built with TypeScript, Vite and Three.js.
 
-Игрок управляет кораблём в космосе, перемещается между звёздными системами, сражается с ботами и использует HUD/radar/hangar. Текущая версия от 19 сентября 2026 года включает генератор окружений и интерфейс Titan & Copper. Изображения созвездий и их отображение удалены по решению пользователя.
+[![Verify](https://github.com/MooradXO/universe-explorer/actions/workflows/verify.yml/badge.svg)](https://github.com/MooradXO/universe-explorer/actions/workflows/verify.yml)
+![Node.js 24.19+](https://img.shields.io/badge/Node.js-24.19%2B-43853d)
+![TypeScript](https://img.shields.io/badge/TypeScript-typed-3178c6)
+![Code license MIT](https://img.shields.io/badge/code_license-MIT-c58d58)
 
-## Возможности
+[Play the game](https://universe.projectai.biz/) · [Workshop guide](docs/WORKSHOP.md) · [Multiplayer](docs/MULTIPLAYER.md) · [Deployment](docs/DEPLOYMENT.md)
 
-- Полёт от третьего лица: acceleration, boost, roll, strafe и смена камеры.
-- Лазер, shotgun, missiles, damage, shields, death/respawn и боты нескольких классов.
-- Старт у Земли в Солнечной системе, крейсерский полёт между планетами и варп к каталожным звёздам.
-- Гостевой вход через ENGAGE; realtime events, chat и proximity voice foundation при настроенном Supabase. GitHub-вход и поиск репозиториев удалены.
-- HUD Titan & Copper: верхнее меню, радар, HULL/SHIELD/BOOST, Flight Manual и отдельные окна, открывающиеся по одному. Режимы `HIGH`/`LOW` и сенсорное управление.
-- Восемь планет Солнечной системы и игровые процедурные планеты других систем; индивидуальные поверхности, атмосферы, кольца, спутники, сооружения и визуальные явления.
-- Потоковая генерация окружений около планет и в пространстве между ними: поля обломков, пыль, газовые облака и редкие объекты.
-- Worker generation, ограниченный cache соседних секторов и floating origin для дальних перелётов.
-- Read-only debug API, named scenes и автоматические desktop/mobile smoke.
-- Локальный procedural space ambient без внешних сетевых зависимостей.
-- 3D-карта AT-HYG с поиском; сведения Gaia DR3, SIMBAD и NASA NED по запросу с ограниченным кешем. [Запуск и ограничения каталогов](docs/CATALOG_PIPELINE.md).
-- Опциональный внешний stream через `VITE_AMBIENT_STREAM_URL`, только если владелец stream разрешил встраивание.
+![Universe Explorer: planetary flight and the Titan & Copper HUD](docs/images/flight.png)
 
-## Быстрый запуск
+[**Getting started**](docs/GETTING_STARTED.md) · [**Documentation**](docs/README.md) · [**Gallery**](docs/GALLERY.md) · [**Architecture**](docs/ARCHITECTURE.md) · [**Roadmap**](docs/ROADMAP.md)
 
-Требуется Node.js `24.19+`: локальные сервисы каталогов используют `node:sqlite`, выполнение TypeScript и системные сертификаты.
+| Fly | Explore | Create |
+| --- | --- | --- |
+| Cruise, warp, combat and two-thumb controls | A streamed AT-HYG map and distinct planetary environments | A 17-type scene workshop using game renderers |
 
-```powershell
+## Current features
+
+- Flight in the Solar System and travel to catalogue stars, with cruise navigation, warp transitions, first/third-person cameras and a floating origin.
+- Lasers, spread shots, missiles, shields, damage, respawn and server-controlled bots.
+- One shared Colyseus universe. The production admission limit is **50 concurrent players**; the implementation's local test ceiling of 100 is not a production capacity guarantee.
+- Guest sessions, authoritative movement and combat, global text chat and proximity voice signalling. Voice audio travels directly between browsers using WebRTC.
+- Titan & Copper HUD, star map, navigation, hangar and manual. Desktop panels open one at a time.
+- Compact mobile HUD and two-thumb controls: the left stick combines thrust and steering, while the right thumb holds FIRE. Mobile flight requires landscape orientation.
+- Eight Solar System planets, illustrated surfaces, atmospheres, clouds, rings, moons, auroras, structures, debris and phenomena.
+- Deterministic procedural worlds with separate physics, appearance and survey versions; worker-generated detail maps, bounded caches and HIGH/LOW quality budgets.
+- Local exploration journal and generated survey sites. Generated planets and sites are fictional game content, not confirmed astronomical discoveries.
+- A scene workshop at `/environments.html`: 17 object types, editable layers and transforms, parenting, undo/redo, project storage, full-scene JSON and a separate local flight preview.
+- An AT-HYG star map with streamed tiles and search, plus explicit on-demand Gaia DR3, SIMBAD and NED lookups.
+- Original procedural ambient and weapon audio. An external ambient stream is optional and requires embedding permission.
+
+The current start screen still uses guest ENGAGE. A redesigned hangar, three selectable small ships, three large ships and separate exploration/PvP modes are proposed follow-up work, not features of this release.
+
+## Requirements and quick start
+
+Use Node.js **24.19 or later**. Catalogue tools require built-in SQLite, TypeScript execution and system certificate support.
+
+```sh
 git clone https://github.com/MooradXO/universe-explorer.git
 cd universe-explorer
 npm ci
 npm run dev
 ```
 
-Открыть адрес, который покажет Vite; по умолчанию это `http://localhost:3000/`.
+Open the URL printed by Vite (normally http://localhost:3000/). Without multiplayer configuration, flight runs locally. Full catalogue search and map tiles require the separately prepared data described in [CATALOG_PIPELINE.md](docs/CATALOG_PIPELINE.md); those databases are not included in Git.
 
-Production-проверка:
-
-```powershell
+```sh
 npm run build
 npm run preview -- --port 3000
+npm test
+npm run multiplayer:check
 ```
 
-На текущем Windows-компьютере доступен запуск через `./scripts/run.ps1 dev`, а проверки — через `./scripts/run.ps1 build` и `./scripts/run.ps1 test`. Скрипт использует локальный npm, если он не установлен в PATH.
+On the original Windows workspace, `scripts/run.ps1` can use the adjacent portable npm installation when npm is absent from PATH.
 
-Для realtime-функций скопируйте `.env.example` в локальный `.env` и укажите публичные настройки своего Supabase-проекта. Гостевой одиночный режим работает без Supabase. Локальные `.env*` не публикуются; в репозитории хранится только пример без ключей.
+## Multiplayer development
 
-## Каталог и сервер
+```sh
+npm run multiplayer:build
+npm run multiplayer:dev
+# In another terminal:
+npm run multiplayer:preview
+```
 
-В репозитории находятся код игры и её визуальные ресурсы. Полный AT-HYG, подготовленные SQLite-базы и кеши научных API хранятся отдельно и в Git не входят. Без них игра запускается в Солнечной системе, но полный поиск и карта каталога требуют подготовки данных по [инструкции](docs/CATALOG_PIPELINE.md).
+The separate client preview uses http://127.0.0.1:3012/ and connects to ws://127.0.0.1:2567. It does not overwrite the main `dist/`.
 
-`npm run build` создаёт клиентскую сборку. Для полной версии на сервере дополнительно нужны данные каталога и отдельный API: `scripts/server/catalog-server.mjs`. Локальный Vite middleware сохранён для разработки. Одной публикации `dist/` недостаточно для каталожного поиска, карты и запросов Gaia/SIMBAD/NED. [Размещение и откат](docs/DEPLOYMENT.md).
+`VITE_MULTIPLAYER_URL` selects the authoritative backend. An unavailable configured backend produces a connection error; the game does not silently become offline multiplayer. The old Supabase transport is opt-in through `VITE_LEGACY_REALTIME=true` and is never used when a Colyseus URL is set. See [.env.example](.env.example); never publish local environment files.
 
-## Управление
+## Workshop
 
-- `W / S` — тяга вперёд/назад.
-- `A / D` — strafe и combat roll.
-- `Q / E` — roll.
-- `Space / Ctrl` — вертикальный strafe.
-- `Shift` — boost.
-- Мышь — pitch/yaw, `RMB` — free look.
-- `LMB` — огонь, `1–3` — оружие, `C` — цвет лазера.
-- `V` — камера, `T` — voice mute.
+Open `/environments.html` on a local development or preview server. Start with an existing world or a blank scene, add objects, edit their parameters, save a project and export JSON. The workshop uses the game's rendering components. Its flight preview is local: it does not publish a scene to the shared server or include the server's combat, bots and economy. See [WORKSHOP.md](docs/WORKSHOP.md) for controls, libraries and limits.
 
-## Структура
+## A closer look
 
-- `src/main.ts` — bootstrap приложения.
-- `src/core/Engine.ts` — renderer, camera, postprocessing и render loop.
-- `src/core/ShipController.ts` — input, flight state, boost, weapons, HP/shields.
-- `src/world/WorldBuilder.ts` — orchestration мира, игрока, ботов, боя и HUD.
-- `src/world/CombatSystem.ts` — projectiles, swept collision, damage и VFX.
-- `src/world/space/` — координаты, manifests, worker/cache, фон и batched navigation.
-- `src/world/celestial/` — чистый каталог, seed, типы и orbital texture/rim visuals.
-- `src/debug/` — снимки состояния и named smoke fixtures.
-- `src/network/RealtimeMetrics.ts` — клиентские счётчики событий без payloads.
-- `tests/` — Vitest и Playwright; [инструкция debug/smoke](docs/DEBUG_API.md).
-- `src/world/ShipVisualConfig.ts` — модели, ориентация, nozzles и laser muzzle.
-- `nozzle-editor.html` — локальный инструмент калибровки VFX корабля.
+| Star map | Universe workshop |
+| --- | --- |
+| ![Catalogue map](docs/images/star-map.png) | ![English scene workshop](docs/images/workshop.png) |
+| Streamed stars, search and system selection | Layers, parenting, projects and local preview flight |
 
-## Assets и лицензии
+[Open the full-size gallery](docs/GALLERY.md).
 
-Исходный код распространяется по лицензии [MIT](LICENSE). Корабли и станция принадлежат MooradXO, созданы через платный Meshy AI и отдельно распространяются по CC BY 4.0 согласно `public/models/LICENSES.md`. Данные созвездий d3-celestial: [BSD-3-Clause notice](THIRD_PARTY_NOTICES.md), который автоматически включается в production build.
+## Controls
 
-Текстуры Solar System Scope, данные каталогов и выбранные эффекты EpicToonFX имеют собственные условия, перечисленные в [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md); лицензия MIT на них не распространяется. Элементы HUD сгенерированы для проекта; исходники и сведения о происхождении сохранены в `public/assets/` и `docs/art-direction/`.
+| Input | Action |
+| --- | --- |
+| W / S | Forward / reverse thrust |
+| A / D | Strafe and combat roll |
+| Q / E | Roll |
+| Space / Ctrl | Vertical strafe |
+| Shift | Boost |
+| Mouse / right mouse button | Steering / free look |
+| Left mouse button | Fire |
+| 1 / 2 / 3 | Select weapon |
+| C | Laser colour |
+| V | Camera |
+| T | Voice mute |
 
-## Статус качества
+## Architecture
 
-- `npm run build` проходит.
-- Desktop и mobile-sized guest smoke проходят.
-- Unit-тесты проверяют детерминированные каталоги, окружения, перемещения, гостевой вход и сетевые счётчики.
-- Browser-тесты проверяют полёт, карту, окна HUD и сенсорное управление.
-- Канонический репозиторий текущей версии: [MooradXO/universe-explorer](https://github.com/MooradXO/universe-explorer).
-- [Отчёт по HUD](docs/phases_archive/titan-hud-2026-09-18/README.md) и [окружениям](docs/phases_archive/environment-2026-09-17/README.md). Отчёты в `docs/phases_archive/` описывают состояние на дату проверки; созвездия из прежних отчётов впоследствии удалены.
-- [Отложенный план расширения окружений](docs/plans/environment-expansion.md).
+- `src/core/Engine.ts`: rendering, cameras and frame loop.
+- `src/core/ShipController.ts`: input and flight state.
+- `src/world/WorldBuilder.ts`: world, combat, HUD and network orchestration.
+- `src/world/CombatSystem.ts`: projectile presentation and offline combat.
+- `server/`: authoritative Colyseus room, simulation, guest storage and admission.
+- `src/network/shared/`: protocol, snapshot encoding and shared flight mathematics.
+- `src/world/generation/`: versioned world data, detail jobs and scene documents/composition.
+- `src/world/environments/`: deterministic environment libraries and rendering resources.
+- `src/catalog/`, `scripts/catalog/`: catalogue adapters, map tiles, search and provenance.
+- `src/tools/environment-review/`: workshop UI and local flight preview.
+- `src/world/ShipVisualConfig.ts`: model orientation, engine nozzles and muzzle placement.
+- `tests/`: unit and browser regression coverage.
 
-## Автор
+## Deployment and verification
+
+A full installation needs the static client, catalogue API/data and multiplayer service. Copying only `dist/` does not provide the complete online game. [Deployment instructions](docs/DEPLOYMENT.md) describe isolated releases, persistent data and rollback.
+
+[DEBUG_API.md](docs/DEBUG_API.md) documents test fixtures. [CHANGELOG.md](CHANGELOG.md) records the current changes; [ROADMAP.md](docs/ROADMAP.md) separates completed work from proposals. Historical reports describe the build tested on their stated date. Old constellation artwork was subsequently removed.
+
+## Licensing
+
+Code: [MIT](LICENSE), copyright MooradXO. Ship/station models: [CC BY 4.0](public/models/LICENSES.md), supplied by MooradXO as paid-plan Meshy output. Solar System Scope textures, catalogue data and selected EpicToonFX resources have separate terms in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md); MIT does not override them.
 
 [MooradXO](https://github.com/MooradXO)

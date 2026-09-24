@@ -139,6 +139,7 @@ export class FlightStatusUI {
     const value = document.createElement('span');
     value.className = 'flight-status__bar-value';
     value.textContent = showValue ? '100' : 'READY';
+    value.dataset.mobileValue = '100%';
     header.append(title, value);
 
     const track = document.createElement('div');
@@ -191,6 +192,7 @@ export class FlightStatusUI {
     bar.value.textContent = bar.root.classList.contains('flight-status__bar--boost')
       ? (percent < criticalThreshold ? 'LOW' : 'READY')
       : `${Math.max(0, Math.ceil(current))}`;
+    bar.value.dataset.mobileValue = `${Math.round(percent)}%`;
     bar.root.classList.toggle('is-critical', percent < criticalThreshold);
   }
 

@@ -1,0 +1,13 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {chromium} from '@playwright/test';
+const out=process.env.WORKSHOP_EVIDENCE||'docs/phases_archive/scene-workshop-2026-09-24',base=process.env.PREVIEW_URL||'http://127.0.0.1:3020';
+const browser=await chromium.launch({channel:'msedge',headless:true}),results=[];
+try{for(const quality of ['HIGH','LOW']){const context=await browser.newContext({viewport:{width:1400,height:900}}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(String(e)));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+try{await page.goto(`${base}/environments.html?world=8&quality=${quality}`);await page.locator('#new').click();await page.locator('[data-kind="fx"]').click();await page.locator('#transform').selectOption('none');const fx=[];
+for(let i=0;i<69;i++){await page.locator('#field-preset').selectOption(String(i));await page.waitForFunction(()=>['ready','error'].includes(window.__UNIVERSE_ENVIRONMENTS__.snapshot().entities[0].status),null,{timeout:15000});await page.waitForTimeout(180);const s=await page.evaluate(()=>window.__UNIVERSE_ENVIRONMENTS__.snapshot());assert.equal(s.entities[0].status,'ready',`FX ${i}`);assert(s.entities[0].count<=(quality==='LOW'?260:700));assert.deepEqual(s.errors,[]);fx.push({preset:i,particles:s.entities[0].count});if([0,16,38,66,67,68].includes(i))await page.screenshot({path:`${out}/${quality}-fx-${i}.png`});}
+await page.locator('#new').click();await page.locator('[data-kind="model"]').click();const models=[];for(let i=0;i<4;i++){await page.locator('#field-model').selectOption(String(i));await page.waitForFunction(()=>window.__UNIVERSE_ENVIRONMENTS__.snapshot().entities[0].status!=='loading',null,{timeout:15000});const s=await page.evaluate(()=>window.__UNIVERSE_ENVIRONMENTS__.snapshot());assert.equal(s.entities[0].status,'ready');await page.locator('#focus').click();await page.waitForTimeout(100);await page.screenshot({path:`${out}/${quality}-model-${i}.png`});models.push(i);}
+await page.locator('#new').click();await page.locator('[data-kind="projectile"]').click();for(let i=0;i<4;i++){await page.locator('#field-weapon').selectOption(String(i));await page.locator('#focus').click();await page.waitForTimeout(100);await page.screenshot({path:`${out}/${quality}-projectile-${i}.png`});}
+assert.deepEqual(errors,[]);results.push({quality,pass:true,fx,models,errors});console.log(`${quality}: 69 FX, 4 models, 4 weapons PASS`);
+}catch(error){results.push({quality,pass:false,error:String(error),errors});throw error;}finally{await fs.writeFile(`${out}/catalog.json`,JSON.stringify(results,null,2));await context.close();}}
+}finally{await browser.close();}

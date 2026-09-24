@@ -1,34 +1,9 @@
-# HUD Titan & Copper — реализован
+# Titan & Copper art direction
 
-18 production PNG подключены к основной игре. [Результат, проверки и установленный HUD](../../phases_archive/titan-hud-2026-09-18/README.md). [Промпты](production-prompts.json), [проверка оригиналов](production-audit.json), [снимки реализации](implementation/layout-report.json).
+Implemented September 18: 18 production PNG resources, original project-generated RGBA artwork with live text and gauges. [Implementation report](../../phases_archive/titan-hud-2026-09-18/README.md).
 
-Ниже сохранены сведения об этапе согласования макетов.
+The approved layout uses full-screen flight, small corner marks, a bottom-left radar and adjacent desktop hull/shield/boost indicators. The upper row is SYSTEM / BOUNTIES / WARP / HANGAR / COMMS / MAP, with navigation at upper right. Bounties/Comms open individually on the right; Hangar uses a central panel. Demonstration panel rows, concept/style labels and the persistent weapon-colour legend were removed.
 
-# HUD: выбран первый стиль, исправлены полноэкранные макеты
+Each full-screen panel state was reviewed separately. Shared panel coordination prevents overlaps and handles close/Escape/input. The later mobile layout is intentionally more compact.
 
-## Актуальные макеты после уточнения пользователя
-
-Пользователь выбрал стиль 1 и попросил полный игровой экран без нижних демонстрационных плашек. Явно убраны TITAN & COPPER, UNIVERSE EXPLORER UI CONCEPT и LASER · RED. Сохранены угловые отметки, радар слева снизу, показатели справа от него, верхний ряд и блок назначения справа сверху.
-
-- [Обычный полёт](04-flight-fullscreen.png): полный экран, окна закрыты.
-- [Wanted Board открыт](05-wanted-open.png): одно окно справа по BOUNTIES.
-- [Comms открыт](06-comms-open.png): одно окно справа по COMMS.
-- [Hangar открыт](07-hangar-open.png): крупное окно по центру по HANGAR.
-
-Предлагаемое поведение: одно окно за раз, поверх полноразмерного полёта; закрытие крестиком, Escape или своей кнопкой. Это отдельные состояния, а не четыре постоянные области экрана. Все четыре изображения визуально проверены, сохранены без обработки пикселей, копии совпадают с оригиналами. ImageGen художественно варьирует фон между примерами; реальный runtime при открытии окна не должен менять положение корабля/мира. Полные промпты находятся в одноимённых файлах prompts/04…07. Использован встроенный ImageGen. В основную игру макеты пока не установлены.
-
-## Исходные варианты
-
-Созданы 18.09.2026 встроенным ImageGen. Это визуальные концепты; в основную игру не установлены. Точный номер модели инструмент не раскрывает. Все три оригинала сохранены без обработки пикселей. Копии побайтово совпадают с исходниками.
-
-1. [Тёмный титан и медь](01-titan-copper.png) — рекомендация: тонкие медные акценты, тёмный металл, свободный обзор.
-2. [Дымчатое стекло](02-smoked-glass.png) — прозрачные панели, холодные световые грани.
-3. [Экспедиционные приборы](03-expedition-instruments.png) — матовые физические кнопки, графит, янтарь и приглушённая мята.
-
-Верхняя часть каждого листа — полётный HUD; нижняя — три отдельных примера окон Wanted Board, Comms и Hangar. В игре эти три окна не предполагается держать одновременно открытыми. Цифры, имена и сообщения на концептах демонстрационные. Игровые цены и реальные данные не менялись. ImageGen может художественно перерисовать фон; изменения мира в эту задачу не входят.
-
-Полные промпты: prompts/01-titan-copper.txt, prompts/02-smoked-glass.txt, prompts/03-expedition-instruments.txt. Входная картинка current-flight.png служит референсом существующей сцены. Остальные current-*.png и current-layout.json документируют старый интерфейс и воспроизведённые ошибки.
-
-После выбора: отдельные растровые ресурсы для кнопок, рамок, иконок, радара и шкал; живые надписи/значения/состояния рисовать UI-кодом. Весь объём и диагностика: [план](../../plans/hud-redesign.md).
-
-Проверка концептов: все три просмотрены целиком; верхний ряд содержит SYSTEM, BOUNTIES, WARP, HANGAR, COMMS, MAP, правый блок постоянного управления убран, три основных показателя и индикатор оружия присутствуют. Runtime не менялся, build не требовался. Flight Manual и выравнивание HANGAR пока только диагностированы, исправление входит в реализацию после выбора стиля.
+production-prompts.json records original prompts; production-audit.json records hashes, alpha and dimensions; implementation/layout-report.json records layout checks. Design references are not substitutes for working UI.

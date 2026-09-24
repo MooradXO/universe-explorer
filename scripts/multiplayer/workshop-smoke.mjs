@@ -1,0 +1,4 @@
+import fs from 'node:fs';
+import { chromium } from '@playwright/test';
+const browser=await chromium.launch({channel:'msedge',headless:true});
+try{const page=await browser.newPage({viewport:{width:1536,height:960}});const errors=[];page.on('pageerror',e=>errors.push(String(e)));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});await page.goto('http://127.0.0.1:3020/environments.html?world=4');await page.waitForTimeout(7000);const result={snapshot:await page.evaluate(()=>window.__UNIVERSE_ENVIRONMENTS__?.snapshot()),errors};fs.writeFileSync('docs/phases_archive/scene-workshop-2026-09-24/first-view.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));await page.screenshot({path:'docs/phases_archive/scene-workshop-2026-09-24/first-view.png'});}finally{await browser.close();}

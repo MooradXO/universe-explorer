@@ -1,0 +1,169 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\pc\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      ".multiplayer-evidence/live.playwright.config.ts",
+      "static.spec",
+      "--reporter=line,json"
+    ],
+    "configFile": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\.multiplayer-evidence\\live.playwright.config.ts",
+    "rootDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/.multiplayer-evidence/live-tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/.multiplayer-evidence/live-browser-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "HIGH",
+        "name": "HIGH",
+        "testDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/.multiplayer-evidence/live-tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 200000
+      },
+      {
+        "outputDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/.multiplayer-evidence/live-browser-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "LOW",
+        "name": "LOW",
+        "testDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/.multiplayer-evidence/live-tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 200000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "static.spec.ts",
+      "file": "static.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "published menu and network endpoints without joining the universe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 200000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "HIGH",
+              "projectName": "HIGH",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7594,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T18:10:15.964Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4852420a3ed5ea40b1af-370fa5f10c37089c39ee",
+          "file": "static.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "published menu and network endpoints without joining the universe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 200000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "LOW",
+              "projectName": "LOW",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5594,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T18:10:24.163Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4852420a3ed5ea40b1af-454dfec041112d5a1433",
+          "file": "static.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-19T18:10:15.651Z",
+    "duration": 14443.824,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,342 @@
+[
+  {
+    "width": 844,
+    "height": 390,
+    "mobile": true,
+    "rects": {
+      "#hud-stats-container": {
+        "x": 299,
+        "y": 343,
+        "width": 246,
+        "height": 35,
+        "top": 343,
+        "right": 545,
+        "bottom": 378,
+        "left": 299,
+        "visibility": "visible"
+      },
+      ".radar-shell": {
+        "x": 24,
+        "y": 180,
+        "width": 80,
+        "height": 80,
+        "top": 180,
+        "right": 104,
+        "bottom": 260,
+        "left": 24,
+        "visibility": "visible"
+      },
+      ".mobile-joystick": {
+        "x": 16,
+        "y": 274,
+        "width": 100,
+        "height": 100,
+        "top": 274,
+        "right": 116,
+        "bottom": 374,
+        "left": 16,
+        "visibility": "visible"
+      },
+      ".mobile-weapon-rail": {
+        "x": 644,
+        "y": 198,
+        "width": 184,
+        "height": 46,
+        "top": 198,
+        "right": 828,
+        "bottom": 244,
+        "left": 644,
+        "visibility": "visible"
+      },
+      ".mobile-utility-rail": {
+        "x": 700,
+        "y": 250,
+        "width": 128,
+        "height": 40,
+        "top": 250,
+        "right": 828,
+        "bottom": 290,
+        "left": 700,
+        "visibility": "visible"
+      },
+      ".mobile-action-cluster": {
+        "x": 698,
+        "y": 298,
+        "width": 130,
+        "height": 76,
+        "top": 298,
+        "right": 828,
+        "bottom": 374,
+        "left": 698,
+        "visibility": "visible"
+      },
+      ".top-command-bar": {
+        "x": 189.140625,
+        "y": 6,
+        "width": 465.71875,
+        "height": 36,
+        "top": 6,
+        "right": 654.859375,
+        "bottom": 42,
+        "left": 189.140625,
+        "visibility": "visible"
+      },
+      ".system-navigation": {
+        "x": 582,
+        "y": 48,
+        "width": 246,
+        "height": 70,
+        "top": 48,
+        "right": 828,
+        "bottom": 118,
+        "left": 582,
+        "visibility": "visible"
+      }
+    }
+  },
+  {
+    "width": 667,
+    "height": 375,
+    "mobile": true,
+    "rects": {
+      "#hud-stats-container": {
+        "x": 210.5,
+        "y": 328,
+        "width": 246,
+        "height": 35,
+        "top": 328,
+        "right": 456.5,
+        "bottom": 363,
+        "left": 210.5,
+        "visibility": "visible"
+      },
+      ".radar-shell": {
+        "x": 24,
+        "y": 165,
+        "width": 80,
+        "height": 80,
+        "top": 165,
+        "right": 104,
+        "bottom": 245,
+        "left": 24,
+        "visibility": "visible"
+      },
+      ".mobile-joystick": {
+        "x": 16,
+        "y": 259,
+        "width": 100,
+        "height": 100,
+        "top": 259,
+        "right": 116,
+        "bottom": 359,
+        "left": 16,
+        "visibility": "visible"
+      },
+      ".mobile-weapon-rail": {
+        "x": 467,
+        "y": 183,
+        "width": 184,
+        "height": 46,
+        "top": 183,
+        "right": 651,
+        "bottom": 229,
+        "left": 467,
+        "visibility": "visible"
+      },
+      ".mobile-utility-rail": {
+        "x": 523,
+        "y": 235,
+        "width": 128,
+        "height": 40,
+        "top": 235,
+        "right": 651,
+        "bottom": 275,
+        "left": 523,
+        "visibility": "visible"
+      },
+      ".mobile-action-cluster": {
+        "x": 521,
+        "y": 283,
+        "width": 130,
+        "height": 76,
+        "top": 283,
+        "right": 651,
+        "bottom": 359,
+        "left": 521,
+        "visibility": "visible"
+      },
+      ".top-command-bar": {
+        "x": 148.453125,
+        "y": 6,
+        "width": 370.09375,
+        "height": 36,
+        "top": 6,
+        "right": 518.546875,
+        "bottom": 42,
+        "left": 148.453125,
+        "visibility": "visible"
+      },
+      ".system-navigation": {
+        "x": 405,
+        "y": 48,
+        "width": 246,
+        "height": 75,
+        "top": 48,
+        "right": 651,
+        "bottom": 123,
+        "left": 405,
+        "visibility": "visible"
+      }
+    }
+  },
+  {
+    "width": 568,
+    "height": 320,
+    "mobile": true,
+    "rects": {
+      "#hud-stats-container": {
+        "x": 161,
+        "y": 273,
+        "width": 246,
+        "height": 35,
+        "top": 273,
+        "right": 407,
+        "bottom": 308,
+        "left": 161,
+        "visibility": "visible"
+      },
+      ".radar-shell": {
+        "x": 24,
+        "y": 110,
+        "width": 80,
+        "height": 80,
+        "top": 110,
+        "right": 104,
+        "bottom": 190,
+        "left": 24,
+        "visibility": "visible"
+      },
+      ".mobile-joystick": {
+        "x": 16,
+        "y": 204,
+        "width": 100,
+        "height": 100,
+        "top": 204,
+        "right": 116,
+        "bottom": 304,
+        "left": 16,
+        "visibility": "visible"
+      },
+      ".mobile-weapon-rail": {
+        "x": 368,
+        "y": 128,
+        "width": 184,
+        "height": 46,
+        "top": 128,
+        "right": 552,
+        "bottom": 174,
+        "left": 368,
+        "visibility": "visible"
+      },
+      ".mobile-utility-rail": {
+        "x": 424,
+        "y": 180,
+        "width": 128,
+        "height": 40,
+        "top": 180,
+        "right": 552,
+        "bottom": 220,
+        "left": 424,
+        "visibility": "visible"
+      },
+      ".mobile-action-cluster": {
+        "x": 422,
+        "y": 228,
+        "width": 130,
+        "height": 76,
+        "top": 228,
+        "right": 552,
+        "bottom": 304,
+        "left": 422,
+        "visibility": "visible"
+      },
+      ".top-command-bar": {
+        "x": 117,
+        "y": 6,
+        "width": 334,
+        "height": 36,
+        "top": 6,
+        "right": 451,
+        "bottom": 42,
+        "left": 117,
+        "visibility": "visible"
+      },
+      ".system-navigation": {
+        "x": 306,
+        "y": 48,
+        "width": 246,
+        "height": 75,
+        "top": 48,
+        "right": 552,
+        "bottom": 123,
+        "left": 306,
+        "visibility": "visible"
+      }
+    }
+  },
+  {
+    "width": 1440,
+    "height": 810,
+    "mobile": false,
+    "rects": {
+      "#hud-stats-container": {
+        "x": 265,
+        "y": 623,
+        "width": 296,
+        "height": 138,
+        "top": 623,
+        "right": 561,
+        "bottom": 761,
+        "left": 265,
+        "visibility": "visible"
+      },
+      ".radar-shell": {
+        "x": 26,
+        "y": 572,
+        "width": 210,
+        "height": 210,
+        "top": 572,
+        "right": 236,
+        "bottom": 782,
+        "left": 26,
+        "visibility": "visible"
+      },
+      ".mobile-joystick": null,
+      ".mobile-weapon-rail": null,
+      ".mobile-utility-rail": null,
+      ".mobile-action-cluster": null,
+      ".top-command-bar": {
+        "x": 322.5,
+        "y": 40,
+        "width": 795,
+        "height": 48,
+        "top": 40,
+        "right": 1117.5,
+        "bottom": 88,
+        "left": 322.5,
+        "visibility": "visible"
+      },
+      ".system-navigation": {
+        "x": 1050,
+        "y": 112,
+        "width": 365,
+        "height": 91,
+        "top": 112,
+        "right": 1415,
+        "bottom": 203,
+        "left": 1050,
+        "visibility": "visible"
+      }
+    }
+  }
+]

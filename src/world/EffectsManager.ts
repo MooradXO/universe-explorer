@@ -159,6 +159,9 @@ export class EffectsManager {
     ]
   ) {
     const speed = shipVelocity.length();
+    // The attached engine plumes carry cruise thrust; world-space exhaust at
+    // interplanetary speeds would jump far behind the camera in a single frame.
+    if (speed > 12000) return;
     if (speed > 5 || isBoosting) {
       const isLow = Settings.graphicsMode === 'LOW';
       const spawnInterval = isBoosting ? (isLow ? 0.018 : 0.006) : (isLow ? 0.045 : 0.018);

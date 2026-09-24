@@ -1,70 +1,7 @@
-# Gaia DR3, SIMBAD и NED: сведения по запросу
+# On-demand scientific observations
 
-15 сентября 2026. Локальный спринт завершён. Пользователь отменил большие научные выгрузки и выбрал компактную основу + дополнительные сведения через интернет с ограниченным кешем. Массовой загрузки Gaia/SIMBAD/NED не было. Старые ~13 GB рабочих AT-HYG файлов сохранены; новые снимки находятся отдельно на E.
+Added explicit Gaia DR3, SIMBAD and NASA/IPAC NED queries through bounded local/server adapters. Observations retain source IDs, URLs, timestamps, raw-response hashes, units and bibliography. Negative parallax is not converted to a fabricated distance; sources are not merged blindly. Cache is 32 MiB, responses 512 KiB, one request active and eight queued. NED pacing is at least 1.1 seconds; stale cached responses are clearly dated. Parsing, timeout, unavailable-service and UI cancellation checks passed. The existing flight relative performance budget remained within 5% on the same headless rig; this is not a real-device FPS claim.
 
-## Результат
+## Historical scope
 
-- В карточке AT-HYG: **«Изучить: Gaia и SIMBAD»**. Gaia возвращает параллакс/ошибку, движение, цвет, температуру и показатели качества; SIMBAD — опубликованные имена, тип, спектр и библиографию.
-- В поиске: раскрыть **«Gaia · SIMBAD · NED»**, выбрать источник, ввести имя/ID в основное поле и нажать **«Искать в источнике»**. NED даёт сведения о галактиках и других внегалактических объектах. Это также позволяет изучать объекты, отсутствующие в AT-HYG.
-- Каждый ответ хранит URL, дату, SHA256, исходные строки, единицы и доступные ссылки на публикации. Дополнительные имена SIMBAD имеют собственный снимок. Gaia ID остаётся строкой; DR2 не превращается в DR3.
-- Совпадающие Gaia DR3 ID дают ссылки на записи AT-HYG. Компоненты не сливаются. Для AT-HYG без Gaia применяется точный HIP/TYC/HD; при отсутствии идентификатора соответствие не выдумывается.
-- Повторный просмотр читает кеш. Срок свежести 30 дней; при сбое обновления доступен старый снимок с явной отметкой. Недоступность источника без снимка даёт сообщение и кнопку повтора. Закрытие/смена звезды отменяет отображение старого ответа.
-
-Положение объектов на 3D-карте пока берётся из AT-HYG. Данные Gaia/SIMBAD/NED дополняют карточки и поиск; их новые 3D-слои, подробные системы и варп ещё не реализованы. Конечная цель остаётся прежней: реальные объекты должны определять мир полёта и боя.
-
-## Объём и ограничения
-
-| Параметр | Реализация |
-| --- | --- |
-| Кеш | `E:/UNIVERSE/UNIVERSE2/project/.catalog-research/online-cache-v1` |
-| Максимум кеша | 33 554 432 bytes = 32 MiB, включая временную запись |
-| Фактический кеш после live probe | **18 264 bytes** |
-| Максимум одного ответа | 512 KiB |
-| Одновременно | Один запрос; до восьми различных URL в очереди |
-| Повтор одного URL | Объединяется с уже выполняющимся запросом |
-| NED | Следующий запрос не раньше чем через 1,1 с после предыдущего ответа |
-| Тайм-аут | 35 с, без автоматических бесконечных повторов |
-| Имена SIMBAD | До 256 на объект, усечение явно отмечается |
-
-Кеш вытесняет давно не использовавшиеся ответы. Отдельная массовая выгрузка и обход всей базы отсутствуют. Транспорт допускает только три фиксированных HTTPS-хоста, не следует перенаправлениям, использует нормальную проверку TLS и системные сертификаты. XML с DTD/ENTITY, ошибкой QUERY_STATUS, OVERFLOW или неполной таблицей отвергается. У запросов CSV точные ограничения строк и схемы.
-
-Запросы запускаются явным изучением/поиском; ввод текста, вращение и обычная смена точек не обращаются к научным API. Уже начатый серверный запрос при закрытии UI может завершиться и сохранить небольшой снимок; он не возвращает закрытую карточку на экран.
-
-## Проверки
-
-- Build / TypeScript / space-only guard: **PASS**. Node 24.19.0, portable npm и файлы разработки на E. Добавлен точный devDependency `@xmldom/xmldom` 0.9.12; npm audit при установке: 0 уязвимостей.
-- **43 unit tests / 9 файлов PASS**: большой ID, отрицательный параллакс, координатные системы/эпохи, ошибки XML/CSV, точное сопоставление, источник альтернативных имён, дедупликация запросов, ограничение очереди/ответа/диска, вытеснение и кеш после перезапуска без интернета.
-- **18 browser scenarios PASS** на desktop HIGH и mobile LOW: новые карточки/ошибка/повтор/отмена плюс вся прежняя карта, полёт, бой и секторные проверки. Четыре новых UI-сценария дополнительно повторены после исправления тестового ключа настройки графики; теперь явно проверяют фактический HIGH/LOW.
-- [Live probe](live-probe.json): Проксима — Gaia + SIMBAD, Сириус — SIMBAD, Андромеда M31 — новый NED. Первый запрос SIMBAD для Проксимы временно завершился недоступностью; повтор после проверки сервиса прошёл. Это реальная внешняя зависимость, поэтому ошибки и кеш являются штатными состояниями.
-- Сириус не получил выдуманный Gaia ID. Проксима получила 55 имён и одну связанную запись AT-HYG. Повторные запросы прочитаны из кеша. Некорректный Gaia запрос: HTTP 400, чужой Origin: HTTP 403.
-- Отдельно открыты реальные карточки Gaia/SIMBAD/NED в HIGH/LOW: page errors 0. Скриншоты `high-live-proxima.png`, `low-live-proxima.png`, `high-live-m31.png`, `low-live-m31.png`. Файлы `*-research.png` относятся к контролируемым синтетическим UI-fixtures.
-- Относительный performance budget полёта **5% PASS** относительно предыдущего спринта карты; текущие снимки в `flight/`. Near-base draw calls HIGH 104→104, LOW 85→85; число треугольников то же. Headless FPS не характеризует реальные устройства.
-
-Основной app chunk прежний: 225.30 KB / 66.80 KB gzip. Lazy карта с исследовательскими карточками: 26.31 KB / 9.91 KB gzip JS и 5.95 KB CSS. XML parser остаётся на сервере и не попадает в браузерный bundle.
-
-## Архитектура и запуск
-
-Чистые адаптеры: `src/catalog/adapters/*Observation.ts`. Контракты: `ExternalObservation.ts`, `OnlineCatalogData.ts`. HTTPS/парсеры/кеш/сервисы: отдельные модули `scripts/catalog/`. Интерфейс: `OnlineCatalogPanel.ts`, встроен в существующий StarMapUI. Engine/WorldBuilder/ShipController/сетевые правила для этой работы не менялись.
-
-```powershell
-./scripts/run.ps1 build
-./scripts/run.ps1 test
-node --use-system-ca node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 3001 --strictPort
-# В другом терминале:
-node scripts/catalog/probe-online.mjs http://127.0.0.1:3001
-$env:UNIVERSE_TEST_PORT = '3001'
-$env:SMOKE_PHASE = '../online-catalog-2026-09-15/flight'
-$env:SECTOR_EVIDENCE = 'docs/phases_archive/online-catalog-2026-09-15/sectors'
-./scripts/run.ps1 test:smoke
-```
-
-Обновлённая версия работает на **http://127.0.0.1:3001/**. Прежний preview 3000 не перезапущен. Данные и кеш на E, вне git/public/dist. Для публичного сайта потребуется отдельный API: локальный Vite bridge не включается в статический dist. Упаковка компактной основы для распространения и очистка старых проверочных баз не выполнялись.
-
-## Проверенные первичные источники
-
-- [Размеры научных архивов Gaia](https://cdn.gea.esac.esa.int/Gaia/gdr3/_catalogue_sizes.txt): gaia_source 757 GB; это научный архив, не требование игры. Такая загрузка отменена пользователем.
-- [Gaia programmatic access](https://www.cosmos.esa.int/web/gaia-users/archive/programmatic-access), [Gaia FAQ](https://www.cosmos.esa.int/web/gaia/faqs): TAP и ограничения запросов.
-- [SIMBAD URL/TAP guide](https://simbad.u-strasbg.fr/Pages/guide/sim-url.htx), [CDS legal notices](https://cds.unistra.fr/legals/): сведения и условия конкретных наборов; упоминание коммерческого использования логотипов не трактуется как запрет на все данные SIMBAD.
-- [Новый NED API](https://ned.ipac.caltech.edu/Docs%3A%3AAPI/), [автоматические запросы](https://ned.ipac.caltech.edu/Documents/Guides/Interface/QueryAuto), [About NED](https://ned.ipac.caltech.edu/Documents/Overview): актуальный интерфейс, последовательные запросы и ограничения расстояний по красному смещению.
-
-Условия источников и библиография сохраняются. Публичного/коммерческого распространения новых данных не было; запрос ESA по поручению пользователя не отправлен. Подключение API само по себе не даёт нового разрешения на коммерческое использование.
+This report records the implementation on the date in its directory name. Later stages may supersede its UI, transport or limits. Retained JSON and screenshots provide compact evidence; local recordings and source backups are not release assets. See the [current documentation](../../README.md).

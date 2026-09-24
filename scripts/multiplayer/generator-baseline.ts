@@ -1,0 +1,10 @@
+import { writeFileSync, mkdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { REVIEW_SYSTEMS } from '../../src/world/environments/EnvironmentReviewWorlds';
+import { orbitalZones } from '../../src/world/systems/OrbitalSite';
+import { SpaceEnvironment } from '../../src/world/environments/SpaceEnvironment';
+const root='docs/phases_archive/generator-foundation-2026-09-24';
+mkdirSync(root,{recursive:true});
+const result=REVIEW_SYSTEMS.map(s=>({id:s.anchor.catalogId,hash:createHash('sha256').update(JSON.stringify({star:s.starRadius,bodies:s.bodies.map(b=>({id:b.id,position:b.position,radius:b.radius,orbit:b.orbit,environment:b.environment,zones:orbitalZones(b)})),fields:[[12,0,4],[20,2,7],[-12,1,15]].map(c=>new SpaceEnvironment(s).field(c as [number,number,number]))})).digest('hex')}));
+writeFileSync(`${root}/${process.env.LABEL||'before'}-physics.json`,JSON.stringify(result,null,2));
+console.log(result);

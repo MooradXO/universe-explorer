@@ -33,7 +33,9 @@ export function orbitalZones(body:SystemBody){
   const arrivals=Array.from({length:profile.zones},(_,index):Triple=>{
     const angle=index*2.39996323+(profile.layout/48)*Math.PI*2,R=body.radius*3+6000;
     const y=Math.sin(index*2.1+profile.variant)*.65,radial=Math.sqrt(1-y*y);
-    return index===0?main:[body.position[0]+Math.cos(angle)*R*radial,body.position[1]+y*R,body.position[2]+Math.sin(angle)*R*radial];
+    // Existing artistic orbital sites keep their established radius; closer cruise
+    // viewpoints must not drag collision fields into the planet surface.
+    return index===0?[body.position[0],body.position[1],body.position[2]+R]:[body.position[0]+Math.cos(angle)*R*radial,body.position[1]+y*R,body.position[2]+Math.sin(angle)*R*radial];
   });
   return arrivals.map((arrival,index)=>{
     const random=createSeededRandom(hashString(`${body.id}:orbital-art:v2:${index}`));

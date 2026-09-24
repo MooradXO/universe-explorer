@@ -1,51 +1,7 @@
-# Продолжение в новом чате — 16 сентября 2026
+# September 16 handoff — historical
 
-Пользователь явно попросил открыть новый чат в том же проекте UNIVERSE и продолжить разработку там. Здесь переносится контекст; игрового кода при передаче не меняли.
+The next work then comprised a destination-picker closure defect, stronger motion cues based on actual displacement, distinct environments for each planet/system and integration of three approved FX (portal, scan, anomaly).
 
-## Последние поручения и обратная связь
+The accepted direction was cinematic presentation, a full AT-HYG foundation with bounded explicit scientific lookups, real celestial proportions, free in-system flight, fast fictional cruise, interstellar warp and an Earth base. Near-field dust is artistic, not a replacement for catalogue stars.
 
-1. **Исправить список планет на ПК.** При обычном клике список открывается и резко закрывается; пользователь не успевает выбрать планету. Предыдущие Playwright тесты с `selectOption` этого не проверяли. Нужна проверка реального открытия указателем, ожидания без закрытия и выбора, включая клавиатуру/телефон. `src/ui/SystemNavigationUI.ts` обновляет свойства select/button каждые ~100 мс из `StellarTravel.update`; повторное присваивание disabled — гипотеза, не установленная причина.
-2. **Создать убедительное ощущение обычного полёта.** Сейчас пользователь видит красивую фоновую картинку, а перемещение ощущается пустотой; только Shift даёт старые линии ускорения. Нужны близкие визуальные ориентиры/частицы с параллаксом и движением относительно корабля на обычной скорости, при движении назад и в стороны, плюс плавные переходы к ускорению/крейсерскому режиму. Нельзя выдавать близкие частицы за настоящие каталожные звёзды или ломать реальные расстояния. Проверить зависимость от фактического перемещения, отсутствие движения частиц от одного поворота камеры как от поступательного полёта, переходы floating origin и отсутствие скачков после варпа. Дальний CatalogSky/CinematicBackground следуют за камерой — это объясняет слабое ощущение трансляции без ближнего слоя, но детали EffectsManager необходимо проверить.
-3. **Сильно различающиеся красивые окружения у разных планет и систем.** Пользователь ожидает различные эффекты, объекты, планеты, звёзды, свет, плотность и характер мест. Одинаковый красно-синий фон с поворотом и однотипная кучка камней недостаточны. Нужны узнаваемые, пространственные исследуемые места. Само различие цвета/seed не закрывает задачу. Конкретный набор новых типов локаций ещё не выбран; показать содержательные варианты и согласовать новые художественные/продуктовые решения, как пользователь просил ранее.
-4. **Все три показанных EpicToonFX согласованы.** Пользователь сказал «Да все эффекты переносим». Это снимает прежнее ожидание ответа. SpinPortalBlue (варп), ScanExplosion (сканирование), Plexus (аномалия) разрешено подключать без повторного вопроса. Не означает автоматический импорт всех 1326 пресетов библиотеки.
-
-Перед этим пользователь просил только обсудить однообразие и ничего не менять; обсуждение завершили. Последний запрос — продолжать в новом чате. В новом чате сначала коротко подтвердить понимание и порядок работы; разрешённые исправления выполнять там, новое оформление локаций согласовать.
-
-## Скриншоты пользователя (сохранены на E)
-
-- `E:\UNIVERSE\UNIVERSE2\user_files\feedback-2026-09-16\flight-empty-space.png` — обычный полёт, практически только дальний фон, HUD, корабль.
-- `E:\UNIVERSE\UNIVERSE2\user_files\feedback-2026-09-16\system-dropdown.png` — панель выбора объектов. Самопроизвольное закрытие известно со слов пользователя; неподвижный снимок его не доказывает.
-
-## Рабочее место и ограничения
-
-- Сохранённый проект приложения: UNIVERSE, `E:\UNIVERSE`, projectId `a5c772f0-aa4f-421e-8715-2903da5ce782`, isGitRepository=false (корень проекта приложения не является git).
-- Workspace инструкций: `E:\UNIVERSE\UNIVERSE2`; код Git: `E:\UNIVERSE\UNIVERSE2\project\universeproject (2)`.
-- Прочитать AGENTS.md, MEMORY.md, docs/current_milestone.md, docs/ROADMAP.md и релевантные .agents/rules. Исторический отчёт: docs/phases_archive/endless-space-research-2026-09-15.md в workspace.
-- Все рабочие файлы на E. Исходная купленная и адаптированная пользователем библиотека: `C:\Users\pc\Documents\Codex\2026-09-07\pro\outputs\EpicToonFX-ThreeJS` (read-only источник). Уже подготовленный компактный набор на E.
-- В Git много незакоммиченных изменений предыдущих спринтов, в том числе удаления старого режима планетарной поверхности. Не сбрасывать/не откатывать. Commit/push/публичная публикация/письма не поручены. ESA не писать, больших выгрузок Gaia/SIMBAD/NED не делать.
-- Стиль **кинематографичный утверждён**. Утверждены полный AT-HYG, точечные online adapters с ограниченным кешем, реальные пропорции, свободный полёт + быстрый cruise, warp между звёздами, база у Земли и явно игровые процедурные миры. Эти решения не спрашивать снова.
-- Никаких subagents без отдельного запроса. Разделение Engine / WorldBuilder / ShipController / CombatSystem сохранять, новые модули самостоятельные.
-- Пользователь часто смотрит с телефона; изображения он воспринимает как фотографии и не может переключать варианты. Давать рабочие интерактивные ссылки. Компьютер брата бывает занят, не отбирать фокус/управление без необходимости.
-
-## Запуск и проверка
-
-На момент передачи: production preview `http://127.0.0.1:3001/`; LAN helper `http://192.168.100.182:3002/`; страница вариантов `/visual-lab.html`. Телефон в той же Wi-Fi сети. Проверить доступность перед обещанием ссылки; IP может измениться. Публичного туннеля и правок firewall не было.
-
-Node v24.19.0: `C:\Users\pc\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe`. Portable npm на E: `E:\UNIVERSE\UNIVERSE2\project\.tools\package\bin\npm-cli.js`. Команды из папки игры: `scripts/run.ps1 build`, `scripts/run.ps1 test`. Wrapper не передаёт дополнительные CLI arguments. Playwright — через прямой Node, `UNIVERSE_TEST_PORT=3001`, `PLAYWRIGHT_CHANNEL=msedge`, `node node_modules/@playwright/test/cli.js test ...`. Preview/API запускаются с `--use-system-ca`.
-
-LAN helper: `node scripts/lan-preview.mjs 192.168.100.182`, точечный read-only proxy к 3001, Host/Origin guard. `scripts/verify-lan-preview.mjs` проверяет прямые ссылки и запрет cross-site API/POST. Не останавливать неизвестные процессы. Native браузер тестировать через доступный browser/Playwright, не предполагать работающий dropdown из успешного selectOption.
-
-## Что уже сделано
-
-Каталожные системы: Sol — 8 тел JPL на J2000, другие звёзды — 4 детерминированных игровых мира. Реальные координаты AT-HYG используются при смене системы/звёздного неба, новые научные сведения доступны отдельно в карточках. Системные адреса сохраняются локально, неизвестные расстояния не получают 3D-точку.
-
-Первый cinematic pass: `src/world/visuals/{SpaceMaterials,CinematicStyle,CinematicPlanet,CinematicBackground,OrbitalDebris}.ts`, `src/world/systems/OrbitalSite.ts`. Общие материалы с прототипом; фон пока преимущественно одинаковый рисунок/палитра с разными ориентациями. Один близкий instanced field из 36 обломков; HIGH/LOW отличаются детализацией, позиции/hit proxies одинаковы. Cruise учитывает bounding sphere поля; новая физика корпуса не добавлялась.
-
-Эффекты пока только в `src/tools/visual-lab/EffectsPreview.ts`, runtime `src/vendor/epic-fx/`, выбранные assets `public/assets/fx-preview/`. IDs:
-- warp: `6749a1da7a6538e4bae6c320db525d94` SpinPortalBlue;
-- scan: `d773d301d86b3254180a6887af308eef` ScanExplosion;
-- anomaly: `beb57d582b696b645928b556533430b2` Plexus.
-
-Проверена совместимость с Three 0.160.1; не обновляли Three. groundY:null, sound:false, явные HIGH/LOW budgets, lazy loading и disposal. Только 7 текстур, 3 определения, 5 runtime JS (~0.8 MB); не копировать всю библиотеку. Единственная vendor-правка — явный baseURL вместо исходного относительного default, hashes/provenance сохранены.
-
-Последний build PASS; 55 unit tests PASS; 4 route HIGH/LOW + 4 lab/entry + 2 final visual browser tests PASS. Ресурсы повторных возвратов HIGH 32 geometry/12 texture, LOW 26/11. Эти тесты не исключают новый баг пользовательского dropdown. Evidence: `docs/phases_archive/cinematic-flight-2026-09-15/README.md` и `visual-review-2026-09-15/README.md` внутри repo. Для новых route captures выставлять STELLAR_EVIDENCE в новую папку, не перезаписывать старую историю.
+Reference screenshots and supplied FX source remained local. Existing game saves, the user's browser and earlier uncommitted work were to be preserved. No source publication, production deployment or ESA correspondence occurred as part of this handoff. Later dated reports record the completed implementation; use the current roadmap for active tasks.

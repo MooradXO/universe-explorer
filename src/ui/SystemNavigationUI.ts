@@ -1,3 +1,4 @@
+import { explorationSites } from '../world/generation/ExplorationSites';
 import type { SystemDescriptor } from '../world/systems/SystemDescriptor';
 import { SYSTEM_CONFIG } from '../world/systems/SystemConfig';
 import { SystemObjectPicker } from './SystemObjectPicker';
@@ -12,6 +13,7 @@ export class SystemNavigationUI {
   private details = document.createElement('section');
   private detail = document.createElement('p');
   private distance = document.createElement('output');
+  private progress = document.createElement('output');
   private status = document.createElement('p');
   private cruise = document.createElement('button');
   private survey = document.createElement('button');
@@ -19,13 +21,14 @@ export class SystemNavigationUI {
   constructor(onSelect: (id: string) => void, onCruise: () => void, onSurvey: () => void) {
     this.element.className = 'system-navigation';
     this.element.setAttribute('aria-label', 'System navigation');
-    this.picker = new SystemObjectPicker(onSelect);
+    this.picker = new SystemObjectPicker(id => { this.setDestinationIcon(id); onSelect(id); });
     const heading = document.createElement('div'); heading.className = 'system-navigation__heading';
     const info = document.createElement('button'); info.type = 'button'; info.className = 'navigation-info';
     info.textContent = '···'; info.setAttribute('aria-label', 'Flight details'); info.dataset.hudCommand = 'navigation';
     heading.append(this.title, info);
     const symbol = document.createElement('span'); symbol.className = 'navigation-symbol'; symbol.innerHTML = hudIcon('system');
     const content = document.createElement('div'); content.className = 'navigation-destination'; content.append(heading, this.picker.element);
+    this.progress.className = 'navigation-progress'; this.progress.setAttribute('aria-label', 'Flight progress'); content.append(this.progress);
     this.cruise.type = this.survey.type = 'button';
     this.cruise.className = 'navigation-cruise'; this.cruise.onclick = onCruise; this.survey.onclick = onSurvey;
     this.cruise.textContent = 'CRUISE'; this.survey.textContent = 'ORBITAL SURVEY';
@@ -48,23 +51,34 @@ export class SystemNavigationUI {
   setSystem(system: SystemDescriptor, selected: string) {
     const home = system.anchor.catalogId === SYSTEM_CONFIG.homeSystemId;
     this.title.textContent = home ? 'SOLAR SYSTEM' : `${system.anchor.title.toUpperCase()} SYSTEM`;
+    this.setDestinationIcon(selected);
+    const options = [...system.bodies.map(body => [body.id, body.name]), ['star', `${system.anchor.title} · STAR`]];
+    const site=explorationSites(system).find(s=>s.id===selected);if(site)options.push([site.id,site.name]);
+    if (home) options.unshift(['base', 'EARTH BASE']);
+    this.picker.setOptions(options, selected);
+  }
+  private setDestinationIcon(selected: string) {
     const planet = selected === 'base' ? 'earth' : selected.startsWith('sol/') ? selected.slice(4) : null;
     const symbol = this.element.querySelector<HTMLElement>('.navigation-symbol')!;
     this.element.classList.toggle('is-home-system', !!planet);
     symbol.style.backgroundImage = planet ? `radial-gradient(circle at 30% 30%,transparent 25%,#02070bc9 76%),url('/assets/environments/low/${planet}.webp')` : '';
-    const options = [...system.bodies.map(body => [body.id, body.name]), ['star', `${system.anchor.title} · STAR`]];
-    if (home) options.unshift(['base', 'EARTH BASE']);
-    this.picker.setOptions(options, selected);
   }
-  update(data: { distance: number; cruising: boolean; warping: string | null; status: string; note: string; survey: boolean; visited: boolean; speed: number; dead: boolean }) {
+  update(data: { distance: number; cruising: boolean; stopping?: boolean; warping: string | null; status: string; note: string; survey: boolean; siteSurvey?:boolean; visited: boolean; speed: number; dead: boolean }) {
     this.distance.textContent = data.distance > SYSTEM_CONFIG.unitsPerAu * 0.01
       ? `${(data.distance / SYSTEM_CONFIG.unitsPerAu).toLocaleString('en-US', { maximumFractionDigits: 3 })} AU to arrival`
       : `${Math.round(data.distance * SYSTEM_CONFIG.kilometersPerUnit).toLocaleString('en-US')} km to arrival`;
-    this.cruise.textContent = data.cruising ? 'STOP' : 'CRUISE';
+    const phase = data.warping ? 'WARP' : data.stopping ? 'STOPPING' : data.cruising ? (data.status.startsWith('Aligning') ? 'ALIGNING' : data.status.includes('around an obstacle') ? 'DETOUR' : 'CRUISE')
+      : data.status.startsWith('Obstacle') ? 'BLOCKED — move clear' : data.status.startsWith('Combat') ? 'COMBAT — manual flight'
+      : data.status.startsWith('Under fire') ? 'UNDER FIRE — manual flight' : data.status.startsWith('Destination reached') && data.distance < 100 ? 'ARRIVED'
+      : 'READY';
+    this.progress.textContent = `${phase} · ${this.distance.textContent!.replace(' to arrival', '')}`;
+    this.progress.title = data.status;
+    this.progress.dataset.state = phase.startsWith('BLOCKED') ? 'blocked' : data.cruising ? 'cruising' : 'idle';
+    this.cruise.textContent = data.stopping ? 'STOPPING' : data.cruising ? 'STOP' : 'CRUISE';
     this.cruise.title = data.cruising ? `Cruising at ${(data.speed / SYSTEM_CONFIG.unitsPerAu).toFixed(3)} AU/s` : 'Cruise to selected destination';
-    this.cruise.disabled = !!data.warping || data.dead; this.picker.setDisabled(!!data.warping || data.dead);
+    this.cruise.disabled = !!data.warping || !!data.stopping || data.dead; this.picker.setDisabled(!!data.warping || data.dead);
     this.survey.disabled = !data.survey || !!data.warping || data.cruising || data.dead;
-    this.survey.textContent = data.visited ? 'ORBIT SURVEYED' : 'ORBITAL SURVEY';
+    this.survey.textContent = data.siteSurvey ? data.visited?'SITE RECORDED':'SURVEY SITE' : data.visited ? 'ORBIT SURVEYED' : 'ORBITAL SURVEY';
     this.detail.textContent = data.note; this.status.textContent = data.status;
     this.warp.hidden = !data.warping; this.warp.textContent = data.warping ? `WARP → ${data.warping}` : '';
   }

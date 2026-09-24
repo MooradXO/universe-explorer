@@ -6,6 +6,8 @@ dist/
 /*-verify-dist/
 /.git-publication-build/
 /.server-deploy-build/
+/.release-work/
+/.release-verify-dist/
 
 # IDE
 .vscode/
@@ -36,6 +38,9 @@ npm-debug.log*
 /dev_output.txt
 /test-results/
 /playwright-report/
+/.colyseus-dist/
+/.multiplayer-state/
+/.multiplayer-evidence/
 /tsc_output*.txt
 /*-smoke.png
 
@@ -49,3 +54,63 @@ npm-debug.log*
 /docs/art-direction/constellations/
 /docs/phases_archive/constellation-volume-2026-09-18/
 /docs/phases_archive/illustrated-atlas-2026-09-18/
+
+# Local recordings, source snapshots and machine-specific diagnostics.
+# Existing tracked evidence remains available in history.
+/docs/phases_archive/**/*.webm
+/docs/phases_archive/**/*.mp4
+/docs/phases_archive/**/before/
+/docs/phases_archive/**/before-source/
+/docs/phases_archive/**/source-before/
+/docs/phases_archive/**/server-before.json
+/docs/phases_archive/**/server-after.json
+/docs/phases_archive/**/server-during.json
+/docs/phases_archive/**/server-final.json
+/docs/phases_archive/**/*.png
+/docs/phases_archive/**/*.jpg
+/docs/phases_archive/**/reference/
+/docs/phases_archive/**/reference-*/
+
+# Verbose frame-by-frame diagnostics remain in the local evidence archive.
+/docs/phases_archive/cruise-feel-2026-09-24/final-HIGH/evidence.json
+/docs/phases_archive/cruise-feel-2026-09-24/final-LOW/evidence.json
+/docs/phases_archive/cruise-feel-2026-09-24/offline-HIGH/evidence.json
+/docs/phases_archive/cruise-feel-2026-09-24/offline-LOW/evidence.json
+/docs/phases_archive/cruise-missile-fix-2026-09-24/after-HIGH/evidence.json
+/docs/phases_archive/cruise-missile-fix-2026-09-24/after-LOW/evidence.json
+/docs/phases_archive/cruise-missile-fix-2026-09-24/weapons-HIGH/evidence.json
+/docs/phases_archive/cruise-missile-fix-2026-09-24/weapons-LOW/evidence.json
+/docs/phases_archive/flight-cruise-2026-09-24/accepted-HIGH/evidence.json
+/docs/phases_archive/flight-cruise-2026-09-24/after-manual-HIGH/evidence.json
+/docs/phases_archive/flight-cruise-2026-09-24/after-manual-LOW/evidence.json
+/docs/phases_archive/flight-cruise-2026-09-24/before-HIGH/evidence.json
+/docs/phases_archive/flight-cruise-2026-09-24/final-HIGH/evidence.json
+/docs/phases_archive/flight-cruise-2026-09-24/final-LOW/evidence.json
+/docs/phases_archive/generator-foundation-2026-09-24/weapons/final-HIGH/evidence.json
+/docs/phases_archive/generator-foundation-2026-09-24/weapons/final-LOW/evidence.json
+/docs/phases_archive/laser-bolts-2026-09-24/final-HIGH/evidence.json
+/docs/phases_archive/laser-bolts-2026-09-24/final-LOW/evidence.json
+/docs/phases_archive/laser-bolts-2026-09-24/network-HIGH/evidence.json
+/docs/phases_archive/laser-bolts-2026-09-24/network-LOW/evidence.json
+/docs/phases_archive/scene-workshop-2026-09-24/weapons/final-HIGH/evidence.json
+/docs/phases_archive/scene-workshop-2026-09-24/weapons/final-LOW/evidence.json
+/docs/phases_archive/space-composition-2026-09-24/accepted-route-HIGH/evidence.json
+/docs/phases_archive/space-composition-2026-09-24/accepted-route-LOW/evidence.json
+/docs/phases_archive/space-composition-2026-09-24/route-HIGH/evidence.json
+/docs/phases_archive/space-composition-2026-09-24/route-LOW/evidence.json
+/docs/phases_archive/warp-orientation-2026-09-24/HIGH/evidence.json
+/docs/phases_archive/warp-orientation-2026-09-24/LOW/evidence.json
+/docs/phases_archive/warp-transition-2026-09-24/accepted-LOW/evidence.json
+/docs/phases_archive/warp-transition-2026-09-24/after-HIGH/evidence.json
+/docs/phases_archive/warp-transition-2026-09-24/before-HIGH/evidence.json
+/docs/phases_archive/warp-transition-2026-09-24/final-HIGH/evidence.json
+/docs/phases_archive/warp-transition-2026-09-24/final-LOW/evidence.json
+/docs/phases_archive/warp-transition-2026-09-24/offline-HIGH/evidence.json
+/docs/phases_archive/warp-transition-2026-09-24/offline-LOW/evidence.json
+/docs/phases_archive/weapon-artifacts-2026-09-24/after-HIGH/evidence.json
+/docs/phases_archive/weapon-artifacts-2026-09-24/after-LOW/evidence.json
+/docs/phases_archive/weapon-artifacts-2026-09-24/before-HIGH/evidence.json
+/docs/phases_archive/weapon-audio-2026-09-24/game-HIGH/evidence.json
+/docs/phases_archive/weapon-audio-2026-09-24/game-LOW/evidence.json
+/docs/phases_archive/weapon-audio-2026-09-24/network-HIGH/evidence.json
+/docs/phases_archive/weapon-audio-2026-09-24/network-LOW/evidence.json

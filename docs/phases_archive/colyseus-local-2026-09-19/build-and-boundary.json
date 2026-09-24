@@ -1,0 +1,23 @@
+{
+  "date": "2026-09-19T21:00:45.8359272+04:00",
+  "branch": "codex/colyseus-local",
+  "baseCommit": "26d478ce380ca4b0e5bf463b945951c5349dab2f",
+  "client": {
+    "file": "main-DZngzAA4.js",
+    "sha256": "FB2C6684EC22CF8E1676C814EBF5CDCE77D38C00E16713494304CDD649658F67"
+  },
+  "preservedMain": {
+    "file": "dist/assets/main-FYL2DVD-.js",
+    "sha256": "94FC2C05E33CA5D1CE6A7AF674945E2BBCBCE96269F83607BE35AA9E68A20F36"
+  },
+  "audit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "productionAccessDuringTask": false,
+  "deploymentApplied": false
+}

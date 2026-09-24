@@ -4,6 +4,7 @@ import { StarMapClient } from '../../catalog/StarMapClient';
 import { StarMapView } from '../../world/star-map/StarMapView';
 import type { MapObject } from '../../catalog/StarMapData';
 import { OnlineCatalogPanel } from './OnlineCatalogPanel';
+import { systemPreview } from './SystemPreview';
 import './star-map.css';
 
 const number = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 });
@@ -38,12 +39,12 @@ export class StarMapUI {
   private online = new OnlineCatalogPanel(id => void this.select(id, true));
 
   constructor(private engine: Engine, private layer: HTMLElement, private onClose: () => void,
-    private travel?: { currentSystemId: string; warp: (object: MapObject) => boolean }) {
+    private travel?: { currentSystemId: string; warp: (object: MapObject) => boolean; selectDestination?: (id: string) => boolean }) {
     this.dialog.setAttribute('aria-labelledby', 'star-map-title');
     this.surface.setAttribute('aria-label', '3D star map');
     this.surface.tabIndex = 0;
     const heading = element('h1', '', 'STAR MAP'); heading.id = 'star-map-title';
-    const title = element('div'); title.append(element('small', 'star-map__eyebrow', 'UNIVERSE EXPLORER / AT-HYG 4.0'), heading, this.count);
+    const title = element('div'); title.append(element('small', 'star-map__eyebrow', 'INTERSTELLAR / AT-HYG 4.0'), heading, this.count);
     const header = element('header', 'star-map__header hud-metal-panel');
     header.append(title, button('Return to flight ×', () => this.close(), 'Close star map'));
     const panel = element('section', 'star-map__search hud-metal-panel');
@@ -76,7 +77,7 @@ export class StarMapUI {
     const footer = element('footer', 'star-map__footer');
     const credit = element('a', '', 'AT-HYG 4.0 · David Nash / Astronomy Nexus');
     credit.href = 'https://codeberg.org/astronexus/athyg'; credit.target = '_blank'; credit.rel = 'noopener noreferrer';
-    footer.append(element('span', '', 'True scale · J2000.0 · Drag to rotate. Scroll or pinch to zoom.'), credit);
+    footer.append(element('span', '', 'Stars at true scale · J2000.0 · Drag to orbit · Scroll / pinch to zoom'), credit);
     this.status.setAttribute('role', 'status'); this.retry.hidden = true;
     const loading = element('div', 'star-map__loading'); loading.append(this.status, this.retry);
     this.marker.hidden = true;
@@ -103,7 +104,7 @@ export class StarMapUI {
     try {
       const manifest = await StarMapClient.manifest(this.lifetime.signal);
       if (this.closed) return;
-      this.count.textContent = `${number.format(manifest.totalRecords)} records · ${number.format(manifest.positionedRecords)} in 3D`;
+      this.count.textContent = `${number.format(manifest.positionedRecords)} catalogue stars · planets inside each system`;
       this.view = new StarMapView(manifest, this.surface, Settings.graphicsMode === 'LOW',
         id => void this.select(id, false), (x, y, visible) => {
           this.marker.hidden = !visible;
@@ -113,7 +114,13 @@ export class StarMapUI {
       this.engine.setOverlayView({ scene: view.scene, camera: view.camera,
         resize: (w, h) => view.resize(w, h), snapshot: () => ({ ...view.snapshot(), selectedId: this.current?.id ?? null }),
         update: dt => { view.update(dt); this.updateStatus(dt); } });
-      void this.select(this.travel?.currentSystemId ?? 'athyg:4.0:1', !!this.travel);
+      // Search may finish before the manifest. A late default selection must not
+      // cancel the star the pilot already chose while the map was loading.
+      if (!this.selection) void this.select(this.travel?.currentSystemId ?? 'athyg:4.0:1', !!this.travel);
+      else if (this.current) {
+        view.select(this.current.id, this.current.position);
+        if (this.current.position) view.focus(this.current.position);
+      }
     } catch (error) {
       if (!this.closed) { this.status.textContent = (error as Error).message; this.retry.hidden = false; }
     }
@@ -124,7 +131,7 @@ export class StarMapUI {
     this.statusTime = 0;
     const state = this.view.snapshot();
     this.status.textContent = state.errors ? 'Some map data could not be loaded. Retry to load it.' :
-      `${number.format(state.points)} points in view${state.pending ? ' · Loading…' : ''} · At centre: 100 px ≈ ${number.format(state.parsecsPer100Pixels * 3.261563777)} ly`;
+      `${state.pending ? 'Loading stellar detail · ' : ''}100 px ≈ ${number.format(state.parsecsPer100Pixels * 3.261563777)} light-years at centre`;
     this.retry.hidden = !state.errors;
   }
   private async find() {
@@ -161,7 +168,10 @@ export class StarMapUI {
     } finally { if (!controller.signal.aborted) this.card.removeAttribute('aria-busy'); }
   }
   private showCard(value: MapObject) {
-    this.card.replaceChildren(element('small', 'star-map__eyebrow', 'CATALOGUE OBJECT'), element('h2', '', value.title));
+    const badge = element('span', 'star-map__star-icon'); badge.setAttribute('aria-hidden', 'true');
+    const heading = element('div', 'star-map__selected-heading');
+    const title = element('div'); title.append(element('small', 'star-map__eyebrow', 'SELECTED STAR'), element('h2', '', value.title));
+    heading.append(badge, title); this.card.replaceChildren(heading);
     this.card.append(element('p', 'star-map__distance', distance(value.distance)));
     const focus = button('Centre on star', () => { if (value.position) this.view?.focus(value.position); });
     focus.disabled = !value.position; this.card.append(focus);
@@ -169,8 +179,10 @@ export class StarMapUI {
       const same = value.id === this.travel.currentSystemId;
       const warp = button(same ? 'Current system' : 'Warp to star', () => { if (this.travel?.warp(value)) this.close(); });
       warp.disabled = same || !value.position || !value.positioned; this.card.append(warp);
-      if (!same && value.position) this.card.append(element('p', 'star-map__hint', 'Travel to this system. Planets without observational data are generated for the game.'));
+      if (same) this.card.append(element('p', 'star-map__location', '● YOU ARE IN THIS SYSTEM'));
     }
+    if (value.position) this.card.append(systemPreview(value, value.id === this.travel?.currentSystemId, this.travel?.selectDestination
+      ? id => { if (this.travel?.selectDestination?.(id)) { this.close(); return true; } return false; } : undefined));
     if (!value.position) this.card.append(element('p', 'star-map__notice', 'Distance is unknown. This object is searchable but has no 3D map position.'));
     if (value.gaiaMatches > 1) this.card.append(element('p', 'star-map__notice', `One Gaia ID is linked to ${value.gaiaMatches} AT-HYG records. Components remain separate.`));
     const facts = element('dl');
@@ -182,7 +194,7 @@ export class StarMapUI {
       ['Magnitude', value.magnitude === null ? '—' : number.format(value.magnitude)],
       ['Distance source', source[value.distanceSource ?? 'N'] ?? value.distanceSource ?? '—'],
     ]) facts.append(element('dt', '', label), element('dd', '', text));
-    this.card.append(facts);
+    const stellarData = element('details', 'star-map__stellar-data'); stellarData.append(element('summary', '', 'Stellar measurements'), facts); this.card.append(stellarData);
     const identifiers = element('details'); identifiers.append(element('summary', '', 'Identifiers and accuracy'));
     identifiers.append(element('p', '', `AT-HYG 4.0 / ${value.id.split(':').pop()}`));
     for (const item of value.identifiers) identifiers.append(element('p', 'star-map__identifier', `${item.catalog}${item.release ? ' ' + item.release : ''}: ${item.value}`));

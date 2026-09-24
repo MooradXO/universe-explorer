@@ -4,7 +4,7 @@ import { StarMapClient } from '../../catalog/StarMapClient';
 import { selectStarTiles, StarTileCache } from '../../catalog/StarMapLod';
 import type { MapVector, StarMapManifest, StarTileNode } from '../../catalog/StarMapData';
 
-type Tile = { points: THREE.Points; ids: Uint32Array; positions: Float32Array };
+type Tile = { points: THREE.Points<THREE.BufferGeometry, THREE.ShaderMaterial>; ids: Uint32Array; positions: Float32Array };
 export class StarMapView {
   readonly scene = new THREE.Scene();
   readonly camera = new THREE.PerspectiveCamera(55, 1, 0.001, 5e6);
@@ -14,6 +14,7 @@ export class StarMapView {
   private cache: StarTileCache<Tile>;
   private material: THREE.ShaderMaterial;
   private elapsed = 1;
+  private fadeTime = 0;
   private width = 1;
   private height = 1;
   private selected: { id: string; position: MapVector } | null = null;
@@ -41,15 +42,15 @@ export class StarMapView {
     this.controls.maxDistance = 4e6;
     this.controls.zoomSpeed = 1.6;
     this.material = new THREE.ShaderMaterial({
-      uniforms: { pixelScale: { value: 1 } },
-      vertexShader: `attribute float magnitude; uniform float pixelScale; varying float lightness;
-        void main() { lightness=clamp(1.15-magnitude*0.035,0.38,1.0);
+      uniforms: { pixelScale: { value: Math.min(window.devicePixelRatio || 1, 1.5) }, tileOpacity: { value: 1 } },
+      vertexShader: `attribute float magnitude; attribute vec3 stellarColor; uniform float pixelScale; varying float lightness; varying vec3 tint;
+        void main() { tint=stellarColor; lightness=clamp(1.15-magnitude*0.035,0.38,1.0);
           gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);
-          gl_PointSize=clamp(5.5-magnitude*0.2,2.2,7.0)*pixelScale; }`,
-      fragmentShader: `varying float lightness; void main() {
+          gl_PointSize=clamp(7.5-magnitude*0.28,2.8,9.0)*pixelScale; }`,
+      fragmentShader: `varying float lightness; varying vec3 tint; uniform float tileOpacity; void main() {
         float r=length(gl_PointCoord-0.5)*2.0; if(r>1.0) discard;
-        float glow=exp(-r*r*4.0)*(1.0-smoothstep(0.7,1.0,r));
-        gl_FragColor=vec4(vec3(0.77,0.87,1.0)*lightness,glow); }`,
+        float glow=(exp(-r*r*8.0)+0.18*exp(-r*r*2.0))*(1.0-smoothstep(0.7,1.0,r));
+        gl_FragColor=vec4(mix(tint,vec3(1.0),exp(-r*r*40.0)*0.6)*lightness,glow*tileOpacity); }`,
       transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
     });
     this.cache = new StarTileCache<Tile>(low ? 48 : 80, async (key, signal) => {
@@ -59,12 +60,26 @@ export class StarMapView {
       const geometry = new THREE.BufferGeometry();
       geometry.setAttribute('position', new THREE.BufferAttribute(tile.positions, 3));
       geometry.setAttribute('magnitude', new THREE.BufferAttribute(tile.magnitudes, 1));
-      const points = new THREE.Points(geometry, this.material);
+      // Illustrative cool/warm tint from available B-V data; missing values stay neutral.
+      const colors = new Float32Array(tile.ids.length * 3), color = new THREE.Color();
+      const blue = new THREE.Color(0x9ebfff), white = new THREE.Color(0xf3f3ff), orange = new THREE.Color(0xffad72);
+      for (let i = 0; i < tile.ids.length; i++) {
+        const bv = tile.colorIndices[i];
+        color.copy(white);
+        if (Number.isFinite(bv)) {
+          const warm = THREE.MathUtils.clamp((bv - 0.3) / 1.5, 0, 1);
+          const cool = THREE.MathUtils.clamp((0.3 - bv) / 0.7, 0, 1);
+          color.lerp(warm ? orange : blue, warm || cool);
+        }
+        color.toArray(colors, i * 3);
+      }
+      geometry.setAttribute('stellarColor', new THREE.BufferAttribute(colors, 3));
+      const points = new THREE.Points(geometry, this.material.clone());
       points.frustumCulled = false;
       points.visible = false;
       this.scene.add(points);
       return { points, ids: tile.ids, positions: tile.positions };
-    }, tile => { tile.points.removeFromParent(); tile.points.geometry.dispose(); });
+    }, tile => { tile.points.removeFromParent(); tile.points.geometry.dispose(); tile.points.material.dispose(); }, true);
     this.cache.setDesired([manifest.root]);
     const signal = this.events.signal;
     surface.addEventListener('pointerdown', event => { this.pointerStart = [event.clientX, event.clientY]; }, { signal });
@@ -81,6 +96,7 @@ export class StarMapView {
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
     this.material.uniforms.pixelScale.value = Math.min(window.devicePixelRatio || 1, 1.5);
+    for (const tile of this.cache.entries.values()) tile.points.material.uniforms.pixelScale.value = this.material.uniforms.pixelScale.value;
   }
   focus(position: MapVector, distance = 12) {
     this.origin.fromArray(position);
@@ -110,7 +126,10 @@ export class StarMapView {
       this.controls.update();
     }
     this.camera.updateMatrixWorld();
-    this.projection.multiplyMatrices(this.camera.projectionMatrix, this.camera.matrixWorldInverse);
+    // Request a margin around the viewport so an orbit does not churn boundary tiles.
+    this.projection.copy(this.camera.projectionMatrix);
+    this.projection.elements[0] /= 1.2; this.projection.elements[5] /= 1.2;
+    this.projection.multiply(this.camera.matrixWorldInverse);
     this.frustum.setFromProjectionMatrix(this.projection);
     this.elapsed += dt;
     if (this.elapsed >= 0.2 && this.cache.active.length) {
@@ -119,11 +138,19 @@ export class StarMapView {
       this.cache.setDesired(selectStarTiles(this.manifest.root, this.nodes,
         node => node.radius * this.height / (Math.max(0.001, eye.distanceTo(new THREE.Vector3(...node.center))) * 100),
         node => { this.sphere.center.fromArray(node.center).sub(this.origin); this.sphere.radius = node.radius; return this.frustum.intersectsSphere(this.sphere); },
-        this.maxTiles, this.maxPoints));
+        this.maxTiles, this.maxPoints, this.cache.desired));
     }
+    if (this.cache.previous.length) {
+      this.fadeTime += dt;
+      if (this.fadeTime >= 0.4) { this.fadeTime = 0; this.cache.finishTransition(); }
+    } else this.fadeTime = 0;
+    const blend = THREE.MathUtils.smoothstep(this.fadeTime, 0, 0.4);
     const active = new Set(this.cache.active);
+    const previous = new Set(this.cache.previous);
     for (const [key, tile] of this.cache.entries) {
-      tile.points.visible = active.has(key);
+      const opacity = previous.size ? (active.has(key) ? previous.has(key) ? 1 : blend : previous.has(key) ? 1 - blend : 0) : active.has(key) ? 1 : 0;
+      tile.points.material.uniforms.tileOpacity.value = opacity;
+      tile.points.visible = opacity > 0;
       if (tile.points.visible) tile.points.position.fromArray(this.nodes.get(key)!.center).sub(this.origin);
     }
     if (this.selected) {
@@ -135,8 +162,8 @@ export class StarMapView {
   private pick(x: number, y: number) {
     const rect = this.surface.getBoundingClientRect();
     let closest = 11 * 11, id = 0;
-    for (const key of this.cache.active) {
-      const tile = this.cache.entries.get(key)!;
+    for (const [key, tile] of this.cache.entries) {
+      if (!tile.points.visible || tile.points.material.uniforms.tileOpacity.value < 0.25) continue;
       const center = this.nodes.get(key)!.center;
       for (let i = 0; i < tile.ids.length; i++) {
         this.projected.set(tile.positions[i * 3] + center[0] - this.origin.x,
@@ -155,6 +182,8 @@ export class StarMapView {
     return { open: true, selectedId: this.selected?.id ?? null, tiles: this.cache.active.length,
       cachedTiles: this.cache.entries.size, pending: this.cache.pending, errors: this.cache.errors,
       points: this.cache.active.reduce((sum, key) => sum + this.nodes.get(key)!.points, 0),
+      fadingTiles: this.cache.previous.filter(key => !this.cache.active.includes(key)).length,
+      renderedPoints: [...this.cache.entries.values()].reduce((sum, tile) => sum + (tile.points.visible ? tile.ids.length : 0), 0),
       maxTiles: this.maxTiles, maxPoints: this.maxPoints,
       activeTileKeys: [...this.cache.active],
       radiusParsecs: this.camera.position.distanceTo(this.controls.target),

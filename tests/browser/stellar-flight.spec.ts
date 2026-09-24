@@ -76,10 +76,25 @@ test('cruise yields to firing, unknown distances block warp, repeated systems re
   await page.getByRole('option', { name: 'Mars', exact: true }).click();
   await page.getByRole('button', { name: 'CRUISE', exact: true }).click();
   await expect.poll(async () => (await snapshot(page)).world.travel.cruiseSpeed).toBeGreaterThan(0);
-  await page.getByRole('button', { name: /^FIRE/ }).click();
-  await expect.poll(async () => (await snapshot(page)).world.projectiles).toBeGreaterThan(0);
+  const shotsBefore=(await snapshot(page)).world.audio.weapons.played.laser;
+  if (info.project.name.includes('mobile')) {
+    const fire=await page.getByRole('button',{name:/^FIRE/}).boundingBox();
+    await page.mouse.move(fire!.x+fire!.width/2,fire!.y+fire!.height/2);
+    await page.mouse.down();
+  }
+  else {
+    // The current desktop HUD fires with the mouse; FIRE is a touch-only control.
+    const viewport = page.viewportSize()!; await page.mouse.move(viewport.width / 2, viewport.height / 2);await page.mouse.down();
+  }
+  // A shot can hit the nearby carrier within the same simulation frame.
+  // The monotonic shot-sound counter verifies firing without requiring a surviving projectile.
+  await expect.poll(async () => (await snapshot(page)).world.audio.weapons.played.laser).toBeGreaterThan(shotsBefore);
+  await page.mouse.up();
   expect((await snapshot(page)).world.travel.cruising).toBe(false);
   expect((await snapshot(page)).flightInputBlocked).toBe(false);
+  // Desktop shooting captures the cursor; release it before clicking HUD controls.
+  await page.evaluate(() => document.exitPointerLock());
+  await expect.poll(() => page.evaluate(() => document.pointerLockElement === null)).toBe(true);
   await page.locator('#btn-star-map').click();
   await expect(page.getByRole('button', { name: 'Current system', exact: true })).toBeDisabled();
   await page.route('**/__catalog/search?q=Unknown-distance', route => route.fulfill({ json: [{ id: 'athyg:4.0:2', title: 'Unknown-distance', distance: null, positioned: false }] }));

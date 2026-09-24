@@ -99,8 +99,10 @@ export class ShipEngineVFX {
     private parent: THREE.Object3D,
     nozzles: readonly (readonly [number, number, number])[],
     colorHex: number,
-    nozzleSizes: readonly number[] = []
+    nozzleSizes: readonly number[] = [],
+    previewLow?:boolean
   ) {
+    if(previewLow!==undefined)this.isLow=previewLow;
     this.plumeMaterial = new THREE.MeshBasicMaterial({
       map: getPlumeTexture(),
       color: colorHex,
@@ -180,7 +182,7 @@ export class ShipEngineVFX {
     this.parent.add(this.group);
   }
 
-  public update(dt: number, elapsed: number, speed: number, isBoosting: boolean, colorHex: number) {
+  public update(dt: number, elapsed: number, speed: number, isBoosting: boolean, colorHex: number, cruise = 0) {
     if (this.plumeMaterial.color.getHex() !== colorHex) {
       this.plumeMaterial.color.setHex(colorHex);
       this.coreMaterial.color.setHex(colorHex);
@@ -193,22 +195,22 @@ export class ShipEngineVFX {
     const idlePulse = 0.5 + Math.sin(elapsed * 7.5) * 0.5;
     const flicker = 0.88 + Math.sin(elapsed * 67.0) * 0.09 + Math.sin(elapsed * 143.0) * 0.035;
 
-    const targetLength = isBoosting
+    const targetLength = cruise > .01 ? 100 + cruise * 85 : isBoosting
       ? 118 + idlePulse * 24
       : moving
         ? 38 + speedRatio * 58
         : 16 + idlePulse * 7;
-    const targetWidth = isBoosting
+    const targetWidth = cruise > .01 ? 11 + cruise * 3 : isBoosting
       ? 16
       : moving
         ? 7 + speedRatio * 4
         : 3.6 + idlePulse * 1.2;
-    const plumeOpacity = isBoosting
+    const plumeOpacity = cruise > .01 ? .62 + cruise * .16 : isBoosting
       ? 0.74
       : moving
         ? 0.42 + speedRatio * 0.2
         : 0.17 + idlePulse * 0.08;
-    const coreScale = isBoosting ? 9.5 : moving ? 6.8 + speedRatio * 2 : 4.8 + idlePulse * 0.9;
+    const coreScale = cruise > .01 ? 8.5 + cruise * 1.5 : isBoosting ? 9.5 : moving ? 6.8 + speedRatio * 2 : 4.8 + idlePulse * 0.9;
     const idleScale = coreScale * (isBoosting ? 1.45 : moving ? 1.35 : 1.28);
     const haloScale = isBoosting ? 38 : moving ? 22 + speedRatio * 10 : 13 + idlePulse * 4;
 
@@ -237,4 +239,5 @@ export class ShipEngineVFX {
     this.idleMaterial.dispose();
     this.haloMaterial.dispose();
   }
+  public snapshot() { return { plumeLength: this.nodes[0]?.plumeA.scale.z ?? 0, opacity: this.plumeMaterial.opacity }; }
 }

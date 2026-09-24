@@ -10,7 +10,7 @@ export class ISSSatellite {
     private orbitRadius = 8000;
     private center = new THREE.Vector3(0, 0, 0); // Re-center dynamically if needed
 
-    constructor(scene: THREE.Scene, orbitRadius: number) {
+    constructor(scene: THREE.Scene, orbitRadius: number,preview=false) {
         this.scene = scene;
         this.orbitRadius = orbitRadius;
         this.mesh = new THREE.Group();
@@ -22,8 +22,7 @@ export class ISSSatellite {
         this.scene.add(this.mesh);
         
         // External telemetry is optional; use a restrained polling interval.
-        this.pollNASA();
-        setInterval(() => this.pollNASA(), 15000);
+        if(!preview){this.pollNASA();setInterval(() => this.pollNASA(), 15000);}
     }
     
     public update(cameraPosition: THREE.Vector3) {

@@ -4,6 +4,9 @@ import { Settings } from '../core/Settings';
 import { RealtimeMetrics } from './RealtimeMetrics';
 import type { FloatingOrigin } from '../world/space/FloatingOrigin';
 import type { Triple } from '../world/space/WorldPosition';
+import { ColyseusConnection } from './ColyseusConnection';
+import type { ShipController } from '../core/ShipController';
+import type { TravelArrival, WorldSnapshot } from './shared/Protocol';
 
 export interface NetworkPlayer {
   id: string;
@@ -17,6 +20,36 @@ export interface NetworkPlayer {
 }
 
 export class MultiplayerManager {
+  public readonly endpoint = (import.meta.env.VITE_MULTIPLAYER_URL as string | undefined)?.trim() ?? '';
+  public get authoritative() { return !!this.endpoint; }
+  public get connected() { return !!this.online?.connected; }
+  private online: ColyseusConnection | null = null;
+  public onIdentity?: (id: string) => void;
+  public onArrival?: (data: TravelArrival) => void;
+  public onWorld?: (data: WorldSnapshot) => void;
+  public onNotice?: (message: string) => void;
+  public action(type: string, data: Record<string, unknown> = {}) { return this.online?.send(type, data) ?? false; }
+  public drive(dt: number, controller: ShipController, ship: THREE.Group) {
+    if (this.coordinateFrame) this.online?.frame(dt, controller, ship, this.coordinateFrame);
+  }
+  public toLocal(p: number[]) { const tuple: Triple = [p[0], p[1], p[2]]; return this.coordinateFrame?.fromAbsolute(tuple) ?? tuple; }
+  public disconnect() {
+    this.online?.dispose(); this.online = null;
+    if (this.channel) { void supabase.removeChannel(this.channel); this.channel = null; }
+    if (this.botInterval) { clearInterval(this.botInterval); this.botInterval = null; }
+    this.players.clear(); this.isSubscribed = false;
+  }
+  private receiveWorld(data: WorldSnapshot) {
+    for (const id of data.gone) this.players.delete(id);
+    for (const entity of data.entities) {
+      const position = new THREE.Vector3(...this.toLocal(entity.p)), quaternion = new THREE.Quaternion().fromArray(entity.q).normalize();
+      let player = this.players.get(entity.id);
+      if (!player) { player = { id: entity.id, username: entity.name, position: position.clone(), targetPosition: position.clone(),
+        quaternion: quaternion.clone(), targetQuaternion: quaternion.clone(), lastUpdate: Date.now(), bounty: entity.bounty }; this.players.set(entity.id, player); }
+      player.targetPosition.copy(position); player.targetQuaternion.copy(quaternion); player.bounty = entity.bounty; player.lastUpdate = Date.now();
+    }
+    this.onWorld?.(data);
+  }
   public players: Map<string, NetworkPlayer> = new Map();
   private channel: any;
   private coordinateFrame: FloatingOrigin | null = null;
@@ -53,8 +86,27 @@ export class MultiplayerManager {
   public onVoiceSignalCallback?: (data: { senderId: string, signal: any }) => void;
 
   public init(userId: string, username: string) {
+    this.disconnect();
     this.myId = userId;
     this.myUsername = username;
+    if (this.authoritative) {
+      this.online = new ColyseusConnection(this.endpoint, username, {
+        identity: id => { this.myId = id; this.onIdentity?.(id); },
+        arrival: data => { this.setSystemId(data.systemId); this.players.clear(); this.onArrival?.(data); },
+        world: data => this.receiveWorld(data),
+        event: (type, data) => {
+          if (type === 'hit') this.onHitCallback?.(data);
+          else if (type === 'die') this.onDieCallback?.(data);
+          else if (type === 'chat') this.onChatCallback?.(data);
+          else if (type === 'voice') this.onVoiceSignalCallback?.(data);
+          else if (type === 'notice') this.onNotice?.(data.message);
+          else if (type === 'misfire') window.dispatchEvent(new CustomEvent('WeaponMisfire'));
+          else if (type === 'sonar') { const [posX, posY, posZ] = this.toLocal([data.posX, data.posY, data.posZ]); this.onSonarCallback?.({ ...data, posX, posY, posZ }); }
+        },
+      });
+      return;
+    }
+    if (import.meta.env.VITE_LEGACY_REALTIME !== 'true') return;
     if (!isSupabaseConfigured) return;
 
     this.channel = supabase.channel('room:universe', {
@@ -110,10 +162,12 @@ export class MultiplayerManager {
   }
 
   public getDebugStats() {
+    if (this.authoritative) return this.online?.stats() ?? { configured: true, subscribed: false, systemId: this.systemId, transport: 'colyseus', state: 'idle', ...this.metrics.snapshot() };
     return { configured: isSupabaseConfigured, subscribed: this.isSubscribed, systemId: this.systemId, ...this.metrics.snapshot() };
   }
 
   public broadcastPosition(pos: THREE.Vector3, quat: THREE.Quaternion) {
+    if (this.authoritative) return;
     if (!this.channel || !this.myId || !this.isSubscribed) return;
     const now = Date.now();
     if (now - this.lastSendTime < 100) return; // 10Hz tick limit
@@ -137,6 +191,7 @@ export class MultiplayerManager {
   }
 
   public broadcastShoot(dir: THREE.Vector3, color: string = 'red', weaponType: string = 'laser') {
+    if (this.authoritative) { this.action('fire', { color, weapon: weaponType }); return; }
     if (!this.channel || !this.isSubscribed) return;
     this.metrics.recordSent('shoot');
     this.channel.send({
@@ -146,6 +201,7 @@ export class MultiplayerManager {
   }
 
   public broadcastHit(targetId: string, damage: number) {
+    if (this.authoritative) return;
     if (!this.channel || !this.isSubscribed) return;
     this.metrics.recordSent('hit');
     this.channel.send({
@@ -155,6 +211,7 @@ export class MultiplayerManager {
   }
 
   public broadcastDie(killerId: string, killerName: string) {
+    if (this.authoritative) return;
     if (!this.channel || !this.isSubscribed) return;
     this.metrics.recordSent('die');
     this.channel.send({
@@ -164,6 +221,7 @@ export class MultiplayerManager {
   }
 
   public broadcastChat(message: string) {
+    if (this.authoritative) { this.action('chat', { message }); return; }
     if (!this.channel || !this.isSubscribed) return;
     this.metrics.recordSent('chat');
     this.channel.send({
@@ -173,6 +231,7 @@ export class MultiplayerManager {
   }
 
   public broadcastSonar(pos: THREE.Vector3) {
+    if (this.authoritative) { this.action('sonar'); return; }
     if (!this.channel || !this.isSubscribed) return;
     const coordinates = pos.toArray() as Triple;
     const [posX, posY, posZ] = this.coordinateFrame?.toAbsolute(coordinates) ?? coordinates;
@@ -184,6 +243,7 @@ export class MultiplayerManager {
   }
 
   public sendVoiceSignal(targetId: string, signal: any) {
+    if (this.authoritative) { this.action('voice', { targetId, signal }); return; }
     if (!this.channel || !this.isSubscribed) return;
     this.metrics.recordSent('voice-signal');
     this.channel.send({
@@ -236,7 +296,7 @@ export class MultiplayerManager {
     for (const [id, p] of this.players.entries()) {
       let shouldDelete = false;
 
-      if (now - p.lastUpdate > 5000) {
+      if (!this.authoritative && now - p.lastUpdate > 5000) {
         shouldDelete = true;
       }
 
@@ -250,8 +310,8 @@ export class MultiplayerManager {
       }
       
       // Smooth interpolation for silky 60fps movement despite 10Hz network tick
-      p.position.lerp(p.targetPosition, dt * 10);
-      p.quaternion.slerp(p.targetQuaternion, dt * 10);
+      p.position.lerp(p.targetPosition, Math.min(1, dt * 10));
+      p.quaternion.slerp(p.targetQuaternion, Math.min(1, dt * 10));
     }
   }
 

@@ -1,0 +1,231 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\pc\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      ".multiplayer-evidence/live.playwright.config.ts",
+      "--reporter=line,json"
+    ],
+    "configFile": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\.multiplayer-evidence\\live.playwright.config.ts",
+    "rootDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/.multiplayer-evidence/live-tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/.multiplayer-evidence/live-browser-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "HIGH",
+        "name": "HIGH",
+        "testDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/.multiplayer-evidence/live-tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 200000
+      },
+      {
+        "outputDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/.multiplayer-evidence/live-browser-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "LOW",
+        "name": "LOW",
+        "testDir": "E:/UNIVERSE/UNIVERSE2/project/universeproject (2)/.multiplayer-evidence/live-tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 200000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "multiplayer.spec.ts",
+      "file": "multiplayer.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "two real browsers: flight, hit, chat, all weapons, warp, cruise, reconnect, persistent guest",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 200000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "HIGH",
+              "projectName": "HIGH",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 200271,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 200000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 200000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 200000ms exceeded.\u001b[39m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T17:44:43.350Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\.multiplayer-evidence\\live-browser-artifacts\\multiplayer-two-real-brows-00458--reconnect-persistent-guest-HIGH\\test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\.multiplayer-evidence\\live-browser-artifacts\\multiplayer-two-real-brows-00458--reconnect-persistent-guest-HIGH\\test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\.multiplayer-evidence\\live-browser-artifacts\\multiplayer-two-real-brows-00458--reconnect-persistent-guest-HIGH\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "141e0e3d3b30ec82e56e-970bb561419550ae28d3",
+          "file": "multiplayer.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "two real browsers: flight, hit, chat, all weapons, warp, cruise, reconnect, persistent guest",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 200000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "LOW",
+              "projectName": "LOW",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 40440,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m4\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m4\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\.multiplayer-evidence\\live-tests\\multiplayer.spec.ts:25:77)\n    at E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:1655:9)\n    at E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:1135:11)\n    at E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:1653:7)",
+                    "location": {
+                      "file": "2)\\.multiplayer-evidence\\live-tests\\multiplayer.spec.ts",
+                      "column": 77,
+                      "line": 25
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "2)\\.multiplayer-evidence\\live-tests\\multiplayer.spec.ts",
+                        "column": 77,
+                        "line": 25
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m4\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\.multiplayer-evidence\\live-tests\\multiplayer.spec.ts:25:77)\n    at E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:1655:9)\n    at E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:1135:11)\n    at E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\node_modules\\playwright\\lib\\worker\\workerProcessEntry.js:1653:7)"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T17:48:04.272Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\.multiplayer-evidence\\live-browser-artifacts\\multiplayer-two-real-brows-00458--reconnect-persistent-guest-LOW\\test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\.multiplayer-evidence\\live-browser-artifacts\\multiplayer-two-real-brows-00458--reconnect-persistent-guest-LOW\\test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "E:\\UNIVERSE\\UNIVERSE2\\project\\universeproject (2)\\.multiplayer-evidence\\live-browser-artifacts\\multiplayer-two-real-brows-00458--reconnect-persistent-guest-LOW\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "2)\\.multiplayer-evidence\\live-tests\\multiplayer.spec.ts",
+                    "column": 77,
+                    "line": 25
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "141e0e3d3b30ec82e56e-73f70ecf9a414d5ade08",
+          "file": "multiplayer.spec.ts",
+          "line": 12,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-19T17:44:43.085Z",
+    "duration": 242006.454,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

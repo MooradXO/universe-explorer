@@ -1,0 +1,230 @@
+[
+  {
+    "mode": "HIGH",
+    "body": "sol/earth",
+    "angle": 0,
+    "callsBefore": 58,
+    "callsAfter": 77,
+    "trianglesBefore": 53999,
+    "trianglesAfter": 73929,
+    "textureDelta": 3,
+    "panorama": {
+      "body": "sol/earth",
+      "instances": 420,
+      "span": 29529.042016,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200.02222469196363
+  },
+  {
+    "mode": "HIGH",
+    "body": "sol/earth",
+    "angle": 0.32,
+    "callsBefore": 58,
+    "callsAfter": 77,
+    "trianglesBefore": 53999,
+    "trianglesAfter": 73929,
+    "textureDelta": 3,
+    "panorama": {
+      "body": "sol/earth",
+      "instances": 420,
+      "span": 29529.042016,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200.0222246911356
+  },
+  {
+    "mode": "HIGH",
+    "body": "sol/jupiter",
+    "angle": 0,
+    "callsBefore": 58,
+    "callsAfter": 78,
+    "trianglesBefore": 45731,
+    "trianglesAfter": 62289,
+    "textureDelta": 6,
+    "panorama": {
+      "body": "sol/jupiter",
+      "instances": 420,
+      "span": 44778.64,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200.02222469196363,
+    "fpsAfter": 200
+  },
+  {
+    "mode": "HIGH",
+    "body": "sol/jupiter",
+    "angle": 0.32,
+    "callsBefore": 58,
+    "callsAfter": 79,
+    "trianglesBefore": 45731,
+    "trianglesAfter": 62457,
+    "textureDelta": 6,
+    "panorama": {
+      "body": "sol/jupiter",
+      "instances": 420,
+      "span": 44778.64,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 199.97778024713585
+  },
+  {
+    "mode": "HIGH",
+    "body": "athyg:4.0:1440825/generated-1",
+    "angle": 0,
+    "callsBefore": 58,
+    "callsAfter": 70,
+    "trianglesBefore": 59867,
+    "trianglesAfter": 71349,
+    "textureDelta": 5,
+    "panorama": {
+      "body": "athyg:4.0:1440825/generated-1",
+      "instances": 420,
+      "span": 43874.81079399586,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200
+  },
+  {
+    "mode": "HIGH",
+    "body": "athyg:4.0:1440825/generated-1",
+    "angle": 0.32,
+    "callsBefore": 58,
+    "callsAfter": 70,
+    "trianglesBefore": 59867,
+    "trianglesAfter": 71349,
+    "textureDelta": 5,
+    "panorama": {
+      "body": "athyg:4.0:1440825/generated-1",
+      "instances": 420,
+      "span": 43874.81079399586,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200
+  },
+  {
+    "mode": "LOW",
+    "body": "sol/earth",
+    "angle": 0,
+    "callsBefore": 53,
+    "callsAfter": 64,
+    "trianglesBefore": 35559,
+    "trianglesAfter": 41761,
+    "textureDelta": 2,
+    "panorama": {
+      "body": "sol/earth",
+      "instances": 180,
+      "span": 29529.042016,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200
+  },
+  {
+    "mode": "LOW",
+    "body": "sol/earth",
+    "angle": 0.32,
+    "callsBefore": 53,
+    "callsAfter": 64,
+    "trianglesBefore": 35559,
+    "trianglesAfter": 41761,
+    "textureDelta": 2,
+    "panorama": {
+      "body": "sol/earth",
+      "instances": 180,
+      "span": 29529.042016,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200.02222469196363
+  },
+  {
+    "mode": "LOW",
+    "body": "sol/jupiter",
+    "angle": 0,
+    "callsBefore": 53,
+    "callsAfter": 64,
+    "trianglesBefore": 31131,
+    "trianglesAfter": 37201,
+    "textureDelta": 5,
+    "panorama": {
+      "body": "sol/jupiter",
+      "instances": 180,
+      "span": 44778.64,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 199.95556542924248
+  },
+  {
+    "mode": "LOW",
+    "body": "sol/jupiter",
+    "angle": 0.32,
+    "callsBefore": 53,
+    "callsAfter": 65,
+    "trianglesBefore": 31131,
+    "trianglesAfter": 37369,
+    "textureDelta": 5,
+    "panorama": {
+      "body": "sol/jupiter",
+      "instances": 180,
+      "span": 44778.64,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200.02222469196363
+  },
+  {
+    "mode": "LOW",
+    "body": "athyg:4.0:1440825/generated-1",
+    "angle": 0,
+    "callsBefore": 54,
+    "callsAfter": 65,
+    "trianglesBefore": 36051,
+    "trianglesAfter": 40897,
+    "textureDelta": 5,
+    "panorama": {
+      "body": "athyg:4.0:1440825/generated-1",
+      "instances": 180,
+      "span": 43874.81079399586,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200,
+    "fpsAfter": 200
+  },
+  {
+    "mode": "LOW",
+    "body": "athyg:4.0:1440825/generated-1",
+    "angle": 0.32,
+    "callsBefore": 54,
+    "callsAfter": 65,
+    "trianglesBefore": 36051,
+    "trianglesAfter": 40897,
+    "textureDelta": 5,
+    "panorama": {
+      "body": "athyg:4.0:1440825/generated-1",
+      "instances": 180,
+      "span": 43874.81079399586,
+      "drawCalls": 1,
+      "origin": "artistic-distant-scenery"
+    },
+    "fpsBefore": 200.02222469196363,
+    "fpsAfter": 199.97778024630819
+  }
+]

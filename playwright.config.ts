@@ -1,6 +1,7 @@
 import { defineConfig } from '@playwright/test';
 
 const port = Number(process.env.UNIVERSE_TEST_PORT || 3000);
+const outDir = process.env.UNIVERSE_TEST_OUT_DIR || 'dist';
 
 export default defineConfig({
   testDir: './tests/browser',
@@ -19,7 +20,7 @@ export default defineConfig({
       userAgent: 'Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36' } },
   ],
   webServer: {
-    command: `node --use-system-ca node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port ${port} --strictPort`,
+    command: `node --use-system-ca node_modules/vite/bin/vite.js preview --outDir "${outDir}" --host 127.0.0.1 --port ${port} --strictPort`,
     url: `http://127.0.0.1:${port}`,
     reuseExistingServer: !process.env.CI,
   },

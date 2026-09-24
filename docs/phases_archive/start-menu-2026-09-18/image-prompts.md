@@ -1,10 +1,10 @@
-# Графика стартового экрана
+# Start-screen artwork
 
-Создано встроенным инструментом imagegen 18 сентября 2026. Инструмент не предоставляет выбор версии «2.5».
+Generated with the built-in image tool on September 18, 2026. The tool did not expose a selectable model version 2.5.
 
-## Логотип
+## Logo
 
-Файл: `public/assets/ui/start-menu/universe-explorer-title-v1.png`.
+File: `public/assets/ui/start-menu/universe-explorer-title-v1.png`.
 
 ```text
 Use case: logo-brand.
@@ -17,9 +17,9 @@ Palette: ivory, graphite shadows, muted warm copper, a tiny icy blue accent.
 Constraints: genuinely transparent alpha background, no opaque black background, no checkerboard printed into image, no star field, no spaceship, no giant emblem above the letters, no hazard stripes, no thick panel, no lens flare hiding the letters, no other branding, no watermark. Game-ready high resolution finish.
 ```
 
-## Кнопка
+## Button
 
-Файл: `public/assets/ui/start-menu/copper-command-button-v1.png`. Надписи накладываются настоящим текстом в HTML, чтобы сохранить читаемость, доступность и рабочие состояния кнопок.
+File: `public/assets/ui/start-menu/copper-command-button-v1.png`. Labels use live HTML text to preserve readability, accessibility and button states.
 
 ```text
 Use case: stylized-concept.

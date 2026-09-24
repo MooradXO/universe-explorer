@@ -19,6 +19,7 @@ export class FlightDust {
     depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false });
   private previous = new THREE.Vector3();
   private delta = new THREE.Vector3();
+  private visualDelta = new THREE.Vector3();
   private ready = false;
   private speed = 0;
   private visibility = 1;
@@ -64,6 +65,10 @@ export class FlightDust {
     if (!this.ready) this.reset(position);
     this.delta.subVectors(position, this.previous); this.previous.copy(position); this.group.position.copy(position);
     this.speed = dt > 0 ? this.delta.length() / dt : 0;
+    // Compress the illustrative dust's exposure speed while preserving its real
+    // direction. Wrapping million-unit jumps made every frame an unrelated field.
+    const visualSpeed = Math.min(this.speed, 2500);
+    this.visualDelta.copy(this.delta).multiplyScalar(this.speed > 0 ? visualSpeed / this.speed : 0);
     // At cruise speeds individual grains would alias; fade them out, leaving bounded exposure streaks.
     const target = warping ? 0 : 1 - THREE.MathUtils.smoothstep(this.speed, 2500, 12000);
     this.visibility = THREE.MathUtils.damp(this.visibility, target, 7, dt);
@@ -76,7 +81,7 @@ export class FlightDust {
     for (let i = 0; i < this.count; i++) {
       const index = i * 3, line = i * 6;
       for (let axis = 0; axis < 3; axis++) {
-        const value = wrap(this.positions[index + axis] - this.delta.getComponent(axis));
+        const value = wrap(this.positions[index + axis] - this.visualDelta.getComponent(axis));
         this.positions[index + axis] = value; this.trails[line + axis] = value;
       }
       const edge = Math.max(Math.abs(this.positions[index]), Math.abs(this.positions[index + 1]), Math.abs(this.positions[index + 2]));
@@ -87,6 +92,7 @@ export class FlightDust {
   }
   snapshot() { return { kind: 'illustrative-local-dust', count: this.count, speed: this.speed,
     displacement: this.delta.toArray(), sample: Array.from(this.positions.slice(0, 12)), center: this.group.position.toArray(),
+    visualDisplacement: this.visualDelta.toArray(),
     visible: this.group.visible, opacity: this.visibility, resets: this.resets, originShifts: this.shifted,
     maxOffset: this.positions.reduce((max, value) => Math.max(max, Math.abs(value)), 0) }; }
   dispose() { this.group.removeFromParent(); this.geometry.dispose(); this.material.dispose(); this.lineGeometry.dispose(); this.lineMaterial.dispose(); }

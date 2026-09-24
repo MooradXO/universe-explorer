@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "unit": 90,
+  "typesAndBuild": "PASS",
+  "cases": [
+    {
+      "quality": "HIGH",
+      "rttMs": 240,
+      "result": "PASS",
+      "destinations": [
+        "Proxima Centauri",
+        "Sirius",
+        "Vega"
+      ]
+    },
+    {
+      "quality": "LOW",
+      "rttMs": 240,
+      "result": "PASS",
+      "destinations": [
+        "Proxima Centauri",
+        "Sirius",
+        "Vega"
+      ]
+    }
+  ],
+  "productionChanged": false
+}

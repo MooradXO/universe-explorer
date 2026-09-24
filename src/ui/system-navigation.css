@@ -10,7 +10,7 @@
 .system-object-picker [role=option]:hover,.system-object-picker [role=option].is-active{background:#38424a}
 .system-object-picker [aria-selected=true]{color:#ffcf85}.system-object-picker button:focus-visible{outline:2px solid #efc07c;outline-offset:-2px}
 @media(max-width:960px){.system-object-picker [role=listbox]{max-height:144px}.system-object-picker [role=option]{min-height:36px}}
-.stellar-warp{position:absolute;inset:0;z-index:20;pointer-events:none;display:grid;place-items:center;color:#ffe7b4;font-size:clamp(20px,3vw,42px);letter-spacing:.18em;background:radial-gradient(ellipse,transparent 12%,#9d692844 75%,#dbaa6688);animation:stellar-transit .6s ease-in-out infinite alternate}
-.stellar-warp[hidden]{display:none}@keyframes stellar-transit{to{background-color:#bd9e4920;letter-spacing:.23em}}
+.stellar-warp{position:absolute;top:25%;left:50%;transform:translateX(-50%);z-index:20;pointer-events:none;max-width:70vw;box-sizing:border-box;padding:10px 18px;border:1px solid #90beec55;background:#061122a8;color:#d9edff;text-align:center;font-size:clamp(12px,1.25vw,18px);letter-spacing:.12em;box-shadow:0 0 24px #5c7ddd22;border-radius:3px}
+.stellar-warp[hidden]{display:none}
 @media(max-width:960px){.system-navigation{top:65px;right:10px;width:228px;box-sizing:border-box;max-height:calc(100dvh - 155px);padding:8px;font-size:11px}.system-navigation__note{max-height:40px;overflow:auto}.system-navigation select,.system-navigation button{min-height:30px;margin:2px 0}.system-navigation summary{margin-bottom:4px}}
 @media(prefers-reduced-motion:reduce){.stellar-warp{animation:none}}

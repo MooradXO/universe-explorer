@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "file": "assets/main-Kf7geyYA.js",
+      "sha256": "3f6e54d7c92c286f65f4f8ee81ba6120fc080788b2e310e26672c8908be54e2d",
+      "bytes": 231433
+    },
+    {
+      "file": "assets/StarMapUI-CP1rc4mt.js",
+      "sha256": "18f34ad0c702895255330cfe229a02e77b4915941c3e0f7d91258ba335c16adb",
+      "bytes": 22763
+    }
+  ],
+  "archiveSHA256": "d60e9f121c08e06ecc50073905b84bd7d7b7e29515e04c008b46f89ef364c0c8",
+  "archiveBytes": 75533
+}

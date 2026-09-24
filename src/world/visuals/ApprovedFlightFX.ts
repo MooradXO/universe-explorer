@@ -3,10 +3,10 @@ import type { EpicFX, EpicFXLibrary } from '../../vendor/epic-fx/epic-fx';
 import { EpicEffectSpace } from './EpicEffectSpace';
 import { environmentFX } from '../environments/EnvironmentFX';
 import type { OrbitalZone } from '../systems/OrbitalSite';
+import { WarpTransition } from './WarpTransition';
 
-type Kind = 'warp' | 'scan' | 'anomaly';
+type Kind = 'scan' | 'anomaly';
 const PRESETS = {
-  warp: { id: '6749a1da7a6538e4bae6c320db525d94', size: 2, units: 115 },
   scan: { id: 'd773d301d86b3254180a6887af308eef', size: .8, units: 125 },
   anomaly: { id: 'beb57d582b696b645928b556533430b2', size: 3.6, units: 260 },
 };
@@ -24,13 +24,17 @@ export class ApprovedFlightFX {
   private environmentLoading?:Promise<EpicFXLibrary>;
   private environmentPreset:ReturnType<typeof environmentFX>=null;
   private zoneKey:string|null=null;
-  private slots = { warp: slot(PRESETS.warp.units), scan: slot(PRESETS.scan.units), anomaly: slot(PRESETS.anomaly.units) };
+  private slots = { scan: slot(PRESETS.scan.units), anomaly: slot(PRESETS.anomaly.units) };
+  private warp: WarpTransition;
+  get warpIntensity() { return this.warp.timeline.intensity; }
+  get transitVisible() { return this.warp.timeline.phase !== 'idle'; }
   private scanAnchor = new Vector3();
   private scanTime = 0;
   private disposed = false;
   private budget: number;
   constructor(scene: Scene, private low: boolean) {
     this.budget = low ? 260 : 700; this.group.name = 'approved-flight-fx'; scene.add(this.group);
+    this.warp = new WarpTransition(low); this.group.add(this.warp.group);
     for (const state of Object.values(this.slots)) this.group.add(state.space.anchor);
   }
   private load() {
@@ -72,25 +76,24 @@ export class ApprovedFlightFX {
     if((zone?.id??null)!==this.zoneKey){this.want('anomaly',false);this.zoneKey=zone?.id??null;this.environmentPreset=zone?environmentFX(zone):null;
       this.slots.anomaly.space.anchor.scale.setScalar(this.environmentPreset?.units??PRESETS.anomaly.units);
       this.slots.anomaly.space.anchor.rotation.set(zone?zone.profile.variant*.17:0,zone?(zone.profile.seed%97)*.07:0,zone?zone.index*.2:0);}
-    this.want('warp', warping);
-    this.want('anomaly', !warping && !!anomaly && !!this.environmentPreset);
-    if (warping) this.scanTime = 0;
+    this.warp.update(dt, camera, position, rotation, warping);
+    this.want('anomaly', !this.transitVisible && !!anomaly && !!this.environmentPreset);
+    if (this.transitVisible) this.scanTime = 0;
     this.scanTime = Math.max(0, this.scanTime - dt); this.want('scan', this.scanTime > 0);
-    for (const kind of ['warp', 'scan', 'anomaly'] as const) {
+    for (const kind of ['scan', 'anomaly'] as const) {
       const state = this.slots[kind], effect = state.effect; if (!effect) continue;
       const anchor = state.space.anchor;
-      if (kind === 'warp') {
-        anchor.position.set(0, 0, -950).applyQuaternion(rotation).add(position);
-        anchor.quaternion.copy(rotation);
-      } else anchor.position.copy(kind === 'scan' ? this.scanAnchor : anomaly!);
+      anchor.position.copy(kind === 'scan' ? this.scanAnchor : anomaly!);
       effect.group.visible = true; state.space.update(effect, dt, camera);
     }
   }
-  clear() { this.scanTime = 0;this.zoneKey=null;this.environmentPreset=null; for (const kind of ['warp', 'scan', 'anomaly'] as const) this.want(kind, false); }
+  private clearScenery() { this.scanTime = 0;this.zoneKey=null;this.environmentPreset=null; for (const kind of ['scan', 'anomaly'] as const) this.want(kind, false); }
+  systemArrival() { this.clearScenery(); this.warp.arrive(); }
+  clear() { this.clearScenery(); this.warp.clear(); }
   snapshot() { return { budgetPerEffect: this.budget, maxActive: 2,
-    effects: Object.fromEntries(Object.entries(this.slots).map(([kind, state]) => [kind,
+    effects: { ...Object.fromEntries(Object.entries(this.slots).map(([kind, state]) => [kind,
       { preset:kind==='anomaly'?this.environmentPreset?.name??null:PRESETS[kind as Kind].id,requested: state.wanted, ready: !!state.effect, failed: state.failed, particles: state.effect?.particleCount ?? 0,
         position: state.effect ? state.space.anchor.position.toArray() : null,
-        simulationUnitsPerFlightUnit: 1 / state.space.anchor.scale.x }])) }; }
-  dispose() { this.disposed = true; this.clear(); this.library?.dispose();this.environmentLibrary?.dispose(); this.group.removeFromParent(); }
+        simulationUnitsPerFlightUnit: 1 / state.space.anchor.scale.x }])), warp: this.warp.snapshot() } }; }
+  dispose() { this.disposed = true; this.clear(); this.warp.dispose(); this.library?.dispose();this.environmentLibrary?.dispose(); this.group.removeFromParent(); }
 }

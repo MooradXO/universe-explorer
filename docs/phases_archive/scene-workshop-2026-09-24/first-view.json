@@ -1,0 +1,154 @@
+{
+  "snapshot": {
+    "document": {
+      "format": "universe-scene",
+      "version": 1,
+      "name": "Jupiter",
+      "settings": {
+        "seed": "universe-workshop",
+        "backdrop": 7,
+        "warm": "#827194",
+        "cool": "#5697ac",
+        "density": 0.5152715092711151,
+        "patternScale": 4.502424254454672,
+        "drift": 0.004140256143175066,
+        "stars": 1200,
+        "ambient": 0.8,
+        "light": 2.5,
+        "lightColor": "#fff0d5",
+        "lightX": -1,
+        "lightY": 0.5,
+        "lightZ": 1,
+        "exposure": 1.25
+      },
+      "entities": [
+        {
+          "id": "planet-1",
+          "name": "Jupiter",
+          "kind": "planet",
+          "visible": true,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "scale": 1,
+          "params": {
+            "seed": "2584468799",
+            "surface": 50,
+            "texture": "jupiter",
+            "material": 101,
+            "radius": 6991.1,
+            "spin": 0.005,
+            "variant": 5,
+            "geography": 5.1880933959037066,
+            "warp": 0.5800000000000001,
+            "color0": "#393a55",
+            "color1": "#827194",
+            "color2": "#d7cbb2",
+            "color3": "#5697ac",
+            "geology": 8,
+            "circulation": 2,
+            "relief": 0,
+            "roughness": 0.36,
+            "ocean": 0,
+            "detail": 0.3,
+            "storms": 0.8,
+            "wind": 0.003,
+            "contrast": 1.06,
+            "frost": 0.2,
+            "activity": 0.7544698972254992,
+            "ice": 1,
+            "clouds": -1,
+            "cloudCoverage": 0.4,
+            "cloudAltitude": 0.012,
+            "cloudSpeed": 0.004,
+            "cloudShadow": 0.2,
+            "atmosphere": 8,
+            "atmosphereThickness": 0.045,
+            "atmosphereDensity": 0.64,
+            "aurora": -1,
+            "auroraColor": "#5697ac",
+            "ring": 17,
+            "ringInner": 1.45,
+            "ringOuter": 1.85,
+            "ringTilt": 92.19866606080903,
+            "ringTurn": 32.91415660353203,
+            "ringDensity": 0.12,
+            "ringColor": "#9b9186",
+            "moons": 0,
+            "moonStyle": 7,
+            "moonOrbit": 6,
+            "moonSize": 1,
+            "moonDistance": 1
+          }
+        }
+      ]
+    },
+    "selected": "planet-1",
+    "quality": "HIGH",
+    "paused": false,
+    "comparing": false,
+    "entities": [
+      {
+        "id": "planet-1",
+        "kind": "planet",
+        "status": "ready",
+        "visible": true,
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "surface": {
+          "version": 2,
+          "texture": "ready",
+          "geology": 8,
+          "circulation": 2,
+          "storms": 3,
+          "baked": true,
+          "blend": 0.999999998698437,
+          "lod": 0.05765715740857845
+        },
+        "satellites": []
+      }
+    ],
+    "generation": {
+      "mode": "worker",
+      "entries": 1,
+      "queued": 0,
+      "active": 0,
+      "ready": 1,
+      "estimatedBytes": 699050.6666666666,
+      "budgetBytes": 8388608,
+      "jobs": 1,
+      "cancelled": 0,
+      "cacheHits": 0,
+      "lastJobMs": 152.80000001192093,
+      "maxPumpMs": 0.10000000894069672,
+      "failures": 0
+    },
+    "errors": [],
+    "render": {
+      "calls": 18,
+      "triangles": 16088,
+      "geometries": 18,
+      "textures": 3
+    },
+    "catalog": {
+      "types": 15,
+      "surfaces": 64,
+      "materials": 128,
+      "structures": 24,
+      "phenomena": 32,
+      "fx": 69,
+      "models": 4
+    }
+  },
+  "errors": []
+}

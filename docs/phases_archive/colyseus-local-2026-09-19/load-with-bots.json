@@ -1,0 +1,64 @@
+{
+  "date": "2026-09-19T16:46:21.864Z",
+  "host": {
+    "platform": "win32",
+    "cpu": "AMD Ryzen 5 7600X 6-Core Processor             ",
+    "logicalCPUs": 12,
+    "ramGiB": 31.113643646240234,
+    "node": "v24.19.0"
+  },
+  "seconds": 30,
+  "results": [
+    {
+      "mode": "clustered",
+      "count": 100,
+      "elapsed": 30.011623,
+      "server": {
+        "players": 100,
+        "systems": 1,
+        "bots": 96,
+        "tick": 1734,
+        "tickMs": {
+          "p50": 5.60229999999865,
+          "p95": 8.175899999999274,
+          "p99": 9.730899999999565,
+          "max": 11.973100000000159
+        },
+        "activeShots": 797,
+        "fired": 23350,
+        "hits": 2556,
+        "rejected": 0,
+        "socketBytesWritten": 271688145,
+        "elapsed": 34.695,
+        "cpuMicroseconds": 13001000,
+        "rssBytes": 294297600
+      },
+      "measurement": {
+        "observedTickHz": 50.04727668343695,
+        "serverCPUPercentOfOneCore": 37.4354962409064,
+        "serverRSSMiB": 280.6640625,
+        "outboundMbps": 65.46174886976289,
+        "shotsFired": 21231,
+        "hits": 2520,
+        "rejected": 0,
+        "snapshotGapMs": {
+          "p50": 95.63529999999992,
+          "p95": 120.15719999999965,
+          "p99": 122.1327999999994,
+          "max": 126.57180000000153
+        },
+        "minSnapshotsPerSecond": 9.996127167131215,
+        "disconnects": 0,
+        "systems": 1,
+        "bots": 96,
+        "maxPendingInputs": 5,
+        "visiblePeersAtEnd": {
+          "min": 194,
+          "max": 195
+        },
+        "maxDistanceFromFirstAtEnd": 1340.6707716484975
+      },
+      "stderr": ""
+    }
+  ]
+}

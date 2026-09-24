@@ -70,6 +70,26 @@ body:has(.star-map[open]) .mobile-flight-controls { visibility: hidden !importan
 .star-map__source a { color: #d2ab69; }
 .star-map__source dl { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .star-map__source p { overflow-wrap: anywhere; }
+.star-map__selected-heading { display: flex; align-items: center; gap: 14px; }
+.star-map__selected-heading > div { min-width: 0; }
+.star-map__star-icon { flex: 0 0 34px; width: 34px; height: 34px; border-radius: 50%; background: radial-gradient(circle,#fff 0 8%,#ffefd0 20%,#e8b35c60 44%,transparent 72%); box-shadow: 0 0 24px #edac4933; }
+.star-map__card > button { margin-top: 5px; }
+.star-map__location { margin-top: 10px !important; color: #9bc6bd; font-size: 10px; letter-spacing: 1px; }
+.star-map__system { border-top: 1px solid #665035; margin-top: 16px; padding-top: 10px; }
+.star-map__system h3 { margin: 0; font-size: 11px; letter-spacing: 1.4px; color: #d2ab69; }
+.star-map__planets { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 5px; }
+.star-map .star-map__planet { display: flex; align-items: center; gap: 8px; text-align: left; padding: 7px; min-height: 44px; background: #0b1218d9; border-color: #3b4547; }
+.star-map .star-map__planet[aria-pressed=true] { border-color: #e9b967; background: #423522; }
+.star-map__planet-icon { flex: 0 0 24px; height: 24px; border-radius: 50%; background: radial-gradient(circle at 28% 25%,#ffffff55,var(--planet-color) 30%,#04070b 82%); background-size: cover; box-shadow: 0 0 0 1px #80969c33; }
+.star-map__planet-detail:empty { display: none; }
+.star-map__planet-detail { margin: 12px 0; padding: 10px; background: #07111bd9; border-left: 2px solid #b8955c; }
+.star-map__planet-detail button { width: 100%; }
+.star-map__stellar-data { margin-top: 16px; }
+.star-map__card details + details { margin-top: 12px; }
+.star-map__marker { padding: 20px 10px 5px 22px; color: #ffdf9f; }
+.star-map__marker::before { width: 30px; height: 30px; top: -16px; left: -16px; border-color: #ffd895; border-style: dashed; box-shadow: 0 0 0 5px #ffd89512,0 0 22px #ffc47150; }
+.star-map__marker::after { content: ''; position: absolute; left: -3px; top: -3px; width: 5px; height: 5px; border-radius: 50%; background: #fff1c5; box-shadow: 0 0 12px #ffc471; }
+.star-map__status::before { content: ''; display: block; width: 100px; height: 5px; border: 1px solid #8eabb9; border-top: 0; margin: 0 auto 5px; }
 @media (max-width: 1024px), (max-height: 550px) {
   .star-map { font-size: 12px; }
   .star-map__header { top: 6px; left: 8px; right: 8px; padding: 5px 12px; }
@@ -84,6 +104,10 @@ body:has(.star-map[open]) .mobile-flight-controls { visibility: hidden !importan
   .star-map h2 { font-size: 19px; }
   .star-map__card dl { grid-template-columns: 1fr; gap: 1px; }
   .star-map__card dd { text-align: left; margin-bottom: 5px; }
+  .star-map__selected-heading { gap: 6px; }
+  .star-map__star-icon { flex-basis: 22px; width: 22px; height: 22px; }
+  .star-map .star-map__planet { gap: 5px; padding: 5px; font-size: 11px; }
+  .star-map__planet-icon { flex-basis: 19px; height: 19px; }
   .star-map__tools { bottom: 56px; padding: 4px; gap: 3px; }
   .star-map__tools button { padding: 5px 8px; min-height: 34px; }
   .star-map__tools button:first-child, .star-map__tools button:nth-child(2) { min-width: 34px; }
@@ -95,4 +119,22 @@ body:has(.star-map[open]) .mobile-flight-controls { visibility: hidden !importan
 @media (max-width: 600px) and (min-height: 551px) {
   .star-map__search { width: calc(100vw - 48px); max-height: 210px; }
   .star-map__card { top: auto; bottom: 112px; width: calc(100vw - 48px); max-height: 170px; }
+}
+
+/* Match the shared Titan skin without letting its padding grow into adjacent panels. */
+body.titan-ui .star-map .star-map__planet { padding: 7px; letter-spacing: 0; border-color: #5b5b4b; }
+body.titan-ui .star-map .star-map__planet[aria-pressed=true] { border-color: #e9b967; }
+@media (max-width: 1024px), (max-height: 550px) {
+  body.titan-ui .star-map__header { height: 70px; box-sizing: border-box; }
+  body.titan-ui .star-map__header > div { min-width: 0; }
+  body.titan-ui .star-map__header button { flex-shrink: 0; }
+  body.titan-ui .star-map__count { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  body.titan-ui .star-map__search, body.titan-ui .star-map__card { top: 88px; box-sizing: border-box; width: 216px; max-height: calc(100dvh - 135px); }
+  body.titan-ui .star-map .star-map__planet { padding: 5px; font-size: 11px; }
+}
+@media (max-width: 600px) and (min-height: 551px) {
+  body.titan-ui .star-map__header { gap: 10px; }
+  body.titan-ui .star-map__header button { max-width: 110px; padding: 5px 8px; }
+  body.titan-ui .star-map__search { width: calc(100vw - 16px); max-height: 180px; }
+  body.titan-ui .star-map__card { top: auto; bottom: 128px; width: calc(100vw - 16px); max-height: 240px; }
 }

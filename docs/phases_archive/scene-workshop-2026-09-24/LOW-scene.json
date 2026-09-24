@@ -1,0 +1,533 @@
+{
+  "format": "universe-scene",
+  "version": 1,
+  "name": "World 1 · generated",
+  "settings": {
+    "warp": false,
+    "seed": "universe-workshop",
+    "backdrop": 2,
+    "warm": "#bc9061",
+    "cool": "#6c728d",
+    "density": 0.24489349100738764,
+    "patternScale": 3.910334529727697,
+    "drift": 0.004203381682746112,
+    "stars": 1200,
+    "ambient": 0.8,
+    "light": 2.5,
+    "lightColor": "#fff0d5",
+    "lightX": -1,
+    "lightY": 0.5,
+    "lightZ": 1,
+    "exposure": 1.25
+  },
+  "entities": [
+    {
+      "id": "planet-1",
+      "name": "World 1 · generated",
+      "kind": "planet",
+      "parent": null,
+      "visible": true,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "seed": "4245954069",
+        "surface": 33,
+        "texture": "",
+        "material": 66,
+        "radius": 6614.504497498274,
+        "spin": 0.005,
+        "variant": 0,
+        "geography": 3.8,
+        "warp": 0.35,
+        "color0": "#0d354e",
+        "color1": "#486954",
+        "color2": "#bbba83",
+        "color3": "#83bfe0",
+        "geology": 8,
+        "circulation": 2,
+        "relief": 0.10500000000000001,
+        "roughness": 0.76,
+        "ocean": 0.39,
+        "detail": 0.3,
+        "storms": 0.8,
+        "wind": 0.003,
+        "contrast": 1.06,
+        "frost": 0.2,
+        "activity": 0.6488997900858522,
+        "ice": 0.7636363636363637,
+        "clouds": 9,
+        "cloudCoverage": 0.36,
+        "cloudAltitude": 0.009000000000000001,
+        "cloudSpeed": 0.005,
+        "cloudShadow": 0.2,
+        "atmosphere": 9,
+        "atmosphereThickness": 0.053099999999999994,
+        "atmosphereDensity": 0.6900000000000001,
+        "aurora": 5,
+        "auroraColor": "#6c728d",
+        "ring": 10,
+        "ringInner": 1.59,
+        "ringOuter": 3.1,
+        "ringTilt": 48.5,
+        "ringTurn": 35.21489343506078,
+        "ringDensity": 0.3,
+        "ringColor": "#d7cbb2",
+        "moons": 3,
+        "moonStyle": 4,
+        "moonOrbit": 7,
+        "moonSize": 1,
+        "moonDistance": 1
+      }
+    },
+    {
+      "id": "object-1790256206941",
+      "name": "Поле астероидов / обломков",
+      "kind": "field",
+      "parent": null,
+      "visible": true,
+      "position": [
+        19843.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "objects": 0,
+        "variant": 0,
+        "color": "#85817b",
+        "roughness": 0.85,
+        "metalness": 0.1,
+        "seed": "asteroids",
+        "layout": 0,
+        "count": 140,
+        "spread": 1800,
+        "size": 60,
+        "variation": 0.7
+      }
+    },
+    {
+      "id": "object-1790256206942",
+      "name": "Сооружение / станция / обломок",
+      "kind": "structure",
+      "parent": null,
+      "visible": true,
+      "position": [
+        21943.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "recipe": 0,
+        "variant": 0,
+        "color": "#77818a",
+        "roughness": 0.62,
+        "metalness": 0.6,
+        "wreck": false
+      }
+    },
+    {
+      "id": "object-1790256206943",
+      "name": "Космическое явление",
+      "kind": "phenomenon",
+      "parent": null,
+      "visible": true,
+      "position": [
+        24043.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "recipe": 0,
+        "seed": "anomaly",
+        "warm": "#bf795b",
+        "cool": "#708bab",
+        "speed": 1
+      }
+    },
+    {
+      "id": "object-1790256206944",
+      "name": "Корабль / база",
+      "kind": "model",
+      "parent": null,
+      "visible": true,
+      "position": [
+        26143.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "model": 2,
+        "tint": "#ffffff",
+        "roughness": 1,
+        "engine": true,
+        "engineColor": "#22aaff",
+        "throttle": 0.6,
+        "boost": false
+      }
+    },
+    {
+      "id": "object-1790256206945",
+      "name": "Эффект Epic FX",
+      "kind": "fx",
+      "parent": null,
+      "visible": true,
+      "position": [
+        28243.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "preset": 66,
+        "seed": "fx-01",
+        "color": "#ffffff",
+        "intensity": 0.4,
+        "density": 0.8,
+        "size": 100,
+        "warmup": 0.75,
+        "speed": 1,
+        "loop": true
+      }
+    },
+    {
+      "id": "object-1790256206946",
+      "name": "Звезда",
+      "kind": "star",
+      "parent": null,
+      "visible": true,
+      "position": [
+        30343.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "radius": 1200,
+        "color": "#ffd090",
+        "glow": 0.75
+      }
+    },
+    {
+      "id": "object-1790256206947",
+      "name": "Астероид / природный объект",
+      "kind": "asteroid",
+      "parent": "object-1790256206956",
+      "visible": true,
+      "position": [
+        300,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "objects": 0,
+        "variant": 0,
+        "color": "#85817b",
+        "roughness": 0.85,
+        "metalness": 0.1,
+        "radius": 100
+      }
+    },
+    {
+      "id": "object-1790256206948",
+      "name": "Отдельное кольцо",
+      "kind": "ring",
+      "parent": null,
+      "visible": true,
+      "position": [
+        33943.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        65,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "ring": 10,
+        "radius": 100,
+        "inner": 1.3,
+        "outer": 2.4,
+        "density": 0.7,
+        "color": "#cbb590"
+      }
+    },
+    {
+      "id": "object-1790256206949",
+      "name": "Спутник",
+      "kind": "moon",
+      "parent": null,
+      "visible": true,
+      "position": [
+        34243.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "seed": "new-world",
+        "surface": 0,
+        "texture": "",
+        "material": 0,
+        "radius": 160,
+        "spin": 0.005,
+        "variant": 0,
+        "geography": 4,
+        "warp": 0.35,
+        "color0": "#333039",
+        "color1": "#8e7965",
+        "color2": "#c1af91",
+        "color3": "#83bfe0",
+        "geology": 0,
+        "circulation": 2,
+        "relief": 0.14,
+        "roughness": 0.75,
+        "ocean": 0.49,
+        "detail": 0.3,
+        "storms": 0.8,
+        "wind": 0.003,
+        "contrast": 1.06,
+        "frost": 0.2,
+        "activity": 0.6,
+        "ice": 0.2,
+        "clouds": -1,
+        "cloudCoverage": 0.4,
+        "cloudAltitude": 0.012,
+        "cloudSpeed": 0.004,
+        "cloudShadow": 0.2,
+        "atmosphere": -1,
+        "atmosphereThickness": 0.025,
+        "atmosphereDensity": 0.35,
+        "aurora": -1,
+        "auroraColor": "#51baa5",
+        "ring": -1,
+        "ringInner": 1.3,
+        "ringOuter": 2.4,
+        "ringTilt": 65,
+        "ringTurn": 0,
+        "ringDensity": 0.7,
+        "ringColor": "#cbb590",
+        "moons": 0,
+        "moonStyle": 0,
+        "moonOrbit": 0,
+        "moonSize": 1,
+        "moonDistance": 1
+      }
+    },
+    {
+      "id": "object-1790256206950",
+      "name": "Чёрная дыра",
+      "kind": "blackhole",
+      "parent": null,
+      "visible": true,
+      "position": [
+        34723.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "seed": "singularity",
+        "color": "#ffaa00",
+        "intensity": 1.8,
+        "speed": 1
+      }
+    },
+    {
+      "id": "object-1790256206951",
+      "name": "МКС / Voyager",
+      "kind": "probe",
+      "parent": null,
+      "visible": true,
+      "position": [
+        36823.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "model": 0
+      }
+    },
+    {
+      "id": "object-1790256206952",
+      "name": "Снаряд / лазер / ракета",
+      "kind": "projectile",
+      "parent": null,
+      "visible": true,
+      "position": [
+        38923.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "weapon": 0,
+        "color": "#ff3333",
+        "length": 640,
+        "speed": 0,
+        "range": 3000
+      }
+    },
+    {
+      "id": "object-1790256206953",
+      "name": "Сопло двигателя",
+      "kind": "engine",
+      "parent": null,
+      "visible": true,
+      "position": [
+        41023.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "color": "#22aaff",
+        "throttle": 0.6,
+        "boost": false,
+        "size": 1
+      }
+    },
+    {
+      "id": "object-1790256206954",
+      "name": "Источник света",
+      "kind": "light",
+      "parent": null,
+      "visible": true,
+      "position": [
+        43123.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "color": "#bcdcff",
+        "intensity": 4,
+        "distance": 10000
+      }
+    },
+    {
+      "id": "object-1790256206955",
+      "name": "Взрыв / щит / искры",
+      "kind": "impact",
+      "parent": null,
+      "visible": true,
+      "position": [
+        45223.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {
+        "effect": 0,
+        "color": "#ff6600",
+        "radius": 100,
+        "period": 1.5,
+        "seed": "impact"
+      }
+    },
+    {
+      "id": "object-1790256206956",
+      "name": "Группа объектов",
+      "kind": "group",
+      "parent": null,
+      "visible": true,
+      "position": [
+        45523.51349249482,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "params": {}
+    }
+  ]
+}

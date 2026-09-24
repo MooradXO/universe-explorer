@@ -1,22 +1,7 @@
-# Гостевой запуск и простое стартовое меню — 18.09.2026
+# Guest entry
 
-По скриншотам пользователя удалены надписи над/под логотипом, нижняя полоса статусов, карточка Pilot Access / Launch Clearance и её вспомогательные тексты. Остались логотип и одна кнопка ENGAGE снизу по центру. Она сразу запускает гостевой полёт.
+Simplified the start flow to guest ENGAGE and removed the GitHub login/repository-search path from normal entry. The menu handles pending entry, retries, keyboard focus and errors. Existing flight and game systems remain behind the overlay. This report records the earlier menu stage; the proposed selectable-ship hangar is not part of it.
 
-## Изменения
+## Historical scope
 
-- В AuthUI полностью удалён промежуточный выбор профиля и GitHub-вход.
-- В AuthManager удалены OAuth-вход, восстановление прежней сессии, GitHub-запросы репозиториев и запись OAuth-профиля. Гостевой выход остаётся локальным, аватар использует локальный знак игры.
-- Supabase-клиент не сохраняет/не обновляет OAuth-сессии и не читает их из URL; существующее хранилище пользователя не удалялось. Гостевое соединение с сервером сохраняет существующее поведение.
-- Нажатия Enter/Space на кнопке не доходят до игровых обработчиков чата/полёта; исправлен обнаруженный конфликт Enter с чатом.
-- Старые browser helpers переведены на вход одной кнопкой. Новые исследовательский/боевой режимы не реализованы: пользователь отложил их.
-- Отдельно встроенным imagegen созданы три [визуальных примера созвездий](../../art-direction/constellations/README.md), ожидающие выбора. Это концепты, не новый runtime-рендер и не точные астрономические карты.
-
-## Проверки
-
-- [x] TypeScript, space-only guard, production build.
-- [x] Unit-тест гостевой авторизации: нет OAuth, вход по явному вызову, повторный вызов не создаёт вторую сессию, гостевая позиция не записывается в таблицу профилей, выход локальный.
-- [x] Обновлённый browser smoke: 2/2 HIGH/LOW, вход Enter и кликом в независимом клиенте, одинаковый каталог планет, нет GitHub-запросов.
-- [x] Все 46 browser tests в 11 файлах разбираются после обновления helpers (`--list`; полный набор не запускался).
-- [x] Четыре финальные проверки: 1920×945 и 1366×768 HIGH, 844×390 и 568×320 LOW. Единственная кнопка расположена по центру, отступ снизу 42/30/18/18 px; Enter, Space и касание запускают гостя. Проверен полёт, один локальный игрок, нет ошибок JavaScript и GitHub-запросов.
-- [x] Скриншоты просмотрены; результат — `browser-check.json`.
-- [x] Сборка установлена: `main-Qn4rqWmr.js`; 180 файлов сверены, подробности — `preview-install.json`. Страница пользователя принудительно не обновлялась.
+This report records the implementation on the date in its directory name. Later stages may supersede its UI, transport or limits. Retained JSON and screenshots provide compact evidence; local recordings and source backups are not release assets. See the [current documentation](../../README.md).

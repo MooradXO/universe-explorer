@@ -1,0 +1,580 @@
+[
+  {
+    "quality": "HIGH",
+    "pass": true,
+    "fx": [
+      {
+        "preset": 0,
+        "particles": 78
+      },
+      {
+        "preset": 1,
+        "particles": 82
+      },
+      {
+        "preset": 2,
+        "particles": 82
+      },
+      {
+        "preset": 3,
+        "particles": 78
+      },
+      {
+        "preset": 4,
+        "particles": 25
+      },
+      {
+        "preset": 5,
+        "particles": 22
+      },
+      {
+        "preset": 6,
+        "particles": 25
+      },
+      {
+        "preset": 7,
+        "particles": 23
+      },
+      {
+        "preset": 8,
+        "particles": 23
+      },
+      {
+        "preset": 9,
+        "particles": 23
+      },
+      {
+        "preset": 10,
+        "particles": 56
+      },
+      {
+        "preset": 11,
+        "particles": 56
+      },
+      {
+        "preset": 12,
+        "particles": 56
+      },
+      {
+        "preset": 13,
+        "particles": 24
+      },
+      {
+        "preset": 14,
+        "particles": 24
+      },
+      {
+        "preset": 15,
+        "particles": 24
+      },
+      {
+        "preset": 16,
+        "particles": 24
+      },
+      {
+        "preset": 17,
+        "particles": 24
+      },
+      {
+        "preset": 18,
+        "particles": 24
+      },
+      {
+        "preset": 19,
+        "particles": 21
+      },
+      {
+        "preset": 20,
+        "particles": 24
+      },
+      {
+        "preset": 21,
+        "particles": 26
+      },
+      {
+        "preset": 22,
+        "particles": 26
+      },
+      {
+        "preset": 23,
+        "particles": 25
+      },
+      {
+        "preset": 24,
+        "particles": 9
+      },
+      {
+        "preset": 25,
+        "particles": 14
+      },
+      {
+        "preset": 26,
+        "particles": 12
+      },
+      {
+        "preset": 27,
+        "particles": 12
+      },
+      {
+        "preset": 28,
+        "particles": 12
+      },
+      {
+        "preset": 29,
+        "particles": 12
+      },
+      {
+        "preset": 30,
+        "particles": 15
+      },
+      {
+        "preset": 31,
+        "particles": 24
+      },
+      {
+        "preset": 32,
+        "particles": 37
+      },
+      {
+        "preset": 33,
+        "particles": 37
+      },
+      {
+        "preset": 34,
+        "particles": 37
+      },
+      {
+        "preset": 35,
+        "particles": 37
+      },
+      {
+        "preset": 36,
+        "particles": 30
+      },
+      {
+        "preset": 37,
+        "particles": 30
+      },
+      {
+        "preset": 38,
+        "particles": 29
+      },
+      {
+        "preset": 39,
+        "particles": 30
+      },
+      {
+        "preset": 40,
+        "particles": 76
+      },
+      {
+        "preset": 41,
+        "particles": 78
+      },
+      {
+        "preset": 42,
+        "particles": 78
+      },
+      {
+        "preset": 43,
+        "particles": 76
+      },
+      {
+        "preset": 44,
+        "particles": 25
+      },
+      {
+        "preset": 45,
+        "particles": 27
+      },
+      {
+        "preset": 46,
+        "particles": 29
+      },
+      {
+        "preset": 47,
+        "particles": 29
+      },
+      {
+        "preset": 48,
+        "particles": 27
+      },
+      {
+        "preset": 49,
+        "particles": 32
+      },
+      {
+        "preset": 50,
+        "particles": 31
+      },
+      {
+        "preset": 51,
+        "particles": 31
+      },
+      {
+        "preset": 52,
+        "particles": 31
+      },
+      {
+        "preset": 53,
+        "particles": 31
+      },
+      {
+        "preset": 54,
+        "particles": 35
+      },
+      {
+        "preset": 55,
+        "particles": 35
+      },
+      {
+        "preset": 56,
+        "particles": 35
+      },
+      {
+        "preset": 57,
+        "particles": 35
+      },
+      {
+        "preset": 58,
+        "particles": 35
+      },
+      {
+        "preset": 59,
+        "particles": 25
+      },
+      {
+        "preset": 60,
+        "particles": 29
+      },
+      {
+        "preset": 61,
+        "particles": 27
+      },
+      {
+        "preset": 62,
+        "particles": 29
+      },
+      {
+        "preset": 63,
+        "particles": 29
+      },
+      {
+        "preset": 64,
+        "particles": 5
+      },
+      {
+        "preset": 65,
+        "particles": 10
+      },
+      {
+        "preset": 66,
+        "particles": 32
+      },
+      {
+        "preset": 67,
+        "particles": 4
+      },
+      {
+        "preset": 68,
+        "particles": 10
+      }
+    ],
+    "models": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "errors": []
+  },
+  {
+    "quality": "LOW",
+    "pass": true,
+    "fx": [
+      {
+        "preset": 0,
+        "particles": 78
+      },
+      {
+        "preset": 1,
+        "particles": 84
+      },
+      {
+        "preset": 2,
+        "particles": 82
+      },
+      {
+        "preset": 3,
+        "particles": 78
+      },
+      {
+        "preset": 4,
+        "particles": 25
+      },
+      {
+        "preset": 5,
+        "particles": 22
+      },
+      {
+        "preset": 6,
+        "particles": 25
+      },
+      {
+        "preset": 7,
+        "particles": 23
+      },
+      {
+        "preset": 8,
+        "particles": 23
+      },
+      {
+        "preset": 9,
+        "particles": 23
+      },
+      {
+        "preset": 10,
+        "particles": 56
+      },
+      {
+        "preset": 11,
+        "particles": 56
+      },
+      {
+        "preset": 12,
+        "particles": 56
+      },
+      {
+        "preset": 13,
+        "particles": 24
+      },
+      {
+        "preset": 14,
+        "particles": 24
+      },
+      {
+        "preset": 15,
+        "particles": 24
+      },
+      {
+        "preset": 16,
+        "particles": 24
+      },
+      {
+        "preset": 17,
+        "particles": 24
+      },
+      {
+        "preset": 18,
+        "particles": 24
+      },
+      {
+        "preset": 19,
+        "particles": 21
+      },
+      {
+        "preset": 20,
+        "particles": 24
+      },
+      {
+        "preset": 21,
+        "particles": 26
+      },
+      {
+        "preset": 22,
+        "particles": 26
+      },
+      {
+        "preset": 23,
+        "particles": 26
+      },
+      {
+        "preset": 24,
+        "particles": 9
+      },
+      {
+        "preset": 25,
+        "particles": 14
+      },
+      {
+        "preset": 26,
+        "particles": 12
+      },
+      {
+        "preset": 27,
+        "particles": 12
+      },
+      {
+        "preset": 28,
+        "particles": 12
+      },
+      {
+        "preset": 29,
+        "particles": 12
+      },
+      {
+        "preset": 30,
+        "particles": 15
+      },
+      {
+        "preset": 31,
+        "particles": 24
+      },
+      {
+        "preset": 32,
+        "particles": 37
+      },
+      {
+        "preset": 33,
+        "particles": 37
+      },
+      {
+        "preset": 34,
+        "particles": 37
+      },
+      {
+        "preset": 35,
+        "particles": 37
+      },
+      {
+        "preset": 36,
+        "particles": 30
+      },
+      {
+        "preset": 37,
+        "particles": 30
+      },
+      {
+        "preset": 38,
+        "particles": 29
+      },
+      {
+        "preset": 39,
+        "particles": 30
+      },
+      {
+        "preset": 40,
+        "particles": 76
+      },
+      {
+        "preset": 41,
+        "particles": 76
+      },
+      {
+        "preset": 42,
+        "particles": 76
+      },
+      {
+        "preset": 43,
+        "particles": 76
+      },
+      {
+        "preset": 44,
+        "particles": 25
+      },
+      {
+        "preset": 45,
+        "particles": 27
+      },
+      {
+        "preset": 46,
+        "particles": 29
+      },
+      {
+        "preset": 47,
+        "particles": 29
+      },
+      {
+        "preset": 48,
+        "particles": 27
+      },
+      {
+        "preset": 49,
+        "particles": 32
+      },
+      {
+        "preset": 50,
+        "particles": 31
+      },
+      {
+        "preset": 51,
+        "particles": 31
+      },
+      {
+        "preset": 52,
+        "particles": 31
+      },
+      {
+        "preset": 53,
+        "particles": 31
+      },
+      {
+        "preset": 54,
+        "particles": 36
+      },
+      {
+        "preset": 55,
+        "particles": 35
+      },
+      {
+        "preset": 56,
+        "particles": 35
+      },
+      {
+        "preset": 57,
+        "particles": 35
+      },
+      {
+        "preset": 58,
+        "particles": 35
+      },
+      {
+        "preset": 59,
+        "particles": 25
+      },
+      {
+        "preset": 60,
+        "particles": 29
+      },
+      {
+        "preset": 61,
+        "particles": 27
+      },
+      {
+        "preset": 62,
+        "particles": 29
+      },
+      {
+        "preset": 63,
+        "particles": 29
+      },
+      {
+        "preset": 64,
+        "particles": 5
+      },
+      {
+        "preset": 65,
+        "particles": 10
+      },
+      {
+        "preset": 66,
+        "particles": 32
+      },
+      {
+        "preset": 67,
+        "particles": 4
+      },
+      {
+        "preset": 68,
+        "particles": 10
+      }
+    ],
+    "models": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "errors": []
+  }
+]
