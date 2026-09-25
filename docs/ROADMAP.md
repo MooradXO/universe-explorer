@@ -14,7 +14,7 @@
 
 ## Current milestone: orbital launch, game modes and music
 
-Implementation and verification: [single checklist](plans/launch-modes-music-2026-09-24.md). User accepted local review and authorized publication on September 25. [Release status](phases_archive/release-2026-09-25/README.md).
+Implementation and verification: [single checklist](plans/launch-modes-music-2026-09-24.md). Published to main and deployed as `20260925-15be074` after user review on September 25. [Release record](phases_archive/release-2026-09-25/README.md).
 
 ## Proposed next milestone: closed group alpha
 

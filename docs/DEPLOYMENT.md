@@ -2,7 +2,7 @@
 
 Public game: https://universe.projectai.biz/
 
-Current client source: `f4ceaf752f70799ce61ba2474ddc13a90d31974e`, release `20260924-f4ceaf7`, deployed September 24, 2026 at 17:53 UTC. The multiplayer backend and catalogue service remain on the unchanged `20260924-7a2c2f4` implementation. See the [client hotfix record](phases_archive/multiplayer-visual-hotfix-2026-09-24/README.md) for its verification and rollback, and the [initial release record](phases_archive/release-2026-09-24/README.md) for the backend installation. Later documentation-only commits do not require rebuilding these releases.
+Current client and multiplayer source: `15be0749be37f6989b148c6080027c3427d825f0`, release `20260925-15be074`, deployed September 25, 2026 at 08:32 UTC. It includes the orbital launch screen, Exploration/PvP separation, ambient music and first-person HUD. The existing catalogue process, data and implementation were retained. See the [September 25 record](phases_archive/release-2026-09-25/README.md) for verification and rollback. Later documentation-only commits do not require rebuilding these releases.
 
 Deploy only the Universe virtual host and its dedicated services. Keep catalogue data, guest saves and other hosted projects intact. Source publication and deployment are separate operations; the deployment report records which commit is actually installed.
 

@@ -121,7 +121,7 @@ Open the [live English workshop](https://universe.projectai.biz/environments.htm
 
 A full installation needs the static client, catalogue API/data and multiplayer service. Copying only `dist/` does not provide the complete online game. [Deployment instructions](docs/DEPLOYMENT.md) describe isolated releases, persistent data and rollback.
 
-The September 24 release is live. See its [verification and deployment record](docs/phases_archive/release-2026-09-24/README.md) for the installed source commit, checks and rollback references.
+The September 25 release is live, including the new launch screen, Exploration/PvP modes, music and first-person HUD. See its [verification and deployment record](docs/phases_archive/release-2026-09-25/README.md) for the installed source commit, checks and rollback references.
 
 [DEBUG_API.md](docs/DEBUG_API.md) documents test fixtures. [CHANGELOG.md](CHANGELOG.md) records the current changes; [ROADMAP.md](docs/ROADMAP.md) separates completed work from proposals. Historical reports describe the build tested on their stated date. Old constellation artwork was subsequently removed.
 

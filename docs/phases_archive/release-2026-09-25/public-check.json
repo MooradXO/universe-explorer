@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-25T08:33:09.146Z",
+  "sourceCommit": "15be0749be37f6989b148c6080027c3427d825f0",
+  "checks": [
+    "index.html: exact HTML and 11 asset hashes",
+    "environments.html: exact HTML and 7 asset hashes",
+    "two-mode health, catalogue, private paths and previous hashed assets",
+    "HIGH: live orbital menu/mode selection and English Jupiter workshop",
+    "LOW: live orbital menu/mode selection and English Jupiter workshop"
+  ],
+  "pageErrors": [],
+  "publicGameConnections": 0
+}
