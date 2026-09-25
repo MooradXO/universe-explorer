@@ -3,8 +3,9 @@ import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from '
 import { dirname } from 'node:path';
 import type { SelfSnapshot } from '../src/network/shared/Protocol';
 import { compatibleGenerator, GENERATOR } from '../src/world/generation/GeneratorContract';
+import type { GameMode } from '../src/network/shared/GameMode';
 
-interface SavedGuest { id: string; at: number; state?: SelfSnapshot; }
+interface SavedGuest { id: string; at: number; state?: SelfSnapshot; exploration?: SelfSnapshot; }
 /** Only server-authored saves. Browser saves and claimed player IDs are never trusted. */
 export class GuestStore {
   private guests = new Map<string, SavedGuest>();
@@ -16,16 +17,21 @@ export class GuestStore {
     }
   }
   private hash(token: string) { return createHash('sha256').update(token).digest('hex'); }
-  identity(token: unknown) {
+  identity(token: unknown, mode: GameMode = 'pvp') {
     if (typeof token === 'string' && /^[a-f0-9]{64}$/.test(token)) {
       const saved = this.guests.get(this.hash(token));
-      if (saved && Date.now() - saved.at < 30 * 86400000) { saved.at = Date.now(); return { ...saved, token }; }
+      if (saved && Date.now() - saved.at < 30 * 86400000) {
+        saved.at = Date.now(); return { id: saved.id, at: saved.at, token, state: mode === 'pvp' ? saved.state : saved.exploration };
+      }
     }
     this.prune();
     const fresh = randomBytes(32).toString('hex'), guest = { id: `guest_${randomUUID()}`, at: Date.now() };
     this.guests.set(this.hash(fresh), guest); return { ...guest, token: fresh, state: undefined };
   }
-  save(token: string, state: SelfSnapshot) { const item = this.guests.get(this.hash(token)); if (item) { item.state = structuredClone(state); item.at = Date.now(); } }
+  save(token: string, state: SelfSnapshot, mode: GameMode = 'pvp') {
+    const item = this.guests.get(this.hash(token));
+    if (item) { item[mode === 'pvp' ? 'state' : 'exploration'] = structuredClone(state); item.at = Date.now(); }
+  }
   private prune() {
     for (const [key, value] of this.guests) if (Date.now() - value.at > 30 * 86400000) this.guests.delete(key);
     if (this.guests.size >= 10000) {

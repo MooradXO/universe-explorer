@@ -11,7 +11,7 @@ import { CombatSystem } from '../../src/world/CombatSystem';
 for (const authoritative of [false, true]) for (const viewMode of ['first', 'third']) for (const weapon of ['laser', 'shotgun', 'missile']) {
   it(`${authoritative ? 'network' : 'offline'} ${viewMode} ${weapon} shows only moving projectiles, without a stationary line or muzzle flash`, () => {
     const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera();
-    const controller = { activeWeapon: weapon, viewMode, isDead: false, laserColor: 'red', subsystems: { weapons: 100 } };
+    const controller = { combatEnabled: true, activeWeapon: weapon, viewMode, isDead: false, laserColor: 'red', subsystems: { weapons: 100 } };
     const engine = { scene, camera, shipController: controller } as unknown as Engine;
     const multiplayer = { authoritative, action: () => true, broadcastShoot: vi.fn(), toLocal: (p: number[]) => p, players: new Map() } as unknown as MultiplayerManager;
     const combat = new CombatSystem(engine, { playLaser: vi.fn(), playWeapon: vi.fn() } as unknown as SoundManager, {} as UIManager, multiplayer, new THREE.Texture());
@@ -58,7 +58,7 @@ it('uses the same laser hit timing in both cameras and removes a confirmed netwo
   const starts: number[] = [];
   for (const viewMode of ['first', 'third']) {
     const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera();
-    const controller = { activeWeapon: 'laser', viewMode, laserColor: 'blue', subsystems: { weapons: 100 } };
+    const controller = { combatEnabled: true, activeWeapon: 'laser', viewMode, laserColor: 'blue', subsystems: { weapons: 100 } };
     const combat = new CombatSystem({ scene, camera, shipController: controller } as unknown as Engine,
       { playLaser: vi.fn(), playWeapon: vi.fn() } as unknown as SoundManager, {} as UIManager, { broadcastShoot: vi.fn(), players: new Map() } as unknown as MultiplayerManager, new THREE.Texture());
     const impact = vi.spyOn(combat, 'createExplosionAt').mockImplementation(() => {}); vi.spyOn(combat, 'createSparksAt').mockImplementation(() => {});
@@ -70,7 +70,7 @@ it('uses the same laser hit timing in both cameras and removes a confirmed netwo
   }
   expect(starts).toEqual([-136, -136]);
   const scene = new THREE.Scene();
-  const combat = new CombatSystem({ scene } as Engine, {} as SoundManager, {} as UIManager,
+  const combat = new CombatSystem({ scene, shipController: { combatEnabled: true } } as unknown as Engine, {} as SoundManager, {} as UIManager,
     { toLocal: (p: number[]) => p } as unknown as MultiplayerManager, new THREE.Texture());
   combat.applyNetworkProjectiles({ self: { id: 'pilot' }, shotGone: [], shots: [{ id: 3, owner: 'pilot', p: [0, 0, -296], v: [0, 0, -4000], life: 1.96, weapon: 'laser', color: 'red' }] } as unknown as WorldSnapshot);
   expect(combat.lasers[0].mesh.position.z).toBe(-296); expect(combat.snapshot().shots[0].tailLength).toBeCloseTo(160);
@@ -82,7 +82,7 @@ it('shows a missile from directly behind and uses the same launch position in bo
   const starts: number[] = [];
   for (const viewMode of ['first', 'third']) {
     const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera();
-    const controller = { activeWeapon: 'missile', viewMode, laserColor: 'red', subsystems: { weapons: 100 } };
+    const controller = { combatEnabled: true, activeWeapon: 'missile', viewMode, laserColor: 'red', subsystems: { weapons: 100 } };
     const combat = new CombatSystem({ scene, camera, shipController: controller } as unknown as Engine,
       { playWeapon: vi.fn() } as unknown as SoundManager, {} as UIManager,
       { broadcastShoot: vi.fn(), players: new Map() } as unknown as MultiplayerManager, new THREE.Texture());
@@ -102,7 +102,7 @@ it('shows a missile from directly behind and uses the same launch position in bo
 it('plays one spatial sound for a remote shotgun volley and preserves its network color', () => {
   const scene = new THREE.Scene(), sound = { playWeapon: vi.fn() };
   const multiplayer = { toLocal: (p: number[]) => p, players: new Map(), localPlayerPosition: new THREE.Vector3() };
-  const combat = new CombatSystem({ scene } as Engine, sound as unknown as SoundManager, {} as UIManager, multiplayer as unknown as MultiplayerManager, new THREE.Texture());
+  const combat = new CombatSystem({ scene, shipController: { combatEnabled: true } } as unknown as Engine, sound as unknown as SoundManager, {} as UIManager, multiplayer as unknown as MultiplayerManager, new THREE.Texture());
   const data = { self: { id: 'pilot' }, shotGone: [], shots: [1, 2, 3].map(id => ({ id, owner: 'remote', p: [id, 0, -100], v: [0, 0, -3800], life: 1.4, weapon: 'shotgun', color: 'green' })) } as unknown as WorldSnapshot;
   combat.applyNetworkProjectiles(data); expect(sound.playWeapon).toHaveBeenCalledOnce(); expect(sound.playWeapon.mock.calls[0][0]).toBe('shotgun');
   expect(sound.playWeapon.mock.calls[0][3]).toBeInstanceOf(THREE.Vector3);

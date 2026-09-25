@@ -1,3 +1,5 @@
+import { AmbientScore } from './AmbientScore';
+import { MUSIC_EVENT, musicSettings } from './MusicSettings';
 import { Vector3, type Camera } from 'three';
 import { createEffectsBus, WeaponAudio, type SoundPoint, type WeaponSound } from './WeaponAudio';
 
@@ -7,12 +9,19 @@ export class SoundManager {
   private weapons: WeaponAudio | null = null;
   private readonly audioForward = new Vector3();
   private readonly audioUp = new Vector3();
-  private bgMusicStarted = false;
-  private ambientStarting = false;
-  private ambientStream: HTMLAudioElement | null = null;
-  private ambientOscillators: OscillatorNode[] = [];
-  private ambientGain: GainNode | null = null;
+  private music: AmbientScore | null = null;
 
+  constructor() {
+    window.addEventListener(MUSIC_EVENT, () => {
+      this.music?.setVolume(musicSettings.enabled ? musicSettings.volume : 0);
+      if (musicSettings.enabled) this.startAmbient();
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (!this.ctx) return;
+      if (document.hidden) void this.ctx.suspend().catch(() => undefined);
+      else if (this.ctx.state === 'suspended') void this.ctx.resume().catch(() => undefined);
+    });
+  }
   private init(): AudioContext {
     if (!this.ctx) {
       this.ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
@@ -26,119 +35,16 @@ export class SoundManager {
   }
 
   public startAmbient() {
-    if (this.bgMusicStarted || this.ambientStarting) return;
-
-    const configuredStreamUrl = import.meta.env.VITE_AMBIENT_STREAM_URL?.trim();
-    if (!configuredStreamUrl) {
-      this.startProceduralAmbient();
-      return;
-    }
-
-    this.ambientStarting = true;
-    const audio = new Audio(configuredStreamUrl);
-    audio.crossOrigin = 'anonymous';
-    audio.volume = 0.4;
-    this.ambientStream = audio;
-
-    const useProceduralFallback = () => {
-      if (this.ambientStream !== audio) return;
-      audio.pause();
-      this.ambientStream = null;
-      this.ambientStarting = false;
-      this.bgMusicStarted = false;
-      this.startProceduralAmbient();
-    };
-
-    audio.addEventListener('error', useProceduralFallback, { once: true });
-    void audio.play()
-      .then(() => {
-        this.ambientStarting = false;
-        this.bgMusicStarted = true;
-      })
-      .catch(useProceduralFallback);
-  }
-
-  private startProceduralAmbient() {
+    if (!musicSettings.enabled || document.hidden) return;
     const ctx = this.init();
-    if (this.ambientOscillators.length > 0) return;
-
-    if (ctx.state !== 'running') {
-      this.ambientStarting = true;
-      void ctx.resume()
-        .then(() => {
-          this.ambientStarting = false;
-          this.startProceduralAmbient();
-        })
-        .catch(() => {
-          this.ambientStarting = false;
-        });
-      return;
+    if (!this.music) {
+      this.music = new AmbientScore(ctx);
+      this.music.setVolume(musicSettings.volume);
+      this.music.start();
     }
-
-    this.bgMusicStarted = true;
-
-    const master = ctx.createGain();
-    master.gain.setValueAtTime(0.0001, ctx.currentTime);
-    master.gain.exponentialRampToValueAtTime(0.035, ctx.currentTime + 2.4);
-    master.connect(this.effectsBus!);
-
-    const filter = ctx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(420, ctx.currentTime);
-    filter.Q.setValueAtTime(0.7, ctx.currentTime);
-    filter.connect(master);
-
-    const voices: Array<{ frequency: number; gain: number; type: OscillatorType; detune: number }> = [
-      { frequency: 55, gain: 0.55, type: 'sine', detune: -5 },
-      { frequency: 82.41, gain: 0.24, type: 'sine', detune: 6 },
-      { frequency: 110, gain: 0.12, type: 'triangle', detune: -12 },
-    ];
-
-    for (const voice of voices) {
-      const oscillator = ctx.createOscillator();
-      const voiceGain = ctx.createGain();
-      oscillator.type = voice.type;
-      oscillator.frequency.setValueAtTime(voice.frequency, ctx.currentTime);
-      oscillator.detune.setValueAtTime(voice.detune, ctx.currentTime);
-      voiceGain.gain.setValueAtTime(voice.gain, ctx.currentTime);
-      oscillator.connect(voiceGain);
-      voiceGain.connect(filter);
-      oscillator.start();
-      this.ambientOscillators.push(oscillator);
-    }
-
-    const filterLfo = ctx.createOscillator();
-    const filterLfoGain = ctx.createGain();
-    filterLfo.type = 'sine';
-    filterLfo.frequency.setValueAtTime(0.035, ctx.currentTime);
-    filterLfoGain.gain.setValueAtTime(110, ctx.currentTime);
-    filterLfo.connect(filterLfoGain);
-    filterLfoGain.connect(filter.frequency);
-    filterLfo.start();
-    this.ambientOscillators.push(filterLfo);
-    this.ambientGain = master;
   }
 
-  public stopAmbient() {
-    if (this.ambientStream) {
-      this.ambientStream.pause();
-      this.ambientStream.removeAttribute('src');
-      this.ambientStream.load();
-      this.ambientStream = null;
-    }
-    for (const oscillator of this.ambientOscillators) {
-      oscillator.stop();
-      oscillator.disconnect();
-    }
-    this.ambientOscillators = [];
-    if (this.ambientGain) {
-      this.ambientGain.disconnect();
-      this.ambientGain = null;
-    }
-    this.ambientStarting = false;
-    this.bgMusicStarted = false;
-  }
-
+  public stopAmbient() { this.music?.stop(); this.music = null; }
   public playWeapon(kind: WeaponSound, color: 'red' | 'blue' = 'red', volume = .3, position?: SoundPoint) {
     const ctx = this.init();
     if (ctx.state === 'running') this.weapons!.play(kind, color, volume, position);
@@ -163,7 +69,7 @@ export class SoundManager {
   }
   public shiftOrigin(delta: SoundPoint) { this.weapons?.shiftOrigin(delta); }
   public stopWeapons() { this.weapons?.stop(); }
-  public snapshot() { return { state: this.ctx?.state ?? 'idle', weapons: this.weapons?.snapshot() ?? null }; }
+  public snapshot() { return { state: this.ctx?.state ?? 'idle', music: { ...this.music?.snapshot(), enabled: musicSettings.enabled, volume: musicSettings.volume }, weapons: this.weapons?.snapshot() ?? null }; }
 
   public playEngineStart() {
     const ctx = this.init();

@@ -12,14 +12,21 @@
 - [x] Publish the complete source revision with English documentation and an English workshop.
 - [x] Deploy that revision to the existing server and verify rollback references and neighbouring services.
 
+## Current milestone: orbital launch, game modes and music
+
+Implementation and verification: [single checklist](plans/launch-modes-music-2026-09-24.md). User accepted local review and authorized publication on September 25. [Release status](phases_archive/release-2026-09-25/README.md).
+
 ## Proposed next milestone: closed group alpha
 
 These items are proposals, not completed features.
 
-- [ ] Redesign the start screen as a responsive hangar.
+- [x] Redesign the start screen as a responsive orbital departure scene.
 - [ ] Integrate three user-supplied small ship models and three large ship models.
 - [ ] Persist ship selection and display it consistently to other players.
-- [ ] Implement server-enforced exploration and PvP rules.
+- [x] Implement server-enforced Exploration and PvP rules.
+- [ ] Replace generic connection failures with specific duplicate-tab, full-room and unavailable-server guidance.
+- [ ] Add a short first-flight introduction and clear initial exploration objectives.
+- [ ] Design friend rendezvous/navigation markers and validate shared exploration with the group.
 - [ ] Test first-time onboarding, reconnect, mobile controls and an extended multiplayer session.
 - [ ] Invite players in stages, keeping the 50-player cap and CPU headroom.
 - [ ] Collect feedback before expanding scope or moving hosting.

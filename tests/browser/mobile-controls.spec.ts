@@ -12,7 +12,7 @@ for (const [width, height, mode] of [[844, 390, 'LOW'], [568, 320, 'HIGH']] as c
     await page.setViewportSize({ width, height });
     const errors: string[] = []; page.on('pageerror', error => errors.push(error.message));
     await page.addInitScript(mode => localStorage.setItem('universe_gfx_mode', mode), mode);
-    await page.goto('/'); await page.locator('#btn-start-game').click();
+    await page.goto('/'); await page.locator('.mode-card:has(input[value="pvp"])').click(); await page.locator('#btn-start-game').click();
     await expect.poll(async () => !!(await snapshot(page)).world.ship).toBe(true);
     const cd = await context.newCDPSession(page);
     const rect = await page.locator('.mobile-joystick').boundingBox();

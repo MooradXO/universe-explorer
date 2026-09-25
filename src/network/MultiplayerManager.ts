@@ -7,6 +7,7 @@ import type { Triple } from '../world/space/WorldPosition';
 import { ColyseusConnection } from './ColyseusConnection';
 import type { ShipController } from '../core/ShipController';
 import type { TravelArrival, WorldSnapshot } from './shared/Protocol';
+import type { GameMode } from './shared/GameMode';
 
 export interface NetworkPlayer {
   id: string;
@@ -34,10 +35,11 @@ export class MultiplayerManager {
   }
   public toLocal(p: number[]) { const tuple: Triple = [p[0], p[1], p[2]]; return this.coordinateFrame?.fromAbsolute(tuple) ?? tuple; }
   public disconnect() {
-    this.online?.dispose(); this.online = null;
+    const leaving = this.online?.dispose(); this.online = null;
     if (this.channel) { void supabase.removeChannel(this.channel); this.channel = null; }
     if (this.botInterval) { clearInterval(this.botInterval); this.botInterval = null; }
     this.players.clear(); this.isSubscribed = false;
+    return leaving ?? Promise.resolve();
   }
   private receiveWorld(data: WorldSnapshot) {
     for (const id of data.gone) this.players.delete(id);
@@ -85,7 +87,7 @@ export class MultiplayerManager {
   public onSonarCallback?: (data: {id: string, posX: number, posY: number, posZ: number}) => void;
   public onVoiceSignalCallback?: (data: { senderId: string, signal: any }) => void;
 
-  public init(userId: string, username: string) {
+  public init(userId: string, username: string, mode: GameMode = 'pvp') {
     this.disconnect();
     this.myId = userId;
     this.myUsername = username;
@@ -103,10 +105,10 @@ export class MultiplayerManager {
           else if (type === 'misfire') window.dispatchEvent(new CustomEvent('WeaponMisfire'));
           else if (type === 'sonar') { const [posX, posY, posZ] = this.toLocal([data.posX, data.posY, data.posZ]); this.onSonarCallback?.({ ...data, posX, posY, posZ }); }
         },
-      });
+      }, mode);
       return;
     }
-    if (import.meta.env.VITE_LEGACY_REALTIME !== 'true') return;
+    if (mode === 'exploration' || import.meta.env.VITE_LEGACY_REALTIME !== 'true') return;
     if (!isSupabaseConfigured) return;
 
     this.channel = supabase.channel('room:universe', {

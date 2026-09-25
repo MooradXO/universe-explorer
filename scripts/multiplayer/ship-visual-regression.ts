@@ -22,7 +22,7 @@ try{for(const quality of ['HIGH','LOW']){
    page.on('pageerror',e=>errors.push(e.message));
    await page.route('**/matchmake/**',route=>new URL(route.request().url()).origin==='http://127.0.0.1:2577'?route.continue():route.abort('blockedbyclient'));
    await page.addInitScript(q=>localStorage.setItem('universe_gfx_mode',q),quality);
-   await page.goto(base);await page.locator('#btn-start-game').click();
+   await page.goto(base);await page.locator('.mode-card:has(input[value="pvp"])').click(); await page.locator('#btn-start-game').click();
    await page.waitForFunction(()=>(window as any).__UNIVERSE_DEBUG__?.snapshot().realtime.subscribed);
   }
   const [ap,bp]=[...running.room.game.pilots.values()];

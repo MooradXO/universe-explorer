@@ -91,6 +91,7 @@ export class CombatSystem extends ProjectileVisuals {
   }
 
   public applyNetworkProjectiles(data: WorldSnapshot) {
+    if (!this.engine.shipController.combatEnabled) return;
     const gone = new Set(data.shotGone);
     const heard = new Set<string>();
     for (let i = this.lasers.length - 1; i >= 0; i--) if (gone.has(this.lasers[i].networkId!)) {
@@ -371,6 +372,7 @@ export class CombatSystem extends ProjectileVisuals {
   }
 
   public shootLaser(userShipGroup: THREE.Group | null, authProfileId: string | undefined, shipVelocity: THREE.Vector3) {
+    if (!this.engine.shipController.combatEnabled) return;
     if (!userShipGroup) return;
 
     if (this.multiplayer.authoritative) {

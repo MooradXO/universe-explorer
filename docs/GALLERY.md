@@ -2,6 +2,12 @@
 
 Actual screenshots captured from the September 24 build in isolated local browser sessions. These are working game/editor screens, not concept mockups. The English workshop uses the same rendering components as gameplay.
 
+## Orbital launch
+
+![Orbital launch with Exploration and PvP selection, pilot name and music](images/launch.png)
+
+Choose a peaceful or combat session, name your pilot and set the ambient music before departure.
+
 ## Flight and HUD
 
 ![Third-person flight near Saturn with the Titan & Copper HUD](images/flight.png)

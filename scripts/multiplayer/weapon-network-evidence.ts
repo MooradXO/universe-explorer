@@ -19,7 +19,7 @@ const snapshot = () => page.evaluate(() => JSON.parse(JSON.stringify((window as 
 const capture = async (stage: string) => { const client = await snapshot(); samples.push({ stage, time: isolated.room.game.time, hits: isolated.room.game.hits, client }); return client; };
 try {
   await page.addInitScript(mode => localStorage.setItem('universe_gfx_mode', mode), mode);
-  await page.goto('http://127.0.0.1:3012/'); await page.locator('#btn-start-game').click();
+  await page.goto('http://127.0.0.1:3012/'); await page.locator('.mode-card:has(input[value="pvp"])').click(); await page.locator('#btn-start-game').click();
   await page.waitForFunction(() => (window as any).__UNIVERSE_DEBUG__?.snapshot().realtime.subscribed);
   const game = isolated.room.game, pilot = [...game.pilots.values()][0];
   // An isolated fixture in empty space, beyond the Mars arrival corridor.

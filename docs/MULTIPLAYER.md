@@ -1,6 +1,6 @@
 # Authoritative multiplayer
 
-The online game uses Colyseus and one canonical `universe-v1` room. **Production admits 50 players.** The configurable local ceiling is 100; it is not a guarantee of VPS capacity.
+The current source uses two canonical Colyseus rooms: `universe-v1` (PvP, preserving its existing identity) and `universe-exploration-v1` (peaceful Exploration). They share one configured player cap, including disconnected players in their reconnect grace period. The production admission cap is 50; the configurable local ceiling of 100 is not a guarantee of VPS capacity. See the [September 25 release record](phases_archive/release-2026-09-25/README.md) for deployment status.
 
 ## Local setup
 
@@ -19,16 +19,16 @@ Server variables: MULTIPLAYER_HOST, MULTIPLAYER_PORT, MULTIPLAYER_ORIGINS, MULTI
 
 ## Simulation
 
-- One room contains active star-system simulations; inactive systems are released. No hidden duplicate universes are created when full.
+- Each mode contains active star-system simulations; inactive systems are released. No extra rooms are created when full. Admission is checked synchronously across both modes after authentication, including concurrent joins.
 - Shared flight mathematics runs at 50 Hz; snapshots at 10 Hz per player, staggered over five steps.
 - Local prediction replays unacknowledged inputs. Epoch changes handle travel, reconnect and queue overflow without permanently freezing controls.
 - Interest radius: 16,000 units; exit radius: 18,000. One unit is 10 km. Other systems are not broadcast, and stationary nearby ships remain visible.
 - Protocol v3 uses short IDs, changed metadata and binary records: 24 bytes/entity movement, 36 bytes/projectile. Remote positions use observer-relative 0.1-unit quantization; server physics and acknowledged self state retain full precision.
 - Movement limits, shots, swept collision, damage, shields, death, rewards, repair and destinations are server-controlled. Client hits and positions are untrusted.
 - Projectiles are sent on creation/removal, with homing corrections. Damage runs each step; hit notifications are aggregated per target for the next snapshot.
-- SpawnBots creates shared bots, up to 100 across the universe, at most once per minute. Bots add load beyond human players.
+- In PvP, SpawnBots creates shared bots, up to 100, at most once per minute when the server allows it. Exploration rejects weapons and hostile bots on the server and does not apply combat damage.
 - Cruise uses shared physical obstacles. Warp takes 2.4 seconds and requires a validated destination. Damage may interrupt travel.
-- Text chat is global. Sonar and voice signalling follow proximity/system rules. WebRTC audio travels between browsers, not through game WebSockets.
+- Text chat stays within a mode. Sonar and voice signalling also follow proximity/system rules. WebRTC audio travels between browsers, not through game WebSockets.
 - Voice signalling uses a 512-message queue, paced at approximately 13/second, separate from flight input. Three seconds without snapshots blocks controls and triggers reconnect.
 
 Physics, appearance and survey versions are independent. Older saves without metadata retain physical version 1. Unsupported physics is rejected during handshake; visual updates need not change physical positions, radii or colliders.
@@ -37,7 +37,9 @@ Physics, appearance and survey versions are independent. Older saves without met
 
 The server issues a random bearer token, stored separately from offline saves. Server storage retains token hashes and authoritative state. Client IDs/localStorage XYZ cannot claim or teleport another ship. New guests start at the base; offline positions are not imported as trusted online state.
 
-Disconnected ships remain present and vulnerable for 20 seconds. Reload/reconnect restores identity; longer absences use stored state. Flushes occur every 30 seconds, on departure and graceful shutdown; crashes can lose up to the last 30 seconds. Limits: 10,000 guests, 30-day inactivity retention.
+Disconnected ships remain present for 20 seconds and are vulnerable in PvP. Reload/reconnect restores identity and mode; longer absences use stored state. One guest cannot occupy both modes at once. The old `state` field remains the PvP save; `exploration` stores the peaceful save independently. Offline positions, visited bodies and survey journals are also scoped by mode, preserving existing PvP storage keys. Switching modes after reloading releases the same tab's former reconnect reservation before joining.
+
+Flushes occur every 30 seconds, on departure and graceful shutdown; crashes can lose up to the last 30 seconds. Limits: 10,000 guests, 30-day inactivity retention.
 
 Never publish guest files, browser storage, reconnect query tokens or process environments.
 
@@ -47,6 +49,7 @@ Never publish guest files, browser storage, reconnect query tokens or process en
 npm test
 npm run multiplayer:check
 npm run multiplayer:test
+node --import tsx scripts/multiplayer/modes-integration.ts
 npm run multiplayer:browser
 ```
 

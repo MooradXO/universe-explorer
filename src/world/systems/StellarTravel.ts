@@ -13,6 +13,7 @@ import { SYSTEM_CONFIG } from './SystemConfig';
 import { systemObstacles } from '../generation/SystemPhysics';
 import { GENERATOR } from '../generation/GeneratorContract';
 import type { SelfSnapshot, TravelArrival } from '../../network/shared/Protocol';
+import type { GameMode } from '../../network/shared/GameMode';
 
 interface TravelHost {
   position(): WorldPosition;
@@ -42,7 +43,9 @@ export class StellarTravel {
   private networkWarpTitle = 'Next system';
   private status = 'Earth Base. Choose a destination or open the star map.';
   private visited = new Set<string>();
-  private journal=readSurveyJournal();
+  private journal: ReturnType<typeof readSurveyJournal>;
+  private journalKey: string;
+  private visitedKey: string;
   private ui: SystemNavigationUI;
   private hudTime = 1;
   private obstacles: FlightObstacle[] = [];
@@ -50,7 +53,10 @@ export class StellarTravel {
   private saveTimer = 0;
   private preserveUnsupportedSave=false;
   constructor(private engine: Engine, private host: TravelHost, private playerId: string,
-    private network?: (type: string, data?: Record<string, unknown>) => boolean) {
+    private network?: (type: string, data?: Record<string, unknown>) => boolean, private mode: GameMode = 'pvp') {
+    const suffix = mode === 'pvp' ? '' : ':exploration';
+    this.journalKey = SURVEY_KEY + suffix; this.visitedKey = 'universe:colyseus:visited' + suffix;
+    this.journal = readSurveyJournal(this.journalKey);
     this.ui = new SystemNavigationUI(id => { this.selectDestination(id); },
       () => this.toggleCruise(), () => this.survey());
     const options = { signal: this.events.signal };
@@ -75,12 +81,12 @@ export class StellarTravel {
   }
   start() {
     if (this.network) {
-      try { const saved: unknown = JSON.parse(localStorage.getItem('universe:colyseus:visited') ?? '[]');
+      try { const saved: unknown = JSON.parse(localStorage.getItem(this.visitedKey) ?? '[]');
         if (Array.isArray(saved)) this.visited = new Set(saved.filter((id): id is string => typeof id === 'string' && id.length < 128).slice(-128)); } catch { /* private storage */ }
       this.enter(SOLAR_SYSTEM, worldPosition(undefined, this.baseArrival())); return;
     }
     let saved = null;
-    try { const raw=localStorage.getItem(flightSaveKey(this.playerId));this.preserveUnsupportedSave=unsupportedFlightSave(raw);saved=readFlightSave(raw); } catch { /* private storage */ }
+    try { const raw=localStorage.getItem(flightSaveKey(this.playerId, this.mode));this.preserveUnsupportedSave=unsupportedFlightSave(raw);saved=readFlightSave(raw); } catch { /* private storage */ }
     if (saved) {
       this.visited = new Set(saved.visited);
       this.enter(systemFromSave(saved), saved.address.local);
@@ -218,11 +224,11 @@ export class StellarTravel {
     this.status = `Orbital point recorded: ${body.name}. ${body.note}`; this.save();
   }
   save(): boolean {
-    try{localStorage.setItem(SURVEY_KEY,this.journal.serialize());}catch{/* Flight saves remain independent. */}
+    try{localStorage.setItem(this.journalKey,this.journal.serialize());}catch{/* Flight saves remain independent. */}
     if (this.engine.shipController.isDead || this.preserveUnsupportedSave) return true;
-    if (this.network) { try { localStorage.setItem('universe:colyseus:visited', JSON.stringify([...this.visited])); } catch { /* private storage */ } return true; }
+    if (this.network) { try { localStorage.setItem(this.visitedKey, JSON.stringify([...this.visited])); } catch { /* private storage */ } return true; }
     try {
-      localStorage.setItem(flightSaveKey(this.playerId), JSON.stringify({ version: 1, generator: GENERATOR, address: stellarAddress(this.system.anchor, this.host.position()),
+      localStorage.setItem(flightSaveKey(this.playerId, this.mode), JSON.stringify({ version: 1, generator: GENERATOR, address: stellarAddress(this.system.anchor, this.host.position()),
         spectrum: this.system.spectrum, rotation: this.host.rotation(), visited: [...this.visited] }));
     } catch { this.status = 'The browser could not save your position. Free some local storage space.'; }
     return true;

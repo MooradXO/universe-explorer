@@ -15,7 +15,7 @@ const snapshot = () => page.evaluate(() => JSON.parse(JSON.stringify((window as 
 try {
   const save = { version: 1, address: stellarAddress(SOLAR_SYSTEM.anchor, worldPosition(undefined, bodyArrival(SOLAR_SYSTEM.bodies[3]))), spectrum: SOLAR_SYSTEM.spectrum, rotation: [0, 1, 0, 0], visited: [] };
   await page.addInitScript(({ mode, save }) => { localStorage.setItem('universe_gfx_mode', mode); localStorage.setItem('universe:stellar-flight:v1:guest', JSON.stringify(save)); }, { mode, save });
-  await page.goto(process.env.PREVIEW_URL || 'http://127.0.0.1:3014/'); await page.locator('#btn-start-game').click(); await page.waitForTimeout(1300);
+  await page.goto(process.env.PREVIEW_URL || 'http://127.0.0.1:3014/'); await page.locator('.mode-card:has(input[value="pvp"])').click(); await page.locator('#btn-start-game').click(); await page.waitForTimeout(1300);
   for (const view of ['third', 'first']) {
     if (view === 'first') { await page.keyboard.press('v'); await page.waitForTimeout(600); }
     assert.equal((await snapshot()).world.ship.viewMode, view);

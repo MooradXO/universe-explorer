@@ -22,7 +22,6 @@ import { CombatSystem } from './CombatSystem';
 import { EffectsManager } from './EffectsManager';
 import { ApprovedFlightFX } from './visuals/ApprovedFlightFX';
 import { BlackHole } from './BlackHole';
-import { CockpitHUD } from './CockpitHUD';
 import { BotAI } from './BotAI';
 import { Settings } from '../core/Settings';
 import type { VoiceChatManager } from '../network/VoiceChatManager';
@@ -61,7 +60,6 @@ export class WorldBuilder {
   private effects!: EffectsManager;
   private flightFX: ApprovedFlightFX | null = null;
   private blackHole!: BlackHole;
-  private cockpitHUD!: CockpitHUD;
   private botAI!: BotAI;
   public voiceChat: VoiceChatManager | null = null;
   private voiceChatLoadVersion = 0;
@@ -153,7 +151,6 @@ export class WorldBuilder {
     this.cinematicSystem = new CinematicSystem(this.engine, this.soundManager);
     this.cinematicSystem.initCinematicObjects();
 
-    this.cockpitHUD = new CockpitHUD(this.engine.camera, this.engine.shipController);
     this.botAI = new BotAI(this.engine.scene, this.multiplayer, this.combatSystem);
     this.engine.shipController.onRespawn = () => {
       if (this.travel) { this.travel.returnToBase(true); return; }
@@ -163,6 +160,7 @@ export class WorldBuilder {
   }
 
   private firePrimaryWeapon() {
+    if (!this.engine.shipController.combatEnabled) return;
     this.travel?.stopCruise('Обычный полёт.');
     if (this.engine.shipController.inputBlocked) return;
     this.combatSystem.shootLaser(
@@ -173,6 +171,7 @@ export class WorldBuilder {
   }
 
   private setupGameplayEvents() {
+    window.addEventListener('StartAmbient', () => this.soundManager.startAmbient());
     window.addEventListener('keydown', () => {
       if (!this.engine.shipController.isTyping) this.soundManager.startAmbient();
     });
@@ -205,11 +204,12 @@ export class WorldBuilder {
       this.isPrimaryFireHeld = false;
     });
 
-    window.addEventListener('mousedown', () => {
+    window.addEventListener('pointerdown', () => {
       this.soundManager.startAmbient();
     });
 
     window.addEventListener('SpawnBots', () => {
+      if (!this.engine.shipController.combatEnabled) return;
       if (this.userShipGroup) {
         if (this.multiplayer.authoritative) { this.multiplayer.action('bots'); return; }
         this.botAI.spawnBots(100, this.userShipGroup.position);
@@ -306,6 +306,7 @@ export class WorldBuilder {
   }
 
   public update(dt: number) {
+    if (!this.userShipGroup) return;
     this.elapsed += dt;
     if (this.multiplayer.authoritative && !this.multiplayer.connected) this.travel?.connectionLost();
     this.travel?.update(dt);
@@ -336,7 +337,7 @@ export class WorldBuilder {
     if (shouldUpdateSpatial) this.spatialUpdateAccumulator = 0;
 
     // Cosmos and Cinematic updates
-    this.cinematicSystem.update(dt, this.elapsed);
+    // Engine updates the launch scene while it owns the overlay view.
 
     if (this.engine.shipController && this.userShipGroup) {
         if (shouldRefreshHud) {
@@ -453,17 +454,7 @@ export class WorldBuilder {
       }
     }
 
-    if (this.userShipGroup) {
-      const isFirstPerson = this.engine.shipController.viewMode === 'first';
-      if (this.cockpitHUD.group.visible !== isFirstPerson) {
-        this.cockpitHUD.setVisible(isFirstPerson);
-      }
-      if (shouldUpdateSpatial) this.cockpitHUD.update(spatialDelta, false);
-    } else {
-      if (this.cockpitHUD.group.visible) {
-        this.cockpitHUD.setVisible(false);
-      }
-    }
+    // Both camera views use the regular flight HUD; no separate 3D cockpit.
 
     // Raycasting Throttled
   }
@@ -575,7 +566,10 @@ export class WorldBuilder {
     
     this.engine.shipController.laserColor = this.combatSystem.laserColor;
 
-    this.multiplayer.init(auth.profile.id, auth.profile.username || 'Pilot');
+    this.engine.shipController.combatEnabled = auth.mode === 'pvp';
+    document.body.dataset.gameMode = auth.mode;
+    window.dispatchEvent(new CustomEvent('GameModeChanged', { detail: auth.mode }));
+    this.multiplayer.init(auth.profile.id, auth.profile.username || 'Pilot', auth.mode);
     this.multiplayer.onIdentity = id => { if (auth.profile) auth.profile.id = id; };
     this.multiplayer.onArrival = data => this.travel?.applyArrival(data);
     this.multiplayer.onWorld = data => {
@@ -818,7 +812,7 @@ export class WorldBuilder {
         },
         combatNearby: () => [...this.multiplayer.players.values()].some(player => player.id.startsWith('bot_') && player.position.distanceToSquared(group.position) < 6000 ** 2) ||
           this.combatSystem.lasers.some(laser => laser.mesh.position.distanceToSquared(group.position) < 3000 ** 2),
-      }, auth.profile.id, this.multiplayer.authoritative ? (type, data) => this.multiplayer.action(type, data) : undefined);
+      }, auth.profile.id, this.multiplayer.authoritative ? (type, data) => this.multiplayer.action(type, data) : undefined, auth.mode);
       this.travel.start();
     }
     if (this.smokeState && auth.profile.id.startsWith('guest_')) {
@@ -1034,7 +1028,7 @@ export class WorldBuilder {
   public removeUserShip() {
     this.soundManager.stopWeapons();
     this.travel?.dispose(); this.travel = null;
-    this.multiplayer.disconnect(); this.engine.shipController.networkDrive = undefined; this.engine.shipController.networkAction = undefined;
+    const leaving = this.multiplayer.disconnect(); this.engine.shipController.networkDrive = undefined; this.engine.shipController.networkAction = undefined;
     this.engine.shipController.setInputBlocked('network', false);
     this.flightFX?.dispose(); this.flightFX = null;
     this.engine.shipController.clearShip();
@@ -1052,6 +1046,7 @@ export class WorldBuilder {
       this.engine.scene.remove(this.userShipGroup);
       this.userShipGroup = null;
     }
+    return leaving;
   }
 
   private handleLOD2Sprite(id: string, p: any, show: boolean) {
@@ -1125,7 +1120,7 @@ export class WorldBuilder {
 
 
   public playStartCinematic() {
-    this.cinematicSystem.playStartCinematic();
+    return this.cinematicSystem.playStartCinematic();
   }
 
   public resetStartCinematic() {

@@ -1,0 +1,37 @@
+{
+  "results": [
+    {
+      "quality": "HIGH",
+      "mode": "pvp",
+      "bothViews": true,
+      "metersInViewport": true,
+      "boostUpdatesInFirstPerson": true,
+      "repeatedToggleAndMenu": true
+    },
+    {
+      "quality": "HIGH",
+      "mode": "exploration",
+      "bothViews": true,
+      "metersInViewport": true,
+      "boostUpdatesInFirstPerson": true,
+      "repeatedToggleAndMenu": true
+    },
+    {
+      "quality": "LOW",
+      "mode": "pvp",
+      "bothViews": true,
+      "metersInViewport": true,
+      "boostUpdatesInFirstPerson": true,
+      "repeatedToggleAndMenu": true
+    },
+    {
+      "quality": "LOW",
+      "mode": "exploration",
+      "bothViews": true,
+      "metersInViewport": true,
+      "boostUpdatesInFirstPerson": true,
+      "repeatedToggleAndMenu": true
+    }
+  ],
+  "errors": []
+}

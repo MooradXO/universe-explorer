@@ -5,6 +5,7 @@ Start with the guide for your task. Current guides describe the present source; 
 | I want to… | Read |
 | --- | --- |
 | Run the project and take a first flight | [Getting started](GETTING_STARTED.md) |
+| Choose a game mode, camera or music settings | [Game modes and music](GAME_MODES.md) |
 | Create a planet or complete scene | [Universe workshop](WORKSHOP.md) |
 | Understand how the systems fit together | [Architecture](ARCHITECTURE.md) |
 | Run authoritative multiplayer | [Multiplayer](MULTIPLAYER.md) |

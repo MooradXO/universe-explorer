@@ -1,0 +1,54 @@
+{
+  "localOnly": true,
+  "deployed": false,
+  "unitTests": 152,
+  "testFiles": 33,
+  "browser": [
+    {
+      "profile": "HIGH and LOW",
+      "frames": 360,
+      "minimumPlanetClearance": 1397.8830993595298,
+      "modes": true,
+      "peacefulNoFire": true,
+      "pvpFire": true,
+      "exitAndSwitch": true,
+      "reloadAndSwitch": true,
+      "musicPersistence": true
+    },
+    {
+      "portraitMenu": true,
+      "landscapeFlight": true,
+      "reducedMotion": true,
+      "exitDuringDisconnect": true,
+      "errors": []
+    }
+  ],
+  "audio": {
+    "seconds": 50,
+    "sampleRate": 24000,
+    "peak": 0.17132043838500977,
+    "rms": 0.02252209499304368,
+    "stereoDifference": 0.01935789671527749,
+    "phraseRms": [
+      0.034728136863905586,
+      0.020409454392690214,
+      0.015607490733355728,
+      0.007891974626229894,
+      0.039367453847344906,
+      0.0231351239245716,
+      0.01432448868546966,
+      0.010014907215279726,
+      0.035634928421162546,
+      0.020316276201023425,
+      0.016633051574098275,
+      0.007886389201653266
+    ]
+  },
+  "twoThumbTests": 2,
+  "modeIntegration": true,
+  "existingNetworkIntegration": true,
+  "types": true,
+  "build": true,
+  "protectedArtifactsUnchanged": true,
+  "preview": "http://127.0.0.1:3032/"
+}

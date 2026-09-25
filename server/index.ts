@@ -8,6 +8,7 @@ import { UniverseRoom } from './UniverseRoom';
 import { GuestStore } from './GuestStore';
 import { catalogueResolver } from './Catalog';
 import { RateLimit } from './RateLimit';
+import { GAME_MODES, roomForMode } from '../src/network/shared/GameMode';
 
 export async function startServer(options: { port?: number; host?: string; store?: string | null; catalogue?: string; origins?: string[]; allowBots?: boolean; maxPlayers?: number } = {}) {
   const port = options.port ?? Number(process.env.MULTIPLAYER_PORT || 2567), host = options.host ?? process.env.MULTIPLAYER_HOST ?? '127.0.0.1';
@@ -40,11 +41,12 @@ export async function startServer(options: { port?: number; host?: string; store
       res.setHeader('Access-Control-Allow-Credentials', 'true');
       res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
       if (req.method === 'OPTIONS') { respond(204); return; }
-      if (path === '/health') { respond(200, { ok: !!UniverseRoom.instance, version: NET.version }); return; }
+      if (path === '/health') { respond(200, { ok: UniverseRoom.instances.size === GAME_MODES.length, version: NET.version, modes: GAME_MODES }); return; }
       if (path === '/metrics' && !req.headers['x-forwarded-for'] && ['127.0.0.1', '::1', '::ffff:127.0.0.1'].includes(req.socket.remoteAddress ?? '')) {
-        respond(200, UniverseRoom.instance?.metrics() ?? {}); return;
+        const modes = [...UniverseRoom.instances.values()].map(room => room.metrics());
+        respond(200, { ...UniverseRoom.instance?.metrics(), players: modes.reduce((sum, room) => sum + room.players, 0), maxPlayers, modes }); return;
       }
-      if (req.method !== 'POST' || !new RegExp(`^/matchmake/(joinById|reconnect)/${NET.roomId}$`).test(path ?? '')) { respond(404); return; }
+      if (req.method !== 'POST' || !GAME_MODES.some(mode => new RegExp(`^/matchmake/(joinById|reconnect)/${roomForMode(mode)}$`).test(path ?? ''))) { respond(404); return; }
       if (!req.headers['content-length'] || Number(req.headers['content-length']) > 16384) { respond(413); req.resume(); return; }
       const ip = req.socket.remoteAddress ?? 'unknown'; let limiter = requests.get(ip);
       if (!limiter) { if (requests.size > 10000) requests.delete(requests.keys().next().value!); limiter = new RateLimit(); requests.set(ip, limiter); }
@@ -53,13 +55,13 @@ export async function startServer(options: { port?: number; host?: string; store
       if (!limiter.accept('join', 150, 5, Date.now() / 1000)) { respond(429); return; }
       for (const handler of handlers) handler.call(http, req, res);
   });
-  await matchMaker.createRoom('universe', { canonical: true });
-  return { server, room: UniverseRoom.instance!, async close() { await server.gracefullyShutdown(false); guests.flush(); catalog.close(); } };
+  for (const mode of GAME_MODES) await matchMaker.createRoom('universe', { canonical: true, mode });
+  return { server, room: UniverseRoom.instance!, rooms: UniverseRoom.instances, async close() { await server.gracefullyShutdown(false); guests.flush(); catalog.close(); } };
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const running = await startServer();
-  console.log(`Multiplayer listening on ${process.env.MULTIPLAYER_HOST ?? '127.0.0.1'}:${process.env.MULTIPLAYER_PORT ?? 2567}; one universe, max ${running.room.maxClients} players.`);
+  console.log(`Multiplayer listening on ${process.env.MULTIPLAYER_HOST ?? '127.0.0.1'}:${process.env.MULTIPLAYER_PORT ?? 2567}; Exploration + PvP, max ${running.room.maxClients} players total.`);
   const stop = async () => { await running.close(); process.exit(0); };
   process.once('SIGINT', stop); process.once('SIGTERM', stop);
 }

@@ -3,7 +3,7 @@ import { test, expect, type Page } from '@playwright/test';
 async function enter(page: Page, mobile: boolean) {
   await page.addInitScript(mode => localStorage.setItem('universe_gfx_mode', mode), mobile ? 'LOW' : 'HIGH');
   await page.goto('/');
-  await page.locator('#btn-start-game').click();
+  await page.locator('.mode-card:has(input[value="pvp"])').click(); await page.locator('#btn-start-game').click();
   await page.locator('#start-screen').waitFor({ state: 'detached' });
   await expect.poll(() => page.evaluate(() => !!window.__UNIVERSE_DEBUG__.snapshot().world.ship)).toBe(true);
 }

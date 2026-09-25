@@ -20,4 +20,4 @@ export class SurveyJournal {
   snapshot(){return [...this.records.values()];}
   serialize(){return JSON.stringify({version:1,records:this.snapshot()});}
 }
-export function readSurveyJournal(){try{return new SurveyJournal(localStorage.getItem(SURVEY_KEY));}catch{return new SurveyJournal();}}
+export function readSurveyJournal(key = SURVEY_KEY){try{return new SurveyJournal(localStorage.getItem(key));}catch{return new SurveyJournal();}}

@@ -5,7 +5,7 @@ Canonical repository: https://github.com/MooradXO/universe-explorer, branch main
 ## Source release
 
 - [x] Current gameplay, Colyseus, generation, workshop and regression sources are included.
-- [x] Documentation distinguishes implemented features from proposed ship selection and game modes.
+- [x] Documentation distinguishes implemented game modes from proposed ship selection and alpha improvements.
 - [x] Existing resource attribution and license texts are retained.
 - [x] Local .env files, databases, guest state, builds and recordings are excluded.
 - [x] Production dependency audit reports no known vulnerabilities at preparation time.
@@ -23,4 +23,4 @@ Canonical repository: https://github.com/MooradXO/universe-explorer, branch main
 - [x] Preserve the production cap of 50.
 - [x] Verify live menu/assets/catalogue/health and document rollback.
 
-The old Inaklarnet repository is not a publication destination. Source uses MIT; ship/station models and other resources have their own terms. Generic ambient streaming remains opt-in and requires permission; the build includes no SomaFM stream.
+The old Inaklarnet repository is not a publication destination. Source uses MIT; ship/station models and other resources have their own terms. The current local music score uses Web Audio synthesis without an external stream or recording.

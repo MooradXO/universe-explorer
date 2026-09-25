@@ -93,7 +93,8 @@ test('normal guest entry and identical planets in fresh independent clients', as
   });
   await page.goto('/');
   await expect(page.locator('#start-screen')).toBeVisible();
-  await expect(page.locator('#start-screen button')).toHaveCount(1);
+  await expect(page.locator('#start-screen input[name="game-mode"]')).toHaveCount(2);
+  await expect(page.locator('input[value="exploration"]')).toBeChecked();
   await expect(page.locator('#start-screen')).not.toContainText(/GitHub|PILOT ACCESS|LAUNCH CLEARANCE/);
   await page.locator('#btn-start-game').press('Enter');
 

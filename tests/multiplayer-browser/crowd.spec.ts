@@ -11,7 +11,7 @@ test('one browser receives and renders a 100-player moving battle', async ({ pag
   let timer: ReturnType<typeof setInterval> | undefined;
   try {
     await page.addInitScript(mode => localStorage.setItem('universe_gfx_mode', mode), info.project.name);
-    await page.goto('/'); await page.locator('#btn-start-game').click();
+    await page.goto('/'); await page.locator('.mode-card:has(input[value="pvp"])').click(); await page.locator('#btn-start-game').click();
     const snapshot = () => page.evaluate(() => JSON.parse(JSON.stringify(window.__UNIVERSE_DEBUG__.snapshot())));
     await expect.poll(async () => (await snapshot()).realtime.subscribed).toBe(true);
     for (let i = 0; i < 99; i += 10) await Promise.all(Array.from({ length: Math.min(10, 99 - i) }, async (_, n) => {

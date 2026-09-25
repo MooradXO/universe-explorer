@@ -18,7 +18,7 @@ try {
     const position = body.position.map((v, i) => v + (i === 2 ? body.radius + 1800 : 0));
     const save = { version: 1, address: stellarAddress(SOLAR_SYSTEM.anchor, worldPosition(undefined, position)), spectrum: SOLAR_SYSTEM.spectrum, rotation: [0, 0, 0, 1], visited: [] };
     await page.addInitScript(({ mode, save }) => { localStorage.setItem('universe_gfx_mode', mode); localStorage.setItem('universe:stellar-flight:v1:guest', JSON.stringify(save)); }, { mode, save });
-    await page.goto(process.env.PREVIEW_URL || 'http://127.0.0.1:3014/'); await page.locator('#btn-start-game').click();
+    await page.goto(process.env.PREVIEW_URL || 'http://127.0.0.1:3014/'); await page.locator('.mode-card:has(input[value="pvp"])').click(); await page.locator('#btn-start-game').click();
     await page.waitForTimeout(1800); await page.keyboard.press('v'); await page.waitForTimeout(450);
     const snap = () => page.evaluate(() => window.__UNIVERSE_DEBUG__.snapshot());
     const idle = await snap(); await page.screenshot({ path: `${root}/${mode}-jupiter.png` });

@@ -1,6 +1,8 @@
 import { Settings } from '../core/Settings';
 import { hudPanels, isTextEntry } from './HudPanels';
 import { hudIcon, windowHeader, type HudIcon } from './HudArt';
+import { mountMusicControls } from './MusicControls';
+import { modeLabel, type GameMode } from '../network/shared/GameMode';
 
 interface CommandBarActions { onWarpToBase: () => void; onToggleHangar: () => void; onToggleComms: () => void; }
 interface LeaderboardEntry { username?: string; bounty?: number; }
@@ -34,7 +36,19 @@ export class TopCommandBarUI {
       <div class="system-actions">
         <button type="button" data-action="manual"><strong>FLIGHT MANUAL</strong><small>Flight, weapons and navigation controls</small></button>
         <button type="button" data-action="graphics"><strong>GRAPHICS · ${Settings.graphicsMode}</strong><small>Change profile and restart</small></button>
+        <div class="system-music"></div>
+        <button type="button" data-action="launch"><strong>RETURN TO LAUNCH SCREEN</strong><small>Leave this session and choose a game mode</small></button>
       </div>`;
+    mountMusicControls(systemPanel.querySelector('.system-music')!, 'flight-music-volume');
+    systemPanel.querySelector('[data-action="launch"]')!.addEventListener('click', () => window.dispatchEvent(new Event('ExitToLaunch')));
+    const modeIndicator = document.createElement('span'); modeIndicator.className = 'flight-mode-indicator';
+    layer.append(modeIndicator);
+    window.addEventListener('GameModeChanged', event => {
+      const mode = (event as CustomEvent<GameMode>).detail;
+      modeIndicator.textContent = mode === 'exploration' ? 'EXPLORATION · WEAPONS SAFE' : 'PvP · WEAPONS LIVE';
+      system.title = `${modeLabel(mode)} · flight settings`;
+      bounties.hidden = mode === 'exploration';
+    });
     layer.append(systemPanel); hudPanels.register('system', { element: systemPanel, trigger: system });
     systemPanel.querySelector('.hud-close')!.addEventListener('click', () => hudPanels.close('system'));
 
@@ -79,6 +93,7 @@ export class TopCommandBarUI {
     comms.onclick = actions.onToggleComms;
     map.onclick = () => window.dispatchEvent(new CustomEvent('OpenStarMap'));
     window.addEventListener('keydown', event => {
+      if (document.body.dataset.gameMode === 'exploration') return;
       if (event.key !== 'Tab' || hudPanels.active || isTextEntry(event.target) || (event.target instanceof HTMLElement && event.target.closest('button,[role="combobox"]')) || layer.style.display === 'none') return;
       event.preventDefault(); hudPanels.open('bounties', bounties);
     });

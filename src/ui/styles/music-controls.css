@@ -1,0 +1,11 @@
+.music-controls { display: flex; align-items: center; gap: 12px; font: 11px/1.4 'Inter', sans-serif; color: #9dabb5; }
+.music-controls .music-toggle { display: flex; gap: 8px; align-items: center; padding: 7px 0; border: 0; background: transparent; color: #d2dce0; font: inherit; white-space: nowrap; cursor: pointer; }
+.music-controls .music-toggle > span:first-child { font-size: 18px; color: #dab38c; }
+.music-controls input[type='range'] { width: 85px; min-width: 50px; height: 24px; accent-color: #cca379; cursor: pointer; }
+.music-controls output { min-width: 31px; font-variant-numeric: tabular-nums; }
+.music-volume-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.music-controls button:focus-visible, .music-controls input:focus-visible { outline: 1px solid #e6bc94; outline-offset: 4px; }
+.system-actions .music-controls { flex-wrap: wrap; padding: 12px; border: 1px solid #364651; }
+body.titan-ui .system-actions .music-controls .music-toggle { display: flex; padding: 0; width: auto; min-height: 28px; background: transparent; border: 0; box-shadow: none; font: 11px 'Inter', sans-serif; }
+.command-button[hidden] { display: none !important; }
+body[data-game-mode='exploration'] .hangar-weapons, body[data-game-mode='exploration'] h3:has(+ .hangar-weapons) { display: none; }

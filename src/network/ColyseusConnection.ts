@@ -8,6 +8,7 @@ import { FlightModel } from './shared/FlightModel';
 import { NET, type PilotInput, type SelfSnapshot, type TravelArrival, type WorldSnapshot } from './shared/Protocol';
 import { WorldDecoder, type PackedWorld } from './shared/WorldCodec';
 import { NetworkAttitude } from './NetworkAttitude';
+import { GAME_MODES, roomForMode, type GameMode } from './shared/GameMode';
 
 interface Hooks {
   identity(id: string): void;
@@ -32,8 +33,8 @@ export class ColyseusConnection {
   private readonly guestKey: string; private readonly reconnectKey: string;
   self: SelfSnapshot | null = null;
   connected = false; state = 'connecting'; received = 0; sent = 0; correctionDistance = 0;
-  constructor(private endpoint: string, private username: string, private hooks: Hooks) {
-    this.guestKey = `universe:colyseus:guest:${endpoint}`; this.reconnectKey = `universe:colyseus:reconnect:${endpoint}`;
+  constructor(private endpoint: string, private username: string, private hooks: Hooks, readonly mode: GameMode = 'pvp') {
+    this.guestKey = `universe:colyseus:guest:${endpoint}`; this.reconnectKey = `universe:colyseus:reconnect:${endpoint}${mode === 'pvp' ? '' : ':exploration'}`;
     this.statusElement = document.createElement('div'); this.statusElement.id = 'multiplayer-status'; this.statusElement.setAttribute('role', 'status');
     Object.assign(this.statusElement.style, { position: 'fixed', top: '76px', left: '50%', transform: 'translateX(-50%)', zIndex: '10000',
       background: 'rgba(5,12,24,.9)', color: '#c9e6ff', padding: '8px 14px', border: '1px solid #54718b', borderRadius: '6px',
@@ -52,15 +53,27 @@ export class ColyseusConnection {
       const { Client } = await import('@colyseus/sdk');
       if (this.disposed) return;
       const client = new Client(this.endpoint); let room: Room | undefined;
+      // A reload may leave this tab's former mode in its reconnect grace period.
+      // Release that reservation before entering another mode; other tabs have separate session storage.
+      for (const otherMode of GAME_MODES) {
+        if (otherMode === this.mode) continue;
+        const key = `universe:colyseus:reconnect:${this.endpoint}${otherMode === 'pvp' ? '' : ':exploration'}`;
+        const previous = this.read(sessionStorage, key);
+        if (previous) {
+          try { const former = await client.reconnect(previous); former.onMessage('*', () => {}); await former.leave(); } catch { /* expired reservation */ }
+          this.write(sessionStorage, key, null);
+        }
+      }
+      if (this.disposed) return;
       const saved = this.read(sessionStorage, this.reconnectKey);
       if (saved) {
         try { room = await client.reconnect(saved); } catch { this.write(sessionStorage, this.reconnectKey, null); }
       }
-      room ??= await client.joinById(NET.roomId, { version: NET.version, generator: GENERATOR, username: this.username, token: this.read(localStorage, this.guestKey) });
+      room ??= await client.joinById(roomForMode(this.mode), { version: NET.version, generator: GENERATOR, mode: this.mode, username: this.username, token: this.read(localStorage, this.guestKey) });
       if (this.disposed) { await room.leave(); return; }
       this.room = room; this.decoder.reset(); room.reconnection.minUptime = 0; room.reconnection.maxRetries = 10;
       room.onMessage('welcome', data => {
-        if (!compatibleGenerator(data.generator)) { this.incompatible = true; this.connected = false; this.status('incompatible', 'World version changed. Update the game to reconnect.'); void room!.leave(); return; }
+        if (!compatibleGenerator(data.generator) || (data.mode ?? 'pvp') !== this.mode) { this.incompatible = true; this.connected = false; this.status('incompatible', 'World or game mode changed. Return to the launch screen.'); void room!.leave(); return; }
         this.hooks.identity(data.id); this.write(localStorage, this.guestKey, data.token);
         this.write(sessionStorage, this.reconnectKey, room!.reconnectionToken);
       });
@@ -157,12 +170,22 @@ export class ColyseusConnection {
     }
     this.sent++; this.room.send(type, { ...data, epoch: this.epoch }); return true;
   }
-  stats() { return { transport: 'colyseus', state: this.state, subscribed: this.connected, configured: true, received: this.received, sendAttempts: this.sent,
+  stats() { return { transport: 'colyseus', mode: this.mode, state: this.state, subscribed: this.connected, configured: true, received: this.received, sendAttempts: this.sent,
     id: this.self?.id ?? null, systemId: this.self?.systemId ?? null, pendingInputs: this.pending.length, correctionDistance: this.correctionDistance,
     hp: this.self?.hp, shield: this.self?.shield, epoch: this.epoch, ack: this.self?.seq, dead: this.self?.dead }; }
   dispose() {
     this.disposed = true; this.connected = false; if (this.retry) clearTimeout(this.retry);
-    this.write(sessionStorage, this.reconnectKey, null); void this.room?.leave(); this.room = null;
+    const room = this.room; this.room = null;
     this.controller?.setInputBlocked('network', false); this.statusElement.remove();
+    if (!room) return Promise.resolve();
+    room.reconnection.enabled = false; room.reconnection.maxRetries = 0;
+    // Never strand the launch-screen button waiting for an acknowledgement from a lost socket.
+    // Keep its reconnect token if we could not release the seat, so this tab can reclaim it later.
+    if (!room.connection.isOpen) { room.connection.close(); return Promise.resolve(); }
+    return new Promise<void>(resolve => {
+      const timeout = setTimeout(() => { room.connection.close(); resolve(); }, 1500);
+      void room.leave().then(() => { clearTimeout(timeout); this.write(sessionStorage, this.reconnectKey, null); resolve(); })
+        .catch(() => { clearTimeout(timeout); resolve(); });
+    });
   }
 }

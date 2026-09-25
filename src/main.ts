@@ -82,7 +82,13 @@ async function main() {
       world.removeUserShip();
     }
   });
-  authUI = new AuthUI(auth);
+  authUI = new AuthUI(auth, () => world.playStartCinematic());
+  window.addEventListener('ExitToLaunch', async () => {
+    engine.shipController.setInputBlocked('exit', true);
+    hudPanels.closeAll(); starMap?.close();
+    await world.removeUserShip();
+    window.location.reload();
+  });
 
   // Save position every 30 seconds
   setInterval(() => {

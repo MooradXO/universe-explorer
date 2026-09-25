@@ -3,7 +3,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 const snapshot = (page: Page): Promise<any> => page.evaluate(() => JSON.parse(JSON.stringify(window.__UNIVERSE_DEBUG__.snapshot())));
 async function enter(page: Page, mode: string) {
   await page.addInitScript(mode => localStorage.setItem('universe_gfx_mode', mode), mode);
-  await page.goto('/'); await page.locator('#btn-start-game').click();
+  await page.goto('/'); await page.locator('.mode-card:has(input[value="pvp"])').click(); await page.locator('#btn-start-game').click();
   await expect.poll(async () => (await snapshot(page)).realtime.subscribed, { timeout: 20000 }).toBe(true);
   await expect.poll(async () => (await snapshot(page)).flightInputBlocked, { timeout: 20000 }).toBe(false);
 }

@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-09-25 orbital launch and game modes
+
+- Added a responsive orbital launch scene, safe scout departure, pilot names and Exploration/PvP selection.
+- Separated peaceful and combat players, chat and voice into two server-controlled modes under one shared admission cap. Existing PvP saves remain compatible; Exploration has independent state and journals.
+- Added the original synthesized Far Horizons ambient score with persistent volume/mute controls and hidden-tab suspension.
+- Added return-to-launch and mode switching, including reconnect and interrupted connections.
+- Kept hull, shield, boost and the aiming reticle visible in first-person flight without a 3D cockpit. Exploration retains its map and ship indicators.
+- Verified server mode isolation, shared capacity, peaceful weapon rejection, PvP damage, mobile presentation and first-person HUD updates.
+
+[Publication and deployment record](docs/phases_archive/release-2026-09-25/README.md).
+
 ## 2026-09-24 multiplayer visual hotfix
 
 - Smoothed automatic cruise turns between network snapshots, including mobile rendering and the return to manual steering.

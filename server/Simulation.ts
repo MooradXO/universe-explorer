@@ -14,6 +14,7 @@ import type { Triple } from '../src/world/space/WorldPosition';
 import { SpatialIndex } from './SpatialIndex';
 import { RateLimit } from './RateLimit';
 import { ServerBots } from './ServerBots';
+import type { GameMode } from '../src/network/shared/GameMode';
 
 const forward = new Vector3(0, 0, -1);
 const base = (): [number, number, number] => { const p: [number, number, number] = [...systemArrival(SOLAR_SYSTEM)]; p[1] += 100; p[2] += 300; return p; };
@@ -45,7 +46,7 @@ export class Simulation {
   private nextShot = 1; private botsAt = -60; private nextSnapshotPhase = 0;
   private nextEntityVersion = 1;
   private entityCache = new Map<string, { tick: number; data: WorldSnapshot['entities'][number]; version: number }>();
-  constructor(private resolve: (id: string) => MapObject | null, private send: Send = () => {}) { this.system(SOLAR_CATALOG_OBJECT.id); }
+  constructor(private resolve: (id: string) => MapObject | null, private send: Send = () => {}, readonly mode: GameMode = 'pvp') { this.system(SOLAR_CATALOG_OBJECT.id); }
 
   private system(id: string): SystemState | null {
     const existing = this.systems.get(id); if (existing) { existing.used = this.time; return existing; }
@@ -105,6 +106,7 @@ export class Simulation {
     const p = this.pilots.get(id); if (!p || !p.connected) return this.reject();
     const m = value && typeof value === 'object' ? value as Record<string, unknown> : {};
     if (!p.limits.accept('actions', 40, 25, this.time)) return this.reject();
+    if (this.mode === 'exploration' && (type === 'fire' || type === 'bots')) return this.reject('peaceful-mode');
     if (type === 'sync') {
       if (!p.limits.accept('sync', 1, .5, this.time)) return this.reject();
       p.epoch++; p.seq = p.receivedSeq = 0; p.queue = []; p.input = idleInput(); this.announce(p); return true;
@@ -182,6 +184,7 @@ export class Simulation {
     return this.reject();
   }
   private projectile(systemId: string, owner: string, position: Vector3, velocity: Vector3, life: number, weapon: Weapon, color: string, damage: number) {
+    if (this.mode === 'exploration') return;
     if (this.shots.size >= 2400) return;
     const id = this.nextShot; this.nextShot = (this.nextShot + 1) >>> 0 || 1; this.fired++;
     this.shots.set(id, { id, systemId, owner, position: position.clone(), velocity: velocity.clone(), life, weapon, color, damage });
@@ -302,6 +305,7 @@ export class Simulation {
     }
   }
   private damage(entity: Entity, amount: number, owner: string, system: SystemState) {
+    if (this.mode === 'exploration') return;
     if (entity.dead) return;
     const p = this.pilots.get(entity.id); this.hits++;
     if (p) {

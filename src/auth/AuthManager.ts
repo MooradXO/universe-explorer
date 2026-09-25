@@ -1,5 +1,6 @@
 import { supabase } from '../lib/supabase';
 import type { User } from '@supabase/supabase-js';
+import type { GameMode } from '../network/shared/GameMode';
 
 export interface UserProfile {
   id: string;
@@ -28,19 +29,21 @@ export class AuthManager {
   public profile: UserProfile | null = null;
   public repos: GitHubRepo[] = [];
   public isLoggedIn = false;
+  public mode: GameMode = 'exploration';
   private onAuthChange: (loggedIn: boolean) => void;
 
   constructor(onAuthChange: (loggedIn: boolean) => void) {
     this.onAuthChange = onAuthChange;
   }
 
-  async signInAsGuest() {
+  async signInAsGuest(mode: GameMode = 'exploration', username = 'Guest Pilot') {
     if (this.isLoggedIn) return;
     this.isLoggedIn = true;
+    this.mode = mode;
     this.user = { id: `guest_${Date.now()}` } as any;
     this.profile = {
       id: this.user!.id,
-      username: 'Guest Pilot',
+      username: username.trim().replace(/[<>\x00-\x1f\x7f]/g, '').slice(0, 32) || 'Guest Pilot',
       github_username: 'guest',
       avatar_url: '/universe-mark.svg',
       ship_size: 10,

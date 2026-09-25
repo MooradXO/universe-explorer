@@ -27,6 +27,7 @@ export class MobileControlsUI {
   private colorButton: HTMLButtonElement | null = null;
   private voiceButton: HTMLButtonElement | null = null;
   private releases: Array<() => void> = [];
+  private visible = false;
 
   constructor() {
     if (!usesMobileLayout()) return;
@@ -38,8 +39,10 @@ export class MobileControlsUI {
   }
 
   public setVisible(visible: boolean): void {
+    this.visible = visible;
     if (!visible) this.releaseControls();
     if (this.mobileLayer) this.mobileLayer.style.display = visible ? 'block' : 'none';
+    if (this.portraitBlocker) this.portraitBlocker.style.display = visible && window.innerHeight > window.innerWidth ? 'flex' : 'none';
   }
 
   private releaseControls() { for (const release of this.releases) release(); }
@@ -61,7 +64,7 @@ export class MobileControlsUI {
 
     const checkOrientation = () => {
       this.releaseControls();
-      this.portraitBlocker.style.display = window.innerHeight > window.innerWidth ? 'flex' : 'none';
+      this.portraitBlocker.style.display = this.visible && window.innerHeight > window.innerWidth ? 'flex' : 'none';
     };
     window.addEventListener('resize', checkOrientation);
     checkOrientation();

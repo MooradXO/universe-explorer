@@ -13,6 +13,7 @@ window.localPlayerBounty = 50000;
 type WeaponType = 'laser' | 'shotgun' | 'missile';
 
 export class ShipController {
+  public combatEnabled = true;
   public networkDrive?: (dt: number) => void;
   private networkTranslation = new THREE.Vector3();
   private wasNetworkCruising = false;
@@ -138,7 +139,7 @@ export class ShipController {
   }
 
   private startPrimaryFire() {
-    if (this.inputBlocked || this.isPrimaryFireHeld) return;
+    if (!this.combatEnabled || this.inputBlocked || this.isPrimaryFireHeld) return;
     this.isPrimaryFireHeld = true;
     window.dispatchEvent(new CustomEvent('PrimaryFireStart'));
   }
@@ -175,6 +176,7 @@ export class ShipController {
   }
 
   public takeDamage(amount: number): boolean {
+    if (!this.combatEnabled) return false;
     if (this.networkDrive) return this.isDead;
     if (this.isDead) return false;
 

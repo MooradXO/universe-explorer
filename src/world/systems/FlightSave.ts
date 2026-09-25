@@ -1,9 +1,10 @@
 import { readStellarAddress, type StellarAddress } from '../space/StellarAddress';
 import { buildSystem, SOLAR_CATALOG_OBJECT } from './SystemDescriptor';
 import { compatibleGenerator, GENERATOR, type GeneratorVersions } from '../generation/GeneratorContract';
+import type { GameMode } from '../../network/shared/GameMode';
 
 export interface FlightSave { version: 1; generator?: GeneratorVersions; address: StellarAddress; spectrum: string | null; rotation: number[]; visited: string[]; }
-export const flightSaveKey = (id: string) => `universe:stellar-flight:v1:${id.startsWith('guest_') ? 'guest' : id}`;
+export const flightSaveKey = (id: string, mode: GameMode = 'pvp') => `universe:stellar-flight:v1:${id.startsWith('guest_') ? 'guest' : id}${mode === 'pvp' ? '' : ':exploration'}`;
 export function unsupportedFlightSave(raw:string|null):boolean {
   try{if(!raw||raw.length>32768)return false;const v=JSON.parse(raw);return v.version>1||!compatibleGenerator(v.generator);}catch{return false;}
 }

@@ -11,7 +11,7 @@ A browser space game built with TypeScript, Vite and Three.js.
 
 [Play the game](https://universe.projectai.biz/) · [Open the workshop](https://universe.projectai.biz/environments.html) · [Workshop guide](docs/WORKSHOP.md) · [Multiplayer](docs/MULTIPLAYER.md)
 
-![Universe Explorer: planetary flight and the Titan & Copper HUD](docs/images/flight.png)
+![Universe Explorer: orbital launch, Exploration and PvP](docs/images/launch.png)
 
 [**Getting started**](docs/GETTING_STARTED.md) · [**Documentation**](docs/README.md) · [**Gallery**](docs/GALLERY.md) · [**Architecture**](docs/ARCHITECTURE.md) · [**Roadmap**](docs/ROADMAP.md)
 
@@ -23,8 +23,8 @@ A browser space game built with TypeScript, Vite and Three.js.
 
 - Flight in the Solar System and travel to catalogue stars, with cruise navigation, warp transitions, first/third-person cameras and a floating origin.
 - Lasers, spread shots, missiles, shields, damage, respawn and server-controlled bots.
-- One shared Colyseus universe. The production admission limit is **50 concurrent players**; the implementation's local test ceiling of 100 is not a production capacity guarantee.
-- Guest sessions, authoritative movement and combat, global text chat and proximity voice signalling. Voice audio travels directly between browsers using WebRTC.
+- Exploration and PvP use separate canonical Colyseus rooms with one shared player limit. The existing production admission limit is **50 concurrent players**; the implementation's local test ceiling of 100 is not a production capacity guarantee.
+- Guest sessions, authoritative movement and combat, mode-wide text chat and proximity voice signalling. Voice audio travels directly between browsers using WebRTC.
 - Titan & Copper HUD, star map, navigation, hangar and manual. Desktop panels open one at a time.
 - Compact mobile HUD and two-thumb controls: the left stick combines thrust and steering, while the right thumb holds FIRE. Mobile flight requires landscape orientation.
 - Eight Solar System planets, illustrated surfaces, atmospheres, clouds, rings, moons, auroras, structures, debris and phenomena.
@@ -32,9 +32,11 @@ A browser space game built with TypeScript, Vite and Three.js.
 - Local exploration journal and generated survey sites. Generated planets and sites are fictional game content, not confirmed astronomical discoveries.
 - A scene workshop at `/environments.html`: 17 object types, editable layers and transforms, parenting, undo/redo, project storage, full-scene JSON and a separate local flight preview.
 - An AT-HYG star map with streamed tiles and search, plus explicit on-demand Gaia DR3, SIMBAD and NED lookups.
-- Original procedural ambient and weapon audio. An external ambient stream is optional and requires embedding permission.
+- Original ambient score, **Far Horizons**, with evolving pads, a sparse melody, stereo echoes and persistent music volume/mute controls. Music starts after interaction and pauses in a hidden tab; it requires no external audio service.
 
-The current start screen still uses guest ENGAGE. A redesigned hangar, three selectable small ships, three large ships and separate exploration/PvP modes are proposed follow-up work, not features of this release.
+Choose Exploration or PvP and enter a pilot name on the orbital launch screen. Use SYSTEM to change music settings or return to the launch screen. Both camera views retain hull, shield, boost and the aiming reticle. [Mode and music guide](docs/GAME_MODES.md) · [September 25 release status](docs/phases_archive/release-2026-09-25/README.md).
+
+Three selectable small ships and three large ships still await user-supplied models and a separate implementation milestone.
 
 ## Requirements and quick start
 
